@@ -1,4 +1,0 @@
-Most edited files in project(https://news.ycombinator.com/item?id=16300152)
-
-git log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -10
-
