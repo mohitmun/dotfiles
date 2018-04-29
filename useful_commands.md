@@ -1,3 +1,7 @@
+Learning Command line 
+  https://github.com/learnbyexample/Command-line-text-processing
+  https://github.com/jlevy/the-art-of-command-line
+
 Most edited files in project(https://news.ycombinator.com/item?id=16300152)
 ```
 git log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -10
