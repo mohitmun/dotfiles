@@ -17,3 +17,7 @@ quick conversion from unix timestamp to date
 ```
 date -r "1418012103" 
 ```
+pup is like jq but for html, pup is insane because traversing up using selector only wasnt possible (AFAIK). pup solves this problem. no nokogiri or bs4. pup FTW 
+```
+pup ':parent-of(:parent-of(SELECTOR)) > a json' 
+```
