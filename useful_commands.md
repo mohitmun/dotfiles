@@ -9,3 +9,7 @@ find $1 -type f -name '*' -print0 | xargs -0 md5sum > hashes.txt
 sort -k 1,1 < hashes.txt > hashes-sorted.txt
 uniq --check-chars=32 --all-repeated=separate hashes-sorted.txt
 ```
+quick conversion from unix timestamp to date
+```
+date -r "1418012103" 
+```
