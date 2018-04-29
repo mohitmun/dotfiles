@@ -1,6 +1,6 @@
-Learning Command line 
-  https://github.com/learnbyexample/Command-line-text-processing
-  https://github.com/jlevy/the-art-of-command-line
+Learning Command line
+  * https://github.com/learnbyexample/Command-line-text-processing
+  * https://github.com/jlevy/the-art-of-command-line
 
 Most edited files in project(https://news.ycombinator.com/item?id=16300152)
 ```
