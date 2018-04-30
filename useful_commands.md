@@ -21,3 +21,4 @@ pup is like jq but for html, pup is insane because traversing up using selector 
 ```
 pup ':parent-of(:parent-of(SELECTOR)) > a json' 
 ```
+Learning jq for cmd line json processing (https://jqplay.org)
