@@ -1,5 +1,6 @@
 # GistID:963f95aaf61d50e512511ac4eb097e50
 # add '. ~/.coomon_sh_rc' to .zshrc
+alias brew="brew -v"
 if [ ! -f taocl.md ]; then 
   echo "Getting TAOCL from github"
   curl -s https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README.md > taocl.md 
