@@ -24,3 +24,5 @@ pup ':parent-of(:parent-of(SELECTOR)) > a json'
 Learning jq for cmd line json processing (https://stedolan.github.io/jq/manual, https://jqplay.org)
 
 ZSH, tmux, Emacs and SSH: A copy-paste story (https://news.ycombinator.com/item?id=17002527) 
+
+use https://github.com/nferraz/st, simple statistics from the command line
