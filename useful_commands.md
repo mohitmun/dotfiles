@@ -26,3 +26,8 @@ Learning jq for cmd line json processing (https://stedolan.github.io/jq/manual, 
 ZSH, tmux, Emacs and SSH: A copy-paste story (https://news.ycombinator.com/item?id=17002527) 
 
 use https://github.com/nferraz/st, simple statistics from the command line
+
+join network from command line https://github.com/herrbischoff/awesome-macos-command-line#wi-fi
+```
+networksetup -setairportnetwork en0 WIFI_SSID WIFI_PASSWORD
+```
