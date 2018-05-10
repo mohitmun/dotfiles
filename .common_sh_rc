@@ -13,5 +13,9 @@ sed '/cowsay[.]png/d' taocl.md | pandoc -f markdown -t html | xmlstarlet fo --ht
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-# Handbook
-#
+# ================
+# git@github.com:rupa/z.git
+. ~/.cli-tools/z/z.sh
+
+# Dotfiles to follow
+# https://github.com/whiteinge/dotfiles/
