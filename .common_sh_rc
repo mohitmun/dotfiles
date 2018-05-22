@@ -5,7 +5,7 @@ alias brew="brew -v"
 
 # ====================
 # Get new tip from the art of command line repo everyday. can be use for different stuff also
-if [ ! -f taocl.md ]; then 
+if [ ! -f ~/.taocl.md ]; then 
   echo "Getting TAOCL from github"
   curl -s https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README.md > taocl.md 
 fi
