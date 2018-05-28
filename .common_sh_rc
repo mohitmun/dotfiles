@@ -22,5 +22,6 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 # All about awesome-cli
 # https://github.com/whiteinge/ok.sh Github client in bash
+# explore more on https://github.com/alebcay/awesome-shell 
 
 # https://github.com/sjl/t A command-line todo list manager for people that want to finish tasks, not organize them
