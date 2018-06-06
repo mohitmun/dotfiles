@@ -2,14 +2,17 @@
 # add '. ~/.coomon_sh_rc' to .zshrc
 
 alias brew="brew -v"
+export EDITOR=vim
+alias mux=tmuxinator
 
 # ====================
 # Get new tip from the art of command line repo everyday. can be use for different stuff also
-if [ ! -f ~/.taocl.md ]; then 
+TAOCL_FILE=~/.taocl.md
+if [ ! -f $TAOCL_FILE ]; then 
   echo "Getting TAOCL from github"
-  curl -s https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README.md > taocl.md 
+  curl -s https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README.md > $TAOCL_FILE 
 fi
-sed '/cowsay[.]png/d' taocl.md | pandoc -f markdown -t html | xmlstarlet fo --html --dropdtd | xmlstarlet sel -t -v "(html/body/ul/li[count(p)>0])[$RANDOM mod last()+1]" | xmlstarlet unesc | fmt -80 | iconv -t US | cowsay
+sed '/cowsay[.]png/d' $TAOCL_FILE | pandoc -f markdown -t html | xmlstarlet fo --html --dropdtd | xmlstarlet sel -t -v "(html/body/ul/li[count(p)>0])[$RANDOM mod last()+1]" | xmlstarlet unesc | fmt -80 | iconv -t US | cowsay
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export HOMEBREW_NO_AUTO_UPDATE=1
 
@@ -22,6 +25,3 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 # All about awesome-cli
 # https://github.com/whiteinge/ok.sh Github client in bash
-# explore more on https://github.com/alebcay/awesome-shell 
-
-# https://github.com/sjl/t A command-line todo list manager for people that want to finish tasks, not organize them
