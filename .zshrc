@@ -121,3 +121,29 @@ bindkey "^[OA" up-line-or-beginning-search
 bindkey "^[OB" down-line-or-beginning-search
 bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
+
+
+push(){
+  adb -d push $1 /storage/emulated/0/
+}
+pull(){
+  adb -d pull /storage/emulated/0/$1
+}
+
+
+notify(){
+  osascript -e "display notification \"$2\" with title \"$1\""
+}
+
+ipaddress(){
+  curl ipinfo.io/ip 
+}
+
+socktest(){
+  \curl ipinfo.io/ip --socks5-hostname $1 
+}
+
+httptest(){
+  \curl ipinfo.io/ip -x $1
+}
+
