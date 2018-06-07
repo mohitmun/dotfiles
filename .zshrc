@@ -65,6 +65,12 @@ plugins=(
   transfer
   tmux
   vi-mode
+  copyfile
+  copydir
+  emoji-clock
+  encode64
+  lol
+  jsontools
 )
 
 source $ZSH/oh-my-zsh.sh
