@@ -63,6 +63,8 @@ plugins=(
   sudo
   tmuxinator
   transfer
+  tmux
+  vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -102,3 +104,14 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 #
 # A command-line todo list manager for people that want to finish tasks, not organize them
 # https://github.com/sjl/t
+
+
+# Better searching in command mode
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-forward
+
+# Beginning search with arrow keys
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search
