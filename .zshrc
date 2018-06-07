@@ -61,46 +61,21 @@ ZSH_THEME="robbyrussell"
 plugins=(
   git
   sudo
+  tmuxinator
   transfer
 )
 
 source $ZSH/oh-my-zsh.sh
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 . ~/.secret_common_sh_rc
+
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 # GistID:963f95aaf61d50e512511ac4eb097e50
 
 alias brew="brew -v"
-export EDITOR=vim
 alias mux=tmuxinator
+alias zshrc="vi ~/.zshrc"
+
+export EDITOR=vim
 
 # ====================
 # Get new tip from the art of command line repo everyday. can be use for different stuff also
@@ -113,7 +88,8 @@ sed '/cowsay[.]png/d' $TAOCL_FILE | pandoc -f markdown -t html | xmlstarlet fo -
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-# ================
+# ==============================================
+# ==============================================
 # git@github.com:rupa/z.git
 . ~/.cli-tools/z/z.sh
 
