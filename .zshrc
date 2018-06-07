@@ -93,6 +93,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+. ~/.secret_common_sh_rc
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 # GistID:963f95aaf61d50e512511ac4eb097e50
@@ -125,5 +126,3 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 #
 # A command-line todo list manager for people that want to finish tasks, not organize them
 # https://github.com/sjl/t
-. ~/.common_sh_rc
-. ~/.secret_common_sh_rc
