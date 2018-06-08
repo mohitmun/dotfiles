@@ -64,7 +64,7 @@ plugins=(
   tmuxinator
   transfer
   tmux
-  vi-mode
+  #vi-mode
   copyfile
   copydir
   emoji-clock
@@ -123,13 +123,20 @@ bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
 
 
+eval $(thefuck --alias)
+
+explain(){
+  response=$(w3m -dump "http://explainshell.com/explain?cmd="$(echo $@ | tr ' ' '+'))
+  cat -s <(grep -v -e explainshell -e • -e □ -e "source manpages" <<< "$response")
+}
+
 push(){
   adb -d push $1 /storage/emulated/0/
 }
+
 pull(){
   adb -d pull /storage/emulated/0/$1
 }
-
 
 notify(){
   osascript -e "display notification \"$2\" with title \"$1\""
@@ -146,4 +153,3 @@ socktest(){
 httptest(){
   \curl ipinfo.io/ip -x $1
 }
-
