@@ -71,6 +71,7 @@ plugins=(
   encode64
   lol
   jsontools
+  z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -90,7 +91,7 @@ export EDITOR=vim
 TAOCL_FILE=~/.taocl.md
 if [ ! -f $TAOCL_FILE ]; then 
   echo "Getting TAOCL from github"
-  curl -s https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README.md > $TAOCL_FILE 
+  \curl -s https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README.md -o $TAOCL_FILE 
 fi
 sed '/cowsay[.]png/d' $TAOCL_FILE | pandoc -f markdown -t html | xmlstarlet fo --html --dropdtd | xmlstarlet sel -t -v "(html/body/ul/li[count(p)>0])[$RANDOM mod last()+1]" | xmlstarlet unesc | fmt -80 | iconv -t US | cowsay
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -99,7 +100,8 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 # ==============================================
 # ==============================================
 # git@github.com:rupa/z.git
-. ~/.cli-tools/z/z.sh
+# Using inbuilt zsh 'z' plugin
+#. ~/.cli-tools/z/z.sh
 
 # Dotfiles to follow
 # https://github.com/whiteinge/dotfiles/
@@ -165,4 +167,3 @@ capture() {
 }
 
 alias battrylogs="pmset -g log|grep -e ' Sleep  ' -e ' Wake  '"
-
