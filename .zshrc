@@ -112,6 +112,8 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 #
 # A command-line todo list manager for people that want to finish tasks, not organize them
 # https://github.com/sjl/t
+#
+#https://www.slideshare.net/jaguardesignstudio/why-zsh-is-cooler-than-your-shell-16194692
 
 
 # Better searching in command mode
