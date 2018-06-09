@@ -155,3 +155,14 @@ httptest(){
   \curl ipinfo.io/ip -x $1
 }
 
+capture() {
+    sudo dtrace -p "$1" -qn '
+        syscall::write*:entry
+        /pid == $target && arg0 == 1/ {
+            printf("%s", copyinstr(arg1, arg2));
+        }
+    '
+}
+
+alias battrylogs="pmset -g log|grep -e ' Sleep  ' -e ' Wake  '"
+
