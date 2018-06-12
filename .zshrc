@@ -203,3 +203,30 @@ ZSH_THEME_GIT_PROMPT_PREFIX="$FG[075]($FG[078]"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_DIRTY="$my_orange*%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[075])%{$reset_color%}"
+
+gencscopedb(){
+  CSCOPE_DIR="$PWD/cscope"
+   
+  if [ ! -d "$CSCOPE_DIR" ]; then
+  mkdir "$CSCOPE_DIR"
+  fi
+   
+  echo "Finding files ..."
+  find "$PWD" -name '*.[ch]' \
+  -o -name '*.java' \
+  -o -name '*properties' \
+  -o -name '*.cpp' \
+  -o -name '*.cc' \
+  -o -name '*.hpp' \
+  -o -name '*.py' \
+  -o -name '*.php' > "$CSCOPE_DIR/cscope.files"
+   
+  echo "Adding files to cscope db: $PWD/cscope.db ..."
+  cscope -b -i "$CSCOPE_DIR/cscope.files"
+   
+  export CSCOPE_DB="$PWD/cscope.out"
+  echo "Exported CSCOPE_DB to: '$CSCOPE_DB'"
+}
+
+alias ts='tmux -CC new-session -s'
+alias ta='tmux -CC attach -t'
