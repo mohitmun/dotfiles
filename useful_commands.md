@@ -2,6 +2,7 @@ Learning Command line
   * https://github.com/learnbyexample/Command-line-text-processing
   * https://github.com/jlevy/the-art-of-command-line
   * https://www.tldp.org/LDP/abs/html/contributed-scripts.html
+  * https://www.tldp.org/LDP/abs/html/abs-guide.html
 
 Most edited files in project(https://news.ycombinator.com/item?id=16300152)
 ```
