@@ -80,10 +80,6 @@ source $ZSH/oh-my-zsh.sh
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # GistID:963f95aaf61d50e512511ac4eb097e50
 
-alias brew="brew -v"
-alias mux=tmuxinator
-alias zshrc="vi ~/.zshrc"
-
 export EDITOR=vim
 
 # ====================
@@ -119,15 +115,14 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 # Better searching in command mode
 bindkey -M vicmd '?' history-incremental-search-backward
 bindkey -M vicmd '/' history-incremental-search-forward
-
 # Beginning search with arrow keys
 bindkey "^[OA" up-line-or-beginning-search
 bindkey "^[OB" down-line-or-beginning-search
 bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
+bindkey "^j" down-line-or-beginning-search
+bindkey "^k" up-line-or-beginning-search
 
-bindkey "^j" history-search-forward
-bindkey "^k" history-search-backward
 eval $(thefuck --alias)
 
 explain(){
@@ -167,13 +162,9 @@ capture() {
         }
     '
 }
-
-alias battrylogs="pmset -g log|grep -e ' Sleep  ' -e ' Wake  '"
-
 # af-magic.zsh-theme
 # Repo: https://github.com/andyfleming/oh-my-zsh
 # Direct Link: https://github.com/andyfleming/oh-my-zsh/blob/master/themes/af-magic.zsh-theme
-
 if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="green"; fi
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
@@ -230,3 +221,7 @@ gencscopedb(){
 
 alias ts='tmux -CC new-session -s'
 alias ta='tmux -CC attach -t'
+alias brew="brew -v"
+alias mux=tmuxinator
+alias zshrc="vi ~/.zshrc"
+alias battrylogs="pmset -g log|grep -e ' Sleep  ' -e ' Wake  '"
