@@ -19,7 +19,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 . ~/.secret_common_sh_rc
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # GistID:963f95aaf61d50e512511ac4eb097e50
 
 export EDITOR=vim
@@ -47,7 +46,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 # All about awesome-cli
 # https://github.com/whiteinge/ok.sh Github client in bash
 # explore more on https://github.com/alebcay/awesome-shell 	
-#
+# https://github.com/agarrharr/awesome-cli-apps
 # A command-line todo list manager for people that want to finish tasks, not organize them
 # https://github.com/sjl/t
 #
@@ -155,9 +154,9 @@ gencscopedb(){
   -o -name '*.php' > "$CSCOPE_DIR/cscope.files"
    
   echo "Adding files to cscope db: $PWD/cscope.db ..."
-  cscope -b -i "$CSCOPE_DIR/cscope.files"
+  cscope -b -i "$CSCOPE_DIR/cscope.files" -f "$CSCOPE_DIR/cscope.out"
    
-  export CSCOPE_DB="$PWD/cscope.out"
+  export CSCOPE_DB="$CSCOPE_DIR/cscope.out"
   echo "Exported CSCOPE_DB to: '$CSCOPE_DB'"
 }
 
@@ -167,3 +166,6 @@ alias brew="brew -v"
 alias mux=tmuxinator
 alias zshrc="vi ~/.zshrc"
 alias battrylogs="pmset -g log|grep -e ' Sleep  ' -e ' Wake  '"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
