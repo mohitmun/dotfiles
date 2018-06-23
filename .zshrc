@@ -46,6 +46,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 # All about awesome-cli
 # https://github.com/whiteinge/ok.sh Github client in bash
+## https://github.com/agarrharr/awesome-cli-apps
 # explore more on https://github.com/alebcay/awesome-shell 	
 #
 # A command-line todo list manager for people that want to finish tasks, not organize them
@@ -160,9 +161,9 @@ gencscopedb(){
   -o -name '*.php' > "$CSCOPE_DIR/cscope.files"
    
   echo "Adding files to cscope db: $PWD/cscope.db ..."
-  cscope -b -i "$CSCOPE_DIR/cscope.files"
-   
-  export CSCOPE_DB="$PWD/cscope.out"
+  cscope -b -i "$CSCOPE_DIR/cscope.files" -f "$CSCOPE_DIR/cscope.out"
+
+  export CSCOPE_DB="$CSCOPE_DIR/cscope.out"
   echo "Exported CSCOPE_DB to: '$CSCOPE_DB'"
 }
 
@@ -172,3 +173,4 @@ alias brew="brew -v"
 alias mux=tmuxinator
 alias zshrc="vi ~/.zshrc"
 alias battrylogs="pmset -g log|grep -e ' Sleep  ' -e ' Wake  '"
+export PATH="$PATH:$HOME/.rvm/bin"
