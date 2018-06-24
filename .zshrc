@@ -158,6 +158,7 @@ gencscopedb(){
   -o -name '*.cc' \
   -o -name '*.hpp' \
   -o -name '*.py' \
+  -o -name '*.rb' \
   -o -name '*.php' > "$CSCOPE_DIR/cscope.files"
    
   echo "Adding files to cscope db: $PWD/cscope.db ..."
