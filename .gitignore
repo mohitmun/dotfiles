@@ -4,3 +4,5 @@
 # git config --global core.excludesfile ~/.gitignore
 cscope*
 .plan
+.DS_Store
+tags
