@@ -174,4 +174,8 @@ alias brew="brew -v"
 alias mux=tmuxinator
 alias zshrc="vi ~/.zshrc"
 alias battrylogs="pmset -g log|grep -e ' Sleep  ' -e ' Wake  '"
+alias gist_vimrc="gist -r 55140b5b9c723540883f823616575c58"
+alias gist_zshrc="gist -r 963f95aaf61d50e512511ac4eb097e50"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
