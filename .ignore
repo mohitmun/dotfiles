@@ -1,4 +1,5 @@
 # GistID:963f95aaf61d50e512511ac4eb097e50
+# https://github.com/BurntSushi/ripgrep/issues/673
 cscope.out
 build/*
 bin/*
