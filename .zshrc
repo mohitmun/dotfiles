@@ -19,7 +19,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 . ~/.secret_common_sh_rc
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # GistID:963f95aaf61d50e512511ac4eb097e50
 
 export EDITOR=vim
