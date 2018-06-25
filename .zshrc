@@ -14,6 +14,7 @@ plugins=(
   lol
   jsontools
   z
+  per-directory-history
 )
 
 source $ZSH/oh-my-zsh.sh
