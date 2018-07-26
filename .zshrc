@@ -183,6 +183,37 @@ alias zshrc="vi ~/.zshrc"
 alias battrylogs="pmset -g log|grep -e ' Sleep  ' -e ' Wake  '"
 alias gist_vimrc="gist -r 55140b5b9c723540883f823616575c58"
 alias gist_zshrc="gist -r 963f95aaf61d50e512511ac4eb097e50 .zshrc"
-
+alias rgl="rg -l" # show only files names
+alias lss="ls -S" # sort by size
+alias s="l -S" # sort by size
+#
+# mkdir, and cd
+function mcd() {
+    mkdir -p "$1" && cd "$1";
+}
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+list_repo_containing_search(){
+  #TODO need to edit function 
+  # == == == == == == == == == == == == == == == == == == == ==
+  # List repo by user
+  # curl -G 'https://api.github.com/users/mohitmun/repos?page=3&per_page=100'
+  # == == == == == == == == == == == == == == == == == == == ==
+  # List repo by org
+  # curl -G 'https://api.github.com/orgs/google/repos?page=3&per_page=100'
+  # == == == == == == == == == == == == == == == == == == == ==
+  # List repo info
+  # curl -G 'https://api.github.com/repo/username/reponame'
+  # == == == == == == == == == == == == == == == == == == == ==
+  for NUM in `seq 16`; do
+    curl "https://github.com/search?p=$GPAGE&q=my_query&type=Code" --compressed > github$GPAGE;
+    cat github$NUM | pup "#code_search_results > div.code-list a.text-bold text{}" >> searchlist;
+  done
+  uniq searchlist > searchlistuniq
+  while read repo;
+    do curl "https://api.github.com/repos/"$repo > `echo $repo | tr '/' '-'` 
+    sleep 2
+  done < searchlistuniq
+  cat * | jq -r '[.full_name, .stargazers_count, .description] | @csv' > repos.csv
+}
