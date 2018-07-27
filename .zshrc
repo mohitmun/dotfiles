@@ -205,6 +205,14 @@ alias gist_zshrc="gist -r 963f95aaf61d50e512511ac4eb097e50 .zshrc"
 alias rgl="rg -l" # show only files names
 alias lss="ls -S" # sort by size
 alias s="l -S" # sort by size
+
+# https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+# Stuff I never really use but cannot delete either because of http://xkcd.com/530/
+alias stfu="osascript -e 'set volume output muted true'"
+alias pumpitup="osascript -e 'set volume output volume 100'"
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
 #===========================
 # Aliases END
 #===========================
@@ -243,3 +251,77 @@ list_repo_containing_search(){
 cht(){
   curl cht.sh/$1
 }
+
+#https://github.com/paulmillr/dotfiles/blob/master/home/.zshrc.sh
+#
+# Load 8 cores at once.
+function maxcpu() {
+  dn=/dev/null
+  yes > $dn & yes > $dn & yes > $dn & yes > $dn &
+  yes > $dn & yes > $dn & yes > $dn & yes > $dn &
+}
+
+# $ retry ping google.com
+function retry() {
+  echo Retrying "$@"
+  $@
+  sleep 1
+  retry $@
+}
+
+# $ git log --no-merges --pretty=format:"%ae" | stats
+# # => 514 a@example.com
+# # => 200 b@example.com
+function stats() {
+  sort | uniq -c | sort -r
+}
+
+# Shortcut for searching commands history.
+# hist git
+function hist() {
+  history | grep $@
+}
+
+# Monitor IO in real-time (open files etc).
+function openfiles() {
+  sudo dtrace -n 'syscall::open*:entry { printf("%s %s",execname,copyinstr(arg0)); }'
+}
+
+# Execute commands for each file in current directory.
+function each() {
+  for dir in *; do
+    # echo "${dir}:"
+    cd $dir
+    $@
+    cd ..
+  done
+}
+
+# Find files and exec commands at them.
+# $ find-exec .coffee cat | wc -l
+# # => 9762
+function find-exec() {
+  find . -type f -iname "*${1:-}*" -exec "${2:-file}" '{}' \;
+}
+
+# Better find(1)
+function ff() {
+  find . -iname "*${1:-}*"
+}
+#
+# Show current Finder directory.
+#function finder {
+  #osascript 2>/dev/null <<EOF
+    #tell application "Finder"
+      #return POSIX path of (target of window 1 as alias)
+    #end tell
+#EOF
+#github.com/tj/burl
+BURL_FILE=/usr/local/bin/burl
+if [ ! -f $BURL_FILE ]; then 
+  echo "Getting burl from github"
+  \curl -s https://raw.githubusercontent.com/tj/burl/master/bin/burl -o $BURL_FILE 
+  chmod +x $BURL_FILE
+fi
+#
+#
