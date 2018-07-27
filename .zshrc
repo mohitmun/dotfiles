@@ -123,6 +123,7 @@ if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="green"; fi
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 # motivation: I forget if vim is running in bg https://news.ycombinator.com/item?id=17423100
+# copied https://github.com/denysdovhan/spaceship-prompt/blob/40f52260840bff5ab24f014c62241fdb9be293c0/sections/jobs.zsh
 jobs_prompt() {
   local jobs_amount=$(jobs | wc -l | tr -d " ")
   [[ $jobs_amount -gt 0 ]] || return
