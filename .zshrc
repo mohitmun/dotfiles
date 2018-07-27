@@ -122,6 +122,7 @@ capture() {
 if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="green"; fi
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
+# motivation: I forget if vim is running in bg https://news.ycombinator.com/item?id=17423100
 jobs_prompt() {
   local jobs_amount=$(jobs | wc -l | tr -d " ")
   [[ $jobs_amount -gt 0 ]] || return
