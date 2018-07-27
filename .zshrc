@@ -127,7 +127,7 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 jobs_prompt() {
   local jobs_amount=$(jobs | wc -l | tr -d " ")
   [[ $jobs_amount -gt 0 ]] || return
-  echo "$jobs_amount job "
+  echo "$FG[196]($jobs_amount job)"
 }
 # primary prompt
 if [ -n "$SSH_CLIENT" ]; then
@@ -138,7 +138,7 @@ fi
 PROMPT='$FG[237]------------------------------------------------------------%{$reset_color%}
 $S_TYPE$FG[032]%c\
 $(git_prompt_info) \
-$FG[196]$(jobs_prompt)\
+$(jobs_prompt)\
 $FG[105]%(!.#.»)%{$reset_color%} '
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 RPS1='${return_code}'
