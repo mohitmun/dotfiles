@@ -112,12 +112,21 @@ capture() {
         }
     '
 }
+
+#===========================
+# THEME START
+#===========================
 # af-magic.zsh-theme
 # Repo: https://github.com/andyfleming/oh-my-zsh
 # Direct Link: https://github.com/andyfleming/oh-my-zsh/blob/master/themes/af-magic.zsh-theme
 if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="green"; fi
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
+jobs_prompt() {
+  local jobs_amount=$(jobs | wc -l | tr -d " ")
+  [[ $jobs_amount -gt 0 ]] || return
+  echo "$jobs_amount job "
+}
 # primary prompt
 if [ -n "$SSH_CLIENT" ]; then
     S_TYPE="ssh: "
@@ -127,6 +136,7 @@ fi
 PROMPT='$FG[237]------------------------------------------------------------%{$reset_color%}
 $S_TYPE$FG[032]%c\
 $(git_prompt_info) \
+$FG[196]$(jobs_prompt)\
 $FG[105]%(!.#.»)%{$reset_color%} '
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 RPS1='${return_code}'
@@ -149,6 +159,10 @@ ZSH_THEME_GIT_PROMPT_PREFIX="$FG[075]($FG[078]"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_DIRTY="$my_orange*%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[075])%{$reset_color%}"
+
+#===========================
+# THEME END
+#===========================
 
 gencscopedb(){
   CSCOPE_DIR="$PWD/cscope"
@@ -175,6 +189,9 @@ gencscopedb(){
   echo "Exported CSCOPE_DB to: '$CSCOPE_DB'"
 }
 
+#===========================
+# Aliases START
+#===========================
 alias ts='tmux -CC new-session -s'
 alias ta='tmux -CC attach -t'
 alias brew="brew -v"
@@ -186,7 +203,10 @@ alias gist_zshrc="gist -r 963f95aaf61d50e512511ac4eb097e50 .zshrc"
 alias rgl="rg -l" # show only files names
 alias lss="ls -S" # sort by size
 alias s="l -S" # sort by size
-#
+#===========================
+# Aliases END
+#===========================
+
 # mkdir, and cd
 function mcd() {
     mkdir -p "$1" && cd "$1";
@@ -216,4 +236,8 @@ list_repo_containing_search(){
     sleep 2
   done < searchlistuniq
   cat * | jq -r '[.full_name, .stargazers_count, .description] | @csv' > repos.csv
+}
+
+cht(){
+  curl cht.sh/$1
 }
