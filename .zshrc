@@ -204,6 +204,8 @@ alias gist_vimrc="gist -r 55140b5b9c723540883f823616575c58"
 alias gist_zshrc="gist -r 963f95aaf61d50e512511ac4eb097e50 .zshrc"
 alias rgl="rg -l" # show only files names
 alias lss="ls -S" # sort by size
+alias lst="ls -t" # recent first
+alias lstr="ls -tr" # recent last
 alias s="l -S" # sort by size
 
 # https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
