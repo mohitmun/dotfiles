@@ -213,6 +213,7 @@ alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume output volume 100'"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
+alias tochromedata="cd ~/Library/Application\ Support/Google/Chrome/Default/"
 #===========================
 # Aliases END
 #===========================
@@ -323,5 +324,4 @@ if [ ! -f $BURL_FILE ]; then
   \curl -s https://raw.githubusercontent.com/tj/burl/master/bin/burl -o $BURL_FILE 
   chmod +x $BURL_FILE
 fi
-#
 #
