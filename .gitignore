@@ -6,3 +6,4 @@ cscope*
 .plan
 .DS_Store
 tags
+.session.vim
