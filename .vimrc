@@ -1,4 +1,4 @@
-" GistID: 963f95aaf61d50e512511ac4eb097e50
+" GistID:963f95aaf61d50e512511ac4eb097e50
 "Constantly improve at vim
 "  http://vimgolf.com
 "  http://derekwyatt.org/vim/tutorials/advanced/
@@ -227,7 +227,7 @@ autocmd VimEnter * wincmd p
 
 "http://vim.wikia.com/wiki/Map_semicolon_to_colon
 map ; :
-noremap ;; ;
+"noremap ;; ;
 
 "https://stackoverflow.com/questions/9051837/how-to-map-c-to-toggle-comments-in-vim?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa#comment11360335_9051932
 nmap <C-_> <leader>c<Space>
@@ -472,3 +472,8 @@ function! LineBreakAt(bang, ...) range
   execute a:firstline . ',' . a:lastline . 's/'. find . '/' . repl . '/ge'
   let @/ = save_search
 endfunction
+
+"https://github.com/mitsuhiko/dotfiles/blob/master/vim/vimrc
+"tab for brackets
+nnoremap <tab> %
+vnoremap <tab> %
