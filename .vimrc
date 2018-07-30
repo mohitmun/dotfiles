@@ -1,4 +1,4 @@
-" GistID:963f95aaf61d50e512511ac4eb097e50
+" GistID: 963f95aaf61d50e512511ac4eb097e50
 "Constantly improve at vim
 "  http://vimgolf.com
 "  http://derekwyatt.org/vim/tutorials/advanced/
@@ -294,6 +294,7 @@ set history=1000                      " Keep a bigger history of commands
 " Fast editing and sourcing of `.vimrc`
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>ez :e ~/.zshrc<cr>
 ":au BufAdd,BufNewFile * nested tab sball
 nnoremap <leader>za zR
 nnoremap <C-j> <C-e>
@@ -478,3 +479,9 @@ endfunction
 "tab for brackets
 nnoremap <tab> %
 vnoremap <tab> %
+
+"https://github.com/search?q=filename%3A.vimrc+matchpairs&type=Code
+" <3 github <3 your search is awesome
+set matchpairs+=<:>
+"set matchpairs+=':'
+"set matchpairs+=":"
