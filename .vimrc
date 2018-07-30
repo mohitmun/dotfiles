@@ -330,7 +330,8 @@ cmap w!! w !sudo tee > /dev/null %
 nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
 "https://stackoverflow.com/a/8397808/2577465
 map , \
-
+map ,, <Leader><Leader>
+"
 "https://stackoverflow.com/a/30423919/2577465
 nnoremap x "_x
 nnoremap X "_X
@@ -390,7 +391,6 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 "autocmd InsertEnter * set cul
 "autocmd InsertLeave * set nocul
 autocmd FileType help wincmd L
-map ,, <Leader><Leader>
 " tmux knows the extended mouse mode
 set ttymouse=xterm2
 
@@ -492,3 +492,18 @@ vnoremap <S-tab> <gv
 "http://vim.wikia.com/wiki/Easy_indenting_in_insert_and_normal_mode_with_no_cursor_displacement
 nnoremap <Tab> >>
 nnoremap <S-Tab> <<
+
+" fucks up with <CR>
+let g:multi_cursor_use_default_mapping=0
+
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
+
+"http://vim.wikia.com/wiki/Insert_newline_without_entering_insert_mode
+nmap <S-CR> O<Esc>
+" <S-CR> doesn't work in cli vim :(
+nmap <CR> o<Esc>
