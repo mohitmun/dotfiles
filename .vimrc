@@ -320,8 +320,8 @@ let g:auto_save = 1
 "http://vim.wikia.com/wiki/Search_for_visually_selected_text
 vnoremap // y/\V<C-r>=escape(@",'/\')<CR>
 "http://howivim.com/2016/salvatore-sanfilippo/
-vmap q <gv	
-vmap <TAB> >gv 
+"vmap q <gv	
+"vmap <TAB> >gv 
 "https://github.com/bpierre/dotfiles/blob/master/vimrc
 "nnoremap <C-n> i<CR><ESC>
 cmap w!! w !sudo tee > /dev/null %
@@ -477,11 +477,18 @@ endfunction
 
 "https://github.com/mitsuhiko/dotfiles/blob/master/vim/vimrc
 "tab for brackets
-nnoremap <tab> %
-vnoremap <tab> %
+nnoremap t %
+vnoremap t %
 
 "https://github.com/search?q=filename%3A.vimrc+matchpairs&type=Code
 " <3 github <3 your search is awesome
 set matchpairs+=<:>
 "set matchpairs+=':'
 "set matchpairs+=":"
+
+vnoremap <tab> >gv
+vnoremap <S-tab> <gv
+
+"http://vim.wikia.com/wiki/Easy_indenting_in_insert_and_normal_mode_with_no_cursor_displacement
+nnoremap <Tab> >>
+nnoremap <S-Tab> <<
