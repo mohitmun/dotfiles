@@ -1,4 +1,5 @@
 # GistID:963f95aaf61d50e512511ac4eb097e50
+# vim: set ft=zsh:
 export ZSH=~/.oh-my-zsh
 
 plugins=(
@@ -75,6 +76,29 @@ bindkey "^k" up-line-or-beginning-search
 
 eval $(thefuck --alias)
 
+HEART='❤'
+DOT='●'
+get_battery(){
+
+  battery_info=`pmset -g batt`
+  current_charge=$(echo $battery_info | grep -o '[0-9]\+%' | awk '{sub (/%/, "", $1); print $1}')
+
+  if [[ $current_charge -lt 10 ]]; then
+      echo -n "$FG[052]"
+  elif [[ $current_charge -lt 30 ]]; then
+      echo -n "$FG[058]"
+  elif [[ $current_charge -lt 50 ]]; then
+      echo -n "$FG[064]"
+  elif [[ $current_charge -lt 70 ]]; then
+      echo -n "$FG[070]"
+  elif [[ $current_charge -lt 90 ]]; then
+      echo -n "$FG[076]"
+  else
+      echo -n "$FG[082]"
+  fi
+
+  echo -n "$DOT $HEART $current_charge%"
+}
 explain(){
   response=$(w3m -dump "http://explainshell.com/explain?cmd="$(echo $@ | tr ' ' '+'))
   cat -s <(grep -v -e explainshell -e • -e □ -e "source manpages" <<< "$response")
@@ -125,7 +149,7 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 # motivation: I forget if vim is running in bg https://news.ycombinator.com/item?id=17423100
 # copied https://github.com/denysdovhan/spaceship-prompt/blob/40f52260840bff5ab24f014c62241fdb9be293c0/sections/jobs.zsh
 jobs_prompt() {
-  local jobs_amount=$(jobs | wc -l | tr -d " ")
+  local jobs_amount=$((jobs) | wc -l | tr -d " ")
   [[ $jobs_amount -gt 0 ]] || return
   echo "$FG[196]($jobs_amount job)"
 }
@@ -151,9 +175,9 @@ eval my_orange='$FG[214]'
 # right prompt
 if type "virtualenv_prompt_info" > /dev/null
 then
-	RPROMPT='$(virtualenv_prompt_info)$my_gray%~%{$reset_color%}%'
+  RPROMPT='$(virtualenv_prompt_info)$my_gray%~%{$reset_color%}%'
 else
-	RPROMPT='$my_gray%~%{$reset_color%}%'
+  RPROMPT='$my_gray%~%{$reset_color%}%'
 fi
 
 # git settings
@@ -219,6 +243,7 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias tochromedata="cd ~/Library/Application\ Support/Google/Chrome/Default/"
 alias dater="date -r" # timestamp to date
+alias ts="date +'%s'" # timestamp to date
 #===========================
 # Aliases END
 #===========================
@@ -329,4 +354,7 @@ if [ ! -f $BURL_FILE ]; then
   \curl -s https://raw.githubusercontent.com/tj/burl/master/bin/burl -o $BURL_FILE 
   chmod +x $BURL_FILE
 fi
-#
+
+#chpwd(){
+  #ls
+#}
