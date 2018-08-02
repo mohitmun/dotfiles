@@ -504,6 +504,13 @@ let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
 "http://vim.wikia.com/wiki/Insert_newline_without_entering_insert_mode
-nmap <S-CR> O<Esc>
 " <S-CR> doesn't work in cli vim :(
-nmap <CR> o<Esc>
+execute "set <M-n>=\en"
+nmap <M-n> o<Esc>
+
+nmap <leader>id :IlluminationDisable<CR>
+nmap <leader>ie :IlluminationEnable<CR>
+
+"close preview and quickfix list
+nmap <leader>pc :pclose<CR>:cclose<CR>
+nmap <leader><leader>c :pclose<CR>:cclose<CR>
