@@ -20,6 +20,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 . ~/.secret_common_sh_rc
+. ~/.aliases.zsh
 
 #if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -34,12 +35,12 @@ SAVEHIST=500000             #Number of history entries to save to disk
 #
 # ====================
 # Get new tip from the art of command line repo everyday. can be use for different stuff also
-TAOCL_FILE=~/.taocl.md
-if [ ! -f $TAOCL_FILE ]; then 
-  echo "Getting TAOCL from github"
-  \curl -s https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README.md -o $TAOCL_FILE 
-fi
-sed '/cowsay[.]png/d' $TAOCL_FILE | pandoc -f markdown -t html | xmlstarlet fo --html --dropdtd | xmlstarlet sel -t -v "(html/body/ul/li[count(p)>0])[$RANDOM mod last()+1]" | xmlstarlet unesc | fmt -80 | iconv -t US | cowsay
+#TAOCL_FILE=~/.taocl.md
+#if [ ! -f $TAOCL_FILE ]; then 
+  #echo "Getting TAOCL from github"
+  #\curl -s https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README.md -o $TAOCL_FILE 
+#fi
+#sed '/cowsay[.]png/d' $TAOCL_FILE | pandoc -f markdown -t html | xmlstarlet fo --html --dropdtd | xmlstarlet sel -t -v "(html/body/ul/li[count(p)>0])[$RANDOM mod last()+1]" | xmlstarlet unesc | fmt -80 | iconv -t US | cowsay
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export HOMEBREW_NO_AUTO_UPDATE=1
 
@@ -83,21 +84,21 @@ get_battery(){
   battery_info=`pmset -g batt`
   current_charge=$(echo $battery_info | grep -o '[0-9]\+%' | awk '{sub (/%/, "", $1); print $1}')
 
-  if [[ $current_charge -lt 10 ]]; then
-      echo -n "$FG[052]"
-  elif [[ $current_charge -lt 30 ]]; then
-      echo -n "$FG[058]"
-  elif [[ $current_charge -lt 50 ]]; then
-      echo -n "$FG[064]"
-  elif [[ $current_charge -lt 70 ]]; then
-      echo -n "$FG[070]"
-  elif [[ $current_charge -lt 90 ]]; then
-      echo -n "$FG[076]"
-  else
-      echo -n "$FG[082]"
-  fi
+  #if [[ $current_charge -lt 10 ]]; then
+      #echo -n "$FG[052]"
+  #elif [[ $current_charge -lt 30 ]]; then
+      #echo -n "$FG[058]"
+  #elif [[ $current_charge -lt 50 ]]; then
+      #echo -n "$FG[064]"
+  #elif [[ $current_charge -lt 70 ]]; then
+      #echo -n "$FG[070]"
+  #elif [[ $current_charge -lt 90 ]]; then
+      #echo -n "$FG[076]"
+  #else
+      #echo -n "$FG[082]"
+  #fi
 
-  echo -n "$DOT $HEART $current_charge%"
+  echo -n "$HEART $current_charge"
 }
 explain(){
   response=$(w3m -dump "http://explainshell.com/explain?cmd="$(echo $@ | tr ' ' '+'))
@@ -159,7 +160,8 @@ if [ -n "$SSH_CLIENT" ]; then
 else
     S_TYPE=""
 fi
-PROMPT='$FG[237]------------------------------------------------------------%{$reset_color%}
+PROMPT='$FG[237]%~
+$(get_battery)------------------------------------------------------------%{$reset_color%}
 $S_TYPE$FG[032]%c\
 $(git_prompt_info) \
 $(jobs_prompt)\
@@ -173,6 +175,9 @@ eval my_gray='$FG[237]'
 eval my_orange='$FG[214]'
 
 # right prompt
+# Inspiration for todo in right prompt https://wynnnetherland.com/journal/contextual-todo-list-counts-in-your-zsh-prompt/
+#TODO figure async prompt to speed things up
+#TODO https://stackoverflow.com/a/6052267/2577465 use this cool technique
 if type "virtualenv_prompt_info" > /dev/null
 then
   RPROMPT='$(virtualenv_prompt_info)$my_gray%~%{$reset_color%}%'
@@ -214,39 +219,6 @@ gencscopedb(){
   export CSCOPE_DB="$CSCOPE_DIR/cscope.out"
   echo "Exported CSCOPE_DB to: '$CSCOPE_DB'"
 }
-
-#===========================
-# Aliases START
-#===========================
-alias ts='tmux -CC new-session -s'
-alias ta='tmux -CC attach -t'
-alias brew="brew -v"
-alias mux=tmuxinator
-alias zshrc="vi ~/.zshrc"
-alias battrylogs="pmset -g log|grep -e ' Sleep  ' -e ' Wake  '"
-alias gist_vimrc="gist -r 963f95aaf61d50e512511ac4eb097e50 .vimrc"
-alias gist_zshrc="gist -r 963f95aaf61d50e512511ac4eb097e50 .zshrc"
-alias gistdiffzshrc="gist_zshrc > ~/.zshrc.latest && vimdiff ~/.zshrc.latest ~/.zshrc"
-alias gistdiffvimrc="gist_vimrc > ~/.vimrc.latest && vimdiff ~/.vimrc.latest ~/.vimrc"
-alias rgl="rg -l" # show only files names
-alias lss="ls -S" # sort by size
-alias lst="ls -t" # recent first
-alias lstr="ls -tr" # recent last
-alias s="l -S" # sort by size
-
-# https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-# Stuff I never really use but cannot delete either because of http://xkcd.com/530/
-alias stfu="osascript -e 'set volume output muted true'"
-alias pumpitup="osascript -e 'set volume output volume 100'"
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias tochromedata="cd ~/Library/Application\ Support/Google/Chrome/Default/"
-alias dater="date -r" # timestamp to date
-alias ts="date +'%s'" # timestamp to date
-#===========================
-# Aliases END
-#===========================
 
 # mkdir, and cd
 function mcd() {
@@ -355,6 +327,10 @@ if [ ! -f $BURL_FILE ]; then
   chmod +x $BURL_FILE
 fi
 
-#chpwd(){
-  #ls
-#}
+# chpwd(){
+#   ls
+# }
+
+curl_github(){
+  curl -u $GITHUB_USERNAME_SPAM:$GITHUB_PASSWORD_SPAM "https://api.github.com$1"
+}
