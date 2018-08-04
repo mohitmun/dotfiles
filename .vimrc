@@ -354,8 +354,6 @@ let $FZF_DEFAULT_COMMAND = 'fd --type f'
 
 map j gj
 map k gk
-map <leader>ms :MundoShow<CR>
-map <leader>mh :MundoHide<CR>
 
 "https://stackoverflow.com/questions/2744010/update-cscope-db-from-vim
 map <leader>csr :!cscope -Rbq<CR>:cs reset<CR><CR>
@@ -521,3 +519,5 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
+
+nnoremap <Leader>u :MundoToggle<CR>
