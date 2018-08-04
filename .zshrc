@@ -100,6 +100,11 @@ get_battery(){
 
   echo -n "$HEART $current_charge"
 }
+
+get_todo_status(){
+  #a=$(FORCE_COLOR=0 tb -l notes | tail -n2)
+  #echo $a
+}
 explain(){
   response=$(w3m -dump "http://explainshell.com/explain?cmd="$(echo $@ | tr ' ' '+'))
   cat -s <(grep -v -e explainshell -e • -e □ -e "source manpages" <<< "$response")
@@ -161,7 +166,7 @@ else
     S_TYPE=""
 fi
 PROMPT='$FG[237]%~
-$(get_battery)------------------------------------------------------------%{$reset_color%}
+$(get_battery)-$(get_todo_status)-----------------------------------------------------------%{$reset_color%}
 $S_TYPE$FG[032]%c\
 $(git_prompt_info) \
 $(jobs_prompt)\
@@ -177,7 +182,9 @@ eval my_orange='$FG[214]'
 # right prompt
 # Inspiration for todo in right prompt https://wynnnetherland.com/journal/contextual-todo-list-counts-in-your-zsh-prompt/
 #TODO figure async prompt to speed things up
+#https://medium.com/@henrebotha/how-to-write-an-asynchronous-zsh-prompt-b53e81720d32
 #TODO https://stackoverflow.com/a/6052267/2577465 use this cool technique
+#TODO https://github.com/junegunn/fzf/wiki/Examples#google-chrome-os-xlinux
 if type "virtualenv_prompt_info" > /dev/null
 then
   RPROMPT='$(virtualenv_prompt_info)$my_gray%~%{$reset_color%}%'
