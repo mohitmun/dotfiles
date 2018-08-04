@@ -24,8 +24,9 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias tochromedata="cd ~/Library/Application\ Support/Google/Chrome/Default/"
 alias dater="date -r" # timestamp to date
-alias ts="date +'%s'" # timestamp to date
+alias ts="date +'%s'" # date to timestamp
 alias cat=bat
 alias vim=vi
 alias cpr="cp -r"
 alias kill9="kill -9"
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

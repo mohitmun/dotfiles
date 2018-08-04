@@ -159,15 +159,22 @@ jobs_prompt() {
   [[ $jobs_amount -gt 0 ]] || return
   echo "$FG[196]($jobs_amount job)"
 }
+get_tmux_session_name(){
+  if [ -n "$TMUX" ]; then
+    session_name=$(tmux display -p | cut -d '[' -f2 | cut -d ']' -f1)
+    echo -n "[mux:$session_name]"
+  fi
+}
 # primary prompt
 if [ -n "$SSH_CLIENT" ]; then
-    S_TYPE="ssh: "
+    S_TYPE="[ssh]"
 else
     S_TYPE=""
 fi
-PROMPT='$FG[237]%~
+S_TYPE=$S_TYPE$(get_tmux_session_name)
+PROMPT='$FG[241]$S_TYPE$FG[237]%~
 $(get_battery)-$(get_todo_status)-----------------------------------------------------------%{$reset_color%}
-$S_TYPE$FG[032]%c\
+$FG[032]%c\
 $(git_prompt_info) \
 $(jobs_prompt)\
 $FG[105]%(!.#.»)%{$reset_color%} '
