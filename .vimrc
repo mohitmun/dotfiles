@@ -262,17 +262,19 @@ command! -bang -nargs=* Rg
   \   <bang>0)
 
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=* Rag call fzf#vim#ag(<q-args>, {'options': '--delimiter : '}, <bang>0)
 map <leader>f :Ag<CR>
+map <leader>ag :Rag<CR>
 colorscheme monokai
 " monokai with complete dark
 hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NONE
 hi LineNr ctermfg=102 ctermbg=NONE cterm=NONE guifg=#90908a guibg=#3c3d37 gui=NONE
 hi Search guibg=peru guifg=wheat
 
-nnoremap <leader>g :YcmCompleter GoTo<CR>
-nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+"nnoremap <leader>g :YcmCompleter GoTo<CR>
+"nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
+"nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>
+"nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
 set completeopt-=preview
 nnoremap <leader>ggs :GitGutterStageHunk<CR>
 nnoremap <leader>ggp :GitGutterPreviewHunk<CR>
@@ -514,3 +516,8 @@ nmap <leader>ie :IlluminationEnable<CR>
 "close preview and quickfix list
 nmap <leader>pc :pclose<CR>:cclose<CR>
 nmap <leader><leader>c :pclose<CR>:cclose<CR>
+
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
