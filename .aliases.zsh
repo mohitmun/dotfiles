@@ -1,4 +1,14 @@
 # GistID:963f95aaf61d50e512511ac4eb097e50
+function add_alias() {
+    if [[ -z $1 || -z $2 || $# -gt 2 ]]; then
+        echo usage:
+        echo "\t\$$0 ll 'ls -l'"
+    else
+        echo "alias $1='$2'" >> $ALIASFILE
+        echo "alias ADDED to $ALIASFILE"
+        alias $1="$2"
+    fi
+}
 alias ts='tmux -CC new-session -s'
 alias ta='tmux -CC attach -t'
 alias brew="brew -v"
@@ -30,3 +40,9 @@ alias vim=vi
 alias cpr="cp -r"
 alias kill9="kill -9"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias cgst='config status'
+alias sz='source ~/.zshrc'
+alias cgd='config diff'
+alias cgdca='cgd --cached'
+alias ccu='config commit -a -m "changes" && config push master'
+alias cgcmsg='config commit -m'

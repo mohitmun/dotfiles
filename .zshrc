@@ -17,11 +17,11 @@ plugins=(
   jsontools
   z
 )
-
+ALIASFILE=~/.aliases.zsh
 source $ZSH/oh-my-zsh.sh
 . ~/.secret_common_sh_rc
-. ~/.aliases.zsh
-
+. $ALIASFILE
+. ~/.colored_man_pages.zsh
 #if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 export EDITOR=vim
@@ -79,6 +79,11 @@ eval $(thefuck --alias)
 
 HEART='❤'
 DOT='●'
+
+get_track(){
+  echo -n "$FG[240]$(osascript ~/.spotify.osx)"
+}
+
 get_battery(){
 
   battery_info=`pmset -g batt`
@@ -98,7 +103,7 @@ get_battery(){
       #echo -n "$FG[082]"
   #fi
 
-  echo -n "$HEART $current_charge"
+  echo -n "$FG[202]$HEART $current_charge"
 }
 
 get_todo_status(){
@@ -173,7 +178,7 @@ else
 fi
 S_TYPE=$S_TYPE$(get_tmux_session_name)
 PROMPT='$FG[241]$S_TYPE$FG[237]%~
-$(get_battery)-$(get_todo_status)-----------------------------------------------------------%{$reset_color%}
+$(get_todo_status)-----------------------------------------------------------%{$reset_color%}
 $FG[032]%c\
 $(git_prompt_info) \
 $(jobs_prompt)\
@@ -194,7 +199,7 @@ eval my_orange='$FG[214]'
 #TODO https://github.com/junegunn/fzf/wiki/Examples#google-chrome-os-xlinux
 if type "virtualenv_prompt_info" > /dev/null
 then
-  RPROMPT='$(virtualenv_prompt_info)$my_gray%~%{$reset_color%}%'
+  RPROMPT='$(virtualenv_prompt_info)$my_gray$(get_battery)%{$reset_color%}%'
 else
   RPROMPT='$my_gray%~%{$reset_color%}%'
 fi
