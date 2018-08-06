@@ -514,7 +514,6 @@ nmap <leader>ie :IlluminationEnable<CR>
 "close preview and quickfix list
 nmap <leader>pc :pclose<CR>:cclose<CR>
 nmap <leader><leader>c :pclose<CR>:cclose<CR>
-
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
