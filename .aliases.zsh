@@ -40,10 +40,11 @@ alias vim=vi
 alias cpr="cp -r"
 alias kill9="kill -9"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias cgst='config status'
 alias sz='source ~/.zshrc'
 alias cgd='config diff'
 alias cgdca='cgd --cached'
-alias ccu='config commit -a -m "changes" && config push'
+alias cqc='config commit -a -m "quick commit"'
+alias cqcp='cqc && config push'
 alias cgcmsg='config commit -m'
+alias cgst='config status'
 alias cadd='config add'

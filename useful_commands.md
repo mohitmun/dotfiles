@@ -33,3 +33,8 @@ join network from command line https://github.com/herrbischoff/awesome-macos-com
 ```
 networksetup -setairportnetwork en0 WIFI_SSID WIFI_PASSWORD
 ```
+
+command line twitter client `t` 
+```
+gem install t
+```

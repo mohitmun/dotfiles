@@ -353,3 +353,5 @@ fi
 curl_github(){
   curl -u $GITHUB_USERNAME_SPAM:$GITHUB_PASSWORD_SPAM "https://api.github.com$1"
 }
+#TODO https://gist.github.com/phette23/5270658
+#TODO https://superuser.com/questions/292652/change-iterm2-window-and-tab-titles-in-zsh/292660#292660

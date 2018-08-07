@@ -116,7 +116,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'osyo-manga/vim-over'
 Plug 'haya14busa/vim-edgemotion'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'RRethy/vim-illuminate'
+Plug 'RRethy/vim-illuminate', { 'on':  'IlluminationEnable' }
 call plug#end()
 
 source ~/.vim/cscope.vim
