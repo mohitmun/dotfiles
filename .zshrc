@@ -22,6 +22,7 @@ source $ZSH/oh-my-zsh.sh
 . ~/.secret_common_sh_rc
 . $ALIASFILE
 . ~/.colored_man_pages.zsh
+. ~/.spotify.zsh
 #if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 export EDITOR=vim
@@ -43,7 +44,9 @@ SAVEHIST=500000             #Number of history entries to save to disk
 #sed '/cowsay[.]png/d' $TAOCL_FILE | pandoc -f markdown -t html | xmlstarlet fo --html --dropdtd | xmlstarlet sel -t -v "(html/body/ul/li[count(p)>0])[$RANDOM mod last()+1]" | xmlstarlet unesc | fmt -80 | iconv -t US | cowsay
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export HOMEBREW_NO_AUTO_UPDATE=1
-
+export FZF_COMPLETION_TRIGGER=''
+bindkey '^T' fzf-completion
+bindkey '^I' $fzf_default_completion
 # ==============================================
 # ==============================================
 # git@github.com:rupa/z.git
@@ -78,10 +81,21 @@ bindkey "^k" up-line-or-beginning-search
 eval $(thefuck --alias)
 
 HEART='❤'
-DOT='●'
-
+DOT=' ● '
+SILENT_EMOJI="😶"
 get_track(){
   echo -n "$FG[240]$(osascript ~/.spotify.osx)"
+}
+
+get_volume_indicator(){
+  volume_level=`osascript -e "output volume of (get volume settings)"`
+  volume_bar_count=$(( $volume_level / 10))
+  if [ $volume_level -eq 0 ]; then
+    echo -n "$SILENT_EMOJI"
+  else
+    echo -n "$FG[249]"
+    printf "|%.0s" {0..$volume_bar_count}
+  fi
 }
 
 get_battery(){
@@ -103,7 +117,7 @@ get_battery(){
       #echo -n "$FG[082]"
   #fi
 
-  echo -n "$FG[202]$HEART $current_charge"
+  echo -n "$FG[249]$HEART $current_charge"
 }
 
 get_todo_status(){
@@ -112,7 +126,7 @@ get_todo_status(){
 }
 explain(){
   response=$(w3m -dump "http://explainshell.com/explain?cmd="$(echo $@ | tr ' ' '+'))
-  cat -s <(grep -v -e explainshell -e • -e □ -e "source manpages" <<< "$response")
+  \cat -s <(grep -v -e explainshell -e • -e □ -e "source manpages" <<< "$response")
 }
 
 push(){
@@ -199,7 +213,7 @@ eval my_orange='$FG[214]'
 #TODO https://github.com/junegunn/fzf/wiki/Examples#google-chrome-os-xlinux
 if type "virtualenv_prompt_info" > /dev/null
 then
-  RPROMPT='$(virtualenv_prompt_info)$my_gray$(get_battery)%{$reset_color%}%'
+  RPROMPT='$(virtualenv_prompt_info)$my_gray$(get_battery)%{$reset_color%}$DOT$(get_volume_indicator)%{$reset_color%}'
 else
   RPROMPT='$my_gray%~%{$reset_color%}%'
 fi
@@ -355,3 +369,43 @@ curl_github(){
 }
 #TODO https://gist.github.com/phette23/5270658
 #TODO https://superuser.com/questions/292652/change-iterm2-window-and-tab-titles-in-zsh/292660#292660
+
+c() {
+  local cols sep google_history open
+  cols=$(( COLUMNS / 3 ))
+  sep='{::}'
+
+  if [ "$(uname)" = "Darwin" ]; then
+    google_history="$HOME/Library/Application Support/Google/Chrome/Default/History"
+    open=open
+  else
+    google_history="$HOME/.config/google-chrome/Default/History"
+    open=xdg-open
+  fi
+  cp -f "$google_history" /tmp/h
+  sqlite3 -separator $sep /tmp/h \
+    "select substr(title, 1, $cols), url
+     from urls order by last_visit_time desc" |
+  awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
+  fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs $open > /dev/null 2> /dev/null
+}
+zrc(){
+	vim ~/.zshrc
+	source ~/.zshrc
+	echo "Done: update zsh configure file."
+}
+#TODO https://github.com/zsh-users/zsh-autosuggestions
+#TODO https://github.com/zsh-users/zsh-completions
+#TODO https://github.com/ericfreese/zsh-prioritize-cwd-history
+#TODO https://github.com/ericfreese/rat
+#TODO https://github.com/ericfreese/zsh-cwd-history
+#TODO https://github.com/larkery/zsh-histdb
+
+google(){
+    search=""
+    echo "Googling: $@"
+    for term in $@; do
+        search="$search%20$term"
+    done
+    open "http://www.google.com/search?q=$search"
+}

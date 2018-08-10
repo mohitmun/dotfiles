@@ -109,6 +109,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'ervandew/supertab'
 Plug 'easymotion/vim-easymotion'
+"Plug 'svermeulen/vim-easyclip'
 "Plug 'wellle/targets.vim'
 " dependancy for vim-markdown
 "Plug 'godlygeek/tabular'
