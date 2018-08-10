@@ -48,3 +48,21 @@ alias cqcp='cqc && config push'
 alias cgcmsg='config commit -m'
 alias cgst='config status'
 alias cadd='config add'
+alias cddesk='cd ~/Desktop'
+
+# https://github.com/search?q=%22alias+-s%22+filename%3A.zshrc
+alias -s gz='tar -xzvf'
+alias -s tgz='tar -xzvf'
+alias -s zip='unzip'
+alias -s bz2='tar -xjvf'
+alias -s php=vi
+alias -s py=vi
+alias -s rb=vi
+alias -s html=vi
+
+alias tn='tmux -CC new -s'
+alias aliasgrep='alias | grep '
+alias npmig='npm install -g '
+
+#https://gist.github.com/igrigorik/6666860
+alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
