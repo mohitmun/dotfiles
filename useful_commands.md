@@ -38,3 +38,5 @@ command line twitter client `t`
 ```
 gem install t
 ```
+
+https://github.com/dylanaraps/pure-bash-bible

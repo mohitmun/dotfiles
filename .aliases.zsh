@@ -66,4 +66,4 @@ alias npmig='npm install -g '
 
 #https://gist.github.com/igrigorik/6666860
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
-alias ctig='GIT_WORK_TREE=/Users/mohit GIT_DIR=/Users/mohit/.dotfiles tig'
+alias ctig='GIT_WORK_TREE=$HOME GIT_DIR=$HOME/.dotfiles tig'

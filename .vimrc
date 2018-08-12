@@ -78,7 +78,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'sjl/gundo.vim'
 " https://vi.stackexchange.com/a/8224/15805
-"Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'suan/vim-instant-markdown'
 "fucks up disable cut logic
@@ -117,11 +117,16 @@ Plug 'easymotion/vim-easymotion'
 Plug 'osyo-manga/vim-over'
 Plug 'haya14busa/vim-edgemotion'
 Plug 'dhruvasagar/vim-table-mode'
+
 Plug 'RRethy/vim-illuminate', { 'on':  'IlluminationEnable' }
+"Plug 'Shougo/deoplete.nvim'
+"Plug 'roxma/nvim-yarp'
+"Plug 'roxma/vim-hug-neovim-rpc'
 call plug#end()
 
 source ~/.vim/cscope.vim
 
+let g:deoplete#enable_at_startup = 1
 syntax on
 
 set number
@@ -522,3 +527,10 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 nnoremap <Leader>u :MundoToggle<CR>
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
