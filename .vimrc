@@ -557,3 +557,10 @@ function! s:ag_in(...)
 endfunction
 
 command! -nargs=+ -complete=dir AgIn call s:ag_in(<f-args>)
+
+nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
+nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
+let g:comfortable_motion_no_default_key_mappings = 1
+"https://stackoverflow.com/a/1722706/2577465
+map <C-f> g;
+map <C-g> g,
