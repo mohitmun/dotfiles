@@ -4,3 +4,5 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 config config status.showUntrackedFiles no
 # set upstream
 config push --set-upstream origin master
+
+ls -s ~/.spotify.zsh /usr/local/share/zsh/site-functions/spotify 

@@ -22,7 +22,10 @@ source $ZSH/oh-my-zsh.sh
 . ~/.secret_common_sh_rc
 . $ALIASFILE
 . ~/.colored_man_pages.zsh
-. ~/.spotify.zsh
+~/.global_worker.zsh > /dev/null &!
+#. ~/.spotify.zsh
+#autoload -Uz myspotify && myspotify
+#. ~/.zsh-async.zsh
 #if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 export EDITOR=vim
@@ -93,7 +96,6 @@ get_volume_indicator(){
   if [ $volume_level -eq 0 ]; then
     echo -n "$SILENT_EMOJI"
   else
-    echo -n "$FG[249]"
     printf "|%.0s" {0..$volume_bar_count}
   fi
 }
@@ -117,7 +119,43 @@ get_battery(){
       #echo -n "$FG[082]"
   #fi
 
-  echo -n "$FG[249]$HEART $current_charge"
+  echo -n "$HEART $current_charge "
+}
+
+get_spotify_widget(){
+  IFS=$'\n' export spotify_info=($(cat /tmp/export_spotify_status))  
+  spotify_track=$spotify_info[1]
+  spotify_album=$spotify_info[2]
+  spotify_artist=$spotify_info[3]
+  spotify_percent_progress=$spotify_info[4]
+  spotify_position=$spotify_info[5]
+  spotify_duration=$spotify_info[6]
+  if [[ -n $spotify_track ]]; then
+  else
+    return
+  fi
+  local columns=$(($COLUMNS - 20))
+  echo -n $FG[241] $spotify_track
+  echo -n " - "
+  echo -n $spotify_artist
+  int=${spotify_percent_progress%.*}
+  spotify_percent_progress=$(( $int * $columns / 100 ))
+  #spotify_percent_progress=printf "%.0f\n" "$spotify_percent_progress"
+  echo " ($FG[241]$spotify_position/$FG[241]$spotify_duration)"
+  #echo -n $FG[076]
+  #printf "=%.0s" {0..$spotify_percent_progress}
+  #echo -n $reset_color
+  #remain=$(($columns - $spotify_percent_progress ))
+  #printf "=%.0s" {0..$remain}
+  #printf "|%.0s" {0..$spotify_percent_progress}
+}
+
+#TODO what is difference when using function keyword or not
+
+function repeat_string(){
+  #printf "-%.0s" $COLUMNS
+  chus=$(( $1 - 4))
+  printf "$2%.0s" $(seq 1 $chus)
 }
 
 get_todo_status(){
@@ -191,15 +229,17 @@ else
     S_TYPE=""
 fi
 S_TYPE=$S_TYPE$(get_tmux_session_name)
-PROMPT='$FG[241]$S_TYPE$FG[237]%~
-$(get_todo_status)-----------------------------------------------------------%{$reset_color%}
+PROMPT='$FG[237]
+$FG[237]$S_TYPE$FG[237]%~
+$(get_todo_status)
+$FG[237]$(repeat_string $COLUMNS '-')%{$reset_color%}
 $FG[032]%c\
 $(git_prompt_info) \
 $(jobs_prompt)\
 $FG[105]%(!.#.»)%{$reset_color%} '
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 RPS1='${return_code}'
-
+#PROMPT='$(bsl_set_status_line)hi>>>'
 
 # color vars
 eval my_gray='$FG[237]'
@@ -213,7 +253,7 @@ eval my_orange='$FG[214]'
 #TODO https://github.com/junegunn/fzf/wiki/Examples#google-chrome-os-xlinux
 if type "virtualenv_prompt_info" > /dev/null
 then
-  RPROMPT='$(virtualenv_prompt_info)$my_gray$(get_battery)%{$reset_color%}$DOT$(get_volume_indicator)%{$reset_color%}'
+  RPROMPT='$(virtualenv_prompt_info)$my_gray$(get_battery)$DOT$(get_volume_indicator)$DOT$(time12)%{$reset_color%}'
 else
   RPROMPT='$my_gray%~%{$reset_color%}%'
 fi
@@ -400,7 +440,7 @@ zrc(){
 #TODO https://github.com/ericfreese/rat
 #TODO https://github.com/ericfreese/zsh-cwd-history
 #TODO https://github.com/larkery/zsh-histdb
-
+#TODO what is precmd
 google(){
     search=""
     echo "Googling: $@"
@@ -410,3 +450,88 @@ google(){
     open "http://www.google.com/search?q=$search"
 }
 
+TMOUT=1
+#https://github.com/robbyrussell/oh-my-zsh/issues/5910#issuecomment-294509017
+TRAPALRM() {
+    if [[ $WIDGET != *"complete"* && $WIDGET != *"-search" ]]; then;
+      #async_job vagrant_prompt_worker export-spotify-status $PWD
+      zle reset-prompt
+      #bsl_set_status_line
+      #thanks https://github.com/wilywampa/vimconfig/blob/b95caa50883438288729b6e8ff963783b110a3a5/dotfiles/.zshrc#L1374
+      if [[ -n $BUFFER ]]; then
+        TMOUT=5
+      else
+        TMOUT=1
+      fi
+      #echo $BUFFER > ~/.debug_async
+    fi
+}
+NEWLINE=$'\n'
+#https://superuser.com/a/1029103/630985
+del-prompt-accept-line() {
+    OLD_PROMPT="$PROMPT"
+    OLD_RPROMPT="$RPROMPT"
+    RPROMPT=""
+    PROMPT="$FG[237]$(repeat_string $COLUMNS -)${NEWLINE}$FG[105]%(!.#.»»)%{$reset_color%} "
+    zle reset-prompt
+    RPROMPT="$OLD_RPROMPT"
+    PROMPT="$OLD_PROMPT"
+    zle accept-line
+}
+zle -N del-prompt-accept-line
+bindkey "^M" del-prompt-accept-line
+
+#TODO check zsh folder here at https://github.com/cehoffman/dotfiles
+# TODO what is zstyle ':completion:*'
+#TODO spotify show shuffle status
+#TODO https://news.ycombinator.com/item?id=17755199
+#TODO htoprc
+# TODO why this code breaks
+#testmybug(){
+    #printf "-%.0s" $(seq 1 $COLUMNS)
+#}
+#PROMPT="$(testmybug)
+#53hello >>>"
+
+# combined effors of following
+# https://github.com/joshbuchea/config/blob/master/.zshrc
+# Convert video to GIF
+#
+# Usage: vid2gif in.mov [width] [fps]
+#
+# typical gif framerates seem to be between 10–20
+#
+# possibly run through gif optimization tool
+#
+# ffmpeg options explained:
+#
+# -i    input
+# -y    overwrite output files without confirmation
+# -t    duration
+# -ss   position
+#
+function vid2gif() {
+  local width=${2:-600}
+  local rate=${3:-20}
+  local filters="fps=$rate,scale=$width:-1:flags=lanczos"
+
+  # generate a palette
+  #
+  # not sure if palette needs scale or flags (or all of $filters?)...
+	ffmpeg -i "$1" -vf "$filters,palettegen" -y palette.png
+
+  # then generate gif with palette
+  ffmpeg -i "$1" -i palette.png -filter_complex "$filters,paletteuse" "${1%.*}.gif"
+
+  # remove palette image file
+  rm palette.png
+}
+
+proxy_server(){
+  #TODO fix this awesomeness
+  ~/.proxy_server.sh $1
+}
+
+killp(){
+  kill $(lsof -t -i:$1)
+}

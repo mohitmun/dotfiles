@@ -40,3 +40,15 @@ gem install t
 ```
 
 https://github.com/dylanaraps/pure-bash-bible
+
+https://stackoverflow.com/a/33735937/2577465
+
+Start the program with—
+```
+dolphin &!
+```
+The &! (or equivalently, &|) is a zsh-specific shortcut to both background and disown the process, such that exiting the shell will leave it running.
+
+
+$$ process id 
+https://stackoverflow.com/questions/5163144/what-are-the-special-dollar-sign-shell-variables

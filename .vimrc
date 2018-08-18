@@ -6,14 +6,14 @@
 "  https://www.reddit.com/r/vim/comments/8gmmk3/how_to_continue_to_improve_at_vim/
 "  https://stackoverflow.com/q/726894/2577465
 "Why
-"  http://www.viemu.com/a-why-vi-vim.html	
-"Headstart	
-"  https://github.com/mhinz/vim-galore	
+"  http://www.viemu.com/a-why-vi-vim.html
+"Headstart
+"  https://github.com/mhinz/vim-galore
 "  https://github.com/bpierre/switch-to-vim-for-good
 "  http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/	
-"  http://www.worldtimzone.com/res/vi.html	
-"  https://danielmiessler.com/study/vim/	
-"  http://learnvimscriptthehardway.stevelosh.com/	
+"  http://www.worldtimzone.com/res/vi.html
+"  https://danielmiessler.com/study/vim/
+"  http://learnvimscriptthehardway.stevelosh.com/
 "  https://github.com/learnbyexample/scripting_course/blob/master/Vim_curated_resources.md
 "Tips	
 "  http://nvie.com/posts/how-i-boosted-my-vim/	
@@ -93,7 +93,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'elzr/vim-json'
 
 
-"Plug 'google/vim-searchindex' 
+"Plug 'google/vim-searchindex'
 "removed this because its not compatible with is.vim
 Plug 'osyo-manga/vim-anzu'
 Plug 'simnalamburt/vim-mundo'
@@ -267,9 +267,21 @@ command! -bang -nargs=* Rg
   \  {'options': '--delimiter : --nth 2..'}, 
   \   <bang>0)
 
+function! s:ag_with_opts(arg, bang)
+  let tokens  = split(a:arg)
+  let ag_opts = join(filter(copy(tokens), 'v:val =~ "^-"'))
+  let query   = join(filter(copy(tokens), 'v:val !~ "^-"'))
+  echo ag_opts
+  echo query
+  call fzf#vim#ag(query, ag_opts, a:bang ? {} : {'down': '40%'})
+endfunction
+
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 command! -bang -nargs=* Rag call fzf#vim#ag(<q-args>, {'options': '--delimiter : '}, <bang>0)
+command! -nargs=* -bang CAg call s:ag_with_opts(<q-args>, <bang>0)
 map <leader>f :Ag<CR>
+map <leader>cf :BLines <CR>
+map <leader>/ :BLines <C-R><C-W><CR>
 map <leader>ag :Rag<CR>
 colorscheme monokai
 " monokai with complete dark
@@ -339,7 +351,7 @@ nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
 "https://stackoverflow.com/a/8397808/2577465
 map , \
 map ,, <Leader><Leader>
-"
+
 "https://stackoverflow.com/a/30423919/2577465
 nnoremap x "_x
 nnoremap X "_X
@@ -534,3 +546,14 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+" remeber when i was debuging here doc and white space was fucking up
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
+
+function! s:ag_in(...)
+  call fzf#vim#ag(join(a:000[1:], ' '), {'dir': a:1})
+endfunction
+
+command! -nargs=+ -complete=dir AgIn call s:ag_in(<f-args>)

@@ -35,7 +35,7 @@ alias dt="cd ~/Desktop"
 alias tochromedata="cd ~/Library/Application\ Support/Google/Chrome/Default/"
 alias dater="date -r" # timestamp to date
 alias ts="date +'%s'" # date to timestamp
-alias cat=bat
+#alias cat=bat
 alias vim=vi
 alias cpr="cp -r"
 alias kill9="kill -9"
@@ -43,11 +43,12 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias sz='source ~/.zshrc'
 alias cgd='config diff'
 alias cgdca='cgd --cached'
-alias cqc='config commit -a -m "quick commit"'
+alias cqc='config commit -m "quick commit"'
 alias cqcp='cqc && config push'
 alias cgcmsg='config commit -m'
 alias cgst='config status'
-alias cadd='config add'
+alias cga='config add'
+alias cgaa='config add -u'
 alias cddesk='cd ~/Desktop'
 
 # https://github.com/search?q=%22alias+-s%22+filename%3A.zshrc
@@ -56,7 +57,7 @@ alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
 alias -s php=vi
-alias -s py=vi
+#alias -s py=vi
 alias -s rb=vi
 alias -s html=vi
 
@@ -67,3 +68,14 @@ alias npmig='npm install -g '
 #https://gist.github.com/igrigorik/6666860
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
 alias ctig='GIT_WORK_TREE=$HOME GIT_DIR=$HOME/.dotfiles tig'
+alias time12='date +"%I:%M:%S %p"'
+alias m='man'
+alias chmodx='chmod +x'
+alias watch='watch '
+alias mansearch='man -wK '
+alias tg='~/telegram-send/telegram_send.py'
+alias tgf='tg -f'
+alias chx='chmod +x'
+alias top5='ps -Ao pid,pcpu,comm -r | head -n 6'
+alias cqac='cgaa && cqc'
+alias crdiff='config fetch origin master:master_remote && config diff master_remote..master'
