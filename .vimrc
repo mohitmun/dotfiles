@@ -557,3 +557,4 @@ function! s:ag_in(...)
 endfunction
 
 command! -nargs=+ -complete=dir AgIn call s:ag_in(<f-args>)
+
