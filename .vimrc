@@ -280,8 +280,9 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : 
 command! -bang -nargs=* Rag call fzf#vim#ag(<q-args>, {'options': '--delimiter : '}, <bang>0)
 command! -nargs=* -bang CAg call s:ag_with_opts(<q-args>, <bang>0)
 map <leader>f :Ag<CR>
+map swe :Ag <C-R><C-W><CR>
+map swc :BLines <C-R><C-W><CR>
 map <leader>/ :BLines <CR>
-map <leader><leader>/ :BLines <C-R><C-W><CR>
 map <leader>ag :Rag<CR>
 colorscheme monokai
 " monokai with complete dark
@@ -555,6 +556,7 @@ match ExtraWhitespace /\s\+$/
 function! s:ag_in(...)
   call fzf#vim#ag(join(a:000[1:], ' '), {'dir': a:1})
 endfunction
+
 
 command! -nargs=+ -complete=dir AgIn call s:ag_in(<f-args>)
 
