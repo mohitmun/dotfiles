@@ -2,6 +2,7 @@
 # Returns the current playing song in Spotify for OSX
 
 tell application "Spotify"
+  set spotify_info to ""
   if it is running then
     if player state is playing then
       set track_name to name of current track
