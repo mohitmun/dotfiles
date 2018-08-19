@@ -79,3 +79,4 @@ alias chx='chmod +x'
 alias top5='ps -Ao pid,pcpu,comm -r | head -n 6'
 alias cqac='cgaa && cqc'
 alias crdiff='config fetch origin master:master_remote && config diff master_remote..master'
+

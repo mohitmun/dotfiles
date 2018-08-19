@@ -69,6 +69,13 @@ bindkey '^I' $fzf_default_completion
 #
 #https://www.slideshare.net/jaguardesignstudio/why-zsh-is-cooler-than-your-shell-16194692
 
+# Learning Command line
+#   * https://github.com/learnbyexample/Command-line-text-processing
+#   * https://github.com/jlevy/the-art-of-command-line
+#   * https://www.tldp.org/LDP/abs/html/contributed-scripts.html
+#   * https://www.tldp.org/LDP/abs/html/abs-guide.html
+#   * http://zsh.sourceforge.net/Guide/zshguide.html
+#   * https://github.com/dylanaraps/pure-bash-bible
 
 # Better searching in command mode
 bindkey -M vicmd '?' history-incremental-search-backward
@@ -534,4 +541,9 @@ proxy_server(){
 
 killp(){
   kill $(lsof -t -i:$1)
+}
+
+#Most edited files in project(https://news.ycombinator.com/item?id=16300152)
+mosteditedfiles(){
+  git log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -10
 }
