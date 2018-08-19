@@ -31,11 +31,13 @@ tell application "Spotify"
     #export spotify_position_raw=`osascript -e 'tell application "Spotify" to player position as string'`;
       if artist_name > 0
         # If the track has an artist set and is therefore most likely a song rather than an advert
-        artist_name & "\n" & albumname & "\n" & track_name & "\n" & percentage & "\n" & nowAt & "\n" & myTime
+        set spotify_info to ("spotify_artist=" & artist_name & "\n" & "spotify_album=" & albumname & "\n" & "spotify_track=" & track_name & "\n" & "spotify_percent_progress=" & percentage & "\n" & "spotify_position=" & nowAt & "\n" & "spotify_duration=" & myTime)
       else
         # If the track doesn't have an artist set and is therefore most likely an advert rather than a song
-        "~ " & track_name
       end if
     end if
   end if
+  set vol to (output volume of (get volume settings))
+  #spotify_info & "\n" output volume of (get volume settings)
+  spotify_info & "\n" & "volume_level=" & vol
 end tell

@@ -93,12 +93,9 @@ eval $(thefuck --alias)
 HEART='❤'
 DOT=' ● '
 SILENT_EMOJI="😶"
-get_track(){
-  echo -n "$FG[240]$(osascript ~/.spotify.osx)"
-}
 
 get_volume_indicator(){
-  volume_level=`osascript -e "output volume of (get volume settings)"`
+  export_osascript_system_status
   volume_bar_count=$(( $volume_level / 10))
   if [ $volume_level -eq 0 ]; then
     echo -n "$SILENT_EMOJI"
@@ -129,14 +126,13 @@ get_battery(){
   echo -n "$HEART $current_charge "
 }
 
+export_osascript_system_status(){
+  for i in $(cat ~/.export_osascript_system_status ); do
+    export $i
+  done
+}
 get_spotify_widget(){
-  IFS=$'\n' export spotify_info=($(cat /tmp/export_spotify_status))  
-  spotify_track=$spotify_info[1]
-  spotify_album=$spotify_info[2]
-  spotify_artist=$spotify_info[3]
-  spotify_percent_progress=$spotify_info[4]
-  spotify_position=$spotify_info[5]
-  spotify_duration=$spotify_info[6]
+  export_osascript_system_status
   if [[ -n $spotify_track ]]; then
   else
     return

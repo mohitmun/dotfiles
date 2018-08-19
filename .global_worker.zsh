@@ -11,6 +11,7 @@ else
   echo $$ > ~/.global_worker.pid
   while true;do
     sleep 3
-    ~/.spotify.osascript > /tmp/export_spotify_status
+    ~/.spotify.osascript > ~/.export_osascript_system_status
+    #volume_level=`osascript -e "output volume of (get volume settings)"`
   done
 fi
