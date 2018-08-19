@@ -76,7 +76,9 @@ bindkey '^I' $fzf_default_completion
 #   * https://www.tldp.org/LDP/abs/html/abs-guide.html
 #   * http://zsh.sourceforge.net/Guide/zshguide.html
 #   * https://github.com/dylanaraps/pure-bash-bible
-
+#https://pthree.org/?s=zsh+prompt
+#https://github.com/wilywampa/vimconfig/blob/b95caa50883438288729b6e8ff963783b110a3a5/dotfiles/.zshrc
+#https://sgeb.io/posts/2014/04/zsh-zle-custom-widgets/
 # Better searching in command mode
 bindkey -M vicmd '?' history-incremental-search-backward
 bindkey -M vicmd '/' history-incremental-search-forward
