@@ -11,6 +11,12 @@ function add_alias() {
 }
 alias ts='tmux -CC new-session -s'
 alias ta='tmux -CC attach -t'
+alias ta='tmux attach -t'
+alias tad='tmux attach -d -t'
+alias ts='tmux new-session -s'
+alias tl='tmux list-sessions'
+alias tksv='tmux kill-server'
+alias tkss='tmux kill-session -t'
 alias brew="brew -v"
 alias mux=tmuxinator
 alias zshrc="vi ~/.zshrc"
@@ -81,3 +87,4 @@ alias cqac='cgaa && cqc'
 alias crdiff='config fetch origin master:master_remote && config diff master_remote..master'
 
 alias di='docker images'
+alias notes='cat ~/.notes'
