@@ -129,8 +129,12 @@ get_battery(){
 }
 
 export_osascript_system_status(){
-  for i in $(cat ~/.export_osascript_system_status ); do
-    export $i
+  cat ~/.export_osascript_system_status | while read i; do
+    if [ -z $i ];then
+      continue
+    fi
+    KEY_VALUE=("${(@s/=/)i}")
+    export "$KEY_VALUE[1]=$KEY_VALUE[2]"
   done
 }
 get_spotify_widget(){
