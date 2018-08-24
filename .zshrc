@@ -13,7 +13,7 @@ plugins=(
 )
 ALIASFILE=~/.aliases.zsh
 source $ZSH/oh-my-zsh.sh
-. ~/.secret_common_sh_rc
+[[ -f ~/.secret_common_sh_rc ]] && . ~/.secret_common_sh_rc
 . $ALIASFILE
 . ~/.colored_man_pages.zsh
 ~/.global_worker.zsh > /dev/null &!
@@ -88,7 +88,7 @@ eval $(thefuck --alias)
 
 HEART='❤'
 DOT=' ● '
-SILENT_EMOJI="😶"
+SILENT_EMOJI="😶 "
 
 get_volume_indicator(){
   export_osascript_system_status
