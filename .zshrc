@@ -98,10 +98,12 @@ SILENT_EMOJI="😶"
 
 get_volume_indicator(){
   export_osascript_system_status
-  volume_bar_count=$(( $volume_level / 10))
-  if [ $volume_level -eq 0 ]; then
+  if [ -z $volume_level ]; then
+    echo -n "NA"
+  elif [ $volume_level -eq 0 ]; then
     echo -n "$SILENT_EMOJI"
   else
+    volume_bar_count=$(( $volume_level / 10))
     printf "|%.0s" {0..$volume_bar_count}
   fi
 }
