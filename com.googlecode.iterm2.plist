@@ -189,7 +189,7 @@
 	<key>NSNavLastRootDirectory</key>
 	<string>~/Desktop/iterm2_settings</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
-	<string>{868, 448}</string>
+	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -221,75 +221,12 @@
 	</data>
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
-	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
-	<dict>
-		<key>TB Is Shown</key>
-		<integer>1</integer>
-	</dict>
-	<key>NSTouchBarConfig: full screen</key>
-	<dict>
-		<key>CurrentItems</key>
-		<array>
-			<string>iTermTouchBarIdentifierManPage</string>
-			<string>iTermTouchBarIdentifierColorPreset</string>
-			<string>iTermTouchBarIdentifierFunctionKeys</string>
-			<string>NSTouchBarItemIdentifierFlexibleSpace</string>
-			<string>touchbar:14582875-2D44-41BA-8B5B-89142A5F1D8B</string>
-			<string>touchbar:8292C059-568B-4890-93D2-DEC5FE9A8600</string>
-			<string>tab bar</string>
-			<string>NSTouchBarItemIdentifierOtherItemsProxy</string>
-		</array>
-		<key>DefaultItems</key>
-		<array>
-			<string>iTermTouchBarIdentifierManPage</string>
-			<string>iTermTouchBarIdentifierColorPreset</string>
-			<string>iTermTouchBarIdentifierFunctionKeys</string>
-			<string>NSTouchBarItemIdentifierFlexibleSpace</string>
-			<string>tab bar</string>
-			<string>NSTouchBarItemIdentifierOtherItemsProxy</string>
-			<string>iTermTouchBarIdentifierAddMark</string>
-			<string>iTermTouchBarIdentifierPreviousMark</string>
-			<string>iTermTouchBarIdentifierNextMark</string>
-		</array>
-	</dict>
-	<key>NSTouchBarConfig: regular</key>
-	<dict>
-		<key>CurrentItems</key>
-		<array>
-			<string>iTermTouchBarIdentifierManPage</string>
-			<string>iTermTouchBarIdentifierFunctionKeys</string>
-			<string>touchbar:8292C059-568B-4890-93D2-DEC5FE9A8600</string>
-			<string>touchbar:14582875-2D44-41BA-8B5B-89142A5F1D8B</string>
-			<string>NSTouchBarItemIdentifierFlexibleSpace</string>
-			<string>NSTouchBarItemIdentifierOtherItemsProxy</string>
-			<string>iTermTouchBarIdentifierAddMark</string>
-			<string>iTermTouchBarIdentifierPreviousMark</string>
-			<string>iTermTouchBarIdentifierNextMark</string>
-		</array>
-		<key>DefaultItems</key>
-		<array>
-			<string>iTermTouchBarIdentifierManPage</string>
-			<string>iTermTouchBarIdentifierColorPreset</string>
-			<string>iTermTouchBarIdentifierFunctionKeys</string>
-			<string>NSTouchBarItemIdentifierFlexibleSpace</string>
-			<string>NSTouchBarItemIdentifierOtherItemsProxy</string>
-			<string>iTermTouchBarIdentifierAddMark</string>
-			<string>iTermTouchBarIdentifierPreviousMark</string>
-			<string>iTermTouchBarIdentifierNextMark</string>
-		</array>
-	</dict>
-	<key>NSWindow Frame ProfilesPanel</key>
-	<string>205 478 735 382 0 0 1440 900 </string>
-	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>410 394 620 392 0 0 1440 900 </string>
-	<key>NSWindow Frame SessionsPreferences</key>
-	<string>269 126 606 469 0 0 1440 900 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>241 360 796 473 0 0 1440 900 </string>
+	<string>384 200 937 512 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>2 52 1435 825 0 0 1440 877 </string>
+	<string>395 218 570 451 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>176 74 780 451 0 0 1440 877 </string>
+	<string>6 900 1914 1080 0 900 1920 1080 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -969,6 +906,8 @@
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
 			<integer>1000</integer>
+			<key>Scrollback With Status Bar</key>
+			<true/>
 			<key>Selected Text Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1699,6 +1638,8 @@
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
 			<integer>1000</integer>
+			<key>Scrollback With Status Bar</key>
+			<true/>
 			<key>Selected Text Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1757,106 +1698,18 @@
 	<true/>
 	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
 	<true/>
-	<key>NoSyncHaveUsedCopyMode</key>
-	<true/>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>4266D194-953B-4A36-8C97-192FD7803194</string>
-	<key>NoSyncLastTipTime</key>
-	<real>550061134.91409099</real>
+	<string>E5610928-9EA7-43AC-875E-BF12B2A53997</string>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
-	<true/>
-	<key>NoSyncSuppressBroadcastInputWarning</key>
-	<true/>
-	<key>NoSyncSuppressBroadcastInputWarning_selection</key>
-	<integer>0</integer>
+	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>535632399.47796798</real>
-	<key>NoSyncTipsToNotShow</key>
-	<array>
-		<string>000</string>
-		<string>0000</string>
-		<string>0001</string>
-		<string>0002</string>
-		<string>0003</string>
-		<string>0004</string>
-		<string>0005</string>
-		<string>0006</string>
-		<string>0007</string>
-		<string>0008</string>
-		<string>0009</string>
-		<string>0010</string>
-		<string>0011</string>
-		<string>0012</string>
-		<string>0013</string>
-		<string>0014</string>
-		<string>0015</string>
-		<string>0016</string>
-		<string>0017</string>
-		<string>0018</string>
-		<string>0019</string>
-		<string>0020</string>
-		<string>0021</string>
-		<string>0022</string>
-		<string>0023</string>
-		<string>0024</string>
-		<string>0025</string>
-		<string>0026</string>
-		<string>0027</string>
-		<string>0028</string>
-		<string>0029</string>
-		<string>0030</string>
-		<string>0031</string>
-		<string>0032</string>
-		<string>0033</string>
-		<string>0034</string>
-		<string>0035</string>
-		<string>0036</string>
-		<string>0037</string>
-		<string>0038</string>
-		<string>0039</string>
-		<string>0040</string>
-		<string>0041</string>
-		<string>0042</string>
-		<string>0043</string>
-		<string>0044</string>
-		<string>0045</string>
-		<string>0046</string>
-		<string>0047</string>
-		<string>0048</string>
-		<string>0049</string>
-		<string>0050</string>
-		<string>0051</string>
-		<string>0052</string>
-		<string>0053</string>
-		<string>0054</string>
-		<string>0055</string>
-		<string>0056</string>
-		<string>0057</string>
-		<string>0058</string>
-		<string>0059</string>
-		<string>0060</string>
-		<string>0061</string>
-		<string>0062</string>
-		<string>0063</string>
-		<string>0064</string>
-		<string>0065</string>
-		<string>0066</string>
-		<string>0067</string>
-		<string>0068</string>
-		<string>0069</string>
-		<string>0070</string>
-		<string>0071</string>
-		<string>0071</string>
-		<string>0070</string>
-		<string>0069</string>
-		<string>0068</string>
-	</array>
+	<real>556451898.28676701</real>
 	<key>OpenTmuxWindowsIn</key>
 	<integer>2</integer>
 	<key>PMPrintingExpandedStateForPrint2</key>
@@ -1897,7 +1750,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/mohit/Desktop/iterm2_settings</string>
+	<string>/Users/mohit/</string>
 	<key>Print In Black And White</key>
 	<true/>
 	<key>SUEnableAutomaticChecks</key>
@@ -1905,14 +1758,12 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final.xml?shard=47</string>
+	<string>https://iterm2.com/appcasts/final.xml?shard=86</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-06-14T11:38:18Z</date>
+	<date>2018-08-24T16:50:22Z</date>
 	<key>SUSendProfileInfo</key>
-	<false/>
-	<key>Secure Input</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
 	<false/>
@@ -1925,6 +1776,8 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.1.5</string>
+	<string>3.1.6</string>
+	<key>moveToApplicationsFolderAlertSuppress</key>
+	<true/>
 </dict>
 </plist>
