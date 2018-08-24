@@ -6,3 +6,11 @@ config config status.showUntrackedFiles no
 config push --set-upstream origin master
 
 ln -s ~/.spotify.zsh /usr/local/share/zsh/site-functions/myspotify 
+
+
+
+=====================
+docker
+======================
+apt update
+apt install curl zsh man git vim
