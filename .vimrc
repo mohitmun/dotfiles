@@ -10,17 +10,17 @@
 "Headstart
 "  https://github.com/mhinz/vim-galore
 "  https://github.com/bpierre/switch-to-vim-for-good
-"  http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/	
+"  http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/
 "  http://www.worldtimzone.com/res/vi.html
 "  https://danielmiessler.com/study/vim/
 "  http://learnvimscriptthehardway.stevelosh.com/
 "  https://github.com/learnbyexample/scripting_course/blob/master/Vim_curated_resources.md
-"Tips	
-"  http://nvie.com/posts/how-i-boosted-my-vim/	
+"Tips
+"  http://nvie.com/posts/how-i-boosted-my-vim
 "Refactoring in vim
 "  https://stackoverflow.com/a/8783131/2577465
 "https://kev.town/2010/12/15/this-is-your-brain-on-vim/
-"Terms	
+"Term
 "  https://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/	
 "  1. Using vim-plug (https://junegunn.kr/2013/09/writing-my-own-vim-plugin-manager/	
 "  https://sanctum.geek.nz/arabesque/buffers-windows-tabs/ (Buffers/windows/tabs) 	
@@ -273,7 +273,7 @@ function! s:ag_with_opts(arg, bang)
   let query   = join(filter(copy(tokens), 'v:val !~ "^-"'))
   echo ag_opts
   echo query
-  call fzf#vim#ag(query, ag_opts, a:bang ? {} : {'down': '40%'})
+  call fzf#vim#ag(query, ag_opts, a:bang ? {} : {'down': '40%','options': '--delimiter : --nth 4..' })
 endfunction
 
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)

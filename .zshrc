@@ -194,11 +194,11 @@ ipaddress(){
   curl ipinfo.io/ip 
 }
 
-socktest(){
+sockproxytest(){
   \curl ipinfo.io/ip --socks5-hostname $1 
 }
 
-httptest(){
+httpproxytest(){
   \curl ipinfo.io/ip -x $1
 }
 
