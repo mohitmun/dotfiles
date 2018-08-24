@@ -1,21 +1,15 @@
 # GistID:963f95aaf61d50e512511ac4eb097e50
 # vim: set ft=zsh:
-export ZSH=~/.oh-my-zsh
+export ZSH=~/omz
 
 plugins=(
   git
-  sudo
-  tmuxinator
   transfer
-  tmux
-  #vi-mode
   copyfile
   copydir
-  emoji-clock
   encode64
-  lol
-  jsontools
   z
+  battery
 )
 ALIASFILE=~/.aliases.zsh
 source $ZSH/oh-my-zsh.sh
@@ -551,3 +545,4 @@ killp(){
 mosteditedfiles(){
   git log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -10
 }
+#TODO cli assistant
