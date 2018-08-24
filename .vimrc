@@ -51,8 +51,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-call plug#begin()
 
+call plug#begin()
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "Plug 'ctrlpvim/ctrlp.vim
 "Plug 'Valloric/YouCompleteMe'
@@ -107,7 +107,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'brooth/far.vim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'MattesGroeger/vim-bookmarks'
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'easymotion/vim-easymotion'
 "Plug 'svermeulen/vim-easyclip'
 "Plug 'wellle/targets.vim'
@@ -119,9 +119,13 @@ Plug 'haya14busa/vim-edgemotion'
 Plug 'dhruvasagar/vim-table-mode'
 
 Plug 'RRethy/vim-illuminate', { 'on':  'IlluminationEnable' }
+" TODO limit this for 3-4 chars
+"Plug 'vim-scripts/AutoComplPop'
 "Plug 'Shougo/deoplete.nvim'
 "Plug 'roxma/nvim-yarp'
+"Plug 'prabirshrestha/asyncomplete.vim'
 "Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'maralla/completor.vim'
 call plug#end()
 
 source ~/.vim/cscope.vim
@@ -155,9 +159,9 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 " If a file is changed outside of vim, automatically reload it without asking	
-set autoread	
+set autoread 
 " Don't make backups at all	
-set nobackup	
+set nobackup
 set nowritebackup
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -534,16 +538,16 @@ nmap <leader>ie :IlluminationEnable<CR>
 nmap <leader>pc :pclose<CR>:cclose<CR>
 nmap <leader><leader>c :pclose<CR>:cclose<CR>
 
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
+"imap <c-x><c-k> <plug>(fzf-complete-word)
+"imap <c-x><c-f> <plug>(fzf-complete-path)
+"imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+"imap <c-x><c-l> <plug>(fzf-complete-line)
 
 nnoremap <Leader>u :MundoToggle<CR>
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -566,3 +570,29 @@ let g:comfortable_motion_no_default_key_mappings = 1
 "https://stackoverflow.com/a/1722706/2577465
 map <C-f> g;
 map <C-g> g,
+
+"#TODO understand how omnicompletion works
+
+function! Tab_Or_Complete() abort
+  " If completor is already open the `tab` cycles through suggested completions.
+  if pumvisible()
+    return "\<C-N>"
+  " If completor is not open and we are in the middle of typing a word then
+  " `tab` opens completor menu.
+  elseif col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-R>=completor#do('complete')\<CR>"
+  else
+    " If we aren't typing a word and we press `tab` simply do the normal `tab`
+    " action.
+    return "\<Tab>"
+  endif
+endfunction
+
+" Use `tab` key to select completions.  Default is arrow keys.
+
+
+
+" Use tab to trigger auto completion.  Default suggests completions as you type.
+"let g:completor_auto_trigger = 1
+inoremap <expr> <Tab> Tab_Or_Complete()
+map <C-a> ggVG

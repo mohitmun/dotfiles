@@ -1,6 +1,7 @@
 # GistID:963f95aaf61d50e512511ac4eb097e50
 # vim: set ft=zsh:
 export ZSH=~/omz
+start=$(gdate +%s%N)
 
 plugins=(
   git
@@ -13,11 +14,12 @@ plugins=(
 )
 ALIASFILE=~/.aliases.zsh
 source $ZSH/oh-my-zsh.sh
-[[ -f ~/.secret_common_sh_rc ]] && . ~/.secret_common_sh_rc
-. $ALIASFILE
-. ~/.colored_man_pages.zsh
+source ~/.prompt.zsh
+[[ -f ~/.secret_common_sh_rc ]] && source ~/.secret_common_sh_rc
+source $ALIASFILE
+source ~/.colored_man_pages.zsh
 ~/.global_worker.zsh > /dev/null &!
-#. ~/.spotify.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #autoload -Uz myspotify && myspotify
 #. ~/.zsh-async.zsh
 #if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -39,7 +41,6 @@ SAVEHIST=500000             #Number of history entries to save to disk
   #\curl -s https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README.md -o $TAOCL_FILE 
 #fi
 #sed '/cowsay[.]png/d' $TAOCL_FILE | pandoc -f markdown -t html | xmlstarlet fo --html --dropdtd | xmlstarlet sel -t -v "(html/body/ul/li[count(p)>0])[$RANDOM mod last()+1]" | xmlstarlet unesc | fmt -80 | iconv -t US | cowsay
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export HOMEBREW_NO_AUTO_UPDATE=1
 export FZF_COMPLETION_TRIGGER=''
 bindkey '^T' fzf-completion
@@ -74,13 +75,9 @@ bindkey '^I' $fzf_default_completion
 #https://github.com/wilywampa/vimconfig/blob/b95caa50883438288729b6e8ff963783b110a3a5/dotfiles/.zshrc
 #https://sgeb.io/posts/2014/04/zsh-zle-custom-widgets/
 # Better searching in command mode
-bindkey -M vicmd '?' history-incremental-search-backward
-bindkey -M vicmd '/' history-incremental-search-forward
 # Beginning search with arrow keys
 bindkey "^[OA" up-line-or-beginning-search
 bindkey "^[OB" down-line-or-beginning-search
-bindkey -M vicmd "k" up-line-or-beginning-search
-bindkey -M vicmd "j" down-line-or-beginning-search
 bindkey "^j" down-line-or-beginning-search
 bindkey "^k" up-line-or-beginning-search
 
@@ -232,20 +229,8 @@ else
     S_TYPE=""
 fi
 S_TYPE=$S_TYPE$(get_tmux_session_name)
-PROMPT='$FG[237]
-$FG[237]$S_TYPE$FG[237]%~
-$(get_todo_status)
-$FG[237]$(repeat_string $COLUMNS '-')%{$reset_color%}
-$FG[032]%c\
-$(git_prompt_info) \
-$(jobs_prompt)\
-$FG[105]%(!.#.»)%{$reset_color%} '
-PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
-RPS1='${return_code}'
-#PROMPT='$(bsl_set_status_line)hi>>>'
 
 # color vars
-eval my_gray='$FG[237]'
 eval my_orange='$FG[214]'
 
 # right prompt
@@ -254,12 +239,6 @@ eval my_orange='$FG[214]'
 #https://medium.com/@henrebotha/how-to-write-an-asynchronous-zsh-prompt-b53e81720d32
 #TODO https://stackoverflow.com/a/6052267/2577465 use this cool technique
 #TODO https://github.com/junegunn/fzf/wiki/Examples#google-chrome-os-xlinux
-if type "virtualenv_prompt_info" > /dev/null
-then
-  RPROMPT='$(virtualenv_prompt_info)$my_gray$(get_battery)$DOT$(get_volume_indicator)$DOT$(time12)%{$reset_color%}'
-else
-  RPROMPT='$my_gray%~%{$reset_color%}%'
-fi
 
 # git settings
 ZSH_THEME_GIT_PROMPT_PREFIX="$FG[075]($FG[078]"
@@ -273,11 +252,9 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[075])%{$reset_color%}"
 
 gencscopedb(){
   CSCOPE_DIR="$PWD/cscope"
-   
   if [ ! -d "$CSCOPE_DIR" ]; then
   mkdir "$CSCOPE_DIR"
   fi
-   
   echo "Finding files ..."
   find "$PWD" -name '*.[ch]' \
   -o -name '*.java' \
@@ -288,7 +265,6 @@ gencscopedb(){
   -o -name '*.py' \
   -o -name '*.rb' \
   -o -name '*.php' > "$CSCOPE_DIR/cscope.files"
-   
   echo "Adding files to cscope db: $PWD/cscope.db ..."
   cscope -b -i "$CSCOPE_DIR/cscope.files" -f "$CSCOPE_DIR/cscope.out"
 
@@ -397,7 +373,7 @@ function ff() {
 #EOF
 #github.com/tj/burl
 BURL_FILE=/usr/local/bin/burl
-if [ ! -f $BURL_FILE ]; then 
+if [ ! -f $BURL_FILE ]; then
   echo "Getting burl from github"
   \curl -s https://raw.githubusercontent.com/tj/burl/master/bin/burl -o $BURL_FILE 
   chmod +x $BURL_FILE
@@ -453,36 +429,6 @@ google(){
     open "http://www.google.com/search?q=$search"
 }
 
-TMOUT=1
-#https://github.com/robbyrussell/oh-my-zsh/issues/5910#issuecomment-294509017
-TRAPALRM() {
-    if [[ $WIDGET != *"complete"* && $WIDGET != *"-search" ]]; then;
-      #async_job vagrant_prompt_worker export-spotify-status $PWD
-      zle reset-prompt
-      #bsl_set_status_line
-      #thanks https://github.com/wilywampa/vimconfig/blob/b95caa50883438288729b6e8ff963783b110a3a5/dotfiles/.zshrc#L1374
-      if [[ -n $BUFFER ]]; then
-        TMOUT=5
-      else
-        TMOUT=1
-      fi
-      #echo $BUFFER > ~/.debug_async
-    fi
-}
-NEWLINE=$'\n'
-#https://superuser.com/a/1029103/630985
-del-prompt-accept-line() {
-    OLD_PROMPT="$PROMPT"
-    OLD_RPROMPT="$RPROMPT"
-    RPROMPT=""
-    PROMPT="$FG[237]$(repeat_string $COLUMNS -)${NEWLINE}$FG[105]%(!.#.»»)%{$reset_color%} "
-    zle reset-prompt
-    RPROMPT="$OLD_RPROMPT"
-    PROMPT="$OLD_PROMPT"
-    zle accept-line
-}
-zle -N del-prompt-accept-line
-bindkey "^M" del-prompt-accept-line
 
 #TODO check zsh folder here at https://github.com/cehoffman/dotfiles
 # TODO what is zstyle ':completion:*'
@@ -544,3 +490,18 @@ mosteditedfiles(){
   git log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -10
 }
 #TODO cli assistant
+
+#start_interactive(){
+  #BUFFER="grep  ~/.zshrc"
+  #zle forward-char
+  #zle forward-char
+  #zle forward-char
+  #zle forward-char
+  #zle forward-char
+#}
+#zle -N start_interactive
+#bindkey "^G" start_interactive
+
+end=$(gdate +%s%N)
+loadtime=$(( $end - $start ))
+echo "loadtime: $(( $loadtime/1000000000.0 ))"

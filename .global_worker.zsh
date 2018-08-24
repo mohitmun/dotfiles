@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 #~/.spotify.zsh
-ln -s ~/.spotify.zsh /usr/local/share/zsh/site-functions/myspotify 
 autoload -Uz myspotify && myspotify
 pid=$(< ~/.global_worker.pid)
 #state=[[ -n $pid ]] && ps -p $pid > /dev/null
