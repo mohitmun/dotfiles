@@ -1,3 +1,9 @@
+show_status_bar(){
+  tput sc
+  tput cup $LINES 0
+  echo -ne "$FG[241]$(get_battery)$DOT$LINES$DOT$(get_volume_indicator)$DOT$(time12)%{$reset_color%}"
+  tput rc
+}
 PROMPT='$FG[237]
 $FG[241]$S_TYPE$FG[237]%~
 $(get_todo_status)
