@@ -44,5 +44,27 @@ del-prompt-accept-line() {
     PROMPT="$OLD_PROMPT"
     zle accept-line
 }
+get_cursor_position(){
+  #https://stackoverflow.com/a/43911767/2577465
+  echo -ne "\033[6n" > /dev/tty
+  read -t 1 -s -d 'R' line < /dev/tty
+  line="${line##*\[}"
+  line="${line%;*}"
+  export current_cursor_line=$line
+}
+
+r(){
+  printf "\e]1337;ClearScrollback\007"
+  set_scrollable_region
+}
+
+set_scrollable_region(){
+  #tput smcup
+  tput csr 0 $(($LINES - 3))
+  #tput rmcup
+}
+
 zle -N del-prompt-accept-line
 bindkey "^M" del-prompt-accept-line
+
+set_scrollable_region

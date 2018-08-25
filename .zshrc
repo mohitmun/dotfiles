@@ -14,7 +14,6 @@ plugins=(
 )
 ALIASFILE=~/.aliases.zsh
 source $ZSH/oh-my-zsh.sh
-source ~/.prompt.zsh
 [[ -f ~/.secret_common_sh_rc ]] && source ~/.secret_common_sh_rc
 source $ALIASFILE
 source ~/.colored_man_pages.zsh
@@ -505,3 +504,5 @@ mosteditedfiles(){
 end=$(gdate +%s%N)
 loadtime=$(( $end - $start ))
 echo "loadtime: $(( $loadtime/1000000000.0 ))"
+
+source ~/.prompt.zsh
