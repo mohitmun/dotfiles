@@ -1,6 +1,6 @@
 show_status_bar(){
   tput sc
-  tput cup $LINES 0
+  tput cup $(($ORIGINAL_ROWS + 1)) 0
   echo -ne "$FG[241]$(get_battery)$DOT$LINES$DOT$(get_volume_indicator)$DOT$(time12)%{$reset_color%}"
   tput rc
 }
@@ -11,10 +11,7 @@ $FG[237]$(repeat_string $COLUMNS '-')%{$reset_color%}
 $FG[032]%c\
 $(git_prompt_info) \
 $(jobs_prompt)\
-$FG[105]%(!.#.»)%{$reset_color%} '
-PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
-RPS1='${return_code}'
-RPROMPT='$FG[241]$(get_battery)$DOT$(get_volume_indicator)$DOT$(time12)%{$reset_color%}'
+$FG[105]%(!.#.»)%{$reset_color%}$(show_status_bar) '
 
 TMOUT=1
 #https://github.com/robbyrussell/oh-my-zsh/issues/5910#issuecomment-294509017
@@ -58,13 +55,36 @@ r(){
   set_scrollable_region
 }
 
-set_scrollable_region(){
-  #tput smcup
-  tput csr 0 $(($LINES - 3))
-  #tput rmcup
-}
+#set_scrollable_region(){
+  ##tput smcup
+  #tput csr 0 $(($LINES - 3))
+  ##tput rmcup
+#}
 
 zle -N del-prompt-accept-line
 bindkey "^M" del-prompt-accept-line
 
+#set_scrollable_region
+#TRAPWINCH(){
+ #start_status_bar
+#}
+
+on_window_change(){
+  echo -ne "on wind change LINES $LINES COLS $COLUMNS"
+  export ORIGINAL_ROWS=$LINES
+  export ORIGINAL_COLUMNS=$COLUMNS
+  export RESIZE_ROWS=$(($LINES - 2))
+  export RESIZE_COLUMNS=$COLUMNS
+  set_scrollable_region
+}
+trap "on_window_change" SIGWINCH
+set_scrollable_region(){
+  # This is fucking gold
+  stty rows $RESIZE_ROWS
+  [ -n $TMUX ] && bkp_tmux=$TMUX && unset TMUX
+  tmux new 'echo' -v
+  [ -n $bkp_tmux ] && export TMUX=$bkp_tmux
+}
+
+on_window_change
 set_scrollable_region

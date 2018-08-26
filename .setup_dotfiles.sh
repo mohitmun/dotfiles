@@ -14,3 +14,8 @@ docker
 ======================
 apt update
 apt install curl zsh man git vim
+
+=========
+install
+=========
+brew install reattach-to-user-namespace
