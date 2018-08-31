@@ -1,18 +1,29 @@
+# issues
+# 1. infinite scrolling
+NEWLINE=$'\n'
+STATUS_BAR='$FG[241]$(get_battery)$DOT$(get_volume_indicator)$DOT$(time12)%{$reset_color%}'
+#STATUS_BAR_ENABLED=1
 show_status_bar(){
-  tput sc
-  tput cup $(($ORIGINAL_ROWS + 1)) 0
-  echo -ne "$FG[241]$(get_battery)$DOT$LINES$DOT$(get_volume_indicator)$DOT$(time12)%{$reset_color%}"
-  tput rc
+  if [[ -n $STATUS_BAR_ENABLED ]];then
+    tput sc
+    tput cup $(($ORIGINAL_ROWS)) 0
+    echo -ne $STATUS_BAR
+    tput cup $(($ORIGINAL_ROWS - 2)) 0
+    echo -ne "$FG[241]"
+    repeat_string $(($ORIGINAL_COLUMNS - 5)) "_"
+    echo -ne "$reset_color"
+    tput rc
+  else
+    echo -ne $STATUS_BAR
+  fi
 }
-PROMPT='$FG[237]
-$FG[241]$S_TYPE$FG[237]%~
-$(get_todo_status)
-$FG[237]$(repeat_string $COLUMNS '-')%{$reset_color%}
+
+PROMPT='$FG[237] $FG[241]$S_TYPE$FG[237]%~ $(get_todo_status) $FG[237]%{$reset_color%}
 $FG[032]%c\
 $(git_prompt_info) \
 $(jobs_prompt)\
-$FG[105]%(!.#.»)%{$reset_color%}$(show_status_bar) '
-
+$FG[105]%(!.#.»)%{$reset_color%} '
+RPROMPT="$STATUS_BAR"
 TMOUT=1
 #https://github.com/robbyrussell/oh-my-zsh/issues/5910#issuecomment-294509017
 TRAPALRM() {
@@ -29,7 +40,6 @@ TRAPALRM() {
       #echo $BUFFER > ~/.debug_async
     fi
 }
-NEWLINE=$'\n'
 #https://superuser.com/a/1029103/630985
 del-prompt-accept-line() {
     OLD_PROMPT="$PROMPT"
@@ -55,8 +65,8 @@ r(){
   set_scrollable_region
 }
 
-#set_scrollable_region(){
-  ##tput smcup
+# set_scrollable_region(){
+# ##tput smcup
   #tput csr 0 $(($LINES - 3))
   ##tput rmcup
 #}
@@ -64,27 +74,27 @@ r(){
 zle -N del-prompt-accept-line
 bindkey "^M" del-prompt-accept-line
 
-#set_scrollable_region
-#TRAPWINCH(){
- #start_status_bar
-#}
-
 on_window_change(){
-  echo -ne "on wind change LINES $LINES COLS $COLUMNS"
-  export ORIGINAL_ROWS=$LINES
-  export ORIGINAL_COLUMNS=$COLUMNS
-  export RESIZE_ROWS=$(($LINES - 2))
-  export RESIZE_COLUMNS=$COLUMNS
-  set_scrollable_region
+  if [[ -n $STATUS_BAR_ENABLED ]];then
+    export ORIGINAL_ROWS=$LINES
+    export ORIGINAL_COLUMNS=$COLUMNS
+    set_scrollable_region
+  fi
 }
+
 trap "on_window_change" SIGWINCH
+
 set_scrollable_region(){
   # This is fucking gold
+  export RESIZE_ROWS=$(($LINES - 2))
+  export RESIZE_COLUMNS=$COLUMNS
   stty rows $RESIZE_ROWS
   [ -n $TMUX ] && bkp_tmux=$TMUX && unset TMUX
   tmux new 'echo' -v
   [ -n $bkp_tmux ] && export TMUX=$bkp_tmux
 }
 
-on_window_change
-set_scrollable_region
+init_status_bar(){
+  on_window_change
+}
+[[ -n $STATUS_BAR_ENABLED ]] && init_status_bar
