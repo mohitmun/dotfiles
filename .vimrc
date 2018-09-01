@@ -78,7 +78,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'sjl/gundo.vim'
 " https://vi.stackexchange.com/a/8224/15805
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'suan/vim-instant-markdown'
 "fucks up disable cut logic

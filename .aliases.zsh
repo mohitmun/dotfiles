@@ -72,7 +72,15 @@ alias aliasgrep='alias | grep '
 alias npmig='npm install -g '
 
 #https://gist.github.com/igrigorik/6666860
-alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
+gh(){
+  open $(git config remote.origin.url | sed "s/git@\(.*\):\(.*\).git/https:\/\/\1\/\2/")/$1$2
+}
+# Open current branch
+alias ghb='gh tree/$(git symbolic-ref --quiet --short HEAD )'
+# open current branch with directory
+alias ghbf='gh tree/$(git symbolic-ref --quiet --short HEAD )/$(git rev-parse --show-prefix)'
+# Open current directory/file in master branch
+alias ghf='gh tree/master/$(git rev-parse --show-prefix)'
 alias ctig='GIT_WORK_TREE=$HOME GIT_DIR=$HOME/.dotfiles tig'
 alias time12='date +"%I:%M:%S %p"'
 alias m='man'

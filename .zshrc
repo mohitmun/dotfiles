@@ -2,7 +2,6 @@
 # vim: set ft=zsh:
 export ZSH=~/omz
 start=$(gdate +%s%N)
-
 plugins=(
   git
   transfer
@@ -81,75 +80,6 @@ bindkey "^j" down-line-or-beginning-search
 bindkey "^k" up-line-or-beginning-search
 bindkey "^b" backward-word
 
-HEART='❤'
-DOT=' ● '
-SILENT_EMOJI="😶 "
-
-get_volume_indicator(){
-  export_osascript_system_status
-  if [ -z $volume_level ]; then
-    echo -n "NA"
-  elif [ $volume_level -eq 0 ]; then
-    echo -n "$SILENT_EMOJI"
-  else
-    volume_bar_count=$(( $volume_level / 10))
-    printf "|%.0s" {0..$volume_bar_count}
-  fi
-}
-
-get_battery(){
-
-  battery_info=`pmset -g batt`
-  current_charge=$(echo $battery_info | grep -o '[0-9]\+%' | awk '{sub (/%/, "", $1); print $1}')
-
-  #if [[ $current_charge -lt 10 ]]; then
-      #echo -n "$FG[052]"
-  #elif [[ $current_charge -lt 30 ]]; then
-      #echo -n "$FG[058]"
-  #elif [[ $current_charge -lt 50 ]]; then
-      #echo -n "$FG[064]"
-  #elif [[ $current_charge -lt 70 ]]; then
-      #echo -n "$FG[070]"
-  #elif [[ $current_charge -lt 90 ]]; then
-      #echo -n "$FG[076]"
-  #else
-      #echo -n "$FG[082]"
-  #fi
-
-  echo -n "$HEART $current_charge "
-}
-
-export_osascript_system_status(){
-  cat ~/.export_osascript_system_status | while read i; do
-    if [ -z $i ];then
-      continue
-    fi
-    KEY_VALUE=("${(@s/=/)i}")
-    export "$KEY_VALUE[1]=$KEY_VALUE[2]"
-  done
-}
-get_spotify_widget(){
-  export_osascript_system_status
-  if [[ -n $spotify_track ]]; then
-  else
-    return
-  fi
-  local columns=$(($COLUMNS - 20))
-  echo -n $FG[241] $spotify_track
-  echo -n " - "
-  echo -n $spotify_artist
-  int=${spotify_percent_progress%.*}
-  spotify_percent_progress=$(( $int * $columns / 100 ))
-  #spotify_percent_progress=printf "%.0f\n" "$spotify_percent_progress"
-  echo " ($FG[241]$spotify_position/$FG[241]$spotify_duration)"
-  #echo -n $FG[076]
-  #printf "=%.0s" {0..$spotify_percent_progress}
-  #echo -n $reset_color
-  #remain=$(($columns - $spotify_percent_progress ))
-  #printf "=%.0s" {0..$remain}
-  #printf "|%.0s" {0..$spotify_percent_progress}
-}
-
 #TODO what is difference when using function keyword or not
 
 function repeat_string(){
@@ -211,24 +141,6 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 # motivation: I forget if vim is running in bg https://news.ycombinator.com/item?id=17423100
 # copied https://github.com/denysdovhan/spaceship-prompt/blob/40f52260840bff5ab24f014c62241fdb9be293c0/sections/jobs.zsh
-jobs_prompt() {
-  local jobs_amount=$((jobs) | wc -l | tr -d " ")
-  [[ $jobs_amount -gt 0 ]] || return
-  echo "$FG[196]($jobs_amount job)"
-}
-get_tmux_session_name(){
-  if [ -n "$TMUX" ]; then
-    session_name=$(tmux display -p | cut -d '[' -f2 | cut -d ']' -f1)
-    echo -n "[mux:$session_name]"
-  fi
-}
-# primary prompt
-if [ -n "$SSH_CLIENT" ]; then
-    S_TYPE="[ssh]"
-else
-    S_TYPE=""
-fi
-S_TYPE=$S_TYPE$(get_tmux_session_name)
 
 # color vars
 
@@ -274,7 +186,7 @@ function mcd() {
 export PATH="$PATH:$HOME/.rvm/bin"
 
 list_repo_containing_search(){
-  #TODO need to edit function 
+  #TODO need to edit function
   # == == == == == == == == == == == == == == == == == == == ==
   # List repo by user
   # curl -G 'https://api.github.com/users/mohitmun/repos?page=3&per_page=100'
@@ -346,18 +258,6 @@ function each() {
   done
 }
 
-# Find files and exec commands at them.
-# $ find-exec .coffee cat | wc -l
-# # => 9762
-function find-exec() {
-  find . -type f -iname "*${1:-}*" -exec "${2:-file}" '{}' \;
-}
-
-# Better find(1)
-function ff() {
-  find . -iname "*${1:-}*"
-}
-#
 # Show current Finder directory.
 #function finder {
   #osascript 2>/dev/null <<EOF
@@ -365,17 +265,6 @@ function ff() {
       #return POSIX path of (target of window 1 as alias)
     #end tell
 #EOF
-#github.com/tj/burl
-BURL_FILE=/usr/local/bin/burl
-if [ ! -f $BURL_FILE ]; then
-  echo "Getting burl from github"
-  \curl -s https://raw.githubusercontent.com/tj/burl/master/bin/burl -o $BURL_FILE 
-  chmod +x $BURL_FILE
-fi
-
-# chpwd(){
-#   ls
-# }
 
 curl_github(){
   curl -u $GITHUB_USERNAME_SPAM:$GITHUB_PASSWORD_SPAM "https://api.github.com$1"
@@ -383,25 +272,6 @@ curl_github(){
 #TODO https://gist.github.com/phette23/5270658
 #TODO https://superuser.com/questions/292652/change-iterm2-window-and-tab-titles-in-zsh/292660#292660
 
-c() {
-  local cols sep google_history open
-  cols=$(( COLUMNS / 3 ))
-  sep='{::}'
-
-  if [ "$(uname)" = "Darwin" ]; then
-    google_history="$HOME/Library/Application Support/Google/Chrome/Default/History"
-    open=open
-  else
-    google_history="$HOME/.config/google-chrome/Default/History"
-    open=xdg-open
-  fi
-  cp -f "$google_history" /tmp/h
-  sqlite3 -separator $sep /tmp/h \
-    "select substr(title, 1, $cols), url
-     from urls order by last_visit_time desc" |
-  awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
-  fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs $open > /dev/null 2> /dev/null
-}
 zrc(){
 	vim ~/.zshrc
 	source ~/.zshrc
@@ -414,14 +284,6 @@ zrc(){
 #TODO https://github.com/ericfreese/zsh-cwd-history
 #TODO https://github.com/larkery/zsh-histdb
 #TODO what is precmd
-google(){
-    search=""
-    echo "Googling: $@"
-    for term in $@; do
-        search="$search%20$term"
-    done
-    open "http://www.google.com/search?q=$search"
-}
 
 
 #TODO check zsh folder here at https://github.com/cehoffman/dotfiles
@@ -429,51 +291,14 @@ google(){
 #TODO spotify show shuffle status
 #TODO https://news.ycombinator.com/item?id=17755199
 #TODO htoprc
-# TODO why this code breaks
+# why this code breaks
+# https://www.zsh.org/mla/users/2011/msg00052.html
 #testmybug(){
     #printf "-%.0s" $(seq 1 $COLUMNS)
 #}
 #PROMPT="$(testmybug)
 #53hello >>>"
 
-# combined effors of following
-# https://github.com/joshbuchea/config/blob/master/.zshrc
-# Convert video to GIF
-#
-# Usage: vid2gif in.mov [width] [fps]
-#
-# typical gif framerates seem to be between 10–20
-#
-# possibly run through gif optimization tool
-#
-# ffmpeg options explained:
-#
-# -i    input
-# -y    overwrite output files without confirmation
-# -t    duration
-# -ss   position
-#
-function vid2gif() {
-  local width=${2:-600}
-  local rate=${3:-20}
-  local filters="fps=$rate,scale=$width:-1:flags=lanczos"
-
-  # generate a palette
-  #
-  # not sure if palette needs scale or flags (or all of $filters?)...
-	ffmpeg -i "$1" -vf "$filters,palettegen" -y palette.png
-
-  # then generate gif with palette
-  ffmpeg -i "$1" -i palette.png -filter_complex "$filters,paletteuse" "${1%.*}.gif"
-
-  # remove palette image file
-  rm palette.png
-}
-
-proxy_server(){
-  #TODO fix this awesomeness
-  ~/.proxy_server.sh $1
-}
 
 killp(){
   kill $(lsof -t -i:$1)
@@ -496,8 +321,13 @@ mosteditedfiles(){
 #zle -N start_interactive
 #bindkey "^G" start_interactive
 
+
+source ~/.prompt.zsh
+
+zstyle ':completion:*:manuals'    separate-sections true
+zstyle ':completion:*:manuals.*'  insert-sections   true
+zstyle ':completion:*:man:*'      menu yes select
+
 end=$(gdate +%s%N)
 loadtime=$(( $end - $start ))
 echo "loadtime: $(( $loadtime/1000000000.0 ))"
-
-source ~/.prompt.zsh
