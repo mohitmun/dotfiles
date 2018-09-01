@@ -17,6 +17,11 @@ show_status_bar(){
     echo -ne $STATUS_BAR
   fi
 }
+branch=master mode=insert
+#https://unix.stackexchange.com/a/250457/219826
+#setopt promptsubst
+#left='%m | %~'
+#PS1=%K{green}$left${(l,COLUMNS-${#${(%)left}},)${${:-$branch | $mode}//[%]/%%}}%k$
 
 PROMPT='$FG[237] $FG[241]$S_TYPE$FG[237]%~ $(get_todo_status) $FG[237]%{$reset_color%}
 $FG[032]%c\
