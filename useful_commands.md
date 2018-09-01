@@ -38,3 +38,11 @@ The &! (or equivalently, &|) is a zsh-specific shortcut to both background and d
 
 $$ process id 
 https://stackoverflow.com/questions/5163144/what-are-the-special-dollar-sign-shell-variables
+
+define hash in zsh
+
+typeset -gA prompt_pure_state
+	prompt_pure_state=(
+		username "$username"
+		prompt	 "${PURE_PROMPT_SYMBOL:-❯}"
+	)

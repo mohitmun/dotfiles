@@ -1,5 +1,10 @@
 # issues
 # 1. infinite scrolling
+# git settings
+ZSH_THEME_GIT_PROMPT_PREFIX="$FG[075]($FG[078]"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+ZSH_THEME_GIT_PROMPT_DIRTY="$FG[214]*%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[075])%{$reset_color%}"
 NEWLINE=$'\n'
 STATUS_BAR='$FG[241]$(get_battery)$DOT$(get_volume_indicator)$DOT$(time12)%{$reset_color%}'
 #STATUS_BAR_ENABLED=1
@@ -22,12 +27,20 @@ branch=master mode=insert
 #setopt promptsubst
 #left='%m | %~'
 #PS1=%K{green}$left${(l,COLUMNS-${#${(%)left}},)${${:-$branch | $mode}//[%]/%%}}%k$
+prompt_character(){
+echo -ne "%(?.$FG[078].%F{red})❯%f"
+}
+get_second_line(){
+  current_dir_with_jobs="${(%):-%c}$(jobs_prompt)"
+  remaining_length=$(( $COLUMNS - 1 - ${#current_dir_with_jobs}))
+  gpi="${(%):-$(git_prompt_info)}"
+  echo -ne "$FG[032]$current_dir_with_jobs${gpi}"
+}
 
-PROMPT='$FG[237] $FG[241]$S_TYPE$FG[237]%~ $(get_todo_status) $FG[237]%{$reset_color%}
-$FG[032]%c\
-$(git_prompt_info) \
-$(jobs_prompt)\
-$FG[105]%(!.#.»)%{$reset_color%} '
+
+PROMPT='$FG[241]$S_TYPE$FG[240]%~ $(get_todo_status) %{$reset_color%}
+$(get_second_line)
+$FG[105]$(prompt_character)%{$reset_color%} '
 RPROMPT="$STATUS_BAR"
 TMOUT=1
 #https://github.com/robbyrussell/oh-my-zsh/issues/5910#issuecomment-294509017

@@ -79,6 +79,7 @@ bindkey "^[OA" up-line-or-beginning-search
 bindkey "^[OB" down-line-or-beginning-search
 bindkey "^j" down-line-or-beginning-search
 bindkey "^k" up-line-or-beginning-search
+bindkey "^b" backward-word
 
 HEART='❤'
 DOT=' ● '
@@ -230,7 +231,6 @@ fi
 S_TYPE=$S_TYPE$(get_tmux_session_name)
 
 # color vars
-eval my_orange='$FG[214]'
 
 # right prompt
 # Inspiration for todo in right prompt https://wynnnetherland.com/journal/contextual-todo-list-counts-in-your-zsh-prompt/
@@ -239,11 +239,6 @@ eval my_orange='$FG[214]'
 #TODO https://stackoverflow.com/a/6052267/2577465 use this cool technique
 #TODO https://github.com/junegunn/fzf/wiki/Examples#google-chrome-os-xlinux
 
-# git settings
-ZSH_THEME_GIT_PROMPT_PREFIX="$FG[075]($FG[078]"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
-ZSH_THEME_GIT_PROMPT_DIRTY="$my_orange*%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[075])%{$reset_color%}"
 
 #===========================
 # THEME END
