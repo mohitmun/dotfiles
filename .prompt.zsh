@@ -32,9 +32,9 @@ echo -ne "%(?.$FG[078].%F{red})❯%f"
 }
 get_second_line(){
   current_dir_with_jobs="${(%):-%c}$(jobs_prompt)"
-  remaining_length=$(( $COLUMNS - 1 - ${#current_dir_with_jobs}))
-  gpi="${(%):-$(git_prompt_info)}"
-  echo -ne "$FG[032]$current_dir_with_jobs${gpi}"
+  #gpi="${(%):-$(git_prompt_info)}"
+  gpi="$(git_prompt_info)"
+  echo "$FG[032]$current_dir_with_jobs${gpi}"
 }
 
 
