@@ -1,0 +1,6 @@
+## arrow up
+"\e[A":history-search-backward
+## arrow down
+"\e[B":history-search-forward
+Control-j:history-search-forward
+Control-k:history-search-backward
