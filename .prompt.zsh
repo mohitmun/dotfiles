@@ -43,7 +43,7 @@ PROMPT='$FG[240]$S_TYPE$FG[242]%~ $(get_todo_status) %{$reset_color%}
 $(get_second_line)
 $FG[105]$(prompt_character)%{$reset_color%} '
 RPROMPT="$STATUS_BAR"
-TMOUT=1
+TMOUT=60
 #https://github.com/robbyrussell/oh-my-zsh/issues/5910#issuecomment-294509017
 TRAPALRM() {
     if [[ $WIDGET != *"complete"* && $WIDGET != *"-search" ]]; then;

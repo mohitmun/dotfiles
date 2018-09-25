@@ -40,5 +40,10 @@ tell application "Spotify"
   end if
   set vol to (output volume of (get volume settings))
   #spotify_info & "\n" output volume of (get volume settings)
-  spotify_info & "\n" & "volume_level=" & vol
 end tell
+
+tell application "System Events"
+  set frontApp to name of first application process whose frontmost is true
+  #display notification "Lorem ipsum dolor sit amet" with title frontApp
+end tell
+spotify_info & "\n" & "volume_level=" & vol & "\n" & "frontApp=" & frontApp

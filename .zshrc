@@ -51,12 +51,14 @@ bindkey '^I' $fzf_default_completion
 
 # Dotfiles to follow
 # https://github.com/whiteinge/dotfiles/
-
+#https://github.com/nicolargo/glances
 # All about awesome-cli
 # https://github.com/whiteinge/ok.sh Github client in bash
 ## https://github.com/agarrharr/awesome-cli-apps
 # explore more on https://github.com/alebcay/awesome-shell 	
-#
+#https://github.com/kahun/awesome-sysadmin
+#https://github.com/k4m4/terminals-are-sexy
+# https://github.com/jondot/awesome-devenv
 # A command-line todo list manager for people that want to finish tasks, not organize them
 # https://github.com/sjl/t
 #

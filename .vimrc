@@ -284,6 +284,7 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : 
 command! -bang -nargs=* Rag call fzf#vim#ag(<q-args>, {'options': '--delimiter : '}, <bang>0)
 command! -nargs=* -bang CAg call s:ag_with_opts(<q-args>, <bang>0)
 map <leader>f :Ag<CR>
+map <C-f> :Ag<CR>
 map swe :Ag <C-R><C-W><CR>
 map swc :BLines <C-R><C-W><CR>
 map <leader>/ :BLines <CR>
