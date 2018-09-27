@@ -138,7 +138,7 @@ set tabstop=2 shiftwidth=2 expandtab
 set updatetime=100
 
 let g:gitgutter_diff_base = 'HEAD'
-autocmd BufWritePost * GitGutterAll
+autocmd BufWritePost * GitGutter
 
 "Always show current position
 set ruler
@@ -569,8 +569,8 @@ nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
 nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
 let g:comfortable_motion_no_default_key_mappings = 1
 "https://stackoverflow.com/a/1722706/2577465
-map <C-f> g;
-map <C-g> g,
+"map <C-f> g;
+"map <C-g> g,
 
 "#TODO understand how omnicompletion works
 
@@ -597,3 +597,10 @@ endfunction
 "let g:completor_auto_trigger = 1
 inoremap <expr> <Tab> Tab_Or_Complete()
 map <C-a> ggVG
+
+" unused keys
+" shift - H, K, L, M
+
+nnoremap M :Maps<CR>
+nnoremap <leader>gf :GFiles?<CR>
+nnoremap * *N
