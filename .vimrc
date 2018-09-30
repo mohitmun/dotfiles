@@ -596,3 +596,6 @@ endfunction
 "let g:completor_auto_trigger = 1
 inoremap <expr> <Tab> Tab_Or_Complete()
 map <C-a> ggVG
+
+"http://vim.wikia.com/wiki/Delete_all_lines_containing_a_pattern
+" :g!/http/d deletes lines not containing http

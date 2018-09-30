@@ -96,3 +96,4 @@ alias crdiff='config fetch origin master:master_remote && config diff master_rem
 
 alias di='docker images'
 alias notes='cat ~/.notes'
+alias nvmact='export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
