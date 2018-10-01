@@ -17,7 +17,6 @@ source $ZSH/oh-my-zsh.sh
 [[ -f ~/.secret_common_sh_rc ]] && source ~/.secret_common_sh_rc
 source $ALIASFILE
 source ~/.colored_man_pages.zsh
-~/.global_worker.zsh > /dev/null &!
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #autoload -Uz myspotify && myspotify
 #. ~/.zsh-async.zsh
@@ -323,7 +322,49 @@ mosteditedfiles(){
 #}
 #zle -N start_interactive
 #bindkey "^G" start_interactive
+battery_hogging_apps=("Google Chrome" "Github Desktop")
+containsElement () {
+  local e match="$1"
+  shift
+  for e; do echo $e ;[[ "$e" == "$match" ]] && return 0; done
+  return 1
+}
+stop_hogging_processes(){
+  export_osascript_system_status
 
+  if [ "$frontApp" != "Google Chrome" ] && [ -z $chrome_stopped ];then
+    notify "Stopping google chrome"
+    stop "Google Chrome"
+    export chrome_stopped=true
+    unset chrome_continued
+  fi
+
+  if [ "$frontApp" = "Google Chrome" ] && [ -z $chrome_continued ];then
+    notify "Continue google chrome"
+    cont "Google Chrome"
+    export chrome_continued=true
+    unset chrome_stopped
+  fi
+# generic ijmplementation
+#stop_hogging_processes(){
+  #export_osascript_system_status
+  #for app in ${battery_hogging_apps[@]}; do
+    #if [ "$frontApp" != $app ] ;then
+      #notify "Stopping $app"
+      #stop $app
+      ##export stopped_$app=true
+      ##unset continued_$app
+    #fi
+
+    #if [ "$frontApp" = $app ] ;then
+      #notify "Continue $app"
+      #cont $app
+      ##export continued_$app=true
+      ##unset stopped_$app
+    #fi
+  #done
+#}
+}
 
 source ~/.prompt.zsh
 
@@ -331,6 +372,7 @@ zstyle ':completion:*:manuals'    separate-sections true
 zstyle ':completion:*:manuals.*'  insert-sections   true
 zstyle ':completion:*:man:*'      menu yes select
 
+source ~/.global_worker.zsh
 end=$(gdate +%s%N)
 loadtime=$(( $end - $start ))
 echo "loadtime: $(( $loadtime/1000000000.0 ))"
