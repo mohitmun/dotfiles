@@ -43,7 +43,7 @@ PROMPT='$FG[240]$S_TYPE$FG[242]%~ $(get_todo_status) %{$reset_color%}
 $(get_second_line)
 $FG[105]$(prompt_character)%{$reset_color%} '
 RPROMPT="$STATUS_BAR"
-TMOUT=60
+TMOUT=$REFRESH_RATE
 #https://github.com/robbyrussell/oh-my-zsh/issues/5910#issuecomment-294509017
 TRAPALRM() {
     if [[ $WIDGET != *"complete"* && $WIDGET != *"-search" ]]; then;
@@ -51,11 +51,11 @@ TRAPALRM() {
       zle reset-prompt
       #bsl_set_status_line
       #thanks https://github.com/wilywampa/vimconfig/blob/b95caa50883438288729b6e8ff963783b110a3a5/dotfiles/.zshrc#L1374
-      if [[ -n $BUFFER ]]; then
-        TMOUT=5
-      else
-        TMOUT=1
-      fi
+      #if [[ -n $BUFFER ]]; then
+        #TMOUT=5
+      #else
+        #TMOUT=1
+      #fi
       #echo $BUFFER > ~/.debug_async
     fi
 }

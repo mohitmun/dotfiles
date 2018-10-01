@@ -11,6 +11,7 @@ plugins=(
   z
   battery
 )
+REFRESH_RATE=2
 ALIASFILE=~/.aliases.zsh
 source $ZSH/oh-my-zsh.sh
 [[ -f ~/.secret_common_sh_rc ]] && source ~/.secret_common_sh_rc
