@@ -574,7 +574,7 @@ nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
 let g:comfortable_motion_no_default_key_mappings = 1
 "https://stackoverflow.com/a/1722706/2577465
 "map <C-f> g;
-"map <C-g> g,
+map <C-g> g;
 
 "#TODO understand how omnicompletion works
 
@@ -604,7 +604,24 @@ map <C-a> ggVG
 
 " unused keys
 " shift - H, K, L, M
-
+map K <Nop>
 nnoremap M :Maps<CR>
 nnoremap <leader>gf :GFiles?<CR>
 nnoremap * *N
+set viminfo+='1000
+
+"https://github.com/sputtene/dotfiles/blob/79db8ab3b0586fb787fc59b42715dba786135c6d/.vimrc
+"
+set viminfo=
+set viminfo+='1000  " max number of previous files for which the marks are remembered
+set viminfo+=!      " save and restore globals in all uppercase
+set viminfo+=%      " save and restore buffer list
+set viminfo+=/1000  " max number of search and substitute patterns to save
+set viminfo+=:1000  " max number of command line items to save
+set viminfo+=<100   " max number of lines for each register to save
+set viminfo+=@100   " max number of input-line history to save
+set viminfo+=f1     " store file marks ('0 to '9, 'A to 'Z)
+set viminfo+=h      " disable effect of hlsearch when loading viminfo
+set viminfo+=s10    " max size of an item in Kb
+
+iab  btw by the way
