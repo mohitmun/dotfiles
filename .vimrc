@@ -50,6 +50,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  mkdir -p ~/.vim/undodir
+  mkdir -p ~/.vim/backupdir
+  mkdir -p ~/.vim/directory
 endif
 
 call plug#begin()
@@ -126,6 +129,7 @@ Plug 'RRethy/vim-illuminate', { 'on':  'IlluminationEnable' }
 "Plug 'prabirshrestha/asyncomplete.vim'
 "Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'maralla/completor.vim'
+Plug 'ruanyl/vim-gh-line'
 call plug#end()
 
 source ~/.vim/cscope.vim

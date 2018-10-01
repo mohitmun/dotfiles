@@ -59,14 +59,14 @@ alias cgaa='config add -u'
 alias cddesk='cd ~/Desktop'
 
 # https://github.com/search?q=%22alias+-s%22+filename%3A.zshrc
-alias -s gz='tar -xzvf'
-alias -s tgz='tar -xzvf'
-alias -s zip='unzip'
-alias -s bz2='tar -xjvf'
-alias -s php=vi
-#alias -s py=vi
-alias -s rb=vi
-alias -s html=vi
+#alias -s gz='tar -xzvf'
+#alias -s tgz='tar -xzvf'
+#alias -s zip='unzip'
+#alias -s bz2='tar -xjvf'
+#alias -s php=vi
+##alias -s py=vi
+#alias -s rb=vi
+#alias -s html=vi
 
 alias aliasgrep='alias | grep '
 alias npmig='npm install -g '
@@ -105,3 +105,13 @@ alias lastcommitfiles='git log --pretty=format: --name-only -n 1'
 alias gitrenamebranch='git branch -m'
 alias gpush='ggpush'
 alias gpull='ggpull'
+alias discardchanges='git checkout .'
+
+#https://github.com/caarlos0/ports/blob/master/ports
+ports(){
+  [[ -n $1 ]] && lsof -i :"$1" && return 0
+  lsof -i -n -P
+}
+portskill(){
+  ports "$1" | awk '{ print $2; }' #| xargs kill -9
+}
