@@ -12,11 +12,11 @@ plugins=(
   battery
 )
 REFRESH_RATE=2
-ALIASFILE=~/.aliases.zsh
+ALIASFILE=~/scripts/aliases.zsh
 source $ZSH/oh-my-zsh.sh
 [[ -f ~/.secret_common_sh_rc ]] && source ~/.secret_common_sh_rc
 source $ALIASFILE
-source ~/.colored_man_pages.zsh
+source ~/scripts/colored_man_pages.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #autoload -Uz myspotify && myspotify
 #. ~/.zsh-async.zsh
@@ -366,13 +366,14 @@ stop_hogging_processes(){
 #}
 }
 
-source ~/.prompt.zsh
+source ~/scripts/prompt.zsh
 
 zstyle ':completion:*:manuals'    separate-sections true
 zstyle ':completion:*:manuals.*'  insert-sections   true
 zstyle ':completion:*:man:*'      menu yes select
 
-source ~/.global_worker.zsh
+source ~/scripts/global_worker.zsh
 end=$(gdate +%s%N)
 loadtime=$(( $end - $start ))
 echo "loadtime: $(( $loadtime/1000000000.0 ))"
+

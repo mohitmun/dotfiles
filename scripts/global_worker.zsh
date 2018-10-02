@@ -11,7 +11,7 @@ then
 else
   while true;do
     sleep $REFRESH_RATE
-    ~/.spotify.osascript > ~/.export_osascript_system_status
+    ~/scripts/spotify.osascript > ~/.export_osascript_system_status
     stop_hogging_processes
     #volume_level=`osascript -e "output volume of (get volume settings)"`
   done &!
