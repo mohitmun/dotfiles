@@ -447,12 +447,12 @@ vnoremap < <gv
 let g:fzf_history_dir = '~/.vim/fzf-history'
 
 "https://github.com/ervandew/supertab/issues/53#issuecomment-9980930
-let g:SuperTabCrMapping = 0
-let g:SuperTabDefaultCompletionType = 'context'
-autocmd FileType *
-      \ if &omnifunc != '' |
-      \     call SuperTabChain(&omnifunc, '<c-p>') |
-      \ endif
+"let g:SuperTabCrMapping = 0
+"let g:SuperTabDefaultCompletionType = 'context'
+"autocmd FileType *
+      "\ if &omnifunc != '' |
+      "\     call SuperTabChain(&omnifunc, '<c-p>') |
+      "\ endif
 
 "https://stackoverflow.com/a/10525050/2577465
 fu! SaveSess()
@@ -555,7 +555,7 @@ nnoremap <Leader>u :MundoToggle<CR>
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsEditSplit="vertical"
 
 " remeber when i was debuging here doc and white space was fucking up
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -615,7 +615,7 @@ set viminfo+='1000
 set viminfo=
 set viminfo+='1000  " max number of previous files for which the marks are remembered
 set viminfo+=!      " save and restore globals in all uppercase
-set viminfo+=%      " save and restore buffer list
+"set viminfo+=%      " save and restore buffer list
 set viminfo+=/1000  " max number of search and substitute patterns to save
 set viminfo+=:1000  " max number of command line items to save
 set viminfo+=<100   " max number of lines for each register to save
