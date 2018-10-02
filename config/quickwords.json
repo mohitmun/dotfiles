@@ -43,6 +43,20 @@
 			"value": "mohitcrox@gmail.com",
 			"regex": false,
 			"type": "plain"
+		},
+		{
+			"id": 5793575,
+			"key": ";ts",
+			"value": "/**\n * @param {string} trigger A string that was matched\n * @return {string} Replacement\n */\nfunction qw(trigger) {\n  var a = + new Date();\n  a = parseInt(a / 1000)\n  return a.toString();\n}\n",
+			"regex": false,
+			"type": "js"
+		},
+		{
+			"id": 2057834,
+			"key": ";ip",
+			"value": "/**\n * @param {string} trigger A string that was matched\n * @return {string} Replacement\n */\nfunction qw(trigger) {\n  const execSync = require('child_process').execSync;\n  return execSync(\"curl ipinfo.io/ip\").toString();\n}\n",
+			"regex": false,
+			"type": "js"
 		}
 	],
 	"bufferLength": 20,
