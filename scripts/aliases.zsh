@@ -96,8 +96,8 @@ alias crdiff='config fetch origin master:master_remote && config diff master_rem
 
 alias di='docker images'
 alias notes='cat ~/.notes'
-alias stop='killall -STOP'
-alias cont='killall -CONT'
+alias stop='pkill -STOP'
+alias cont='pkill -CONT'
 alias downloadsong='youtube-dl --extract-audio --audio-format mp3 --audio-quality 0'
 alias calias='cga ~/.aliases.zsh && config commit -m 'alias update''
 alias tailf='tail -f'

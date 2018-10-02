@@ -1,0 +1,50 @@
+{
+	"theme": 0,
+	"autoLaunch": true,
+	"snippets": [
+		{
+			"id": 2,
+			"key": "<3",
+			"value": "❤️",
+			"regex": false,
+			"type": "plain"
+		},
+		{
+			"id": 1752164,
+			"key": "thx",
+			"value": "Thanks!",
+			"regex": false,
+			"type": "plain"
+		},
+		{
+			"id": 3619462,
+			"key": "ifs",
+			"value": "In-fucking-sane",
+			"regex": false,
+			"type": "plain"
+		},
+		{
+			"id": 4066619,
+			"key": ";time",
+			"value": "/**\n * @param {string} trigger A string that was matched\n * @return {string} Replacement\n */\nfunction qw(trigger) {\n  return new Date().toString();\n}",
+			"regex": false,
+			"type": "js"
+		},
+		{
+			"id": 4785252,
+			"key": ";fori",
+			"value": "for NUM in `seq 16`; do \n\ndone",
+			"regex": false,
+			"type": "plain"
+		},
+		{
+			"id": 6228302,
+			"key": ";em",
+			"value": "mohitcrox@gmail.com",
+			"regex": false,
+			"type": "plain"
+		}
+	],
+	"bufferLength": 20,
+	"autoUpdate": true
+}

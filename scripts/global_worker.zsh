@@ -10,7 +10,7 @@ then
    # Do something knowing the pid exists, i.e. the process with $PID is running
 else
   while true;do
-    sleep $REFRESH_RATE
+    sleep $OSASCRIPT_REFRESH_RATE
     ~/scripts/spotify.osascript > ~/.export_osascript_system_status
     stop_hogging_processes
     #volume_level=`osascript -e "output volume of (get volume settings)"`
