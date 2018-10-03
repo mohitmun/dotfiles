@@ -426,5 +426,5 @@ int main(int argc, char **argv)
   BOOL shocked = NO;
   NSString *activeApp = [[[NSWorkspace sharedWorkspace] activeApplication] objectForKey:@"NSApplicationName"];
   printf("volume_level=%d\n", vol_get());
-  printf("frontApp=%s", [activeApp UTF8String]);
+  printf("frontApp=%s\n", [activeApp UTF8String]);
 }
