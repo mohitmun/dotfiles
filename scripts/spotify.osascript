@@ -1,8 +1,6 @@
-#!/usr/bin/env osascript
 # Returns the current playing song in Spotify for OSX
-
+set spotify_info to ""
 tell application "Spotify"
-  set spotify_info to ""
   if it is running then
     if player state is playing then
       set track_name to name of current track
@@ -38,12 +36,6 @@ tell application "Spotify"
       end if
     end if
   end if
-  set vol to (output volume of (get volume settings))
   #spotify_info & "\n" output volume of (get volume settings)
 end tell
-
-tell application "System Events"
-  set frontApp to name of first application process whose frontmost is true
-  #display notification "Lorem ipsum dolor sit amet" with title frontApp
-end tell
-spotify_info & "\n" & "volume_level=" & vol & "\n" & "frontApp=" & frontApp
+spotify_info

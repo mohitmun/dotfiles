@@ -116,3 +116,6 @@ portskill(){
   ports "$1" | awk '{ print $2; }' #| xargs kill -9
 }
 alias nvmact='export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
+alias psp='ps -p'
+alias datetime='date "+%Y-%m-%d %H:%M:%S"'
+alias killglobalthread='cat ~/.global_worker.pid | xargs kill -9'
