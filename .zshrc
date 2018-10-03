@@ -11,8 +11,8 @@ plugins=(
   z
   battery
 )
-REFRESH_RATE=60
-OSASCRIPT_REFRESH_RATE=3
+REFRESH_RATE=10
+OSASCRIPT_REFRESH_RATE=1
 ALIASFILE=~/scripts/aliases.zsh
 source $ZSH/oh-my-zsh.sh
 [[ -f ~/.secret_common_sh_rc ]] && source ~/.secret_common_sh_rc
@@ -346,6 +346,57 @@ stop_hogging_processes(){
     export chrome_continued=true
     unset chrome_stopped
   fi
+
+  if [ "$frontApp" != "Finder" ] && [ -z $finder_stopped ];then
+    mylog "mbga stopping finder"
+    stop Finder
+    export finder_stopped=true
+    unset finder_continued
+  fi
+
+  if [ "$frontApp" = "Finder" ] && [ -z $finder_continued ];then
+    mylog "mbga continue finder"
+    cont Finder
+    export finder_continued=true
+    unset finder_stopped
+  fi
+
+  if [ "$frontApp" != "iTerm2" ] && [ -z $iTerm2_stopped ];then
+    mylog "mbga stopping iTerm2"
+    stop iTerm2
+    #kill -STOP $(pgrep iTerm2)
+    #pgrep iTerm2 | xargs kill -STOP
+    export iTerm2_stopped=true
+    unset iTerm2_continued
+  fi
+
+  if [ "$frontApp" = "iTerm2" ] && [ -z $iTerm2_continued ];then
+    mylog "mbga continue iTerm2"
+    cont iTerm2
+    #kill -CONT $(pgrep iTerm2)
+    #pgrep iTerm2 | xargs kill -CONT
+    export iTerm2_continued=true
+    unset iTerm2_stopped
+  fi
+
+  #if [ "$frontApp" != "Spotify" ] && [ -z $Spotify_stopped ];then
+    ## dont stop if i'm listening
+    ## how can I determine if song is playing?
+    ## using apple script
+    ## but applescript wont run if spotify is stopped
+    ##
+    #mylog "mbga stopping Spotify"
+    #stop Spotify
+    #export Spotify_stopped=true
+    #unset Spotify_continued
+  #fi
+
+  #if [ "$frontApp" = "Spotify" ] && [ -z $spotify_continued ];then
+    #mylog "mbga continue spotify"
+    #cont Spotify
+    #export spotify_continued=true
+    #unset spotify_stopped
+  #fi
 # generic ijmplementation
 #stop_hogging_processes(){
   #export_osascript_system_status
