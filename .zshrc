@@ -331,17 +331,17 @@ containsElement () {
   return 1
 }
 stop_hogging_processes(){
+  # TODO add timeout, stop only if chrome idle for more than X seconds
   export_osascript_system_status
-
   if [ "$frontApp" != "Google Chrome" ] && [ -z $chrome_stopped ];then
-    notify "Stopping google chrome"
+    mylog "mbga stopping chrome"
     stop "Google Chrome"
     export chrome_stopped=true
     unset chrome_continued
   fi
 
   if [ "$frontApp" = "Google Chrome" ] && [ -z $chrome_continued ];then
-    notify "Continue google chrome"
+    mylog "mbga continue chrome"
     cont "Google Chrome"
     export chrome_continued=true
     unset chrome_stopped
@@ -367,6 +367,9 @@ stop_hogging_processes(){
 #}
 }
 
+mylog(){
+  echo "$(datetime) $1" >> ~/mohit.log
+}
 source ~/scripts/prompt.zsh
 
 zstyle ':completion:*:manuals'    separate-sections true
