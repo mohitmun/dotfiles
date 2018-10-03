@@ -416,6 +416,7 @@ static void show(bool verbose)
 	//return 0;
 //}
 
+//gcc -framework IOKit -framework Cocoa -framework Carbon -framework AudioToolbox -framework CoreAudio system_info.m -o system_info
 int main(int argc, char **argv)
 {
   io_service_t      service;
