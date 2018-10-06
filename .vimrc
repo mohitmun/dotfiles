@@ -624,6 +624,9 @@ set viminfo+=f1     " store file marks ('0 to '9, 'A to 'Z)
 set viminfo+=h      " disable effect of hlsearch when loading viminfo
 set viminfo+=s10    " max size of an item in Kb
 
-iab  btw by the way
+"Vimnotes
 "http://vim.wikia.com/wiki/Delete_all_lines_containing_a_pattern
 " :g!/http/d deletes lines not containing http
+"pain points
+" vim multiple cursor is slow
+" autocomplete when using vim

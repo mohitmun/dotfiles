@@ -57,6 +57,27 @@
 			"value": "/**\n * @param {string} trigger A string that was matched\n * @return {string} Replacement\n */\nfunction qw(trigger) {\n  const execSync = require('child_process').execSync;\n  return execSync(\"curl ipinfo.io/ip\").toString();\n}\n",
 			"regex": false,
 			"type": "js"
+		},
+		{
+			"id": 5964991,
+			"key": ";sP",
+			"value": "function qw(trigger) {\n  const execSync = require('child_process').execSync;\n  execSync(\"~/bin/sconsify -command play_pause\").toString();\n  return \"\";\n}\n",
+			"regex": false,
+			"type": "js"
+		},
+		{
+			"id": 3039544,
+			"key": ";gpkt",
+			"value": "function qw(trigger) {\n  const execSync = require('child_process').execSync;\n  execSync(\"open http://getpocket.com\").toString();\n  return \"\";\n}",
+			"regex": false,
+			"type": "js"
+		},
+		{
+			"id": 2519931,
+			"key": ";tel",
+			"value": "function qw(trigger) {\n  const execSync = require('child_process').execSync;\n  execSync(\"open https://web.telegram.com\").toString();\n  return \"\";\n}",
+			"regex": false,
+			"type": "js"
 		}
 	],
 	"bufferLength": 20,

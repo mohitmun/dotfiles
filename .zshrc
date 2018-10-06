@@ -188,30 +188,6 @@ function mcd() {
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-list_repo_containing_search(){
-  #TODO need to edit function
-  # == == == == == == == == == == == == == == == == == == == ==
-  # List repo by user
-  # curl -G 'https://api.github.com/users/mohitmun/repos?page=3&per_page=100'
-  # == == == == == == == == == == == == == == == == == == == ==
-  # List repo by org
-  # curl -G 'https://api.github.com/orgs/google/repos?page=3&per_page=100'
-  # == == == == == == == == == == == == == == == == == == == ==
-  # List repo info
-  # curl -G 'https://api.github.com/repo/username/reponame'
-  # == == == == == == == == == == == == == == == == == == == ==
-  for NUM in `seq 16`; do
-    curl "https://github.com/search?p=$GPAGE&q=my_query&type=Code" --compressed > github$GPAGE;
-    cat github$NUM | pup "#code_search_results > div.code-list a.text-bold text{}" >> searchlist;
-  done
-  uniq searchlist > searchlistuniq
-  while read repo;
-    do curl "https://api.github.com/repos/"$repo > `echo $repo | tr '/' '-'` 
-    sleep 2
-  done < searchlistuniq
-  cat * | jq -r '[.full_name, .stargazers_count, .description] | @csv' > repos.csv
-}
-
 cht(){
   curl cht.sh/$1
 }
@@ -269,9 +245,6 @@ function each() {
     #end tell
 #EOF
 
-curl_github(){
-  curl -u $GITHUB_USERNAME_SPAM:$GITHUB_PASSWORD_SPAM "https://api.github.com$1"
-}
 #TODO https://gist.github.com/phette23/5270658
 #TODO https://superuser.com/questions/292652/change-iterm2-window-and-tab-titles-in-zsh/292660#292660
 
@@ -301,11 +274,6 @@ zrc(){
 #}
 #PROMPT="$(testmybug)
 #53hello >>>"
-
-
-killp(){
-  kill $(lsof -t -i:$1)
-}
 
 #Most edited files in project(https://news.ycombinator.com/item?id=16300152)
 mosteditedfiles(){
@@ -431,4 +399,3 @@ source ~/scripts/global_worker.zsh
 end=$(gdate +%s%N)
 loadtime=$(( $end - $start ))
 echo "loadtime: $(( $loadtime/1000000000.0 ))"
-
