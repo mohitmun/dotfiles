@@ -1,106 +1,33 @@
-
-# Tig Config
-# Borrowed from https://github.com/jdavis/dotfiles/blob/master/.tigrc
-
-#
-# Basic Config
-#
-
-# Just say no to 8 spaces
-set tab-size = 4
-
-set line-graphics = utf-8
-
-#
-# Colors
-# Source:
-#   https://github.com/cbertoldi/dotfiles/blob/master/tigrc.symlink
-#
-# Syntax:
-# *color* 'area' 'fgcolor' 'bgcolor' '[attributes]'
-
-# general
-color   default                 15      235
-color   cursor                  15      241
-color   title-focus             242     221
-color   title-blur              242     221
-color   delimiter               213     default
-color   author                  156     default
-color   date                    81      default
-color   line-number             221     default
-color   mode                    255     default
-
-# main
-color   main-tag                213     default     bold
-color   main-local-tag          213     default
-color   main-remote             221     default
-color   main-replace            81      default
-color   main-tracked            221     default     bold
-color   main-ref                81      default
-color   main-head               213     default     bold
-color   graph-commit            226     default
-
-# status
-#color  stat-head       81      default
-
-# Diff   colors
-color   diff_add                10      default
-color   diff_add2               10      default
-color   diff_del                196     default
-color   diff_del2               196     default
-color   diff-header             221     default
-color   diff-index              81      default
-color   diff-chunk              213     default
-color   diff_oldmode            221     default
-color   diff_newmode            221     default
-color   'deleted file mode'     221     default
-color   'copy from'             223     default
-color   'copy to'               221     default
-color   'rename from'           221     default
-color   'rename to'             221     default
-color   diff_similarity         221     default
-color   "dissimilarity"         221     default
-color   "diff-tree"             81      default
-color   diff-stat               81      default
-color   "Reported-by:"          156     default
-
-color   "Author:"               156     default
-color   "Commit:"               213     default
-color   "AuthorDate:"           221     default
-color   "CommitDate:"           221     default
-color   "Date:"                 81      default
-color   pp_refs                 213     default
-color   palette-0               226     default
-color   palette-1               213     default
-color   palette-2               118     default
-color   palette-3               51      default
-color   palette-4               196     default
-color   palette-5               219     default
-color   palette-6               190     default
-
-# status
-color   status.header           221     default
-color   status.section          81      default
-color   stat_staged             213     default
-color   stat_unstaged           213     default
-color   stat_untracked          213     default
-
-# raw commit header
-color   commit                  156     default
-color   committer               213     default
-
-# commit message
-color   "Signed-off-by"         221     default
-color   "Acked-by"              221     default
-color   "Tested-by"             221     default
-color   "Reviewed-by"           221     default
-
-# tree
-color   tree.directory          221     default
-
 #https://github.com/jonhiggs/dotfiles/blob/c4b1295db6640603e2dc4d5471f21bf2c529404e/tig/.tigrc
+set line-graphics		= utf-8
+
+set show-changes      = yes #
+bind status C         none
+bind status <Ctrl-G>  !git commit -v
+bind status P         !git push origin
+bind status R         !git rebase -i HEAD~10
+
+color default         white black
+color author          default default normal
+color cursor          default 242 bold
+color date            yellow default normal
+color diff-chunk      white 052 normal
+color graph-commit    green default
+color header          white 025 bold
+color overflow        green red
+color stat-none       red default
+color stat-staged     green default
+color stat-unstaged   red default
+color stat-untracked  red default
+color title-blur      white 025 bold
+color title-focus     white 236
+
+# VIM STUFF
 bind generic    F       view-grep       # Rebind the grep view
 bind generic    g       none            # Clear old 'g' binding to allow for 'gg' etc.
 bind generic    gg      move-first-line
 bind main       G       none            # Clear commit graph toggling
 bind generic    G       move-last-line
+
+set mouse = yes
+set mouse-scroll = 3
