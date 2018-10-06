@@ -96,8 +96,8 @@ alias crdiff='config fetch origin master:master_remote && config diff master_rem
 
 alias di='docker images'
 alias notes='cat ~/.notes'
-alias stop='pkill -STOP'
-alias cont='pkill -CONT'
+#alias stop='pkill -STOP'
+#alias cont='pkill -CONT'
 alias downloadsong='youtube-dl --extract-audio --audio-format mp3 --audio-quality 0'
 alias calias='cga ~/.aliases.zsh && config commit -m 'alias update''
 alias tailf='tail -f'
@@ -119,3 +119,14 @@ alias nvmact='export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NV
 alias psp='ps -p'
 alias datetime='date "+%Y-%m-%d %H:%M:%S"'
 alias killglobalthread='cat ~/.global_worker.pid | xargs kill -9'
+
+stop(){
+  ps aux |  grep -v grep | grep $1 | awk '{ print $2 }' | xargs kill -STOP
+}
+
+cont(){
+  ps aux |  grep -v grep | grep $1 | awk '{ print $2 }' | xargs kill -CONT
+}
+alias sconsify='~/bin/sconsify'
+
+alias curl_github="curl -u $GITHUB_USERNAME_SPAM:$GITHUB_PASSWORD_SPAM"
