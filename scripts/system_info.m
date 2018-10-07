@@ -2,7 +2,7 @@
 #include <stdnoreturn.h>
 
 #include <CoreAudio/CoreAudio.h>
-
+#include "cpu2.h"
 #include <Cocoa/Cocoa.h>
 #include <Carbon/Carbon.h>
 #include <IOKit/graphics/IOGraphicsLib.h>
@@ -425,6 +425,7 @@ int main(int argc, char **argv)
   service = CGDisplayIOServicePort(targetDisplay);
   BOOL shocked = NO;
   NSString *activeApp = [[[NSWorkspace sharedWorkspace] activeApplication] objectForKey:@"NSApplicationName"];
+  //print_cpu();
   printf("volume_level=%d\n", vol_get());
   printf("frontApp=%s\n", [activeApp UTF8String]);
 }

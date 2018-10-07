@@ -28,7 +28,7 @@ processor_cpu_load_info_t cpuInfo, prevCpuInfo;
 mach_msg_type_number_t numCpuInfo, numPrevCpuInfo;
 unsigned int numCPUs;
 
-int main(int argc, char** argv){
+int print_cpu(){
     /* struct required for newfangled nanosleep */
     struct timespec delay, delay2;
     delay.tv_sec = 0;
