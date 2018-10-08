@@ -18,6 +18,7 @@ source $ZSH/oh-my-zsh.sh
 [[ -f ~/.secret_common_sh_rc ]] && source ~/.secret_common_sh_rc
 source $ALIASFILE
 source ~/scripts/colored_man_pages.zsh
+source ~/zsh/functions.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #autoload -Uz myspotify && myspotify
 #. ~/.zsh-async.zsh
