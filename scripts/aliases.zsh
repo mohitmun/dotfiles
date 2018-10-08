@@ -130,3 +130,4 @@ cont(){
 alias sconsify='~/bin/sconsify'
 
 alias curl_github="curl -u $GITHUB_USERNAME_SPAM:$GITHUB_PASSWORD_SPAM"
+alias cpull='config pull origin_github master'
