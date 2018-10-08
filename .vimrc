@@ -631,3 +631,7 @@ set viminfo+=s10    " max size of an item in Kb
 "pain points
 " vim multiple cursor is slow
 " autocomplete when using vim
+
+map <leader>aspl :!aspell -c % <CR>
+map <leader>espl :setlocal spell<CR>
+map <leader>dspl :setlocal nospell<CR>
