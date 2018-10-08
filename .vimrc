@@ -601,7 +601,8 @@ endfunction
 "let g:completor_auto_trigger = 1
 inoremap <expr> <Tab> Tab_Or_Complete()
 map <C-a> ggVG
-
+" delete blank lines
+map <leader>dbl :g/^$/d<CR>:noh<CR>
 " unused keys
 " shift - H, K, L, M
 map K <Nop>
