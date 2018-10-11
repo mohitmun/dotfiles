@@ -87,7 +87,9 @@ bindkey "^j" down-line-or-beginning-search
 bindkey "^k" up-line-or-beginning-search
 bindkey "^b" backward-word
 bindkey "^d" backward-char
+bindkey "^h" backward-char
 bindkey "^f" forward-char
+bindkey "^l" forward-char
 bindkey "^v" forward-word
 
 #TODO what is difference when using function keyword or not
