@@ -58,8 +58,11 @@ bindkey '^I' $fzf_default_completion
 ## https://github.com/agarrharr/awesome-cli-apps
 # explore more on https://github.com/alebcay/awesome-shell 	
 #https://github.com/kahun/awesome-sysadmin
+#vtop
 #https://github.com/k4m4/terminals-are-sexy
 # https://github.com/jondot/awesome-devenv
+# https://github.com/rgcr/m-cli
+# fkill
 # A command-line todo list manager for people that want to finish tasks, not organize them
 # https://github.com/sjl/t
 #

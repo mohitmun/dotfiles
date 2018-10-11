@@ -109,7 +109,7 @@ alias discardchanges='git checkout .'
 
 #https://github.com/caarlos0/ports/blob/master/ports
 ports(){
-  [[ -n $1 ]] && lsof -i :"$1" && return 0
+  [[ -n $1 ]] && lsof -i :"$1" || return 0
   lsof -i -n -P
 }
 portskill(){
