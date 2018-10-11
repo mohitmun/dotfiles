@@ -18,6 +18,7 @@ source $ZSH/oh-my-zsh.sh
 [[ -f ~/.secret_common_sh_rc ]] && source ~/.secret_common_sh_rc
 source $ALIASFILE
 source ~/scripts/colored_man_pages.zsh
+source ~/zsh/functions.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #autoload -Uz myspotify && myspotify
 #. ~/.zsh-async.zsh
@@ -85,6 +86,9 @@ bindkey "^[OB" down-line-or-beginning-search
 bindkey "^j" down-line-or-beginning-search
 bindkey "^k" up-line-or-beginning-search
 bindkey "^b" backward-word
+bindkey "^d" backward-char
+bindkey "^f" forward-char
+bindkey "^v" forward-word
 
 #TODO what is difference when using function keyword or not
 

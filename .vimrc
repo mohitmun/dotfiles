@@ -130,6 +130,8 @@ Plug 'RRethy/vim-illuminate', { 'on':  'IlluminationEnable' }
 "Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'maralla/completor.vim'
 Plug 'ruanyl/vim-gh-line'
+Plug 'danro/rename.vim'
+"Plug 'SidOfc/mkdx'
 call plug#end()
 
 source ~/.vim/cscope.vim
@@ -631,3 +633,10 @@ set viminfo+=s10    " max size of an item in Kb
 "pain points
 " vim multiple cursor is slow
 " autocomplete when using vim
+" writing markdown faster
+
+map <leader>aspl :!aspell -c % <CR>
+map <leader>espl :setlocal spell<CR>
+map <leader>dspl :setlocal nospell<CR>
+
+autocmd FileType ruby map <C-b> :!ruby %<CR>
