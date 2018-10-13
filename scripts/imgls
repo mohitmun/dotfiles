@@ -34,7 +34,7 @@ function list_file() {
     print_osc
     printf '1337;File=name='`echo -n "$fn" | base64`";"
     wc -c "$fn" | awk '{printf "size=%d",$1}'
-    printf ";inline=1;height=3;width=3;preserveAspectRatio=true"
+    printf ";inline=1;height=10;width=10;preserveAspectRatio=true"
     printf ":"
     base64 < "$fn"
     print_st
