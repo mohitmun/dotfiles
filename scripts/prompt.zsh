@@ -135,24 +135,26 @@ get_volume_indicator(){
 }
 
 get_battery(){
-  battery_info=`pmset -g batt`
-  current_charge=$(echo $battery_info | grep -o '[0-9]\+%' | awk '{sub (/%/, "", $1); print $1}')
+  if [ $PLATFORM = "osx" ];then
+    battery_info=`pmset -g batt`
+    current_charge=$(echo $battery_info | grep -o '[0-9]\+%' | awk '{sub (/%/, "", $1); print $1}')
 
-  #if [[ $current_charge -lt 10 ]]; then
-      #echo -n "$FG[052]"
-  #elif [[ $current_charge -lt 30 ]]; then
-      #echo -n "$FG[058]"
-  #elif [[ $current_charge -lt 50 ]]; then
-      #echo -n "$FG[064]"
-  #elif [[ $current_charge -lt 70 ]]; then
-      #echo -n "$FG[070]"
-  #elif [[ $current_charge -lt 90 ]]; then
-      #echo -n "$FG[076]"
-  #else
-      #echo -n "$FG[082]"
-  #fi
+    #if [[ $current_charge -lt 10 ]]; then
+        #echo -n "$FG[052]"
+    #elif [[ $current_charge -lt 30 ]]; then
+        #echo -n "$FG[058]"
+    #elif [[ $current_charge -lt 50 ]]; then
+        #echo -n "$FG[064]"
+    #elif [[ $current_charge -lt 70 ]]; then
+        #echo -n "$FG[070]"
+    #elif [[ $current_charge -lt 90 ]]; then
+        #echo -n "$FG[076]"
+    #else
+        #echo -n "$FG[082]"
+    #fi
 
-  echo -n "$HEART $current_charge "
+    echo -n "$HEART $current_charge "
+  fi
 }
 
 export_osascript_system_status(){
@@ -200,7 +202,7 @@ get_tmux_session_name(){
 }
 # primary prompt
 if [ -n "$SSH_CLIENT" ]; then
-    S_TYPE="$FG[078][ssh]${reset_color}"
+    S_TYPE="$FG[078][SSH]${reset_color}"
 else
     S_TYPE=""
 fi

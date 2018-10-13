@@ -1,5 +1,15 @@
 # GistID:963f95aaf61d50e512511ac4eb097e50
 # vim: set ft=zsh:
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  platform="osx"
+elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
+  platform="linux"
+elif [[ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]]; then
+  platform="windows"
+fi
+
+export PLATFORM=$platform
 export ZSH=~/omz
 start=$(gdate +%s%N)
 plugins=(
