@@ -415,7 +415,7 @@ zstyle ':completion:*:manuals'    separate-sections true
 zstyle ':completion:*:manuals.*'  insert-sections   true
 zstyle ':completion:*:man:*'      menu yes select
 
-if [ $PLATFORM = "osx"];then
+if [ $PLATFORM = "osx" ];then
   source ~/scripts/global_worker.zsh
 fi
 
