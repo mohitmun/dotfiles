@@ -78,6 +78,13 @@
 			"value": "function qw(trigger) {\n  const execSync = require('child_process').execSync;\n  execSync(\"open https://web.telegram.com\").toString();\n  return \"\";\n}",
 			"regex": false,
 			"type": "js"
+		},
+		{
+			"id": 6910769,
+			"key": ";df",
+			"value": "difference between ",
+			"regex": false,
+			"type": "plain"
 		}
 	],
 	"bufferLength": 20,

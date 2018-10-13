@@ -200,7 +200,7 @@ get_tmux_session_name(){
 }
 # primary prompt
 if [ -n "$SSH_CLIENT" ]; then
-    S_TYPE="[ssh]"
+    S_TYPE="$FG[078][ssh]${reset_color}"
 else
     S_TYPE=""
 fi
