@@ -11,6 +11,10 @@ fi
 
 export PLATFORM=$platform
 export ZSH=~/omz
+export REFRESH_RATE=60
+export OSASCRIPT_REFRESH_RATE=1
+export ALIASFILE=~/scripts/aliases.zsh
+
 start=$(gdate +%s%N)
 plugins=(
   git
@@ -21,12 +25,9 @@ plugins=(
   z
   battery
 )
-REFRESH_RATE=60
-OSASCRIPT_REFRESH_RATE=1
-ALIASFILE=~/scripts/aliases.zsh
+source $ALIASFILE
 source $ZSH/oh-my-zsh.sh
 [[ -f ~/.secret_common_sh_rc ]] && source ~/.secret_common_sh_rc
-source $ALIASFILE
 source ~/scripts/colored_man_pages.zsh
 source ~/zsh/functions.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -414,7 +415,10 @@ zstyle ':completion:*:manuals'    separate-sections true
 zstyle ':completion:*:manuals.*'  insert-sections   true
 zstyle ':completion:*:man:*'      menu yes select
 
-source ~/scripts/global_worker.zsh
+if [ $PLATFORM = "osx"];then
+  source ~/scripts/global_worker.zsh
+fi
+
 end=$(gdate +%s%N)
 loadtime=$(( $end - $start ))
 echo "loadtime: $(( $loadtime/1000000000.0 ))"
