@@ -15,7 +15,7 @@ export REFRESH_RATE=60
 export OSASCRIPT_REFRESH_RATE=1
 export ALIASFILE=~/scripts/aliases.zsh
 
-start=$(gdate +%s%N)
+#start=$(gdate +%s%N)
 plugins=(
   git
   transfer
@@ -419,6 +419,6 @@ if [ $PLATFORM = "osx" ];then
   source ~/scripts/global_worker.zsh
 fi
 
-end=$(gdate +%s%N)
-loadtime=$(( $end - $start ))
-echo "loadtime: $(( $loadtime/1000000000.0 ))"
+#end=$(gdate +%s%N)
+#loadtime=$(( $end - $start ))
+#echo "loadtime: $(( $loadtime/1000000000.0 ))"
