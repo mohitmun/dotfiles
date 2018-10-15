@@ -109,7 +109,10 @@ alias discardchanges='git checkout .'
 
 #https://github.com/caarlos0/ports/blob/master/ports
 ports(){
-  [[ -n $1 ]] && lsof -i :"$1" && return 0
+  if [[ -n $1 ]];then
+    lsof -i :"$1"
+    return 0
+  fi
   lsof -i -n -P
 }
 portskill(){
@@ -137,3 +140,7 @@ alias tocode='cd ~/Desktop/code'
 bkp(){
   cp $1 $1.bkp
 }
+alias cpu='~/bin/cpu'
+alias imgcat='~/scripts/imgcat'
+alias imgls='~/scripts/imgls'
+alias imgcat='~/scripts/imgcat'
