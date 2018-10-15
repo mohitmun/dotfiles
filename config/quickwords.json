@@ -11,14 +11,14 @@
 		},
 		{
 			"id": 1752164,
-			"key": "thx",
+			"key": ";thx",
 			"value": "Thanks!",
 			"regex": false,
 			"type": "plain"
 		},
 		{
 			"id": 3619462,
-			"key": "ifs",
+			"key": ";ifs",
 			"value": "In-fucking-sane",
 			"regex": false,
 			"type": "plain"
@@ -78,6 +78,13 @@
 			"value": "function qw(trigger) {\n  const execSync = require('child_process').execSync;\n  execSync(\"open https://web.telegram.com\").toString();\n  return \"\";\n}",
 			"regex": false,
 			"type": "js"
+		},
+		{
+			"id": 2042224,
+			"key": ";lmk",
+			"value": "Let me know",
+			"regex": false,
+			"type": "plain"
 		}
 	],
 	"bufferLength": 20,
