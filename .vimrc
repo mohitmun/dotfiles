@@ -50,9 +50,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-  mkdir -p ~/.vim/undodir
-  mkdir -p ~/.vim/backupdir
-  mkdir -p ~/.vim/directory
+  silent !mkdir -p ~/.vim/undodir
+  silent !mkdir -p ~/.vim/backupdir
+  silent !mkdir -p ~/.vim/directory
 endif
 
 call plug#begin()
