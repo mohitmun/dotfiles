@@ -393,6 +393,13 @@ stop_hogging_processes(){
 mylog(){
   echo "$(datetime) $1" >> ~/mohit.log
 }
+#https://news.ycombinator.com/item?id=18216385
+cdf () {
+  currFolderPath=$(/usr/bin/osascript ~/scripts/finder.osascript)
+  echo "cd to \"$currFolderPath\""
+  cd "$currFolderPath"
+}
+
 source ~/scripts/prompt.zsh
 
 zstyle ':completion:*:manuals'    separate-sections true
