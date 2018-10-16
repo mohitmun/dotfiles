@@ -605,9 +605,13 @@ inoremap <expr> <Tab> Tab_Or_Complete()
 map <C-a> ggVG
 " delete blank lines
 map <leader>dbl :g/^$/d<CR>:noh<CR>
+map <leader>rts :%s/\s\+$//e<CR>
 " unused keys
-" shift - H, K, L, M
+" shift - K,  M
 map K <Nop>
+"https://github.com/bag-man/dotfiles/blob/master/vimrc#L59
+map H ^
+map L $
 nnoremap M :Maps<CR>
 nnoremap <leader>gf :GFiles?<CR>
 nnoremap * *N
