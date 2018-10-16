@@ -135,6 +135,11 @@ alias sconsify='~/bin/sconsify'
 
 alias curl_github="curl -u $GITHUB_USERNAME_SPAM:$GITHUB_PASSWORD_SPAM"
 alias cpull='config pull origin_github master'
+alias tocode='cd ~/Desktop/code'
+
+bkp(){
+  cp $1 $1.bkp
+}
 alias cpu='~/bin/cpu'
 alias imgcat='~/scripts/imgcat'
 alias imgls='~/scripts/imgls'
