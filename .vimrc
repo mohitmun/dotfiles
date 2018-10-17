@@ -134,7 +134,7 @@ Plug 'danro/rename.vim'
 "Plug 'SidOfc/mkdx'
 call plug#end()
 
-source ~/.vim/cscope.vim
+"source ~/.vim/cscope.vim
 
 let g:deoplete#enable_at_startup = 1
 syntax on

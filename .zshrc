@@ -322,6 +322,8 @@ containsElement () {
 }
 stop_hogging_processes(){
   # TODO add timeout, stop only if chrome idle for more than X seconds
+  return 0
+  echo "stop_hogging_processes"
   export_osascript_system_status
   if [ "$frontApp" != "Google Chrome" ] && [ -z $chrome_stopped ];then
     mylog "mbga stopping chrome"
