@@ -21,24 +21,24 @@
 "  https://stackoverflow.com/a/8783131/2577465
 "https://kev.town/2010/12/15/this-is-your-brain-on-vim/
 "Term
-"  https://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/	
-"  1. Using vim-plug (https://junegunn.kr/2013/09/writing-my-own-vim-plugin-manager/	
-"  https://sanctum.geek.nz/arabesque/buffers-windows-tabs/ (Buffers/windows/tabs) 	
+"  https://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/
+"  1. Using vim-plug (https://junegunn.kr/2013/09/writing-my-own-vim-plugin-manager/
+"  https://sanctum.geek.nz/arabesque/buffers-windows-tabs/ (Buffers/windows/tabs)
 "Vim as IDE http://vim.wikia.com/wiki/Use_Vim_like_an_IDE
-"Key Learnings	
-"  Read the fucking manual, :help is powerful	
-"  Make life easier by vimrc	
-"vimrcs	
-"  https://github.com/amix/vimrc	
-"  https://github.com/nvie/vimrc/blob/master/vimrc	
-"  https://github.com/garybernhardt/dotfiles/blob/master/.vimrc	
-"  https://github.com/mhinz/dotfiles/blob/master/.vim/vimrc	
+"Key Learnings
+"  Read the fucking manual, :help is powerful
+"  Make life easier by vimrc
+"vimrcs
+"  https://github.com/amix/vimrc
+"  https://github.com/nvie/vimrc/blob/master/vimrc
+"  https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
+"  https://github.com/mhinz/dotfiles/blob/master/.vim/vimrc
 "  https://github.com/junegunn/dotfiles/blob/master/vimrc
-"CheatSheets	
-"  https://gist.github.com/0xadada/1ea7f96d108dcfbe75c9	
-"  https://devhints.io/vim	
+"CheatSheets
+"  https://gist.github.com/0xadada/1ea7f96d108dcfbe75c9
+"  https://devhints.io/vim
 "  http://www.viemu.com/vi-vim-cheat-sheet.gif The ultimate vimrc https://github.com/amix/vimrc
-" The ultimate vimrc https://github.com/amix/vimrc 
+" The ultimate vimrc https://github.com/amix/vimrc
 " wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim and
 " move it to ~/.vim/autoload and run :PlugInstall
 " mkdir -p ~/.vim/undodir
@@ -153,7 +153,7 @@ set ruler
 set hlsearch
 set ignorecase
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
 
 "" Makes search act like search in modern browser
 set incsearch
@@ -164,9 +164,9 @@ set backspace=indent,eol,start
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
-" If a file is changed outside of vim, automatically reload it without asking	
-set autoread 
-" Don't make backups at all	
+" If a file is changed outside of vim, automatically reload it without asking
+set autoread
+" Don't make backups at all
 set nobackup
 set nowritebackup
 " Smart way to move between windows
@@ -175,7 +175,7 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" copied previous line word by word https://web.archive.org/web/20160429070600/http://vim.wikia.com/wiki/Duplicate_previous_line_word_by_word# 
+" copied previous line word by word https://web.archive.org/web/20160429070600/http://vim.wikia.com/wiki/Duplicate_previous_line_word_by_word#
 "nmap ,c @<Esc>kyWjP<BS>
 
 " Mappings for moving lines up and down in all modes.
@@ -267,14 +267,14 @@ vmap ii <ESC>
 "https://medium.com/@Aenon/vim-swap-backup-undo-git-2bf353caa02f
 set backupdir=~/.vim/backupdir//
 set directory=~/.vim/directory//
-set undodir=~/.vim/undodir// 
+set undodir=~/.vim/undodir//
 
 set clipboard^=unnamed
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \  {'options': '--delimiter : --nth 2..'}, 
+  \  {'options': '--delimiter : --nth 2..'},
   \   <bang>0)
 
 function! s:ag_with_opts(arg, bang)
@@ -342,7 +342,7 @@ map <leader>q :bd<CR>
 let g:ale_fixers = {
 \   'java': ['google_java_format'],
 \}
-map <leader>c :w !colordiff -u % - 
+map <leader>c :w !colordiff -u % -
 "map <leader>h :exe printf('match IncSearch /\V\</Users/mohit/.vimrcs\>/', escape(expand('1'), '/\'))<CR>
 autocmd CursorMoved * exe exists("HlUnderCursor")?HlUnderCursor?printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\')):'match none':""
 let g:auto_save = 1
@@ -352,8 +352,8 @@ let g:auto_save = 1
 "http://vim.wikia.com/wiki/Search_for_visually_selected_text
 vnoremap // y/\V<C-r>=escape(@",'/\')<CR>
 "http://howivim.com/2016/salvatore-sanfilippo/
-"vmap q <gv	
-"vmap <TAB> >gv 
+"vmap q <gv
+"vmap <TAB> >gv
 "https://github.com/bpierre/dotfiles/blob/master/vimrc
 "nnoremap <C-n> i<CR><ESC>
 cmap w!! w !sudo tee > /dev/null %
@@ -605,9 +605,13 @@ inoremap <expr> <Tab> Tab_Or_Complete()
 map <C-a> ggVG
 " delete blank lines
 map <leader>dbl :g/^$/d<CR>:noh<CR>
+map <leader>rts :%s/\s\+$//e<CR>
 " unused keys
-" shift - H, K, L, M
+" shift - K,  M
 map K <Nop>
+"https://github.com/bag-man/dotfiles/blob/master/vimrc#L59
+map H ^
+map L $
 nnoremap M :Maps<CR>
 nnoremap <leader>gf :GFiles?<CR>
 nnoremap * *N
@@ -647,3 +651,4 @@ map <leader>espl :setlocal spell<CR>
 map <leader>dspl :setlocal nospell<CR>
 
 autocmd FileType ruby map <C-b> :!ruby %<CR>
+" TODO explore https://github.com/bag-man/dotfiles/blob/master/vimrc#L285
