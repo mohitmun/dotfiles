@@ -605,6 +605,7 @@ inoremap <expr> <Tab> Tab_Or_Complete()
 map <C-a> ggVG
 " delete blank lines
 map <leader>dbl :g/^$/d<CR>:noh<CR>
+" remove trailing space
 map <leader>rts :%s/\s\+$//e<CR>
 " unused keys
 " shift - K,  M

@@ -97,7 +97,6 @@ bindkey "^[OB" down-line-or-beginning-search
 bindkey "^j" down-line-or-beginning-search
 bindkey "^k" up-line-or-beginning-search
 bindkey "^b" backward-word
-bindkey "^d" backward-char
 bindkey "^h" backward-char
 bindkey "^f" forward-char
 bindkey "^l" forward-char
