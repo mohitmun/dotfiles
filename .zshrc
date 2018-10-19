@@ -208,6 +208,7 @@ function mcd() {
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/scripts"
+export PATH="$PATH:$HOME/bin"
 
 cht(){
   curl cht.sh/$1
