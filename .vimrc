@@ -134,7 +134,7 @@ Plug 'danro/rename.vim'
 "Plug 'SidOfc/mkdx'
 call plug#end()
 
-source ~/.vim/cscope.vim
+"source ~/.vim/cscope.vim
 
 let g:deoplete#enable_at_startup = 1
 syntax on
@@ -605,6 +605,7 @@ inoremap <expr> <Tab> Tab_Or_Complete()
 map <C-a> ggVG
 " delete blank lines
 map <leader>dbl :g/^$/d<CR>:noh<CR>
+" remove trailing space
 map <leader>rts :%s/\s\+$//e<CR>
 " unused keys
 " shift - K,  M
@@ -639,6 +640,13 @@ set viminfo+=s10    " max size of an item in Kb
 " autocomplete when using vim
 " writing markdown faster
 
+" https://stackoverflow.com/a/6937075/2577465
+" run command on selected text
+" :'<,'>!ls `cat`
+" #TODO explore
+"https://stackoverflow.com/questions/2575545/vim-pipe-selected-text-to-shell-cmd-and-receive-output-on-vim-info-command-line
+"https://stackoverflow.com/questions/6762531/execute-command-for-several-lines-in-vim
+" #TODO how to replace timestamp with date in file
 map <leader>aspl :!aspell -c % <CR>
 map <leader>espl :setlocal spell<CR>
 map <leader>dspl :setlocal nospell<CR>

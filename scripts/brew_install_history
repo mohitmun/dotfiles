@@ -1,0 +1,109 @@
+: 1517478127:0;brew install golang
+: 1517816207:0;brew install tig
+: 1517822052:0;brew install htop
+: 1517926005:0;brew install speedtest-cli
+: 1517987617:0;brew install jq
+: 1518589741:0;brew install gtypist
+: 1519298582:0;brew install pstree
+: 1519726217:0;brew install xmlstarlet
+: 1519916824:0;brew install lynx
+: 1520597966:0;brew install ranger
+: 1520840094:0;brew install when-changed
+: 1520849357:0;brew install cowsay
+: 1520851200:0;brew install fortune
+: 1521186114:0;brew install pyenv
+: 1521626342:0;brew install jenv
+: 1521798604:0;brew install irssi
+: 1521877731:0;brew install terminal-notifier
+: 1522663129:0;brew install gron
+: 1522736859:0;brew install adb
+: 1522752967:0;brew install nmap
+: 1522910755:0;brew install ffplay
+: 1522910948:0;brew install ffmpeg --with-ffplay
+: 1523361654:0;brew install fzf
+: 1523431376:0;brew install autojump
+: 1523440994:0;brew upgrade brew install vim --with-override-system-vi
+: 1523445239:0;brew install vim --with-override-system-vi
+: 1523606001:0;brew install wine
+: 1523889482:0;brew install gpg
+: 1523952678:0;brew install freerdp
+: 1523952757:0;brew cask install xquartz && brew install freerdp
+: 1524134497:0;brew install readelf
+: 1524134771:0;brew install greadelf
+: 1524134793:0;brew install binutils
+: 1524465789:0;brew install ag
+: 1524478229:0;brew tap atlassian/tap && brew install atlassian/tap/atlassian-plugin-sdk
+: 1524485256:0;brew install ripgrep
+: 1524494862:0;brew install cmake
+: 1525077866:0;brew install w3m
+: 1525090865:0;brew install google-java-format
+: 1525159959:0;brew install vlc
+: 1525244071:0;brew install gcal
+: 1525245399:0;brew install colordiff
+: 1525337439:0;brew install tree
+: 1525435082:0;brew install youtubedl
+: 1525435148:0;brew install youtube-dl
+: 1525435635:0;brew install ffmpeg
+: 1525594951:0;brew install bat
+: 1525595154:0;brew install fd
+: 1525683033:0;brew install nethogs
+: 1525692083:0;brew install pandoc
+: 1525697666:0;brew install sponge
+: 1525698150:0;brew install moreutils 
+: 1525704051:0;brew install ministat
+: 1525704218:0;brew install st
+: 1525769390:0;brew install howdoi
+: 1525855515:0;brew install apg
+: 1525856411:0;brew install pwgen
+: 1525857432:0;brew install tac
+: 1525857465:0;brew install coreutils
+: 1526990721:0;brew install grunt
+: 1527155170:0;brew install ctags
+: 1527157340:0;brew install cscope
+: 1527845379:0;brew install gradle
+: 1528198334:0;brew install apktool
+: 1528357062:0;brew install shpotify\n
+: 1528377681:0;brew install catimg
+: 1528440178:0;brew install thefuck\n
+: 1528536332:0;brew install grip
+: 1528785314:0;brew install --HEAD alacritty
+: 1528872274:0;brew install watch
+: 1529603146:0;brew install tmate\n
+: 1531201447:0;brew install gdal --with-complete --without-python --HEAD
+: 1531485584:0;brew install socat
+: 1532604442:0;brew install linux-noah/noah/noah
+: 1532605707:0;brew install csvtomd
+: 1533729871:0;brew install reattach-to-user-namespace
+: 1534147764:0;brew install spark
+: 1534312592:0;brew install pidstat
+: 1534318401:0;brew install sar
+: 1534318801:0;brew install vmstat
+: 1534318909:0;brew install tmux-mem-cpu-load
+: 1534422328:0;brew install asciinema
+: 1534764613:0;brew install tinyproxy
+: 1534836109:0;brew install neovim
+: 1535532866:0;rg "brew install fd" ~/.zsh_history
+: 1535532874:0;rg -C 5 "brew install fd" ~/.zsh_history
+: 1535533154:0;brew install fd
+: 1535533183:0;brew install fd
+: 1535533316:0;brew install fd
+: 1535533351:0;brew install fd
+: 1535534807:0;brew install fd
+: 1535534941:0;brew install fd
+: 1535719916:0;rg "brew install" ~/.zsh_history
+: 1537189665:0;brew install sc-im
+: 1537335785:0;brew install diff-so-fancy
+: 1537605124:0;brew install pv
+: 1538545222:0;brew install brew install grv\
+: 1538545224:0;brew install grv\
+brew install givegif
+: 1538582209:0;brew install libspotify
+: 1538582388:0;brew install sconsify
+: 1538582412:0;brew install portaudio
+: 1538635739:0;brew install 
+: 1538635765:0;brew install reptyr
+: 1538651677:0;brew install swagger-codegen
+: 1538982700:0;brew install aspell
+: 1539589260:0;brew install libcaca highlight atool lynx w3m elinks poppler transmission mediainfo exiftool\
+: 1539666964:0;grep "brew install" ~/.zsh_history
+: 1539667007:0;grep "brew install" ~/.zsh_history > ~/scripts/brew_install_history
