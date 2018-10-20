@@ -1,6 +1,6 @@
 {
 	"theme": 0,
-	"autoLaunch": true,
+	"autoLaunch": false,
 	"snippets": [
 		{
 			"id": 2,
@@ -94,5 +94,5 @@
 		}
 	],
 	"bufferLength": 20,
-	"autoUpdate": true
+	"autoUpdate": false
 }
