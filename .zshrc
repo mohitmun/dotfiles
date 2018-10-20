@@ -97,7 +97,6 @@ bindkey "^[OB" down-line-or-beginning-search
 bindkey "^j" down-line-or-beginning-search
 bindkey "^k" up-line-or-beginning-search
 bindkey "^b" backward-word
-bindkey "^d" backward-char
 bindkey "^h" backward-char
 bindkey "^f" forward-char
 bindkey "^l" forward-char
@@ -209,6 +208,7 @@ function mcd() {
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/scripts"
+export PATH="$PATH:$HOME/bin"
 
 cht(){
   curl cht.sh/$1
@@ -322,6 +322,8 @@ containsElement () {
 }
 stop_hogging_processes(){
   # TODO add timeout, stop only if chrome idle for more than X seconds
+  return 0
+  echo "stop_hogging_processes"
   export_osascript_system_status
   if [ "$frontApp" != "Google Chrome" ] && [ -z $chrome_stopped ];then
     mylog "mbga stopping chrome"
@@ -411,6 +413,13 @@ stop_hogging_processes(){
 mylog(){
   echo "$(datetime) $1" >> ~/mohit.log
 }
+#https://news.ycombinator.com/item?id=18216385
+cdf () {
+  currFolderPath=$(/usr/bin/osascript ~/scripts/finder.osascript)
+  echo "cd to \"$currFolderPath\""
+  cd "$currFolderPath"
+}
+
 source ~/scripts/prompt.zsh
 
 zstyle ':completion:*:manuals'    separate-sections true
@@ -418,7 +427,7 @@ zstyle ':completion:*:manuals.*'  insert-sections   true
 zstyle ':completion:*:man:*'      menu yes select
 
 if [ $PLATFORM = "osx" ];then
-  source ~/scripts/global_worker.zsh
+  #source ~/scripts/global_worker.zsh
 fi
 
 #end=$(gdate +%s%N)

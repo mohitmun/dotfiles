@@ -46,3 +46,5 @@ typeset -gA prompt_pure_state
 		username "$username"
 		prompt	 "${PURE_PROMPT_SYMBOL:-❯}"
 	)
+
+  zsh substring $file[3,5]
