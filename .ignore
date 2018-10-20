@@ -2,4 +2,4 @@
 # https://github.com/BurntSushi/ripgrep/issues/673
 cscope.out
 build/*
-bin/*
+bin/*vendor/*
