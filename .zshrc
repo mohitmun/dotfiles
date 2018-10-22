@@ -427,7 +427,7 @@ zstyle ':completion:*:manuals.*'  insert-sections   true
 zstyle ':completion:*:man:*'      menu yes select
 
 if [ $PLATFORM = "osx" ];then
-  source ~/scripts/global_worker.zsh
+  #source ~/scripts/global_worker.zsh
 fi
 
 end=$(gdate +%s%N)
