@@ -92,6 +92,20 @@
 			"value": "difference between ",
 			"regex": false,
 			"type": "plain"
+		},
+		{
+			"id": 9009479,
+			"key": ";;i",
+			"value": "function qw(trigger) {\n  const execSync = require('child_process').execSync;\n  execSync(\"open /Applications/iTerm.app\").toString();\n  return \"\";\n}",
+			"regex": false,
+			"type": "js"
+		},
+		{
+			"id": 6958767,
+			"key": ";;c",
+			"value": "function qw(trigger) {\n  const execSync = require('child_process').execSync;\n  execSync(\"open /Applications/Google\\\\ Chrome.app\").toString();\n  return \"\";\n}",
+			"regex": false,
+			"type": "js"
 		}
 	],
 	"bufferLength": 20,
