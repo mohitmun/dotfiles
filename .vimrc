@@ -307,6 +307,8 @@ hi Search guibg=peru guifg=wheat
 "nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
 set completeopt-=preview
 nnoremap <leader>ggs :GitGutterStageHunk<CR>
+nnoremap <leader>ggsc :GitGutterStageHunk<CR>:!git commit -m "working"<CR>
+nnoremap <leader>gc :!git add %<CR>:!git commit -m "working" %<CR>
 nnoremap <leader>ggp :GitGutterPreviewHunk<CR>
 nnoremap <leader>ggu :GitGutterUndoHunk<CR>
 nnoremap <leader>gst :Gstatus<CR>
