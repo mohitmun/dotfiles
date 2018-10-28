@@ -175,6 +175,8 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+"map <Left> <C-W>h
+"map <Right> <C-W>l
 " copied previous line word by word https://web.archive.org/web/20160429070600/http://vim.wikia.com/wiki/Duplicate_previous_line_word_by_word#
 "nmap ,c @<Esc>kyWjP<BS>
 
@@ -655,3 +657,6 @@ map <leader>dspl :setlocal nospell<CR>
 
 autocmd FileType ruby map <C-b> :!ruby %<CR>
 " TODO explore https://github.com/bag-man/dotfiles/blob/master/vimrc#L285
+
+
+map <leader>sgc :%s/<C-R><C-W>//gc<Left><Left><Left>
