@@ -310,8 +310,8 @@ hi Search guibg=peru guifg=wheat
 set completeopt-=preview
 nnoremap <leader>ggs :GitGutterStageHunk<CR>
 nnoremap <leader>ggsc :GitGutterStageHunk<CR>:!git commit -m "working"<CR>
-nnoremap <leader>gc :!git add %<CR>:!git commit -m "working" %<CR>
-nnoremap <leader>gd :!git diff %<CR>
+nnoremap <leader>ggc :!git add %<CR>:!git commit -m "working" %<CR>
+nnoremap <leader>ggd :!git diff %<CR>
 nnoremap <leader>gdc :!git diff --cached %<CR>
 nnoremap <leader>ggp :GitGutterPreviewHunk<CR>
 nnoremap <leader>ggu :GitGutterUndoHunk<CR>
