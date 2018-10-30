@@ -107,3 +107,8 @@ brew install givegif
 : 1539589260:0;brew install libcaca highlight atool lynx w3m elinks poppler transmission mediainfo exiftool\
 : 1539666964:0;grep "brew install" ~/.zsh_history
 : 1539667007:0;grep "brew install" ~/.zsh_history > ~/scripts/brew_install_history
+: 1539755473:0;gcmsg "brew installed backups"
+: 1539755480:0;cgcmsg "brew installed backups"
+: 1539864377:0;brew install nnn
+: 1540199893:0;brew install karabiner
+: 1540877264:0;grep "brew install" ~/.zsh_history > ~/scripts/brew_install_history

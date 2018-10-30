@@ -1,0 +1,11 @@
+: 1520595073:0;pip install rtv
+: 1520598708:0;pip install asciinema
+: 1521202793:0;pip install selenium
+: 1523444448:0;pip install wpm
+: 1527075174:0;pip install -r dependencies.txt
+: 1529074738:0;pip install mdv\n
+: 1532605544:0;pip install csvtomd
+: 1532704201:0;pip install pip install gkeepapi
+: 1533802940:0;pip install gkeepapi
+: 1540285566:0;pip install haxor-news
+: 1540877356:0;grep "pip install" ~/.zsh_history > ~/scripts/pip_install_history
