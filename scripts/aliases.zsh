@@ -46,7 +46,7 @@ alias ts="date +'%s'" # date to timestamp
 alias vim=vi
 alias cpr="cp -r"
 alias kill9="kill -9"
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias config='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias sz='source ~/.zshrc'
 alias cgd='config diff'
 alias cgdca='cgd --cached'
