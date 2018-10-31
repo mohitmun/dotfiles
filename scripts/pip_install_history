@@ -1,11 +1,19 @@
-: 1520595073:0;pip install rtv
-: 1520598708:0;pip install asciinema
-: 1521202793:0;pip install selenium
-: 1523444448:0;pip install wpm
-: 1527075174:0;pip install -r dependencies.txt
-: 1529074738:0;pip install mdv\n
-: 1532605544:0;pip install csvtomd
-: 1532704201:0;pip install pip install gkeepapi
-: 1533802940:0;pip install gkeepapi
-: 1540285566:0;pip install haxor-news
-: 1540877356:0;grep "pip install" ~/.zsh_history > ~/scripts/pip_install_history
+npm install -g tldr
+npm install -g nvm
+npm install meld
+npm install gtop -g
+npm install --global taskbook
+npm install -g vmd
+npm install --global np
+npm install -g gtop
+npm install -g scrape-twitter
+npm install native-keymap
+npm install -g openapi-mock
+pip install rtv
+pip install asciinema
+pip install selenium
+pip install wpm
+pip install mdv\n
+pip install csvtomd
+pip install gkeepapi
+pip install haxor-news
