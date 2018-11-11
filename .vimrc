@@ -677,3 +677,7 @@ augroup resCur
   autocmd!
   autocmd BufWinEnter * call ResCur()
 augroup END
+
+" das 0013 file navigation
+cnoremap %% <C-R>=expand('%:h').'/'<CR>
+
