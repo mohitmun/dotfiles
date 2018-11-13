@@ -1,13 +1,13 @@
 npm install -g tldr
 npm install -g nvm
-npm install meld
+npm install -g meld
 npm install gtop -g
 npm install --global taskbook
 npm install -g vmd
 npm install --global np
+npm install -g fx
 npm install -g gtop
 npm install -g scrape-twitter
-npm install native-keymap
 npm install -g openapi-mock
 pip install rtv
 pip install asciinema

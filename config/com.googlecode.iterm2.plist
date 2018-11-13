@@ -37,14 +37,14 @@
 		<key>0x4a-0x60000</key>
 		<dict>
 			<key>Action</key>
-			<integer>20</integer>
+			<integer>21</integer>
 			<key>Text</key>
 			<string></string>
 		</dict>
 		<key>0x4b-0x60000</key>
 		<dict>
 			<key>Action</key>
-			<integer>21</integer>
+			<integer>20</integer>
 			<key>Text</key>
 			<string></string>
 		</dict>

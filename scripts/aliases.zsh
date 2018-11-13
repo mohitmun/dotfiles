@@ -150,3 +150,7 @@ change_extension(){
     mv "$file" "$(basename "$file" .html).txt"
   done
 }
+
+readinvim(){
+  lynx "$1" --dump | vim - +Goyo
+}
