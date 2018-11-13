@@ -68,6 +68,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'sidorares/node-vim-debugger'
 "Plug 'w0rp/ale'
 Plug 'mohitmun/gist-vim'
 Plug 'mattn/webapi-vim' " dependancy for gist-vim
@@ -662,3 +663,21 @@ autocmd FileType ruby map <C-b> :!ruby %<CR>
 
 
 map <leader>sgc :%s/<C-R><C-W>//gc<Left><Left><Left>
+
+" destroy-all-software 0060 - the vimrc
+" http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
+
+" das 0013 file navigation
+cnoremap %% <C-R>=expand('%:h').'/'<CR>
+
