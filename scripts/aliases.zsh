@@ -154,3 +154,8 @@ change_extension(){
 readinvim(){
   lynx "$1" --dump | vim - +Goyo
 }
+
+tailgrep(){
+  #TODO https://stackoverflow.com/a/1537695/2577465
+  tail  -f $2 | grep --line-buffered -E $1
+}
