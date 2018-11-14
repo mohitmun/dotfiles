@@ -131,7 +131,6 @@ Plug 'RRethy/vim-illuminate', { 'on':  'IlluminationEnable' }
 "Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'maralla/completor.vim'
 Plug 'ruanyl/vim-gh-line'
-Plug 'danro/rename.vim'
 "Plug 'SidOfc/mkdx'
 call plug#end()
 
@@ -310,10 +309,11 @@ hi Search guibg=peru guifg=wheat
 "nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
 set completeopt-=preview
 nnoremap <leader>ggs :GitGutterStageHunk<CR>
+nnoremap <leader>ggstage :GitGutterStageHunk<CR>
 nnoremap <leader>ggsc :GitGutterStageHunk<CR>:!git commit -m "working"<CR>
 nnoremap <leader>ggc :!git add %<CR>:!git commit -m "working" %<CR>
-nnoremap <leader>ggd :!git diff %<CR>
-nnoremap <leader>gdc :!git diff --cached %<CR>
+nnoremap <leader>gd :!git diff %<CR>
+nnoremap <leader>gdca :!git diff --cached %<CR>
 nnoremap <leader>ggp :GitGutterPreviewHunk<CR>
 nnoremap <leader>ggu :GitGutterUndoHunk<CR>
 nnoremap <leader>gst :Gstatus<CR>
@@ -646,6 +646,7 @@ set viminfo+=s10    " max size of an item in Kb
 " vim multiple cursor is slow
 " autocomplete when using vim
 " writing markdown faster
+" how to auto update gitgutter
 
 " https://stackoverflow.com/a/6937075/2577465
 " run command on selected text
@@ -680,4 +681,34 @@ augroup END
 
 " das 0013 file navigation
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
+"TODO read this http://vim.wikia.com/wiki/Get_the_name_of_the_current_file
+cnoremap %' <C-R>=expand('%:p')<CR>
+set showcmd
 
+
+"danro/rename.vim
+command! -nargs=* -complete=customlist,SiblingFiles -bang Rename :call Rename("<args>", "<bang>")
+cabbrev rename <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "Rename" : "rename"<CR>
+
+function! SiblingFiles(A, L, P)
+	return map(split(globpath(expand("%:h") . "/", a:A . "*"), "\n"), 'fnamemodify(v:val, ":t")')
+endfunction
+
+function! Rename(name, bang)
+	let l:curfile = expand("%:p")
+	let l:curpath = expand("%:h") . "/"
+	let v:errmsg = ""
+	silent! exe "saveas" . a:bang . " " . fnameescape(l:curpath . a:name)
+	if v:errmsg =~# '^$\|^E329'
+		let l:oldfile = l:curfile
+		let l:curfile = expand("%:p")
+		if l:curfile !=# l:oldfile && filewritable(l:curfile)
+			silent exe "bwipe! " . fnameescape(l:oldfile)
+			if delete(l:oldfile)
+				echoerr "Could not delete " . l:oldfile
+			endif
+		endif
+	else
+		echoerr v:errmsg
+	endif
+endfunction
