@@ -1750,7 +1750,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/mohit/</string>
+	<string>/Users/mohit/config</string>
 	<key>Print In Black And White</key>
 	<true/>
 	<key>SUEnableAutomaticChecks</key>
@@ -1778,7 +1778,7 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.1.6</string>
+	<string>3.2.4</string>
 	<key>moveToApplicationsFolderAlertSuppress</key>
 	<true/>
 </dict>
