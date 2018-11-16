@@ -144,6 +144,7 @@ alias loadavg='w | head -n1 | cut -d: -f4'
 alias loadavguptime='uptime | cut -d: -f4- | sed s/,//g'
 alias yolo='git add -A && git commit -m "$(curl -s whatthecommit.com/index.txt)"'
 #================= CURL aliases =====================
+#================= CURL aliases =====================
 alias jcurl="curl -H 'Content-Type: application/json'"
 
 change_extension(){
@@ -160,3 +161,8 @@ tailgrep(){
   #TODO https://stackoverflow.com/a/1537695/2577465
   tail  -f $2 | grep --line-buffered -E $1
 }
+alias tempgitignore='git update-index --assume-unchanged'
+alias tempgitignoreundo='git update-index --no-assume-unchanged'
+#https://stackoverflow.com/a/7124949/2577465
+alias gitsearchcommit='git log --all --grep='PATTERN''
+alias gitundolastcommit='git reset HEAD~'
