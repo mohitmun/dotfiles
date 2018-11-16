@@ -66,6 +66,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 "Plug 'amix/vim-zenroom2'
 " fugitive.vim: a Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
+"remove space TODO
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'sidorares/node-vim-debugger'
@@ -131,6 +132,7 @@ Plug 'RRethy/vim-illuminate', { 'on':  'IlluminationEnable' }
 "Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'maralla/completor.vim'
 Plug 'ruanyl/vim-gh-line'
+Plug 'zivyangll/git-blame.vim'
 "Plug 'SidOfc/mkdx'
 call plug#end()
 
@@ -145,6 +147,7 @@ set updatetime=100
 
 let g:gitgutter_diff_base = 'HEAD'
 autocmd BufWritePost * GitGutter
+"TODO cycle through gitgutter hunks
 
 "Always show current position
 set ruler
@@ -336,8 +339,11 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ez :e ~/.zshrc<cr>
 ":au BufAdd,BufNewFile * nested tab sball
 nnoremap <leader>za zR
+" ctrl-j for scroll without moving cursor
 nnoremap <C-j> <C-e>
 nnoremap <C-k> <C-y>
+
+
 "set iskeyword-=_
 set ttimeoutlen=50
 "set timeoutlen=500
@@ -449,7 +455,6 @@ set dictionary=/usr/share/dict/words
 nnoremap Y y$
 
 map <leader>jpp :%!jq '.'<CR>
-set noeol
 vnoremap > >gv
 vnoremap < <gv
 
@@ -585,7 +590,6 @@ let g:comfortable_motion_no_default_key_mappings = 1
 "map <C-f> g;
 map <C-g> g;
 
-"#TODO understand how omnicompletion works
 
 function! Tab_Or_Complete() abort
   " If completor is already open the `tab` cycles through suggested completions.
@@ -651,16 +655,16 @@ set viminfo+=s10    " max size of an item in Kb
 " https://stackoverflow.com/a/6937075/2577465
 " run command on selected text
 " :'<,'>!ls `cat`
-" #TODO explore
+" TODO explore
 "https://stackoverflow.com/questions/2575545/vim-pipe-selected-text-to-shell-cmd-and-receive-output-on-vim-info-command-line
 "https://stackoverflow.com/questions/6762531/execute-command-for-several-lines-in-vim
-" #TODO how to replace timestamp with date in file
+" TODO how to replace timestamp with date in file
+" TODO explore https://github.com/bag-man/dotfiles/blob/master/vimrc#L285
 map <leader>aspl :!aspell -c % <CR>
 map <leader>espl :setlocal spell<CR>
 map <leader>dspl :setlocal nospell<CR>
 
 autocmd FileType ruby map <C-b> :!ruby %<CR>
-" TODO explore https://github.com/bag-man/dotfiles/blob/master/vimrc#L285
 
 
 map <leader>sgc :%s/<C-R><C-W>//gc<Left><Left><Left>
@@ -712,3 +716,11 @@ function! Rename(name, bang)
 		echoerr v:errmsg
 	endif
 endfunction
+
+inoreabbr bp Rails.logger.info "=============== binding.pry ================"<CR>binding.pry<CR>
+inoreabbr bpr Rails.logger.info puts "=============== binding.pry ================"<CR>binding.pry_remote<CR>
+
+"TODO what is select mode
+"TODO understand how omnicompletion works
+"
+"TODO time is not there in git blame plugin
