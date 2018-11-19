@@ -13,6 +13,7 @@
 [core]
 	excludesfile = /Users/mohit/.gitignore
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	hooksPath = /Users/mohit/.git-templates/hooks
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
@@ -25,3 +26,5 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[init]
+  templatedir = $HOME/.git-templates

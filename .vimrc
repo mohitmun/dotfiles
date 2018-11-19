@@ -724,3 +724,4 @@ inoreabbr bpr Rails.logger.info puts "=============== binding.pry ==============
 "TODO understand how omnicompletion works
 "
 "TODO time is not there in git blame plugin
+"TODO https://til.hashrocket.com/posts/39f85bac84-open-images-in-vim-with-iterm-
