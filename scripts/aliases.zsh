@@ -150,3 +150,5 @@ change_extension(){
     mv "$file" "$(basename "$file" .html).txt"
   done
 }
+alias lslessthansize="find . -name '*' -size" # add -exec ls -la if more info
+alias onlyalpha="tr -cd '[[:alnum:]]._-'"
