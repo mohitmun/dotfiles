@@ -166,3 +166,4 @@ alias tempgitignoreundo='git update-index --no-assume-unchanged'
 #https://stackoverflow.com/a/7124949/2577465
 alias gitsearchcommit='git log --all --grep='PATTERN''
 alias gitundolastcommit='git reset HEAD~'
+alias whatimpushing="git cherry -v"
