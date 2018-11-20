@@ -294,11 +294,11 @@ endfunction
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 command! -bang -nargs=* Rag call fzf#vim#ag(<q-args>, {'options': '--delimiter : '}, <bang>0)
 command! -nargs=* -bang CAg call s:ag_with_opts(<q-args>, <bang>0)
-map <leader>f :Ag<CR>
 map <C-f> :Ag<CR>
 map swe :Ag <C-R><C-W><CR>
 map swc :BLines <C-R><C-W><CR>
 map <leader>/ :BLines <CR>
+map <leader>f :BLines <CR>
 map <leader>ag :Rag<CR>
 colorscheme monokai
 " monokai with complete dark

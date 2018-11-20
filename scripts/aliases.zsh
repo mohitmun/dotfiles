@@ -144,7 +144,7 @@ bkp(){
 
 alias loadavg='w | head -n1 | cut -d: -f4'
 alias loadavguptime='uptime | cut -d: -f4- | sed s/,//g'
-alias yolo='git add -A && git commit -m "$(curl -s whatthecommit.com/index.txt)"'
+alias yolo='git commit -m "$(curl -s whatthecommit.com/index.txt)"'
 #================= CURL aliases =====================
 #================= CURL aliases =====================
 alias jcurl="curl -H 'Content-Type: application/json'"

@@ -24,6 +24,7 @@ plugins=(
   encode64
   z
   battery
+  alias-tips
 )
 source $ALIASFILE
 source $ZSH/oh-my-zsh.sh
@@ -73,6 +74,7 @@ bindkey '^I' $fzf_default_completion
 #vtop
 #https://github.com/k4m4/terminals-are-sexy
 # https://github.com/jondot/awesome-devenv
+# https://github.com/unixorn/awesome-zsh-plugins
 # https://github.com/rgcr/m-cli
 # fkill
 # A command-line todo list manager for people that want to finish tasks, not organize them
