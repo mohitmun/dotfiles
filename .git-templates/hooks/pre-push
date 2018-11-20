@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+echo "Pushing following commits"
+git cherry -v

@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
-
+#https://gist.github.com/wacko/62560b45c1d191859d6b
 # Validates that you don't commit forbidden keywords to the repo
 # You can skip this checking with 'git commit --no-verify'
-puts "pre commit running"
+puts "Pre-commit running"
 exit 0 if ARGV.include?('--no-verify')
 # Update this list with your own forbidden keywords
 KEYWORDS = %w(binding.pry console.log debugger)
