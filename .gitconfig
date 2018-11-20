@@ -11,9 +11,10 @@
 [github]
 	user = mohitmun
 [core]
-	excludesfile = /Users/mohit/.gitignore
+  # https://stackoverflow.com/a/11262153/2577465
+	excludesfile = ~/.gitignore
 	pager = diff-so-fancy | less --tabs=4 -RFX
-	hooksPath = /Users/mohit/.git-templates/hooks
+	hooksPath = ~/.git-templates/hooks
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
@@ -26,5 +27,3 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
-[init]
-  templatedir = $HOME/.git-templates
