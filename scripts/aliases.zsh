@@ -46,6 +46,8 @@ alias ts="date +'%s'" # date to timestamp
 alias vim=vi
 alias cpr="cp -r"
 alias kill9="kill -9"
+alias start_config_mode="export GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME"
+alias stop_config_mode="unset GIT_DIR GIT_WORK_TREE"
 alias config='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias sz='source ~/.zshrc'
 alias cgd='config diff'
@@ -161,9 +163,19 @@ tailgrep(){
   #TODO https://stackoverflow.com/a/1537695/2577465
   tail  -f $2 | grep --line-buffered -E $1
 }
-alias tempgitignore='git update-index --assume-unchanged'
-alias tempgitignoreundo='git update-index --no-assume-unchanged'
+
 #https://stackoverflow.com/a/7124949/2577465
 alias gitsearchcommit='git log --all --grep='PATTERN''
 alias gitundolastcommit='git reset HEAD~'
 alias whatimpushing="git cherry -v"
+
+#====================================== copied from zsh git plugin
+alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
+alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
+alias gignore='git update-index --assume-unchanged'
+alias gunignore='git update-index --no-assume-unchanged'
+alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
+#====================================== copied from zsh git plugin
+
+
+alias findd="find . -type d -name"
