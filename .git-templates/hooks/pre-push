@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+echo "\033[38;5;046m"
+echo "Pushing following commits"
+git cherry -v
+echo "\033[0m"

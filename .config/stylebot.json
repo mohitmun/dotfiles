@@ -1,0 +1,52 @@
+{
+  "news.ycombinator.com": {
+    "_enabled": true,
+    "_rules": {
+      "table#hnmain": {
+        "font-family": "verdana",
+        "font-size": "small ",
+        "width": "60%"
+      },
+      "comment0": {
+        "comment": "/* {\n    font-size: 0.8rem;\n} */"
+      },
+      "comment1": {
+        "comment": "/*.reply {\n    display: none;\n}*/"
+      }
+    }
+  },
+  "tweetdeck.twitter.com": {
+    "_enabled": true,
+    "_rules": {
+      ".js-column": {
+        "margin-right": "50px",
+        "width": "518px"
+      }
+    }
+  },
+  "www.gwern.net": {
+    "_enabled": true,
+    "_rules": {
+      "#markdownBody": {
+        "width": "774px"
+      }
+    }
+  },
+  "en.wikipedia.org": {
+    "_enabled": true,
+    "_rules": {
+      "div.mw-body": {
+        "width": "54%"
+      }
+    }
+  },
+  "danluu.com": {
+    "_enabled": true,
+    "_rules": {
+      "html body": {
+        "width": "49%",
+        "margin": "0 auto"
+      }
+    }
+  }
+}

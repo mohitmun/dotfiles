@@ -24,6 +24,7 @@ plugins=(
   encode64
   z
   battery
+  alias-tips
 )
 source $ALIASFILE
 source $ZSH/oh-my-zsh.sh
@@ -73,6 +74,7 @@ bindkey '^I' $fzf_default_completion
 #vtop
 #https://github.com/k4m4/terminals-are-sexy
 # https://github.com/jondot/awesome-devenv
+# https://github.com/unixorn/awesome-zsh-plugins
 # https://github.com/rgcr/m-cli
 # fkill
 # A command-line todo list manager for people that want to finish tasks, not organize them
@@ -173,7 +175,7 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 #https://medium.com/@henrebotha/how-to-write-an-asynchronous-zsh-prompt-b53e81720d32
 #TODO https://stackoverflow.com/a/6052267/2577465 use this cool technique
 #TODO https://github.com/junegunn/fzf/wiki/Examples#google-chrome-os-xlinux
-
+#TODO https://github.com/danchoi/vmail
 
 #===========================
 # THEME END

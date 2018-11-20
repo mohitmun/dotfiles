@@ -35,7 +35,11 @@ get_second_line(){
   current_dir_with_jobs="${(%):-%c}$(jobs_prompt)"
   #gpi="${(%):-$(git_prompt_info)}"
   gpi="$(git_prompt_info)"
-  echo "$FG[032]$current_dir_with_jobs${gpi}"
+  if [ -z $GIT_DIR ];then
+  else
+    git_dotfile_mode="$FG[078](git_dir:$GIT_DIR )${reset_color}"
+  fi
+  echo "$FG[032]$current_dir_with_jobs${gpi}$git_dotfile_mode"
 }
 
 
