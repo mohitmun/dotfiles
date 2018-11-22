@@ -16,6 +16,8 @@
 	<true/>
 	<key>Default Bookmark Guid</key>
 	<string>E37BCC44-5B6C-40AB-A201-F59E069E75DC</string>
+	<key>DimOnlyText</key>
+	<true/>
 	<key>EnableDivisionView</key>
 	<false/>
 	<key>GlobalKeyMap</key>
@@ -267,11 +269,11 @@ Resize Split Pane.Move Divider Right</string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 126 606 469 0 0 1440 900 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>299 408 796 486 0 0 1440 900 </string>
+	<string>123 405 796 486 0 0 1440 900 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>205 1235 570 451 -246 900 1920 1057 </string>
+	<string>396 172 570 451 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 426 570 451 0 0 1440 877 </string>
 	<key>New Bookmarks</key>
@@ -1754,7 +1756,7 @@ Resize Split Pane.Move Divider Right</string>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<false/>
 	<key>NoSyncRecordedVariableNames</key>
@@ -1897,7 +1899,7 @@ Resize Split Pane.Move Divider Right</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-11-19T17:33:55Z</date>
+	<date>2018-11-21T07:05:17Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
