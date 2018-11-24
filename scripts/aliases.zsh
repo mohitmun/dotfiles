@@ -134,7 +134,6 @@ cont(){
   ps aux |  grep -v grep | grep $1 | awk '{ print $2 }' | xargs kill -CONT
 }
 
-alias curl_github="curl -u $GITHUB_USERNAME_SPAM:$GITHUB_PASSWORD_SPAM"
 alias cpull='config pull origin_github master'
 alias tocode='cd ~/Desktop/code'
 
@@ -145,9 +144,11 @@ bkp(){
 alias loadavg='w | head -n1 | cut -d: -f4'
 alias loadavguptime='uptime | cut -d: -f4- | sed s/,//g'
 alias yolo='git commit -m "$(curl -s whatthecommit.com/index.txt)"'
-#================= CURL aliases =====================
+
 #================= CURL aliases =====================
 alias jcurl="curl -H 'Content-Type: application/json'"
+alias curl_github="curl -u $GITHUB_USERNAME_SPAM:$GITHUB_PASSWORD_SPAM"
+#================= CURL aliases =====================
 
 change_extension(){
   for file in *.html; do
@@ -166,18 +167,24 @@ tailgrep(){
   tail  -f $2 | grep --line-buffered -E $1
 }
 
+#===================== git aliases =====================
 #https://stackoverflow.com/a/7124949/2577465
+# TODO https://stackoverflow.com/questions/8435343/retrieve-the-commit-log-for-a-specific-line-in-a-file/31985012
+# TODO https://stackoverflow.com/questions/14142609/git-discover-which-commits-ever-touched-a-range-of-lines
+# TODO explore more in details https://github.com/so-fancy/diff-so-fancy
 alias gitsearchcommit='git log --all --grep='PATTERN''
 alias gitundolastcommit='git reset HEAD~'
 alias whatimpushing="git cherry -v"
-
+alias showuntracked="git ls-files . --exclude-standard --others"
+alias showuntrackedignored="git ls-files . --exclude-standard --others --ignored"
 #====================================== copied from zsh git plugin
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
 alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
 alias gignore='git update-index --assume-unchanged'
 alias gunignore='git update-index --no-assume-unchanged'
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
+# TODO git checkout file from particular branch/commmit
 #====================================== copied from zsh git plugin
-
+#===================== git aliases =====================
 
 alias findd="find . -type d -name"

@@ -293,6 +293,7 @@ endfunction
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 command! -bang -nargs=* Rag call fzf#vim#ag(<q-args>, {'options': '--delimiter : '}, <bang>0)
 command! -nargs=* -bang CAg call s:ag_with_opts(<q-args>, <bang>0)
+command! -bang -nargs=+ -complete=dir RRag call fzf#vim#ag_raw(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 map <C-f> :Ag<CR>
 map swe :Ag <C-R><C-W><CR>
 map swc :BLines <C-R><C-W><CR>
@@ -369,7 +370,8 @@ vnoremap // y/\V<C-r>=escape(@",'/\')<CR>
 "https://github.com/bpierre/dotfiles/blob/master/vimrc
 "nnoremap <C-n> i<CR><ESC>
 cmap w!! w !sudo tee > /dev/null %
-
+cmap <C-J> <Down>
+cmap <C-K> <Up>
 "https://stackoverflow.com/a/597932/2577465
 nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
 "https://stackoverflow.com/a/8397808/2577465
@@ -618,14 +620,16 @@ map <leader>dbl :g/^$/d<CR>:noh<CR>
 " remove trailing space
 map <leader>rts :%s/\s\+$//e<CR>
 " unused keys
-" shift - K,  M
+" shift - K, M, Q
 map K <Nop>
 "https://github.com/bag-man/dotfiles/blob/master/vimrc#L59
 map H ^
 map L $
 nnoremap M :Maps<CR>
 nnoremap <leader>gf :GFiles?<CR>
+
 nnoremap * *N
+map F *
 set viminfo+='1000
 
 "https://github.com/sputtene/dotfiles/blob/79db8ab3b0586fb787fc59b42715dba786135c6d/.vimrc
@@ -636,11 +640,12 @@ set viminfo+=!      " save and restore globals in all uppercase
 "set viminfo+=%      " save and restore buffer list
 set viminfo+=/1000  " max number of search and substitute patterns to save
 set viminfo+=:1000  " max number of command line items to save
-set viminfo+=<100   " max number of lines for each register to save
-set viminfo+=@100   " max number of input-line history to save
+set viminfo+=<1000   " max number of lines for each register to save
+set viminfo+=@1000   " max number of input-line history to save
 set viminfo+=f1     " store file marks ('0 to '9, 'A to 'Z)
 set viminfo+=h      " disable effect of hlsearch when loading viminfo
 set viminfo+=s10    " max size of an item in Kb
+
 
 "Vimnotes
 "http://vim.wikia.com/wiki/Delete_all_lines_containing_a_pattern
@@ -721,6 +726,5 @@ inoreabbr bpr Rails.logger.info puts "=============== binding.pry ==============
 
 "TODO what is select mode
 "TODO understand how omnicompletion works
-"
 "TODO time is not there in git blame plugin
 "TODO https://til.hashrocket.com/posts/39f85bac84-open-images-in-vim-with-iterm-

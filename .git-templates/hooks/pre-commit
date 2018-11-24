@@ -3,9 +3,9 @@
 # Validates that you don't commit forbidden keywords to the repo
 # You can skip this checking with 'git commit --no-verify'
 puts "Pre-commit running"
-exit 0 if ARGV.include?('--no-verify')
+#exit 0 if ARGV.include?('--no-verify')
 # Update this list with your own forbidden keywords
-KEYWORDS = %w(binding.pry console.log debugger)
+KEYWORDS = %w(binding.pry console.log debugger dontcommit)
 
 def red(text)    "\033[31m#{text}\033[0m"; end
 def yellow(text) "\033[33m#{text}\033[0m"; end
@@ -19,6 +19,7 @@ if $?.exitstatus.zero?
   puts "# Check following lines:"
   files_changed.each do |file|
     KEYWORDS.each do |keyword|
+      # TODO dont grep file, grep diff, what if remove code but dont add to index and commit again
       %x(git grep -q #{keyword} #{file})
       if $?.exitstatus.zero?
         line = %x(git grep -n #{keyword} #{file} | awk -F ":" '{print $2}').split.join(', ')
