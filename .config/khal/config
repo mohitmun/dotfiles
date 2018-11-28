@@ -1,0 +1,12 @@
+[calendars]
+
+[[private]]
+path = /Users/mohit/.local/share/khal/calendars/private
+type = calendar
+
+[locale]
+timeformat = %I:%M %p
+dateformat = %d/%m/%Y
+longdateformat = %d/%m/%Y
+datetimeformat = %d/%m/%Y %I:%M %p
+longdatetimeformat = %d/%m/%Y %I:%M %p

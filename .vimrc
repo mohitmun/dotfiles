@@ -62,12 +62,12 @@ Plug 'terryma/vim-multiple-cursors' " https://medium.com/@schtoeffel/you-don-t-n
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 "Plug 'amix/vim-zenroom2'
 " fugitive.vim: a Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
-"remove space TODO
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
+"Plug 'tpope/vim-repeat'
 Plug 'sidorares/node-vim-debugger'
 "Plug 'w0rp/ale'
 Plug 'mohitmun/gist-vim'
@@ -146,7 +146,6 @@ set updatetime=100
 
 let g:gitgutter_diff_base = 'HEAD'
 autocmd BufWritePost * GitGutter
-"TODO cycle through gitgutter hunks
 
 "Always show current position
 set ruler
@@ -662,8 +661,15 @@ set viminfo+=s10    " max size of an item in Kb
 " TODO explore
 "https://stackoverflow.com/questions/2575545/vim-pipe-selected-text-to-shell-cmd-and-receive-output-on-vim-info-command-line
 "https://stackoverflow.com/questions/6762531/execute-command-for-several-lines-in-vim
-" TODO how to replace timestamp with date in file
-" TODO explore https://github.com/bag-man/dotfiles/blob/master/vimrc#L285
+"TODO how to replace timestamp with date in file
+"TODO explore https://github.com/bag-man/dotfiles/blob/master/vimrc#L285
+"TODO what is select mode
+"TODO understand how omnicompletion works
+"TODO time is not there in git blame plugin
+"TODO https://til.hashrocket.com/posts/39f85bac84-open-images-in-vim-with-iterm-
+"TODO cycle through gitgutter hunks
+"remove space in vim surround TODO
+"TODO read this http://vim.wikia.com/wiki/Get_the_name_of_the_current_file
 map <leader>aspl :!aspell -c % <CR>
 map <leader>espl :setlocal spell<CR>
 map <leader>dspl :setlocal nospell<CR>
@@ -689,7 +695,6 @@ augroup END
 
 " das 0013 file navigation
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
-"TODO read this http://vim.wikia.com/wiki/Get_the_name_of_the_current_file
 cnoremap %' <C-R>=expand('%:p')<CR>
 set showcmd
 
@@ -721,10 +726,15 @@ function! Rename(name, bang)
 	endif
 endfunction
 
-inoreabbr bp Rails.logger.info "=============== binding.pry ================"<CR>binding.pry<CR>
-inoreabbr bpr Rails.logger.info puts "=============== binding.pry ================"<CR>binding.pry_remote<CR>
+"=============== abbr ================
+inoreabbr bp binding.pry<CR>
+inoreabbr bpr binding.pry_remote<CR>
+inoreabbr rli Rails.logger.info
+"=============== abbr ================
 
-"TODO what is select mode
-"TODO understand how omnicompletion works
-"TODO time is not there in git blame plugin
-"TODO https://til.hashrocket.com/posts/39f85bac84-open-images-in-vim-with-iterm-
+" copy current file full path to clipboard
+" https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
+map <leader>cp :let @+ = expand("%:p")<CR>
+"http://vim.wikia.com/wiki/Run_a_command_in_multiple_buffers
+"bufdo execute "normal! @a" | update
+

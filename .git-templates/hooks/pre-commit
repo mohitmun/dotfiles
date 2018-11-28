@@ -3,7 +3,7 @@
 # Validates that you don't commit forbidden keywords to the repo
 # You can skip this checking with 'git commit --no-verify'
 puts "Pre-commit running"
-#exit 0 if ARGV.include?('--no-verify')
+exit 0 if ARGV.include?('--no-verify')
 # Update this list with your own forbidden keywords
 KEYWORDS = %w(binding.pry console.log debugger dontcommit)
 
@@ -20,6 +20,8 @@ if $?.exitstatus.zero?
   files_changed.each do |file|
     KEYWORDS.each do |keyword|
       # TODO dont grep file, grep diff, what if remove code but dont add to index and commit again
+      # log TODO count in commit
+      #https://github.com/SirEelBiscuits/globs/blob/7b95f838a60b86f386bcfb0f23beec1f84b018d3/devinstall/pre-commit
       %x(git grep -q #{keyword} #{file})
       if $?.exitstatus.zero?
         line = %x(git grep -n #{keyword} #{file} | awk -F ":" '{print $2}').split.join(', ')

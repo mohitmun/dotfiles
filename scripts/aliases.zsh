@@ -188,3 +188,4 @@ alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 #===================== git aliases =====================
 
 alias findd="find . -type d -name"
+alias wcl='wc -l'
