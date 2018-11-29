@@ -88,7 +88,7 @@ Plug 'suan/vim-instant-markdown'
 "fucks up disable cut logic
 "Plug 'maxbrunsfeld/vim-yankstack'
 "Plug 'majutsushi/tagbar'
-
+Plug 'itchyny/calendar.vim'
 " slow downs cursor moment on large files
 Plug 'Yggdroot/indentLine'
 Plug '907th/vim-auto-save'
@@ -668,8 +668,9 @@ set viminfo+=s10    " max size of an item in Kb
 "TODO time is not there in git blame plugin
 "TODO https://til.hashrocket.com/posts/39f85bac84-open-images-in-vim-with-iterm-
 "TODO cycle through gitgutter hunks
-"remove space in vim surround TODO
+"TODO remove space in vim surround
 "TODO read this http://vim.wikia.com/wiki/Get_the_name_of_the_current_file
+"TODO explore lsp
 map <leader>aspl :!aspell -c % <CR>
 map <leader>espl :setlocal spell<CR>
 map <leader>dspl :setlocal nospell<CR>
@@ -737,4 +738,17 @@ inoreabbr rli Rails.logger.info
 map <leader>cp :let @+ = expand("%:p")<CR>
 "http://vim.wikia.com/wiki/Run_a_command_in_multiple_buffers
 "bufdo execute "normal! @a" | update
+"http://vim.wikia.com/wiki/Search_and_replace_in_multiple_buffers
+" Search for current word and replace with given text for files in arglist.
+function! Replace(bang, replace)
+  let flag = 'ge'
+  if !a:bang
+    let flag .= 'c'
+  endif
+  let search = '\<' . escape(expand('<cword>'), '/\.*$^~[') . '\>'
+  let replace = escape(a:replace, '/\&~')
+  execute 'argdo %s/' . search . '/' . replace . '/' . flag
+endfunction
+command! -nargs=1 -bang Replace :call Replace(<bang>0, <q-args>)
+nnoremap <Leader>r :call Replace(0, input('Replace '.expand('<cword>').' with: '))<CR>
 
