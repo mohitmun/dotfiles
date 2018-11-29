@@ -20,6 +20,8 @@
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+[interactive]
+  singleKey = true
 [color "diff"]
 	meta = yellow
 	frag = magenta bold
