@@ -112,3 +112,14 @@ brew install givegif
 : 1539864377:0;brew install nnn
 : 1540199893:0;brew install karabiner
 : 1540877264:0;grep "brew install" ~/.zsh_history > ~/scripts/brew_install_history
+: 1541136735:0;brew install dnsmasq 
+: 1542199327:0;brew install v8
+: 1542643428:0;brew install telnet
+: 1542790576:0;brew install mackup
+: 1542790710:0;brew install clintmod/formulas/macprefs
+: 1543392461:0;brew install khal
+: 1543392475:0;brew install calcurse
+: 1543427382:0;brew install taskwarrior
+: 1543427406:0;brew install task 
+: 1543477030:0;grep "brew install" ~/.zsh_history > ~/scripts/brew_install_history
+: 1543477166:0;grep "brew install" ~/.zsh_history > ~/scripts/brew_install_history
