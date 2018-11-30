@@ -73,7 +73,6 @@ Plug 'sidorares/node-vim-debugger'
 Plug 'mohitmun/gist-vim'
 Plug 'mattn/webapi-vim' " dependancy for gist-vim
 Plug 'vim-airline/vim-airline'
-Plug 'airblade/vim-gitgutter'
 Plug 'Chiel92/vim-autoformat'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -143,9 +142,9 @@ syntax on
 set number
 set tabstop=2 shiftwidth=2 expandtab
 set updatetime=100
+set showcmd
+set completeopt-=preview
 
-let g:gitgutter_diff_base = 'HEAD'
-autocmd BufWritePost * GitGutter
 
 "Always show current position
 set ruler
@@ -195,8 +194,6 @@ inoremap <M-k> <Esc>:m .-2<CR>==gi
 vnoremap <M-j> :m '>+1<CR>gv=gv
 vnoremap <M-k> :m '<-2<CR>gv=gv
 
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
 
 set mouse=a
 
@@ -305,11 +302,12 @@ hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NO
 hi LineNr ctermfg=102 ctermbg=NONE cterm=NONE guifg=#90908a guibg=#3c3d37 gui=NONE
 hi Search guibg=peru guifg=wheat
 
-"nnoremap <leader>g :YcmCompleter GoTo<CR>
-"nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
-"nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>
-"nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
-set completeopt-=preview
+Plug 'airblade/vim-gitgutter'
+let g:gitgutter_map_keys = 0
+let g:gitgutter_diff_base = 'HEAD'
+autocmd BufWritePost * GitGutter
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
 nnoremap <leader>ggs :GitGutterStageHunk<CR>
 nnoremap <leader>ggstage :GitGutterStageHunk<CR>
 nnoremap <leader>ggsc :GitGutterStageHunk<CR>:!git commit -m "working"<CR>
@@ -437,7 +435,6 @@ autocmd FileType help wincmd L
 " tmux knows the extended mouse mode
 set ttymouse=xterm2
 
-let g:gitgutter_map_keys = 0
 map <leader>h :History<CR>
 
 "https://stackoverflow.com/a/4740069/2577465
@@ -654,7 +651,6 @@ set viminfo+=s10    " max size of an item in Kb
 " autocomplete when using vim
 " writing markdown faster
 " how to auto update gitgutter
-
 " https://stackoverflow.com/a/6937075/2577465
 " run command on selected text
 " :'<,'>!ls `cat`
@@ -697,7 +693,6 @@ augroup END
 " das 0013 file navigation
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
 cnoremap %' <C-R>=expand('%:p')<CR>
-set showcmd
 
 
 "danro/rename.vim
