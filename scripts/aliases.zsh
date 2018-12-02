@@ -189,3 +189,5 @@ alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 
 alias findd="find . -type d -name"
 alias wcl='wc -l'
+alias ping='prettyping --nolegend'
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
