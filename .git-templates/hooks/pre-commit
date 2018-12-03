@@ -15,7 +15,11 @@ files_changed = %x(git diff --cached --name-only --).split
 
 # search files for keywords
 %x(git grep -q -E "#{KEYWORDS.join('|')}" #{files_changed.join(' ')})
-if $?.exitstatus.zero?
+grep_result_exists = $?.exitstatus.zero?
+#%x(git diff HEAD -G "#{KEYWORDS.join('|')} #{files_changed.join(' ')}")
+#grep_diff_exists = $?.exitstatus.zero?
+#if grep_result_exists || grep_diff_exists
+if grep_result_exists
   puts "# Check following lines:"
   files_changed.each do |file|
     KEYWORDS.each do |keyword|

@@ -694,7 +694,9 @@ augroup END
 " das 0013 file navigation
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
 cnoremap %' <C-R>=expand('%:p')<CR>
-
+" copy current file full path to clipboard
+" https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
+map <leader>cp :let @+ = expand("%:p")<CR>
 
 "danro/rename.vim
 command! -nargs=* -complete=customlist,SiblingFiles -bang Rename :call Rename("<args>", "<bang>")
@@ -709,6 +711,7 @@ function! Rename(name, bang)
 	let l:curpath = expand("%:h") . "/"
 	let v:errmsg = ""
 	silent! exe "saveas" . a:bang . " " . fnameescape(l:curpath . a:name)
+
 	if v:errmsg =~# '^$\|^E329'
 		let l:oldfile = l:curfile
 		let l:curfile = expand("%:p")
@@ -729,7 +732,4 @@ inoreabbr bpr binding.pry_remote<CR>
 inoreabbr rli Rails.logger.info
 "=============== abbr ================
 
-" copy current file full path to clipboard
-" https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
-map <leader>cp :let @+ = expand("%:p")<CR>
 
