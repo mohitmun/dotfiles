@@ -46,4 +46,21 @@ class Hash
   def method_missing(m, *args, &blk)
     fetch(m) { fetch(m.to_s) { super } }
   end
+  
+  def get_schema(hash)
+  result = {}
+  hash.each do |k,v|
+    if v.class == Hash
+      result[k] = get_schema(v)
+    elsif v.class == Array
+      
+    else
+      result[k] = v.class.to_s
+    end
+  end
+  return result
 end
+
+end
+
+
