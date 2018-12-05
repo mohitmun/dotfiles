@@ -668,6 +668,7 @@ set viminfo+=s10    " max size of an item in Kb
 "TODO remove space in vim surround
 "TODO read this http://vim.wikia.com/wiki/Get_the_name_of_the_current_file
 "TODO explore lsp
+"TODO https://github.com/neoclide/coc.nvim
 map <leader>aspl :!aspell -c % <CR>
 map <leader>espl :setlocal spell<CR>
 map <leader>dspl :setlocal nospell<CR>
@@ -727,8 +728,8 @@ function! Rename(name, bang)
 endfunction
 
 "=============== abbr ================
-inoreabbr bp binding.pry<CR>
-inoreabbr bpr binding.pry_remote<CR>
+inoreabbr bp binding.pry
+inoreabbr bpr binding.pry_remote
 inoreabbr rli Rails.logger.info
 "=============== abbr ================
 

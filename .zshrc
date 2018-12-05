@@ -177,6 +177,7 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 #TODO https://stackoverflow.com/a/6052267/2577465 use this cool technique
 #TODO https://github.com/junegunn/fzf/wiki/Examples#google-chrome-os-xlinux
 #TODO https://github.com/danchoi/vmail
+#TODO https://github.com/paulirish/git-recent
 
 #===========================
 # THEME END
