@@ -103,11 +103,6 @@ alias notes='cat ~/.notes'
 alias downloadsong='youtube-dl --extract-audio --audio-format mp3 --audio-quality 0'
 alias calias='cga ~/.aliases.zsh && config commit -m 'alias update''
 alias tailf='tail -f'
-alias lastcommitfiles='git log --pretty=format: --name-only -n 1'
-alias gitrenamebranch='git branch -m'
-alias gpush='ggpush'
-alias gpull='ggpull'
-alias discardchanges='git checkout .'
 
 #https://github.com/caarlos0/ports/blob/master/ports
 ports(){
@@ -183,11 +178,29 @@ alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
 alias gignore='git update-index --assume-unchanged'
 alias gunignore='git update-index --no-assume-unchanged'
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
+alias glg='git log --stat'
+alias glgp='git log --stat -p'
+alias glgg='git log --graph'
+alias glgga='git log --graph --decorate --all'
+alias glgm='git log --graph --max-count=10'
+alias glo='git log --oneline --decorate'
+alias glol="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+alias glod="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'"
+alias glods="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short"
+alias glodsng="git log  --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short"
+alias glola="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
+alias glog='git log --oneline --decorate --graph'
+alias gloga='git log --oneline --decorate --graph --all'
+alias lastcommitfiles='git log --pretty=format: --name-only -n 1'
+alias gitrenamebranch='git branch -m'
+alias gpush='ggpush'
+alias gpull='ggpull'
+alias discardchanges='git checkout .'
 # TODO git checkout file from particular branch/commmit
 #====================================== copied from zsh git plugin
 #===================== git aliases =====================
 
 alias findd="find . -type d -name"
 alias wcl='wc -l'
-alias ping='prettyping --nolegend'
+#alias ping='prettyping --nolegend'
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"

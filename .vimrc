@@ -88,6 +88,7 @@ Plug 'suan/vim-instant-markdown'
 "Plug 'maxbrunsfeld/vim-yankstack'
 "Plug 'majutsushi/tagbar'
 Plug 'itchyny/calendar.vim'
+Plug 'airblade/vim-gitgutter'
 " slow downs cursor moment on large files
 Plug 'Yggdroot/indentLine'
 Plug '907th/vim-auto-save'
@@ -138,29 +139,23 @@ call plug#end()
 source ~/.vim/wikia_tips.vim
 
 let g:deoplete#enable_at_startup = 1
-syntax on
 
+syntax on
 set number
 set tabstop=2 shiftwidth=2 expandtab
 set updatetime=100
 set showcmd
 set completeopt-=preview
-
-
 "Always show current position
 set ruler
-
 " Highlight search results
 set hlsearch
 set ignorecase
 " Show matching brackets when text indicator is over them
 set showmatch
-
 "" Makes search act like search in modern browser
 set incsearch
 set hidden
-
-
 set backspace=indent,eol,start
 set ai "Auto indent
 set si "Smart indent
@@ -170,6 +165,17 @@ set autoread
 " Don't make backups at all
 set nobackup
 set nowritebackup
+"https://medium.com/@Aenon/vim-swap-backup-undo-git-2bf353caa02f
+set backupdir=~/.vim/backupdir//
+set directory=~/.vim/directory//
+set undodir=~/.vim/undodir//
+set clipboard^=unnamed
+set undofile
+"set iskeyword-=_
+set ttimeoutlen=50
+set history=1000  " Keep a bigger history of commands
+set mouse=a
+"set timeoutlen=500
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -196,7 +202,6 @@ vnoremap <M-j> :m '>+1<CR>gv=gv
 vnoremap <M-k> :m '<-2<CR>gv=gv
 
 
-set mouse=a
 
 " https://stackoverflow.com/a/5562707/2577465
 map gn :bn<cr>
@@ -260,17 +265,11 @@ imap <C-_> <Esc><leader>c<Space>li
 imap <leader>i <Esc>
 
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/
-set undofile
 inoremap jj <ESC>
 cmap jj <ESC>
 vmap ii <ESC>
 
-"https://medium.com/@Aenon/vim-swap-backup-undo-git-2bf353caa02f
-set backupdir=~/.vim/backupdir//
-set directory=~/.vim/directory//
-set undodir=~/.vim/undodir//
 
-set clipboard^=unnamed
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
@@ -303,7 +302,7 @@ hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NO
 hi LineNr ctermfg=102 ctermbg=NONE cterm=NONE guifg=#90908a guibg=#3c3d37 gui=NONE
 hi Search guibg=peru guifg=wheat
 
-Plug 'airblade/vim-gitgutter'
+"=========== GitGutter ==========
 let g:gitgutter_map_keys = 0
 let g:gitgutter_diff_base = 'HEAD'
 autocmd BufWritePost * GitGutter
@@ -318,6 +317,7 @@ nnoremap <leader>gdca :!git diff --cached %<CR>
 nnoremap <leader>ggp :GitGutterPreviewHunk<CR>
 nnoremap <leader>ggu :GitGutterUndoHunk<CR>
 nnoremap <leader>gst :Gstatus<CR>
+"=========== GitGutter ==========
 
 "https://shapeshed.com/vim-netrw/
 "let g:netrw_banner = 0
@@ -329,7 +329,6 @@ nnoremap <leader>gst :Gstatus<CR>
   "autocmd!
   "autocmd VimEnter * :Vexplore
 "augroup END
-set history=1000                      " Keep a bigger history of commands
 
 " Fast editing and sourcing of `.vimrc`
 nnoremap <leader>ev :e $MYVIMRC<cr>
@@ -342,9 +341,6 @@ nnoremap <C-j> <C-e>
 nnoremap <C-k> <C-y>
 
 
-"set iskeyword-=_
-set ttimeoutlen=50
-"set timeoutlen=500
 let g:airline#extensions#tabline#enabled = 1
 " close buffer when quitting
 map <leader>q :bd<CR>
