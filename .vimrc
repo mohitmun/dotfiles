@@ -175,7 +175,12 @@ set undofile
 set ttimeoutlen=50
 set history=1000  " Keep a bigger history of commands
 set mouse=a
+set foldmethod=indent
+"set cursorline
+set nofoldenable    " disable folding
+set foldlevelstart=20
 "set timeoutlen=500
+set clipboard^=unnamed
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -218,8 +223,6 @@ vmap <C-c> "+yi
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <C-r><C-o>+
-set foldmethod=indent
-"set cursorline
 " https://stackoverflow.com/a/360634/2577465
 nnoremap <space> za
 vnoremap <space> zf
@@ -227,9 +230,6 @@ vnoremap <space> zf
 let g:gist_get_multiplefile = 1
 let g:gist_list_vsplit = 1
 
-set nofoldenable    " disable folding
-
-set foldlevelstart=20
 map <C-p> :FZF<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
@@ -268,7 +268,6 @@ imap <leader>i <Esc>
 inoremap jj <ESC>
 cmap jj <ESC>
 vmap ii <ESC>
-
 
 
 command! -bang -nargs=* Rg
@@ -349,7 +348,6 @@ map <leader>q :bd<CR>
 let g:ale_fixers = {
 \   'java': ['google_java_format'],
 \}
-map <leader>c :w !colordiff -u % -
 "map <leader>h :exe printf('match IncSearch /\V\</Users/mohit/.vimrcs\>/', escape(expand('1'), '/\'))<CR>
 autocmd CursorMoved * exe exists("HlUnderCursor")?HlUnderCursor?printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\')):'match none':""
 let g:auto_save = 1
@@ -383,7 +381,7 @@ nnoremap c "_c
 nnoremap C "_C
 vnoremap c "_c
 
-set clipboard^=unnamed
+map <leader>c :w !colordiff -u % -
 nnoremap <leader>d "*d
 nnoremap <leader>D "*D
 vnoremap <leader>d "*d
@@ -647,7 +645,6 @@ set viminfo+=s10    " max size of an item in Kb
 " vim multiple cursor is slow
 " autocomplete when using vim
 " writing markdown faster
-" how to auto update gitgutter
 " https://stackoverflow.com/a/6937075/2577465
 " run command on selected text
 " :'<,'>!ls `cat`
@@ -729,4 +726,48 @@ inoreabbr bpr binding.pry_remote
 inoreabbr rli Rails.logger.info
 "=============== abbr ================
 
+"https://gist.github.com/orlp/8c25ed4abb36372bc6fe
+" quick replace occurences
+let g:should_inject_replace_occurences = 0
+function! MoveToNext()
+    if g:should_inject_replace_occurences
+        call feedkeys("n")
+        call repeat#set("\<Plug>ReplaceOccurences")
+    endif
 
+    let g:should_inject_replace_occurences = 0
+endfunction
+
+augroup auto_move_to_next
+    autocmd! InsertLeave * :call MoveToNext()
+augroup END
+
+nmap <silent> <Plug>ReplaceOccurences :call ReplaceOccurence()<CR>
+nmap <silent> <Leader>r :let @/ = '\C\<'.expand('<cword>').'\>'<CR>
+    \:set hlsearch<CR>:let g:should_inject_replace_occurences=1<CR>cgn
+vmap <silent> <Leader>r :<C-U>
+    \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+    \gvy:let @/ = substitute(
+    \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR>:set hlsearch<CR>:let g:should_inject_replace_occurences=1<CR>
+    \gV:call setreg('"', old_reg, old_regtype)<CR>cgn
+
+function! ReplaceOccurence()
+    " check if we are on top of an occurence
+    let l:winview = winsaveview()
+    let l:save_reg = getreg('"')
+    let l:save_regmode = getregtype('"')
+    let [l:lnum_cur, l:col_cur] = getpos(".")[1:2] 
+    normal! ygn
+    let [l:lnum1, l:col1] = getpos("'[")[1:2]
+    let [l:lnum2, l:col2] = getpos("']")[1:2]
+    call setreg('"', l:save_reg, l:save_regmode)
+    call winrestview(winview)
+    
+    " if we are on top of an occurence, replace it
+    if l:lnum_cur >= l:lnum1 && l:lnum_cur <= l:lnum2 && l:col_cur >= l:col1 && l:col_cur <= l:col2
+        exe "normal! cgn\<c-a>\<esc>"
+    endif
+    
+    call feedkeys("n")
+    call repeat#set("\<Plug>ReplaceOccurences")
+endfunction
