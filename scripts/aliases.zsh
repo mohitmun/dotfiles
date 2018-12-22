@@ -196,6 +196,9 @@ alias gitrenamebranch='git branch -m'
 alias gpush='ggpush'
 alias gpull='ggpull'
 alias discardchanges='git checkout .'
+gitcheckoutfilefrombranch(){
+  git checkout $1 -- $2
+}
 # TODO git checkout file from particular branch/commmit
 #====================================== copied from zsh git plugin
 #===================== git aliases =====================

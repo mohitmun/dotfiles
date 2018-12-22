@@ -121,7 +121,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'osyo-manga/vim-over'
 Plug 'haya14busa/vim-edgemotion'
 Plug 'dhruvasagar/vim-table-mode'
-
+Plug 'mbbill/undotree'
 Plug 'RRethy/vim-illuminate', { 'on':  'IlluminationEnable' }
 " TODO limit this for 3-4 chars
 "Plug 'vim-scripts/AutoComplPop'
@@ -181,6 +181,27 @@ set nofoldenable    " disable folding
 set foldlevelstart=20
 "set timeoutlen=500
 set clipboard^=unnamed
+
+"https://github.com/sputtene/dotfiles/blob/79db8ab3b0586fb787fc59b42715dba786135c6d/.vimrc
+set viminfo+='1000
+"
+set viminfo=
+set viminfo+='1000  " max number of previous files for which the marks are remembered
+set viminfo+=!      " save and restore globals in all uppercase
+"set viminfo+=%      " save and restore buffer list
+set viminfo+=/1000  " max number of search and substitute patterns to save
+set viminfo+=:1000  " max number of command line items to save
+set viminfo+=<1000   " max number of lines for each register to save
+set viminfo+=@1000   " max number of input-line history to save
+set viminfo+=f1     " store file marks ('0 to '9, 'A to 'Z)
+set viminfo+=h      " disable effect of hlsearch when loading viminfo
+set viminfo+=s10    " max size of an item in Kb
+
+"https://stackoverflow.com/a/16920294/2577465
+set re=1
+
+
+
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -316,6 +337,7 @@ nnoremap <leader>gdca :!git diff --cached %<CR>
 nnoremap <leader>ggp :GitGutterPreviewHunk<CR>
 nnoremap <leader>ggu :GitGutterUndoHunk<CR>
 nnoremap <leader>gst :Gstatus<CR>
+nnoremap <leader>gco :!git checkout %<CR>
 "=========== GitGutter ==========
 
 "https://shapeshed.com/vim-netrw/
@@ -342,7 +364,8 @@ nnoremap <C-k> <C-y>
 
 let g:airline#extensions#tabline#enabled = 1
 " close buffer when quitting
-map <leader>q :bd<CR>
+noremap q :bd<CR>
+noremap <leader>q q
 " understand below command
 "autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 let g:ale_fixers = {
@@ -621,22 +644,6 @@ nnoremap <leader>gf :GFiles?<CR>
 
 nnoremap * *N
 map F *
-set viminfo+='1000
-
-"https://github.com/sputtene/dotfiles/blob/79db8ab3b0586fb787fc59b42715dba786135c6d/.vimrc
-"
-set viminfo=
-set viminfo+='1000  " max number of previous files for which the marks are remembered
-set viminfo+=!      " save and restore globals in all uppercase
-"set viminfo+=%      " save and restore buffer list
-set viminfo+=/1000  " max number of search and substitute patterns to save
-set viminfo+=:1000  " max number of command line items to save
-set viminfo+=<1000   " max number of lines for each register to save
-set viminfo+=@1000   " max number of input-line history to save
-set viminfo+=f1     " store file marks ('0 to '9, 'A to 'Z)
-set viminfo+=h      " disable effect of hlsearch when loading viminfo
-set viminfo+=s10    " max size of an item in Kb
-
 
 "Vimnotes
 "http://vim.wikia.com/wiki/Delete_all_lines_containing_a_pattern
@@ -771,3 +778,4 @@ function! ReplaceOccurence()
     call feedkeys("n")
     call repeat#set("\<Plug>ReplaceOccurences")
 endfunction
+
