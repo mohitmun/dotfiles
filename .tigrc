@@ -31,3 +31,12 @@ bind generic    G       move-last-line
 bind generic B @sh -c "open 'https://'$(git remote -v | grep -Eo 'github.com[:/][^.]+' | head -1 | tr : /)'/commit/%(commit)'"
 set mouse = yes
 set mouse-scroll = 3
+
+#https://github.com/yusekiya/dotfiles/blob/40bbd64acbb8d7abe384268b0ccb0cb8d7049201/.tigrc#L19-L24
+bind main P ?git cherry-pick %(commit)
+bind main B ?git checkout -b "%(prompt Enter new branch name: )" %(commit)
+bind main v ?git checkout %(commit)
+bind main ! ?git revert %(commit)
+bind main M ?git merge %(branch)
+bind refs v ?git checkout %(branch)
+

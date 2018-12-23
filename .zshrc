@@ -25,7 +25,7 @@ plugins=(
   z
   battery
   alias-tips
-  zsh-prioritize-cwd-history
+  #zsh-prioritize-cwd-history
 )
 source $ALIASFILE
 source $ZSH/oh-my-zsh.sh
