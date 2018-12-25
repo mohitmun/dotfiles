@@ -1,1 +1,15 @@
-https://github.com/search?q=filename%3A.visidatarc
+""" https://github.com/search?q=filename%3A.visidatarc """
+import datetime
+from dateutil import tz
+from dateutil import parser
+import timeago
+to_zone = tz.tzlocal()
+
+def convert_column_to_local(column):
+  return parser.parse(column).astimezone(to_zone)
+
+def convert_timeago(column):
+  now = datetime.datetime.now()
+  cur_time =  parser.parse(column)
+  cur_time = cur_time.replace(tzinfo=None)
+  return timeago.format(cur_time, now)
