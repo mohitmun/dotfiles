@@ -30,6 +30,7 @@ plugins=(
 source $ALIASFILE
 source $ZSH/oh-my-zsh.sh
 [[ -f ~/.secret_common_sh_rc ]] && source ~/.secret_common_sh_rc
+source ~/.secret_keys
 source ~/scripts/colored_man_pages.zsh
 source ~/zsh/functions.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
