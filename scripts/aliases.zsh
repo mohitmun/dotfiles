@@ -208,6 +208,10 @@ find_duplicate_files(){
   sort -k 1,1 < hashes.txt > hashes-sorted.txt
   uniq --check-chars=32 --all-repeated=separate hashes-sorted.txt
 }
+
+findEmptyDirsAndFiles(){
+  find . -type f -exec bash -c 'if [ `cat "{}" |wc -w` -eq 0 ]; then echo "file - {}";fi' \; -or -empty -exec bash -c "echo dir - {}" \;
+}
 #========== Common ops ==============
 
 
