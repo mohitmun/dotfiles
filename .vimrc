@@ -203,10 +203,10 @@ set re=1
 
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+"map <C-j> <C-W>j
+"map <C-k> <C-W>k
+"map <C-h> <C-W>h
+"map <C-l> <C-W>l
 
 "map <Left> <C-W>h
 "map <Right> <C-W>l
@@ -232,6 +232,8 @@ vnoremap <M-k> :m '<-2<CR>gv=gv
 " https://stackoverflow.com/a/5562707/2577465
 map gn :bn<cr>
 map gp :bp<cr>
+map <C-l> :bn<cr>
+map <C-h> :bp<cr>
 map gb :Buffers<cr>
 
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red

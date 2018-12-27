@@ -34,7 +34,9 @@ alias pumpitup="osascript -e 'set volume output volume 100'"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias tochromedata="cd ~/Library/Application\ Support/Google/Chrome/Default/"
-alias dater="date -r" # timestamp to date
+tstodate(){
+  gdate -d "@$1" # timestamp to date
+}
 alias ts="date +'%s'" # date to timestamp
 #alias cat=bat
 alias vim=vi
@@ -136,6 +138,10 @@ alias loadavguptime='uptime | cut -d: -f4- | sed s/,//g'
 #================= CURL aliases =====================
 alias jcurl="curl -H 'Content-Type: application/json'"
 alias curl_github="curl -u $GITHUB_USERNAME_SPAM:$GITHUB_PASSWORD_SPAM"
+
+curlpaginatexample(){
+  curl "{maps,mail,photos}.google.com/{u,v,y}/[1-3]" -o "googlefile#1__#2__#3"
+}
 #================= CURL aliases =====================
 
 change_extension(){
