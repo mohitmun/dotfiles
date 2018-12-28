@@ -226,9 +226,50 @@ alias findd="find . -type d -name" # find directory
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias rgl="rg -l" # show only files names
 alias lssr="\du -ah . | grep -v "/$" | gsort -rh" # sort by size recursive
+alias ls="ls -hG"
 alias lss="ls -S" # sort by size
 alias lst="ls -t" # recent first
 alias lstr="ls -tr" # recent last
 alias s="l -S" # sort by size
 alias rmrf="rm -rf"
+
+# from lib/directories.zsh
+# Changing/making/removing directory
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushdminus
+
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
+
+alias -- -='cd -'
+alias 1='cd -'
+alias 2='cd -2'
+alias 3='cd -3'
+alias 4='cd -4'
+alias 5='cd -5'
+alias 6='cd -6'
+alias 7='cd -7'
+alias 8='cd -8'
+alias 9='cd -9'
+
+alias md='mkdir -p'
+alias rd=rmdir
+alias d='dirs -v | head -10'
+
+# List directory contents
+alias lsa='ls -lah'
+alias l='ls -lah'
+alias ll='ls -lh'
+alias la='ls -lAh'
 #========== System info =============
+
+
+#========== convert/imagemagic =============
+alias mergesbs="convert +append" #convert +append step1.png step2.png out.png
+#========== convert/imagemagic =============
+
+alias shuf="gshuf"
+alias randomrange="shuf -n 1 -i" # example gshuf -i 2-65 -n 1

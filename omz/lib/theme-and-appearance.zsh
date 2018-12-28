@@ -21,7 +21,6 @@ if [[ "$DISABLE_LS_COLORS" != "true" ]]; then
     colorls -G -d . &>/dev/null && alias ls='colorls -G'
   elif [[ "$OSTYPE" == darwin* ]]; then
     # this is a good alias, it works by default just using $LSCOLORS
-    ls -G . &>/dev/null && alias ls='ls -G'
 
     # only use coreutils ls if there is a dircolors customization present ($LS_COLORS or .dircolors file)
     # otherwise, gls will use the default color scheme which is ugly af
@@ -46,7 +45,6 @@ setopt prompt_subst
 [[ -n "$WINDOW" ]] && SCREEN_NO="%B$WINDOW%b " || SCREEN_NO=""
 
 # Apply theming defaults
-PS1="%n@%m:%~%# "
 
 # git theming default: Variables for theming the git info prompt
 #ZSH_THEME_GIT_PROMPT_PREFIX="git:("         # Prefix at the very beginning of the prompt, before the branch name

@@ -635,9 +635,15 @@ map <C-a> ggVG
 map <leader>dbl :g/^$/d<CR>:noh<CR>
 " remove trailing space
 map <leader>rts :%s/\s\+$//e<CR>
+
 " unused keys
 " shift - K, M, Q
+" <C-m
 map K <Nop>
+map M <Nop>
+map Q <Nop>
+map <C-m> <Nop>
+
 "https://github.com/bag-man/dotfiles/blob/master/vimrc#L59
 map H ^
 map L $
