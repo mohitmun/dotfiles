@@ -332,7 +332,7 @@ nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 nnoremap <leader>ggs :GitGutterStageHunk<CR>
 nnoremap <leader>ggstage :GitGutterStageHunk<CR>
-nnoremap <leader>ggsc :GitGutterStageHunk<CR>:!git commit -m "working"<CR>
+nnoremap <leader>ggsc :GitGutterStageHunk<CR>:!git commit -m "working" %<CR>
 nnoremap <leader>ggc :!git add %<CR>:!git commit -m "working" %<CR>
 nnoremap <leader>gd :!git diff %<CR>
 nnoremap <leader>gdca :!git diff --cached %<CR>
@@ -579,7 +579,7 @@ nmap <leader><leader>c :pclose<CR>:cclose<CR>
 "imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 "imap <c-x><c-l> <plug>(fzf-complete-line)
 
-nnoremap <Leader>u :MundoToggle<CR>
+nnoremap <Leader>u :UndotreeToggle<CR>
 
 "let g:UltiSnipsExpandTrigger="<tab>"
 "let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -786,4 +786,4 @@ function! ReplaceOccurence()
     call feedkeys("n")
     call repeat#set("\<Plug>ReplaceOccurences")
 endfunction
-
+let g:undotree_WindowLayout = 4
