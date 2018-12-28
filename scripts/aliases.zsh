@@ -111,6 +111,7 @@ ports(){
 portskill(){
   ports "$1" | awk '{ print $2; }' #| xargs kill -9
 }
+alias -g LOGTOFILE="> stdout.log 2> stderr.log"
 alias nvmact='export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
 alias psa='ps -o %cpu,%mem'
 alias psp='ps -p'
@@ -166,6 +167,10 @@ tailgrep(){
 # TODO https://stackoverflow.com/questions/8435343/retrieve-the-commit-log-for-a-specific-line-in-a-file/31985012
 # TODO https://stackoverflow.com/questions/14142609/git-discover-which-commits-ever-touched-a-range-of-lines
 # TODO explore more in details https://github.com/so-fancy/diff-so-fancy
+alias ga='git add'
+alias gaa='git add --all'
+alias gapa='git add --patch'
+alias gau='git add --update'
 alias gitsearchcommit='git log --all --grep='PATTERN''
 alias gitundolastcommit='git reset HEAD~'
 alias whatimpushing="git cherry -v"
