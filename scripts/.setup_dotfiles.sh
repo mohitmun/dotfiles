@@ -15,7 +15,7 @@ apt install curl zsh man git vim
 =============
 ubuntu
 =============
-apt install silversearcher-ag
+apt install silversearcher-ag ncdu
 wget https://github.com/sharkdp/fd/releases/download/v7.1.0/fd-musl_7.1.0_i386.deb
 sudo dpkg -i fd_7.0.0_amd64.deb
 
