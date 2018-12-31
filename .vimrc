@@ -81,7 +81,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'sjl/gundo.vim'
 " https://vi.stackexchange.com/a/8224/15805
-"Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'suan/vim-instant-markdown'
 "fucks up disable cut logic
@@ -581,6 +581,7 @@ nmap <leader><leader>c :pclose<CR>:cclose<CR>
 
 nnoremap <Leader>u :UndotreeToggle<CR>
 
+let g:UltiSnipsListSnippets="<C-m>"
 "let g:UltiSnipsExpandTrigger="<tab>"
 "let g:UltiSnipsJumpForwardTrigger="<c-b>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -787,3 +788,5 @@ function! ReplaceOccurence()
     call repeat#set("\<Plug>ReplaceOccurences")
 endfunction
 let g:undotree_WindowLayout = 4
+
+

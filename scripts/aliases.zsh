@@ -203,6 +203,8 @@ alias discardchanges='git checkout .'
 alias yolo='git commit -m "$(curl -s whatthecommit.com/index.txt)"'
 alias sn='git --git-dir=$HOME/.notable/.git --work-tree=$HOME/.notable commit -a -m "working"'
 alias gsetorigin="git remote set-url origin "
+alias gitremoteremove="git remote remove"
+
 gitcheckoutfilefrombranch(){
   git checkout $1 -- $2
 }
