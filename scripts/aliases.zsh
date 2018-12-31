@@ -201,7 +201,7 @@ alias gpush='ggpush'
 alias gpull='ggpull'
 alias discardchanges='git checkout .'
 alias yolo='git commit -m "$(curl -s whatthecommit.com/index.txt)"'
-
+alias sn='git --git-dir=$HOME/.notable/.git --work-tree=$HOME/.notable commit -a -m "working"'
 gitcheckoutfilefrombranch(){
   git checkout $1 -- $2
 }
