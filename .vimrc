@@ -790,3 +790,4 @@ endfunction
 let g:undotree_WindowLayout = 4
 
 
+let g:UltiSnipsSnippetsDir="~/.vim/plugged/vim-snippets/snippets/"
