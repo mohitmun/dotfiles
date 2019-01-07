@@ -132,6 +132,8 @@ Plug 'RRethy/vim-illuminate', { 'on':  'IlluminationEnable' }
 Plug 'maralla/completor.vim'
 Plug 'ruanyl/vim-gh-line'
 Plug 'zivyangll/git-blame.vim'
+" discovered here https://github.com/dodie/dotfiles/blob/master/vim/vimrc.symlink#L32
+Plug 'luochen1990/rainbow'
 "Plug 'SidOfc/mkdx'
 call plug#end()
 
@@ -581,7 +583,7 @@ nmap <leader><leader>c :pclose<CR>:cclose<CR>
 
 nnoremap <Leader>u :UndotreeToggle<CR>
 
-let g:UltiSnipsListSnippets="<C-m>"
+"let g:UltiSnipsListSnippets="<C-m>"
 "let g:UltiSnipsExpandTrigger="<tab>"
 "let g:UltiSnipsJumpForwardTrigger="<c-b>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -678,6 +680,7 @@ map F *
 "TODO read this http://vim.wikia.com/wiki/Get_the_name_of_the_current_file
 "TODO explore lsp
 "TODO https://github.com/neoclide/coc.nvim
+"TODO check ultisnips ka multi logic
 map <leader>aspl :!aspell -c % <CR>
 map <leader>espl :setlocal spell<CR>
 map <leader>dspl :setlocal nospell<CR>
@@ -791,3 +794,12 @@ let g:undotree_WindowLayout = 4
 
 
 let g:UltiSnipsSnippetsDir="~/.vim/plugged/vim-snippets/snippets/"
+map <leader>usl :Snippets<CR>
+map <leader>use :UltiSnipsEdit<CR>
+
+if &diff
+    " diff mode
+    set diffopt+=iwhite
+endif
+
+
