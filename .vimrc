@@ -135,6 +135,8 @@ Plug 'zivyangll/git-blame.vim'
 " discovered here https://github.com/dodie/dotfiles/blob/master/vim/vimrc.symlink#L32
 Plug 'luochen1990/rainbow'
 "Plug 'SidOfc/mkdx'
+"explore
+"Plug 'prabirshrestha/asyncomplete.vim'
 call plug#end()
 
 "source ~/.vim/cscope.vim
@@ -802,4 +804,6 @@ if &diff
     set diffopt+=iwhite
 endif
 
-
+"https://github.com/jackfranklin/dotfiles/blob/master/vim/vimrc#L224
+" new file in current directory
+map <Leader>nf :e <C-R>=expand("%:p:h") . "/" <CR>
