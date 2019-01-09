@@ -346,6 +346,19 @@ nnoremap <leader>gst :Gstatus<CR>
 nnoremap <leader>gco :!git checkout %<CR>
 "=========== GitGutter ==========
 
+"============ UltiSnips ===================
+let g:UltiSnipsSnippetsDir="~/.vim/plugged/vim-snippets/UltiSnips"
+map <leader>usl :Snippets<CR>
+map <leader>use :UltiSnipsEdit<CR>
+"let g:UltiSnipsListSnippets="<C-m>"
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
+"============ UltiSnips ===================
+
+
 "https://shapeshed.com/vim-netrw/
 "let g:netrw_banner = 0
 "let g:netrw_liststyle = 3
@@ -553,7 +566,7 @@ vnoremap <tab> >gv
 vnoremap <S-tab> <gv
 
 "http://vim.wikia.com/wiki/Easy_indenting_in_insert_and_normal_mode_with_no_cursor_displacement
-nnoremap <Tab> >>
+"nnoremap <Tab> >>
 nnoremap <S-Tab> <<
 
 " fucks up with <CR>
@@ -585,13 +598,6 @@ nmap <leader><leader>c :pclose<CR>:cclose<CR>
 
 nnoremap <Leader>u :UndotreeToggle<CR>
 
-"let g:UltiSnipsListSnippets="<C-m>"
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
 
 " remeber when i was debuging here doc and white space was fucking up
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -747,17 +753,7 @@ inoreabbr bpr binding.pry_remote
 inoreabbr rli Rails.logger.info
 "=============== abbr ================
 
-"https://gist.github.com/orlp/8c25ed4abb36372bc6fe
-" quick replace occurences
 let g:should_inject_replace_occurences = 0
-function! MoveToNext()
-    if g:should_inject_replace_occurences
-        call feedkeys("n")
-        call repeat#set("\<Plug>ReplaceOccurences")
-    endif
-
-    let g:should_inject_replace_occurences = 0
-endfunction
 
 augroup auto_move_to_next
     autocmd! InsertLeave * :call MoveToNext()
@@ -772,32 +768,9 @@ vmap <silent> <Leader>r :<C-U>
     \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR>:set hlsearch<CR>:let g:should_inject_replace_occurences=1<CR>
     \gV:call setreg('"', old_reg, old_regtype)<CR>cgn
 
-function! ReplaceOccurence()
-    " check if we are on top of an occurence
-    let l:winview = winsaveview()
-    let l:save_reg = getreg('"')
-    let l:save_regmode = getregtype('"')
-    let [l:lnum_cur, l:col_cur] = getpos(".")[1:2] 
-    normal! ygn
-    let [l:lnum1, l:col1] = getpos("'[")[1:2]
-    let [l:lnum2, l:col2] = getpos("']")[1:2]
-    call setreg('"', l:save_reg, l:save_regmode)
-    call winrestview(winview)
-    
-    " if we are on top of an occurence, replace it
-    if l:lnum_cur >= l:lnum1 && l:lnum_cur <= l:lnum2 && l:col_cur >= l:col1 && l:col_cur <= l:col2
-        exe "normal! cgn\<c-a>\<esc>"
-    endif
-    
-    call feedkeys("n")
-    call repeat#set("\<Plug>ReplaceOccurences")
-endfunction
 let g:undotree_WindowLayout = 4
 
 
-let g:UltiSnipsSnippetsDir="~/.vim/plugged/vim-snippets/snippets/"
-map <leader>usl :Snippets<CR>
-map <leader>use :UltiSnipsEdit<CR>
 
 if &diff
     " diff mode
@@ -806,4 +779,8 @@ endif
 
 "https://github.com/jackfranklin/dotfiles/blob/master/vim/vimrc#L224
 " new file in current directory
-map <Leader>nf :e <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>ee :e <C-R>=expand("%:p:h") . "/" <CR>
+
+command! -nargs=1 -bang Replace :call Replace(<bang>0, <q-args>)
+nnoremap <Leader>r :call Replace(0, input('Replace '.expand('<cword>').' with: '))<CR>
+let g:rainbow_active = 1
