@@ -142,7 +142,7 @@ call plug#end()
 "source ~/.vim/cscope.vim
 source ~/.vim/wikia_tips.vim
 
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 
 syntax on
 set number
@@ -333,6 +333,7 @@ let g:gitgutter_map_keys = 0
 let g:gitgutter_diff_base = 'HEAD'
 autocmd BufWritePost * GitGutter
 nmap ]h <Plug>GitGutterNextHunk
+nmap gh <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 nnoremap <leader>ggs :GitGutterStageHunk<CR>
 nnoremap <leader>ggstage :GitGutterStageHunk<CR>
@@ -380,16 +381,24 @@ nnoremap <leader>za zR
 nnoremap <C-j> <C-e>
 nnoremap <C-k> <C-y>
 
-
+"=================== airline ===================
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#hunks#enabled = 0
+"=================== airline ===================
+
 " close buffer when quitting
 noremap q :bd<CR>
 noremap <leader>q q
 " understand below command
 "autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+
+"=================== ALE ===================
 let g:ale_fixers = {
 \   'java': ['google_java_format'],
 \}
+"=================== ALE ===================
+
 "map <leader>h :exe printf('match IncSearch /\V\</Users/mohit/.vimrcs\>/', escape(expand('1'), '/\'))<CR>
 autocmd CursorMoved * exe exists("HlUnderCursor")?HlUnderCursor?printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\')):'match none':""
 let g:auto_save = 1
@@ -481,8 +490,6 @@ inoremap <C-l> <Right>
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-g>k"))
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-g>j"))
 
-let g:airline#extensions#branch#enabled = 0
-let g:airline#extensions#hunks#enabled = 0
 "https://github.com/mrzool/dotfiles/blob/master/vim/.vimrc#L112
 set dictionary=/usr/share/dict/words
 " make Y behave like D and C
@@ -566,6 +573,7 @@ vnoremap <tab> >gv
 vnoremap <S-tab> <gv
 
 "http://vim.wikia.com/wiki/Easy_indenting_in_insert_and_normal_mode_with_no_cursor_displacement
+"commented because C-i doesn work
 "nnoremap <Tab> >>
 nnoremap <S-Tab> <<
 
@@ -654,6 +662,7 @@ map K <Nop>
 map M <Nop>
 map Q <Nop>
 map <C-m> <Nop>
+map T <nop>
 
 "https://github.com/bag-man/dotfiles/blob/master/vimrc#L59
 map H ^
@@ -683,7 +692,7 @@ map F *
 "TODO understand how omnicompletion works
 "TODO time is not there in git blame plugin
 "TODO https://til.hashrocket.com/posts/39f85bac84-open-images-in-vim-with-iterm-
-"TODO cycle through gitgutter hunks
+"TODO cycle through gitgutter hunks map it to 'gh'
 "TODO remove space in vim surround
 "TODO read this http://vim.wikia.com/wiki/Get_the_name_of_the_current_file
 "TODO explore lsp
@@ -718,7 +727,6 @@ cnoremap %' <C-R>=expand('%:p')<CR>
 " copy current file full path to clipboard
 " https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
 map <leader>cp :let @+ = expand("%:p")<CR>
-
 "danro/rename.vim
 command! -nargs=* -complete=customlist,SiblingFiles -bang Rename :call Rename("<args>", "<bang>")
 cabbrev rename <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "Rename" : "rename"<CR>
@@ -784,3 +792,4 @@ map <Leader>ee :e <C-R>=expand("%:p:h") . "/" <CR>
 command! -nargs=1 -bang Replace :call Replace(<bang>0, <q-args>)
 nnoremap <Leader>r :call Replace(0, input('Replace '.expand('<cword>').' with: '))<CR>
 let g:rainbow_active = 1
+

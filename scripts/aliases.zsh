@@ -116,6 +116,7 @@ alias nvmact='export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NV
 alias psa='ps -o %cpu,%mem'
 alias psp='ps -p'
 alias datetime='date "+%Y-%m-%d %H:%M:%S"'
+alias shortdatetime='gdate +"%a %d %b %I:%M"'
 alias killglobalthread='cat ~/.global_worker.pid | xargs kill -9'
 
 stop(){
@@ -281,3 +282,7 @@ alias mergesbs="convert +append" #convert +append step1.png step2.png out.png
 
 alias shuf="gshuf"
 alias randomrange="shuf -n 1 -i" # example gshuf -i 2-65 -n 1
+
+create_zip(){
+  zip -r $1.zip $1
+}

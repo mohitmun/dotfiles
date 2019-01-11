@@ -7,7 +7,7 @@ ZSH_THEME_GIT_PROMPT_DIRTY="$FG[214]*%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[075])%{$reset_color%}"
 NEWLINE=$'\n'
 PROMPT_CHAR='❯'
-STATUS_BAR='$FG[241]$(get_battery)$DOT$(get_volume_indicator)$DOT$(time12)%{$reset_color%}'
+STATUS_BAR='$FG[241]$(get_battery)$DOT$(get_volume_indicator)$DOT$(shortdatetime)%{$reset_color%}'
 #STATUS_BAR_ENABLED=1
 show_status_bar(){
   if [[ -n $STATUS_BAR_ENABLED ]];then
