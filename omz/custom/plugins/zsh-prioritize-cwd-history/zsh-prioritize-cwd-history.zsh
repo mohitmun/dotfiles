@@ -67,7 +67,7 @@ _zsh_prioritize_cwd_history_cwd_hist_entries() {
 	# referenced by the histrefs file
 	local pattern=$(
 		# Get last 1000 histrefs
-		tail -1000 "$histrefs" |
+		tail -50 "$histrefs" |
 
 		# Prepend ": " to timestamps
 		sed -e 's/^/\^: /' |
