@@ -339,7 +339,7 @@ nnoremap <leader>ggs :GitGutterStageHunk<CR>
 nnoremap <leader>ggstage :GitGutterStageHunk<CR>
 "TODO ask for message
 "TODO git commit current line, range of lines
-nnoremap <leader>ggc :GitGutterStageHunk<CR>:!git commit -m "" <Left><Left><Left>
+nnoremap <leader>ggc :GitGutterStageHunk<CR>:!git commit -m ""<Left>
 nnoremap <leader>gc :!git add %<CR>:!git commit -m "working" %<CR>
 nnoremap T :!tig %<CR>
 nnoremap <leader>gd :!git diff %<CR>
