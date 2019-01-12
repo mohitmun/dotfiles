@@ -37,6 +37,7 @@ tstodate(){
   gdate -d "@$1" # timestamp to date
 }
 alias ts="date +'%s'" # date to timestamp
+alias tsms='echo $(($(gdate +%s%N)/1000000))' # date to timestamp ms
 #alias cat=bat
 alias vim=vi
 alias cpr="cp -r"
@@ -197,6 +198,7 @@ alias glog='git log --oneline --decorate --graph'
 alias gloga='git log --oneline --decorate --graph --all'
 alias lastcommitfiles='git log --pretty=format: --name-only -n 1'
 alias gitrenamebranch='git branch -m'
+alias ggpush='git push -u origin $(git_current_branch)'
 alias gpush='ggpush'
 alias gpull='ggpull'
 alias discardchanges='git checkout .'
