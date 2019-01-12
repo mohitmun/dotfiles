@@ -337,8 +337,11 @@ nmap gh <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 nnoremap <leader>ggs :GitGutterStageHunk<CR>
 nnoremap <leader>ggstage :GitGutterStageHunk<CR>
-nnoremap <leader>ggsc :GitGutterStageHunk<CR>:!git commit -m "working" %<CR>
-nnoremap <leader>ggc :!git add %<CR>:!git commit -m "working" %<CR>
+"TODO ask for message
+"TODO git commit current line, range of lines
+nnoremap <leader>ggc :GitGutterStageHunk<CR>:!git commit -m "" %<Left><Left><Left>
+nnoremap <leader>gc :!git add %<CR>:!git commit -m "working" %<CR>
+nnoremap T :!tig %<CR>
 nnoremap <leader>gd :!git diff %<CR>
 nnoremap <leader>gdca :!git diff --cached %<CR>
 nnoremap <leader>ggp :GitGutterPreviewHunk<CR>
@@ -477,7 +480,6 @@ let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 "autocmd InsertEnter * set cul
 "autocmd InsertLeave * set nocul
-autocmd FileType help wincmd L
 " tmux knows the extended mouse mode
 set ttymouse=xterm2
 
@@ -574,7 +576,9 @@ vnoremap <S-tab> <gv
 
 "http://vim.wikia.com/wiki/Easy_indenting_in_insert_and_normal_mode_with_no_cursor_displacement
 "commented because C-i doesn work
-"nnoremap <Tab> >>
+nnoremap <Tab> >>
+" opposite of <C-o>
+nnoremap <C-y> <C-I>
 nnoremap <S-Tab> <<
 
 " fucks up with <CR>
@@ -662,7 +666,6 @@ map K <Nop>
 map M <Nop>
 map Q <Nop>
 map <C-m> <Nop>
-map T <nop>
 
 "https://github.com/bag-man/dotfiles/blob/master/vimrc#L59
 map H ^
