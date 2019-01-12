@@ -11,7 +11,6 @@ function add_alias() {
 }
 
 alias tn='tmux -CC new -s'
-alias ts='tmux -CC new-session -s'
 alias ta='tmux -CC attach -t'
 alias ta='tmux -CC attach -t'
 alias tad='tmux -CC attach -d -t'
