@@ -336,11 +336,11 @@ nmap ]h <Plug>GitGutterNextHunk
 nmap gh <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 nnoremap <leader>ggs :GitGutterStageHunk<CR>
-nnoremap <leader>ggstage :GitGutterStageHunk<CR>
-"TODO ask for message
 "TODO git commit current line, range of lines
-nnoremap <leader>ggc :GitGutterStageHunk<CR>:!git commit -m ""<Left>
-nnoremap <leader>gc :!git add %<CR>:!git commit -m "working" %<CR>
+"commit current hunk
+nnoremap <leader>gch :GitGutterStageHunk<CR>:!git commit -m ""<Left>
+"commit current file
+nnoremap <leader>gcf :!git commit -m "" %<Left><Left><Left>
 nnoremap T :!tig %<CR>
 nnoremap <leader>gd :!git diff %<CR>
 nnoremap <leader>gdca :!git diff --cached %<CR>
@@ -354,6 +354,7 @@ nnoremap <leader>gco :!git checkout %<CR>
 let g:UltiSnipsSnippetsDir="~/.vim/plugged/vim-snippets/UltiSnips"
 map <leader>usl :Snippets<CR>
 map <leader>use :UltiSnipsEdit<CR>
+map <leader>es :UltiSnipsEdit<CR>
 "let g:UltiSnipsListSnippets="<C-m>"
 "let g:UltiSnipsExpandTrigger="<tab>"
 "let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -705,6 +706,7 @@ map <leader>aspl :!aspell -c % <CR>
 map <leader>espl :setlocal spell<CR>
 map <leader>dspl :setlocal nospell<CR>
 
+au BufNewFile,BufRead * if &syntax == '' | setlocal spell | endif
 autocmd FileType ruby map <C-b> :!ruby %<CR>
 
 
