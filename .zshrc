@@ -8,6 +8,11 @@ elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
 elif [[ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]]; then
   platform="windows"
 fi
+logtime(){
+  ts=$(ts)
+  tsms=$(tsms)
+  echo "logtime $1 ts:$ts tsms:$tsms" >> ~/.perf.zsh
+}
 
 export PLATFORM=$platform
 export ZSH=~/omz
@@ -39,7 +44,7 @@ source ~/zsh/functions.zsh
 #if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 export EDITOR=vim
-
+export LESS="-i"
 ##############################################################################
 # History Configuration
 ##############################################################################
@@ -470,3 +475,7 @@ ks(){
 notify_telegram(){
   jcurl -d "{\"value1\":\"$1\",\"value2\":\"$2\",\"value3\":\"$3\"}" https://maker.ifttt.com/trigger/telegram_alert/with/key/${IFTTT_TOKEN}
 }
+
+autoload -Uz async && async
+#autoload -U promptinit; promptinit
+#prompt pure
