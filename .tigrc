@@ -40,3 +40,4 @@ bind main ! ?git revert %(commit)
 bind main M ?git merge %(branch)
 bind refs v ?git checkout %(branch)
 
+bind generic Y @sh -c "printf '%s' %(commit) | pbcopy"
