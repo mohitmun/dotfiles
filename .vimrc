@@ -137,6 +137,7 @@ Plug 'luochen1990/rainbow'
 "Plug 'SidOfc/mkdx'
 "explore
 "Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'TaDaa/vimade'
 call plug#end()
 
 "source ~/.vim/cscope.vim
