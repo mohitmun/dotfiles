@@ -207,6 +207,9 @@ alias sn='git --git-dir=$HOME/.notable/.git --work-tree=$HOME/.notable commit -a
 alias gsetorigin="git remote set-url origin "
 alias gitremoteremove="git remote remove"
 
+alias gd='git diff'
+alias gdca='git diff --cached'
+alias gdh='git diff HEAD'
 gitcheckoutfilefrombranch(){
   git checkout $1 -- $2
 }
