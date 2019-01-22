@@ -123,6 +123,9 @@ function repeat_string(){
 get_todo_status(){
   #a=$(FORCE_COLOR=0 tb -l notes | tail -n2)
   #echo $a
+  task_count=$( task status:pending count )
+  # TODO due: red, other: green
+  [ $task_count -gt 0 ] && echo -ne "$DOT$FG[196]$task_count"
 }
 explain(){
   response=$(w3m -dump "http://explainshell.com/explain?cmd="$(echo $@ | tr ' ' '+'))
