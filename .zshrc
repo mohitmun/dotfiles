@@ -479,3 +479,13 @@ notify_telegram(){
 autoload -Uz async && async
 #autoload -U promptinit; promptinit
 #prompt pure
+add-zsh-hook chpwd run_local_rc
+
+run_local_rc(){
+  if [ -f $(pwd)/.localrc ];then
+    echo "executinng localrc"
+    source $(pwd)/.localrc
+  else
+
+  fi
+}
