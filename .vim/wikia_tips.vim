@@ -44,3 +44,42 @@ function! ReplaceOccurence()
     call feedkeys("n")
     call repeat#set("\<Plug>ReplaceOccurences")
 endfunction
+
+function! LineBreakAt(bang, ...) range
+  let save_search = @/
+  if empty(a:bang)
+    let before = ''
+    let after = '\ze.'
+    let repl = '&\r'
+  else
+    let before = '.\zs'
+    let after = ''
+    let repl = '\r&'
+  endif
+  let pat_list = map(deepcopy(a:000), "escape(v:val, '/\\.*$^~[')")
+  let find = empty(pat_list) ? @/ : join(pat_list, '\|')
+  let find = before . '\%(' . find . '\)' . after
+  " Example: 10,20s/\%(arg1\|arg2\|arg3\)\ze./&\r/ge
+  execute a:firstline . ',' . a:lastline . 's/'. find . '/' . repl . '/ge'
+  let @/ = save_search
+endfunction
+
+function! Rename(name, bang)
+	let l:curfile = expand("%:p")
+	let l:curpath = expand("%:h") . "/"
+	let v:errmsg = ""
+	silent! exe "saveas" . a:bang . " " . fnameescape(l:curpath . a:name)
+
+	if v:errmsg =~# '^$\|^E329'
+		let l:oldfile = l:curfile
+		let l:curfile = expand("%:p")
+		if l:curfile !=# l:oldfile && filewritable(l:curfile)
+			silent exe "bwipe! " . fnameescape(l:oldfile)
+			if delete(l:oldfile)
+				echoerr "Could not delete " . l:oldfile
+			endif
+		endif
+	else
+		echoerr v:errmsg
+	endif
+endfunction

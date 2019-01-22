@@ -42,6 +42,7 @@ alias tsms='echo $(($(gdate +%s%N)/1000000))' # date to timestamp ms
 alias vim=vi
 alias cpr="cp -r"
 alias kill9="kill -9"
+alias pkill="pkill -I"
 alias start_config_mode="export GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME"
 alias stop_config_mode="unset GIT_DIR GIT_WORK_TREE"
 alias config='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -159,7 +160,7 @@ readinvim(){
 }
 
 tailgrep(){
-  #TODO https://stackoverflow.com/a/1537695/2577465
+  # TODO https://stackoverflow.com/a/1537695/2577465
   tail  -f $2 | grep --line-buffered -E $1
 }
 
@@ -206,6 +207,7 @@ alias yolo='git commit -m "$(curl -s whatthecommit.com/index.txt)"'
 alias sn='git --git-dir=$HOME/.notable/.git --work-tree=$HOME/.notable commit -a -m "working"'
 alias gsetorigin="git remote set-url origin "
 alias gitremoteremove="git remote remove"
+alias gitremoterename="git remote rename"
 
 alias gd='git diff'
 alias gdca='git diff --cached'
@@ -290,3 +292,5 @@ alias randomrange="shuf -n 1 -i" # example gshuf -i 2-65 -n 1
 create_zip(){
   zip -r $1.zip $1
 }
+alias t='task'
+alias v='vim'

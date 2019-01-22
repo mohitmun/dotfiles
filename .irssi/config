@@ -135,6 +135,7 @@ chatnets = {
     max_msgs = "1";
     max_whois = "1";
   };
+  WhatsApp = { type = "IRC"; };
 };
 
 channels = (

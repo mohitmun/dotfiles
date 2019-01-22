@@ -138,6 +138,7 @@ Plug 'luochen1990/rainbow'
 "explore
 "Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'TaDaa/vimade'
+"Plug 'timakro/vim-searchant'
 call plug#end()
 
 "source ~/.vim/cscope.vim
@@ -342,6 +343,7 @@ nnoremap <leader>ggs :GitGutterStageHunk<CR>
 nnoremap <leader>gch :GitGutterStageHunk<CR>:!git commit -m ""<Left>
 "commit current file
 nnoremap <leader>gcf :!git commit -m "" %<Left><Left><Left>
+nnoremap gcf :!git commit -m "" %<Left><Left><Left>
 nnoremap T :!tig %<CR>
 nnoremap <leader>gd :!git diff %<CR>
 nnoremap <leader>gdca :!git diff --cached %<CR>
@@ -543,24 +545,6 @@ map \rs :call RestoreSess()<CR>
 " Insert a newline after each specified string (or before if use '!').
 " If no arguments, use previous search.
 command! -bang -nargs=* -range LineBreakAt <line1>,<line2>call LineBreakAt('<bang>', <f-args>)
-function! LineBreakAt(bang, ...) range
-  let save_search = @/
-  if empty(a:bang)
-    let before = ''
-    let after = '\ze.'
-    let repl = '&\r'
-  else
-    let before = '.\zs'
-    let after = ''
-    let repl = '\r&'
-  endif
-  let pat_list = map(deepcopy(a:000), "escape(v:val, '/\\.*$^~[')")
-  let find = empty(pat_list) ? @/ : join(pat_list, '\|')
-  let find = before . '\%(' . find . '\)' . after
-  " Example: 10,20s/\%(arg1\|arg2\|arg3\)\ze./&\r/ge
-  execute a:firstline . ',' . a:lastline . 's/'. find . '/' . repl . '/ge'
-  let @/ = save_search
-endfunction
 
 "https://github.com/mitsuhiko/dotfiles/blob/master/vim/vimrc
 "tab for brackets
@@ -741,25 +725,6 @@ function! SiblingFiles(A, L, P)
 	return map(split(globpath(expand("%:h") . "/", a:A . "*"), "\n"), 'fnamemodify(v:val, ":t")')
 endfunction
 
-function! Rename(name, bang)
-	let l:curfile = expand("%:p")
-	let l:curpath = expand("%:h") . "/"
-	let v:errmsg = ""
-	silent! exe "saveas" . a:bang . " " . fnameescape(l:curpath . a:name)
-
-	if v:errmsg =~# '^$\|^E329'
-		let l:oldfile = l:curfile
-		let l:curfile = expand("%:p")
-		if l:curfile !=# l:oldfile && filewritable(l:curfile)
-			silent exe "bwipe! " . fnameescape(l:oldfile)
-			if delete(l:oldfile)
-				echoerr "Could not delete " . l:oldfile
-			endif
-		endif
-	else
-		echoerr v:errmsg
-	endif
-endfunction
 
 "=============== abbr ================
 inoreabbr bp binding.pry
@@ -799,3 +764,15 @@ command! -nargs=1 -bang Replace :call Replace(<bang>0, <q-args>)
 nnoremap <Leader>r :call Replace(0, input('Replace '.expand('<cword>').' with: '))<CR>
 let g:rainbow_active = 1
 
+"https://vi.stackexchange.com/a/2770/15805
+nnoremap <silent> n n:call HLNext(0.3)<cr>
+nnoremap <silent> N N:call HLNext(0.3)<cr>
+
+function! HLNext (blinktime)
+  let target_pat = '\c\%#'.@/
+  let ring = matchadd('ErrorMsg', target_pat, 101)
+  redraw
+  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+  call matchdelete(ring)
+  redraw
+endfunction

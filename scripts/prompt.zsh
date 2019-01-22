@@ -7,7 +7,7 @@ ZSH_THEME_GIT_PROMPT_DIRTY="$FG[214]*%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[075])%{$reset_color%}"
 NEWLINE=$'\n'
 PROMPT_CHAR='❯'
-STATUS_BAR='$FG[241]$(get_battery)$DOT$(get_volume_indicator)$DOT$(shortdatetime)%{$reset_color%}'
+STATUS_BAR='$FG[241]$(get_battery)$DOT$(get_volume_indicator)$DOT$(shortdatetime)$(get_todo_status)%{$reset_color%}'
 #STATUS_BAR_ENABLED=1
 show_status_bar(){
   if [[ -n $STATUS_BAR_ENABLED ]];then
@@ -43,7 +43,7 @@ get_second_line(){
 }
 
 
-PROMPT='$FG[242]%~ $(get_todo_status) %{$reset_color%}
+PROMPT='$FG[242]%~ %{$reset_color%}
 $(get_second_line)
 $FG[240]$S_TYPE$FG[105]$(prompt_character)%{$reset_color%} '
 RPROMPT="$STATUS_BAR"
@@ -68,7 +68,7 @@ del-prompt-accept-line() {
     OLD_PROMPT="$PROMPT"
     OLD_RPROMPT="$RPROMPT"
     RPROMPT=""
-    PROMPT="$FG[237]$(repeat_string $COLUMNS -)${NEWLINE}$FG[105]$(prompt_character)%{$reset_color%} "
+    PROMPT="$FG[237]$(repeat_string $COLUMNS _)${NEWLINE}$FG[105]$(prompt_character)%{$reset_color%} "
     zle reset-prompt
     RPROMPT="$OLD_RPROMPT"
     PROMPT="$OLD_PROMPT"
