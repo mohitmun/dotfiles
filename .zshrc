@@ -187,7 +187,9 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 #TODO https://github.com/junegunn/fzf/wiki/Examples#google-chrome-os-xlinux
 #TODO https://github.com/danchoi/vmail
 #TODO https://github.com/paulirish/git-recent
-
+#TDOD explore entr
+#TODO prompt - current directory size
+#
 #===========================
 # THEME END
 #===========================
