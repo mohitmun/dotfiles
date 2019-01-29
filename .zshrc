@@ -17,7 +17,7 @@ logtime(){
 export PLATFORM=$platform
 export ZSH=~/omz
 export REFRESH_RATE=60
-export OSASCRIPT_REFRESH_RATE=1
+export OSASCRIPT_REFRESH_RATE=10
 export ALIASFILE=~/scripts/aliases.zsh
 
 #start=$(gdate +%s%N)
@@ -111,6 +111,8 @@ bindkey "^h" backward-char
 bindkey "^f" forward-char
 bindkey "^l" forward-char
 bindkey "^v" forward-word
+#https://blog.sebastian-daschner.com/entries/zsh-aliases
+bindkey "^p" _expand_alias
 
 #TODO what is difference when using function keyword or not
 
@@ -443,7 +445,7 @@ zstyle ':completion:*:manuals.*'  insert-sections   true
 zstyle ':completion:*:man:*'      menu yes select
 
 if [ $PLATFORM = "osx" ];then
-  #source ~/scripts/global_worker.zsh
+  source ~/scripts/global_worker.zsh
 fi
 
 #end=$(gdate +%s%N)
