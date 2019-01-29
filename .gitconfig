@@ -33,3 +33,5 @@
   oldMoved = red reverse
 [diff]
   colorMoved = plain
+[receive]
+  denyCurrentBranch = ignore
