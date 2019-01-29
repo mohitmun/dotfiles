@@ -1,10 +1,11 @@
 # all hail https://news.ycombinator.com/item?id=11071754
-gcl --bare git@github.com:mohitmun/dotfiles.git .dotfiles
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+git clone --bare https://github.com/mohitmun/dotfiles.git ~/.dotfiles
+alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 config config status.showUntrackedFiles no
+config checkout master
 # set upstream
 config push --set-upstream origin master
-
+. ~/scripts/zsh-async.zsh
 ln -s ~/.spotify.zsh /usr/local/share/zsh/site-functions/myspotify
 
 =====================

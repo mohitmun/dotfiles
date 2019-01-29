@@ -1,6 +1,6 @@
 # Install zsh-async if it’s not present
 if [[ ! -a ~/.zsh-async ]]; then
-  git clone git@github.com:mafredri/zsh-async ~/.zsh-async
+  git clone https://github.com/mafredri/zsh-async.git ~/.zsh-async
   ln -s "$HOME/.zsh-async/async.zsh" /usr/local/share/zsh/site-functions/async
 fi
 # Initialize zsh-async
