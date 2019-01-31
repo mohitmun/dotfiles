@@ -173,7 +173,9 @@ alias ga='git add'
 alias gaa='git add --all'
 alias gapa='git add --patch'
 alias gau='git add --update'
-alias gitsearchcommit='git log --all --grep='PATTERN''
+gitsearchcommit(){
+  git log --all --grep="$1"
+}
 alias gitundolastcommit='git reset HEAD~'
 alias whatimpushing="git cherry -v"
 alias showuntracked="git ls-files . --exclude-standard --others"
@@ -203,9 +205,10 @@ alias ggpush='git push -u origin $(git_current_branch)'
 alias gpush='ggpush'
 alias gpull='ggpull'
 alias discardchanges='git checkout .'
-alias yolo='git commit -m "$(curl -s whatthecommit.com/index.txt)"'
+alias yolo='git commit -m "#YOLO $(curl -s whatthecommit.com/index.txt)"'
 alias sn='git --git-dir=$HOME/.notable/.git --work-tree=$HOME/.notable commit -a -m "working"'
 alias gsetorigin="git remote set-url origin "
+alias gset="git remote set-url "
 alias gitremoteremove="git remote remove"
 alias gitremoterename="git remote rename"
 
@@ -293,4 +296,21 @@ create_zip(){
   zip -r $1.zip $1
 }
 alias t='task'
+td(){
+  task $1 delete
+}
 alias v='vim'
+alias code='cd ~/Desktop/code'
+alias localip='ipconfig getifaddr en0'
+alias pgrepx="pgrep -x"
+#https://askubuntu.com/a/157787/544611
+startifnot(){
+  res=$(pgrep -xf "$*")
+  if [ $? -eq 0 ]
+  then
+    echo "Already Running with pid: $res"
+  else
+    $* &
+    echo "Running $* in bg with pid: $!"
+  fi
+}
