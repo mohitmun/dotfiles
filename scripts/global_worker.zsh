@@ -12,7 +12,7 @@ else
   while true;do
     sleep $OSASCRIPT_REFRESH_RATE
     ~/bin/system_info > ~/.export_osascript_system_status
-    #stop_hogging_processes
+    stop_hogging_processes
     current_battery=$(get_battery)
     if [[ $current_battery != $previous_battery ]];then
       mylog "battery $(get_battery)"
