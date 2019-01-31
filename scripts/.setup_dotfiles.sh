@@ -4,7 +4,7 @@ alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 config config status.showUntrackedFiles no
 config checkout master
 # set upstream
-config push --set-upstream origin master
+chsh -s /bin/zsh
 . ~/scripts/zsh-async.zsh
 ln -s ~/.spotify.zsh /usr/local/share/zsh/site-functions/myspotify
 
@@ -42,3 +42,4 @@ vidir: edit a directory in your text editor
 vipe: insert a text editor into a pipe
 zrun: automatically uncompress arguments to command
 ============= moreutils =======================
+

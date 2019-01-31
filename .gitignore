@@ -8,3 +8,4 @@ cscope*
 tags
 .session.vim
 vendor/*
+.localrc

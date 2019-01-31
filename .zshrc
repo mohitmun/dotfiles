@@ -78,6 +78,7 @@ bindkey '^I' $fzf_default_completion
 ## https://github.com/agarrharr/awesome-cli-apps
 # explore more on https://github.com/alebcay/awesome-shell 	
 #https://github.com/kahun/awesome-sysadmin
+#https://github.com/geerlingguy/mac-dev-playbook
 #vtop
 #https://github.com/k4m4/terminals-are-sexy
 # https://github.com/jondot/awesome-devenv
@@ -490,8 +491,8 @@ add-zsh-hook chpwd run_local_rc
 
 run_local_rc(){
   if [ -f $(pwd)/.localrc ];then
-    echo "executinng localrc"
-    source $(pwd)/.localrc
+    echo "executing localrc"
+    . $(pwd)/.localrc
   else
 
   fi

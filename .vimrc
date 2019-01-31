@@ -319,6 +319,7 @@ command! -bang -nargs=* Rag call fzf#vim#ag(<q-args>, {'options': '--delimiter :
 command! -nargs=* -bang CAg call s:ag_with_opts(<q-args>, <bang>0)
 command! -bang -nargs=+ -complete=dir RRag call fzf#vim#ag_raw(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 map <C-f> :Ag<CR>
+" TODO below with range
 map swe :Ag <C-R><C-W><CR>
 map swc :BLines <C-R><C-W><CR>
 map <leader>/ :BLines <CR>
@@ -351,6 +352,7 @@ nnoremap <leader>ggp :GitGutterPreviewHunk<CR>
 nnoremap <leader>ggu :GitGutterUndoHunk<CR>
 nnoremap <leader>gst :Gstatus<CR>
 nnoremap <leader>gco :!git checkout %<CR>
+nnoremap <leader>ga :!git add %<CR>
 "=========== GitGutter ==========
 
 "============ UltiSnips ===================
@@ -687,12 +689,15 @@ map F *
 "TODO explore lsp
 "TODO https://github.com/neoclide/coc.nvim
 "TODO check ultisnips ka multi logic
+"TODO read this http://vim.wikia.com/wiki/Search_and_replace
 map <leader>aspl :!aspell -c % <CR>
 map <leader>espl :setlocal spell<CR>
 map <leader>dspl :setlocal nospell<CR>
 
 au BufNewFile,BufRead * if &syntax == '' | setlocal spell | endif
+
 autocmd FileType ruby map <C-b> :!ruby %<CR>
+autocmd FileType ruby map <C-t> :!rspec %<CR>
 
 
 map <leader>sgc :%s/<C-R><C-W>//gc<Left><Left><Left>

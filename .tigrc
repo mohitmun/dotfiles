@@ -21,7 +21,7 @@ color stat-unstaged   red default
 color stat-untracked  red default
 color title-blur      white 025 bold
 color title-focus     white 236
-
+set wrap-lines			= yes
 # VIM STUFF
 bind generic    F       view-grep       # Rebind the grep view
 bind generic    g       none            # Clear old 'g' binding to allow for 'gg' etc.
