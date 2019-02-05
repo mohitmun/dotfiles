@@ -138,6 +138,7 @@ Plug 'luochen1990/rainbow'
 "explore
 "Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'TaDaa/vimade'
+Plug 'itchyny/vim-qfedit'
 "Plug 'timakro/vim-searchant'
 call plug#end()
 
@@ -236,8 +237,8 @@ vnoremap <M-k> :m '<-2<CR>gv=gv
 
 
 " https://stackoverflow.com/a/5562707/2577465
-map gn :bn<cr>
-map gp :bp<cr>
+map gn :cn<cr>
+map gp :cp<cr>
 map <C-l> :bn<cr>
 map <C-h> :bp<cr>
 map gb :Buffers<cr>
@@ -559,7 +560,7 @@ set matchpairs+=<:>
 "set matchpairs+=':'
 "set matchpairs+=":"
 
-vnoremap <tab> >gv
+vnoremap <Tab> >
 vnoremap <S-tab> <gv
 
 "http://vim.wikia.com/wiki/Easy_indenting_in_insert_and_normal_mode_with_no_cursor_displacement
@@ -781,3 +782,9 @@ function! HLNext (blinktime)
   call matchdelete(ring)
   redraw
 endfunction
+
+
+"=================== quickfix ===================
+"https://www.reddit.com/r/vim/comments/7dv9as/how_to_edit_the_vim_quickfix_list/?st=jrm42fdg&sh=96a8333f
+"explore https://github.com/romainl/vim-qlist
+"https://github.com/romainl/vim-qf

@@ -114,7 +114,13 @@ bindkey "^l" forward-char
 bindkey "^v" forward-word
 #https://blog.sebastian-daschner.com/entries/zsh-aliases
 bindkey "^p" _expand_alias
+bindkey "^z" fgvim
 
+fgvim(){
+ fg %vi
+ zle reset-prompt
+}
+zle -N fgvim
 #TODO what is difference when using function keyword or not
 
 function repeat_string(){

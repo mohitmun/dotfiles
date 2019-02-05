@@ -86,6 +86,8 @@ alias m='man'
 alias chmodx='chmod +x'
 alias watch='watch '
 alias mansearch='man -wK '
+#https://stackoverflow.com/a/23550347/2577465
+alias echoe="echo >&2"
 alias tg='~/telegram-send/telegram_send.py'
 alias tgf='tg -f'
 alias chx='chmod +x'
@@ -244,7 +246,7 @@ alias findd="find . -type d -name" # find directory
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias rgl="rg -l" # show only files names
 alias lssr="\du -ah . | grep -v "/$" | gsort -rh" # sort by size recursive
-alias ls="ls -hG"
+alias ls="ls -hlG"
 alias lss="ls -S" # sort by size
 alias lst="ls -t" # recent first
 alias lstr="ls -tr" # recent last
@@ -273,6 +275,8 @@ alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
 
+alias code='cd ~/Desktop/code'
+alias desk='cd ~/Desktop'
 alias md='mkdir -p'
 alias rd=rmdir
 alias d='dirs -v | head -10'
@@ -300,7 +304,6 @@ td(){
   task $1 delete
 }
 alias v='vim'
-alias code='cd ~/Desktop/code'
 alias localip='ipconfig getifaddr en0'
 alias pgrepx="pgrep -x"
 #https://askubuntu.com/a/157787/544611
@@ -314,3 +317,4 @@ startifnot(){
     echo "Running $* in bg with pid: $!"
   fi
 }
+alias nis='npm install --save'

@@ -37,16 +37,16 @@ proxy_server(){
   ~/.proxy_server.sh $1
 }
 
-c() {
+o() {
   local cols sep google_history open
   cols=$(( COLUMNS / 3 ))
   sep='{::}'
-
+  google_history=$CHROME_HISTORY_FILE
   if [ "$(uname)" = "Darwin" ]; then
-    google_history="$HOME/Library/Application Support/Google/Chrome/Default/History"
+    #google_history="$HOME/Library/Application Support/Google/Chrome/Default/History"
     open=open
   else
-    google_history="$HOME/.config/google-chrome/Default/History"
+    #google_history="$HOME/.config/google-chrome/Default/History"
     open=xdg-open
   fi
   cp -f "$google_history" /tmp/h
@@ -72,4 +72,25 @@ google(){
       search="$search%20$term"
   done
   open "http://www.google.com/search?q=$search"
+}
+
+my_crons(){
+  [ $(($RANDOM % 10)) = 1 ] && backup_chrome_db
+}
+
+CHROME_HISTORY_PATH="$HOME/Library/Application Support/Google/Chrome/Profile 3"
+CHROME_HISTORY_FILE="$CHROME_HISTORY_PATH/History"
+BACKUP_DIR="$HOME/Desktop/backups"
+backup_chrome_db(){
+  latest=$(\ls -t $BACKUP_DIR | head -n1)
+  echo "latest file $latest"
+  md5latest=$(md5 -q $BACKUP_DIR/$latest)
+  echo "md5 latest $md5latest"
+  md5tobkp=$(md5 -q $CHROME_HISTORY_FILE)
+  if [ $md5latest = $md5tobkp ];then
+    echo "no backing up, same md5"
+  else
+    echo "backing up"
+    cp $CHROME_HISTORY_FILE  ~/Desktop/backups/chrome_$(ts).db
+  fi
 }

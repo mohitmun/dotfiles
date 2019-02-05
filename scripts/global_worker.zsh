@@ -18,6 +18,7 @@ else
       mylog "battery $(get_battery)"
       previous_battery=$current_battery
     fi
+    my_crons
     #volume_level=`osascript -e "output volume of (get volume settings)"`
   done &!
   echo $! > ~/.global_worker.pid
