@@ -502,6 +502,8 @@ run_local_rc(){
   else
 
   fi
+  [ ! -f $(pwd)/.notes ]
+  export NOTES=$?
 }
 
 setbadge(){

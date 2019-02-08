@@ -39,7 +39,8 @@ get_second_line(){
   else
     git_dotfile_mode="$FG[078](git_dir:$GIT_DIR )${reset_color}"
   fi
-  echo "$FG[032]$current_dir_with_jobs${gpi}$git_dotfile_mode"
+  [[ $NOTES -eq 1 ]] && notes='[N]'
+  echo "$FG[032]$current_dir_with_jobs${gpi}$git_dotfile_mode${notes}"
 }
 
 
