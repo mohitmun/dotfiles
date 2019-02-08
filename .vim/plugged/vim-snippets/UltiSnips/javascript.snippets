@@ -145,6 +145,14 @@ snippet us
 'use strict'`!p snip.rv = semi(snip)`
 endsnippet
 
-# TODO add exec
+snippet af "arrow function" i
+($1) => {
+  $2
+}$3
+endsnippet
 
+# TODO add exec
+snippet $ "execSync"
+$ = require('child_process').execSync;
+endsnippet
 # vim:ft=snippets:

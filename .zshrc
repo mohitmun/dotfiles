@@ -198,6 +198,7 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 #TODO https://github.com/paulirish/git-recent
 #TDOD explore entr
 #TODO prompt - current directory size
+#https://github.com/MikeDacre/cdbk
 #
 #===========================
 # THEME END
