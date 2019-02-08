@@ -68,7 +68,8 @@ alias cddesk='cd ~/Desktop'
 #alias -s html=vi
 
 alias aliasgrep='alias | grep '
-alias npmig='npm install -g '
+alias nig='npm install -g'
+alias nis='npm install --save'
 
 #https://gist.github.com/igrigorik/6666860
 gh(){
@@ -100,7 +101,6 @@ alias notes='cat ~/.notes'
 #alias stop='pkill -STOP'
 #alias cont='pkill -CONT'
 alias downloadsong='youtube-dl --extract-audio --audio-format mp3 --audio-quality 0'
-alias calias='cga ~/.aliases.zsh && config commit -m 'alias update''
 alias tailf='tail -f'
 
 #https://github.com/caarlos0/ports/blob/master/ports
@@ -216,6 +216,7 @@ alias gitremoterename="git remote rename"
 
 alias gd='git diff'
 alias gdca='git diff --cached'
+alias gdcais='gdca --ignore-all-space'
 alias gdh='git diff HEAD'
 gitcheckoutfilefrombranch(){
   git checkout $1 -- $2
@@ -317,4 +318,10 @@ startifnot(){
     echo "Running $* in bg with pid: $!"
   fi
 }
-alias nis='npm install --save'
+
+#https://github.com/itchyny/shell-function-and
+or() { [ $? -eq 0 ] || "$@"; }
+
+and() { [ $? -eq 0 ] && "$@"; }
+
+alias ni='npm install'
