@@ -52,6 +52,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   silent !mkdir -p ~/.vim/undodir
   silent !mkdir -p ~/.vim/backupdir
   silent !mkdir -p ~/.vim/directory
+  "TODO check if fd and ag installed
 endif
 
 call plug#begin()
@@ -69,7 +70,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 "Plug 'tpope/vim-repeat'
 Plug 'sidorares/node-vim-debugger'
+" Linters
 "Plug 'w0rp/ale'
+Plug 'z0mbix/vim-shfmt'
+", { 'for': 'sh' }
+
 Plug 'mohitmun/gist-vim'
 Plug 'mattn/webapi-vim' " dependancy for gist-vim
 Plug 'vim-airline/vim-airline'
@@ -95,7 +100,6 @@ Plug '907th/vim-auto-save'
 Plug 'machakann/vim-highlightedyank'
 Plug 'Raimondi/delimitMate'
 Plug 'elzr/vim-json'
-
 
 "Plug 'google/vim-searchindex'
 "removed this because its not compatible with is.vim
@@ -363,8 +367,8 @@ map <leader>use :UltiSnipsEdit<CR>
 map <leader>es :UltiSnipsEdit<CR>
 "let g:UltiSnipsListSnippets="<C-m>"
 "let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 "let g:UltiSnipsEditSplit="vertical"
 "============ UltiSnips ===================
@@ -690,7 +694,13 @@ map F *
 "TODO explore lsp
 "TODO https://github.com/neoclide/coc.nvim
 "TODO check ultisnips ka multi logic
+"TODO https://brigade.engineering/sharpen-your-vim-with-snippets-767b693886db
+"TODO https://gist.github.com/MikeDacre/365d716258d13a833831
 "TODO read this http://vim.wikia.com/wiki/Search_and_replace
+"FOR JS
+"TODO https://github.com/vimlab/neojs
+"TODO http://www.panozzaj.com/blog/2015/08/28/must-have-vim-javascript-setup/
+"TODO https://github.com/ericdouglas
 map <leader>aspl :!aspell -c % <CR>
 map <leader>espl :setlocal spell<CR>
 map <leader>dspl :setlocal nospell<CR>
@@ -788,3 +798,11 @@ endfunction
 "https://www.reddit.com/r/vim/comments/7dv9as/how_to_edit_the_vim_quickfix_list/?st=jrm42fdg&sh=96a8333f
 "explore https://github.com/romainl/vim-qlist
 "https://github.com/romainl/vim-qf
+
+"https://github.com/mroth/dotfiles/blob/master/home/.vimrc.after#L27
+" Weird meta vim shit
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" auto-source the vimrc file whenever it is saved
+"if has("autocmd")
+  "autocmd! bufwritepost .vimrc source $MYVIMRC
+"endif
