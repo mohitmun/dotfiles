@@ -100,7 +100,7 @@ Plug '907th/vim-auto-save'
 Plug 'machakann/vim-highlightedyank'
 Plug 'Raimondi/delimitMate'
 Plug 'elzr/vim-json'
-
+Plug 'tpope/vim-projectionist'
 "Plug 'google/vim-searchindex'
 "removed this because its not compatible with is.vim
 Plug 'osyo-manga/vim-anzu'
@@ -134,6 +134,7 @@ Plug 'RRethy/vim-illuminate', { 'on':  'IlluminationEnable' }
 "Plug 'prabirshrestha/asyncomplete.vim'
 "Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'maralla/completor.vim'
+
 Plug 'ruanyl/vim-gh-line'
 Plug 'zivyangll/git-blame.vim'
 " discovered here https://github.com/dodie/dotfiles/blob/master/vim/vimrc.symlink#L32

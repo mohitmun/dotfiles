@@ -70,6 +70,7 @@ alias cddesk='cd ~/Desktop'
 alias aliasgrep='alias | grep '
 alias nig='npm install -g'
 alias nis='npm install --save'
+alias ni='npm install'
 
 #https://gist.github.com/igrigorik/6666860
 gh(){
@@ -97,7 +98,7 @@ alias cqac='cgaa && cqc'
 alias crdiff='config fetch origin master:master_remote && config diff master_remote..master'
 
 alias di='docker images'
-alias notes='cat ~/.notes'
+alias notes='cat .notes'
 #alias stop='pkill -STOP'
 #alias cont='pkill -CONT'
 alias downloadsong='youtube-dl --extract-audio --audio-format mp3 --audio-quality 0'
@@ -129,7 +130,8 @@ stop(){
 cont(){
   ps aux |  grep -v grep | grep $1 | awk '{ print $2 }' | xargs kill -CONT
 }
-
+#https://unix.stackexchange.com/a/4529/219826
+alias removeansii="perl -pe 's/\e\[?.*?[\@-~]//g'"
 alias cpull='config pull origin_github master'
 alias tocode='cd ~/Desktop/code'
 
@@ -225,6 +227,7 @@ gitcheckoutfilefrombranch(){
 #====================================== copied from zsh git plugin
 #===================== git aliases =====================
 
+alias gitdeletemerged="git branch --merged | egrep -v \"(^\*|master|dev)\" | xargs git branch -d"
 alias wcl='wc -l'
 #alias ping='prettyping --nolegend'
 
@@ -323,5 +326,3 @@ startifnot(){
 or() { [ $? -eq 0 ] || "$@"; }
 
 and() { [ $? -eq 0 ] && "$@"; }
-
-alias ni='npm install'
