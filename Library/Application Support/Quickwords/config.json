@@ -1,4 +1,5 @@
 {
+	"user": "qk4lg0n497q",
 	"theme": 0,
 	"autoLaunch": false,
 	"snippets": [
@@ -7,105 +8,120 @@
 			"key": "<3",
 			"value": "❤️",
 			"regex": false,
-			"type": "plain"
+			"type": "plain",
+			"active": true
 		},
 		{
 			"id": 1752164,
 			"key": ";thx",
 			"value": "Thanks!",
 			"regex": false,
-			"type": "plain"
+			"type": "plain",
+			"active": true
 		},
 		{
 			"id": 3619462,
 			"key": ";ifs",
 			"value": "In-fucking-sane",
 			"regex": false,
-			"type": "plain"
+			"type": "plain",
+			"active": true
 		},
 		{
 			"id": 4066619,
 			"key": ";time",
 			"value": "/**\n * @param {string} trigger A string that was matched\n * @return {string} Replacement\n */\nfunction qw(trigger) {\n  return new Date().toString();\n}",
 			"regex": false,
-			"type": "js"
+			"type": "js",
+			"active": true
 		},
 		{
 			"id": 4785252,
 			"key": ";fori",
 			"value": "for NUM in `seq 16`; do \n\ndone",
 			"regex": false,
-			"type": "plain"
+			"type": "plain",
+			"active": true
 		},
 		{
 			"id": 6228302,
 			"key": ";em",
 			"value": "mohitcrox@gmail.com",
 			"regex": false,
-			"type": "plain"
+			"type": "plain",
+			"active": true
 		},
 		{
 			"id": 5793575,
 			"key": ";ts",
 			"value": "/**\n * @param {string} trigger A string that was matched\n * @return {string} Replacement\n */\nfunction qw(trigger) {\n  var a = + new Date();\n  a = parseInt(a / 1000)\n  return a.toString();\n}\n",
 			"regex": false,
-			"type": "js"
+			"type": "js",
+			"active": true
 		},
 		{
 			"id": 2057834,
 			"key": ";ip",
 			"value": "/**\n * @param {string} trigger A string that was matched\n * @return {string} Replacement\n */\nfunction qw(trigger) {\n  const execSync = require('child_process').execSync;\n  return execSync(\"curl ipinfo.io/ip\").toString();\n}\n",
 			"regex": false,
-			"type": "js"
+			"type": "js",
+			"active": true
 		},
 		{
 			"id": 5964991,
 			"key": ";sP",
 			"value": "function qw(trigger) {\n  const execSync = require('child_process').execSync;\n  execSync(\"~/bin/sconsify -command play_pause\").toString();\n  return \"\";\n}\n",
 			"regex": false,
-			"type": "js"
+			"type": "js",
+			"active": true
 		},
 		{
 			"id": 3039544,
 			"key": ";gpkt",
 			"value": "function qw(trigger) {\n  const execSync = require('child_process').execSync;\n  execSync(\"open http://getpocket.com\").toString();\n  return \"\";\n}",
 			"regex": false,
-			"type": "js"
+			"type": "js",
+			"active": true
 		},
 		{
 			"id": 2519931,
 			"key": ";tel",
 			"value": "function qw(trigger) {\n  const execSync = require('child_process').execSync;\n  execSync(\"open https://web.telegram.com\").toString();\n  return \"\";\n}",
 			"regex": false,
-			"type": "js"
+			"type": "js",
+			"active": true
 		},
 		{
 			"id": 2042224,
 			"key": ";lmk",
 			"value": "Let me know",
 			"regex": false,
-			"type": "plain"
+			"type": "plain",
+			"active": true
 		},
 		{
 			"id": 6910769,
 			"key": ";df",
 			"value": "difference between ",
 			"regex": false,
-			"type": "plain"
+			"type": "plain",
+			"active": true
 		},
 		{
 			"id": 9009479,
 			"key": ";;i",
 			"value": "function qw(trigger) {\n  const execSync = require('child_process').execSync;\n  execSync(\"open /Applications/iTerm.app\").toString();\n  return \"\";\n}",
 			"regex": false,
-			"type": "js"
+			"type": "js",
+			"active": true
 		},
 		{
 			"id": 6958767,
 			"key": ";;c",
 			"value": "function qw(trigger) {\n  const execSync = require('child_process').execSync;\n  execSync(\"open /Applications/Google\\\\ Chrome.app\").toString();\n  return \"\";\n}",
 			"regex": false,
-			"type": "js"
+			"type": "js",
+			"active": true
 		}
 	],
 	"bufferLength": 20,
