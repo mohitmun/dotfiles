@@ -23,11 +23,13 @@ show_status_bar(){
     echo -ne $STATUS_BAR
   fi
 }
-branch=master mode=insert
-#https://unix.stackexchange.com/a/250457/219826
-#setopt promptsubst
-#left='%m | %~'
-#PS1=%K{green}$left${(l,COLUMNS-${#${(%)left}},)${${:-$branch | $mode}//[%]/%%}}%k$
+
+jobs_prompt() {
+  local jobs_amount=$((jobs) | wc -l | tr -d " ")
+  [[ $jobs_amount -gt 0 ]] || return
+  echo "$FG[196]($jobs_amount job)"
+}
+
 prompt_character(){
   echo -ne "%(?.$FG[078].%F{red})$PROMPT_CHAR%f"
 }
@@ -40,12 +42,16 @@ get_second_line(){
     git_dotfile_mode="$FG[078](git_dir:$GIT_DIR )${reset_color}"
   fi
   [[ $NOTES -eq 1 ]] && notes='[N]'
-  echo "$FG[032]$current_dir_with_jobs${gpi}$git_dotfile_mode${notes}"
+  export GET_SECO="$FG[032]$current_dir_with_jobs${gpi}$git_dotfile_mode${notes}"
+  export LEN_GET_SECO=$(print -P $GET_SECO | removeansii | wc -m )
 }
+branch=master mode=insert
+#https://unix.stackexchange.com/a/250457/219826
+setopt prompt_subst
 
-
+add-zsh-hook precmd get_second_line
 PROMPT='$FG[242]%~ %{$reset_color%}
-$(get_second_line)
+$GET_SECO${(l,COLUMNS-$LEN_GET_SECO,,,)${${:-$branch | $mode}//[%]/%%}}
 $FG[240]$S_TYPE$FG[105]$(prompt_character)%{$reset_color%} '
 RPROMPT="$STATUS_BAR"
 TMOUT=$REFRESH_RATE
@@ -194,11 +200,6 @@ get_spotify_widget(){
   #printf "|%.0s" {0..$spotify_percent_progress}
 }
 
-jobs_prompt() {
-  local jobs_amount=$((jobs) | wc -l | tr -d " ")
-  [[ $jobs_amount -gt 0 ]] || return
-  echo "$FG[196]($jobs_amount job)"
-}
 get_tmux_session_name(){
   if [ -n "$TMUX" ]; then
     session_name=$(tmux display -p | cut -d '[' -f2 | cut -d ']' -f1)
