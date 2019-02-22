@@ -74,8 +74,14 @@ google(){
   open "http://www.google.com/search?q=$search"
 }
 
+log_top_5(){
+  result=$(ps -Ao pid,pcpu -r -C | head -n 6)
+  mylog "$result"
+}
+
 my_crons(){
   [ $(($RANDOM % 10)) = 1 ] && backup_chrome_db
+  log_top_5
 }
 
 CHROME_HISTORY_PATH="$HOME/Library/Application Support/Google/Chrome/Profile 3"
