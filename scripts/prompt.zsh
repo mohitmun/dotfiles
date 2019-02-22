@@ -7,7 +7,7 @@ ZSH_THEME_GIT_PROMPT_DIRTY="$FG[214]*%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[075])%{$reset_color%}"
 NEWLINE=$'\n'
 PROMPT_CHAR='❯'
-STATUS_BAR='$FG[241]$(get_battery)$DOT$(get_volume_indicator)$DOT$(shortdatetime)$(get_todo_status)%{$reset_color%}'
+STATUS_BAR='$FG[241]$(get_battery)$DOT$(get_volume_indicator)$(get_todo_status)%{$reset_color%}'
 #STATUS_BAR_ENABLED=1
 show_status_bar(){
   if [[ -n $STATUS_BAR_ENABLED ]];then
@@ -45,13 +45,13 @@ get_second_line(){
   export GET_SECO="$FG[032]$current_dir_with_jobs${gpi}$git_dotfile_mode${notes}"
   export LEN_GET_SECO=$(print -P $GET_SECO | removeansii | wc -m )
 }
-branch=master mode=insert
+RIGHT_SECOND_LINE="$(shortdatetime)"
 #https://unix.stackexchange.com/a/250457/219826
 setopt prompt_subst
 
 add-zsh-hook precmd get_second_line
 PROMPT='$FG[242]%~ %{$reset_color%}
-$GET_SECO${(l,COLUMNS-$LEN_GET_SECO,,,)${${:-$branch | $mode}//[%]/%%}}
+$GET_SECO$FG[241]${(l,COLUMNS-$LEN_GET_SECO,,,)${${:-$RIGHT_SECOND_LINE}//[%]/%%}}
 $FG[240]$S_TYPE$FG[105]$(prompt_character)%{$reset_color%} '
 RPROMPT="$STATUS_BAR"
 TMOUT=$REFRESH_RATE
