@@ -116,6 +116,9 @@ portskill(){
   ports "$1" | awk '{ print $2; }' #| xargs kill -9
 }
 alias -g LOGTOFILE="> stdout.log 2> stderr.log"
+alias -g G=" | grep "
+alias -g T=" | tee "
+alias -g TP=" | tee /dev/stderr | " # transperant pipe
 alias nvmact='export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
 alias psa='ps -o %cpu,%mem'
 alias psp='ps -p'
@@ -165,6 +168,7 @@ readinvim(){
 
 tailgrep(){
   # TODO https://stackoverflow.com/a/1537695/2577465
+  # TODO https://stackoverflow.com/a/7162169/2577465
   tail  -f $2 | grep --line-buffered -E $1
 }
 
@@ -250,7 +254,7 @@ alias findd="find . -type d -name" # find directory
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias rgl="rg -l" # show only files names
 alias lssr="\du -ah . | grep -v "/$" | gsort -rh" # sort by size recursive
-alias ls="ls -hlG"
+alias ls="ls -hlGt"
 alias lss="ls -S" # sort by size
 alias lst="ls -t" # recent first
 alias lstr="ls -tr" # recent last
@@ -326,3 +330,28 @@ startifnot(){
 or() { [ $? -eq 0 ] || "$@"; }
 
 and() { [ $? -eq 0 ] && "$@"; }
+
+# $ git log --no-merges --pretty=format:"%ae" | stats
+# # => 514 a@example.com
+# # => 200 b@example.com
+function stats() {
+  sort | uniq -c | sort -r
+}
+
+function stsum(){
+  awk '{sum+=$1}END {print sum}'
+}
+
+function stavg(){
+  awk '{sum+=$1}END {print sum/NR}'
+}
+
+function repeat_string(){
+  #printf "-%.0s" $COLUMNS
+  chus=$(( $1 - 4))
+  printf "$2%.0s" $(seq 1 $chus)
+}
+
+show_till(){
+  awk "{print} /$1/ {exit}" $@
+}
