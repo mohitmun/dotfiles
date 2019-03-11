@@ -1,4 +1,11 @@
 #!/usr/bin/env zsh
+#
+
+if [ -e ./.git/hooks/pre-push ]; then
+    echo "Running local pre push"
+    ./.git/hooks/pre-push "$@"
+fi
+
 echo "\033[38;5;046m"
 echo "Pushing following commits"
 git cherry -v

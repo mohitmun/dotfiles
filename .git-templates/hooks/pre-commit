@@ -2,6 +2,12 @@
 #https://gist.github.com/wacko/62560b45c1d191859d6b
 # Validates that you don't commit forbidden keywords to the repo
 # You can skip this checking with 'git commit --no-verify'
+
+if [ -e ./.git/hooks/pre-commit ]; then
+    echo "Running local pre commit"
+    ./.git/hooks/pre-commit "$@"
+fi
+
 puts "Pre-commit running"
 exit 0 if ARGV.include?('--no-verify')
 # Update this list with your own forbidden keywords
@@ -19,7 +25,7 @@ grep_result_exists = $?.exitstatus.zero?
 #%x(git diff HEAD -G "#{KEYWORDS.join('|')} #{files_changed.join(' ')}")
 #grep_diff_exists = $?.exitstatus.zero?
 #if grep_result_exists || grep_diff_exists
-if grep_result_exists
+if grep_result_exists && files_changed.count > 0
   puts "# Check following lines:"
   files_changed.each do |file|
     KEYWORDS.each do |keyword|
