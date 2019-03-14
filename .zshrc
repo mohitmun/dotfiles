@@ -511,6 +511,18 @@ setbadge(){
   printf "\e]1337;SetBadgeFormat=%s\a" $(echo -n "$1" | base64)
 }
 
+setprofile(){
+  printf "\e]1337;SetProfile=%s\a" "$1"
+}
+
+smallfont(){
+  setprofile smallfont
+}
+
+defaultProfile(){
+  setprofile Default
+}
+
 # extract archive
 extract () {
   if [ -f $1 ]; then
