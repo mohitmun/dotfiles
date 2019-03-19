@@ -117,6 +117,8 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'MattesGroeger/vim-bookmarks'
 "Plug 'ervandew/supertab'
 Plug 'easymotion/vim-easymotion'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'reedes/vim-pencil'
 "Plug 'svermeulen/vim-easyclip'
 "Plug 'wellle/targets.vim'
 " dependancy for vim-markdown
@@ -339,6 +341,7 @@ hi Search guibg=peru guifg=wheat
 
 "=========== GitGutter ==========
 let g:gitgutter_map_keys = 0
+let g:gitgutter_max_signs = 3000
 let g:gitgutter_diff_base = 'HEAD'
 autocmd BufWritePost * GitGutter
 nmap ]h <Plug>GitGutterNextHunk
@@ -709,6 +712,7 @@ map <leader>dspl :setlocal nospell<CR>
 au BufNewFile,BufRead * if &syntax == '' | setlocal spell | endif
 
 autocmd FileType ruby map <C-b> :!ruby %<CR>
+autocmd FileType javascript map <C-b> :!node %<CR>
 autocmd FileType ruby map <C-t> :!rspec %<CR>
 
 
@@ -734,6 +738,8 @@ cnoremap %' <C-R>=expand('%:p')<CR>
 " copy current file full path to clipboard
 " https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
 map <leader>cp :let @+ = expand("%:p")<CR>
+map <leader>df :call delete(expand("%"))<CR>:bdelete!<CR>
+
 "danro/rename.vim
 command! -nargs=* -complete=customlist,SiblingFiles -bang Rename :call Rename("<args>", "<bang>")
 cabbrev rename <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "Rename" : "rename"<CR>
@@ -807,3 +813,10 @@ endfunction
 "if has("autocmd")
   "autocmd! bufwritepost .vimrc source $MYVIMRC
 "endif
+
+"https://github.com/smallhadroncollider/dotfiles/blob/e55adafeb472e90399a77e9b01dc0b9d19506393/vim/.vimrc#L228
+" replace single quotes in selection
+map <leader>" :s/'/"/g<CR>
+
+set list
+set listchars=tab:>-
