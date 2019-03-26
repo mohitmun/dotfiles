@@ -95,7 +95,8 @@ prompt_pure_preprompt_render() {
   export GET_SECO="$FG[032]$current_dir_with_jobs${gpi}$git_dotfile_mode${notes}${prompt_pure_git_arrows}"
   export LEN_GET_SECO=$(print -P $GET_SECO | removeansii | wc -m )
 
-  PROMPT='$FG[242]%~ %{$reset_color%}
+  export RIGHT_SECOND_LINE="$(shortdatetime)"
+  PROMPT='$FG[242]%~ %{$reset_color%}accept-line
   $GET_SECO$FG[241]${(l,COLUMNS-$LEN_GET_SECO,,,)${${:-$RIGHT_SECOND_LINE}//[%]/%%}}
   $FG[240]$S_TYPE$FG[105]$(prompt_character)%{$reset_color%} '
 
@@ -454,7 +455,6 @@ get_second_line_precmd(){
 	# preform async git dirty check and fetch
 	prompt_pure_async_tasks
 }
-RIGHT_SECOND_LINE="$(shortdatetime)"
 #https://unix.stackexchange.com/a/250457/219826
 setopt prompt_subst
 

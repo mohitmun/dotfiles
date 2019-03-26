@@ -107,7 +107,7 @@ alias tailf='tail -f'
 #https://github.com/caarlos0/ports/blob/master/ports
 ports(){
   if [[ -n $1 ]];then
-    lsof -i :"$1"
+    lsof -ti :"$1"
     return 0
   fi
   lsof -i -n -P
@@ -118,6 +118,8 @@ portskill(){
 alias -g LOGTOFILE="> stdout.log 2> stderr.log"
 alias -g G=" | grep "
 alias -g T=" | tee "
+alias -g L=" | less "
+alias -g H=" | head "
 alias -g TP=" | tee /dev/stderr | " # transperant pipe
 alias nvmact='export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
 alias psa='ps -o %cpu,%mem'
@@ -346,6 +348,10 @@ function stavg(){
   awk '{sum+=$1}END {print sum/NR}'
 }
 
+function all_stats(){
+  awk -f ~/scripts/all_stats.awk
+}
+
 function repeat_string(){
   #printf "-%.0s" $COLUMNS
   chus=$(( $1 - 4))
@@ -355,3 +361,9 @@ function repeat_string(){
 show_till(){
   awk "{print} /$1/ {exit}" $@
 }
+alias k='kill %1'
+
+
+alias nginxlogs='tailf /var/log/nginx/access.log'
+alias viv='vim -u NONE'
+alias today='t add due:today'
