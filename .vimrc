@@ -74,7 +74,7 @@ Plug 'sidorares/node-vim-debugger'
 "Plug 'w0rp/ale'
 Plug 'z0mbix/vim-shfmt'
 ", { 'for': 'sh' }
-
+Plug 'tweekmonster/startuptime.vim'
 Plug 'mohitmun/gist-vim'
 Plug 'mattn/webapi-vim' " dependancy for gist-vim
 Plug 'vim-airline/vim-airline'
@@ -371,10 +371,15 @@ map <leader>use :UltiSnipsEdit<CR>
 map <leader>es :UltiSnipsEdit<CR>
 "let g:UltiSnipsListSnippets="<C-m>"
 "let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 "let g:UltiSnipsEditSplit="vertical"
+
+"https://castel.dev/post/lecture-notes-1/
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 "============ UltiSnips ===================
 
 
@@ -708,6 +713,9 @@ map F *
 map <leader>aspl :!aspell -c % <CR>
 map <leader>espl :setlocal spell<CR>
 map <leader>dspl :setlocal nospell<CR>
+"https://castel.dev/post/lecture-notes-1/
+inoremap <c-c> <c-g>u<Esc>[s1z=`]a<c-g>u
+
 
 au BufNewFile,BufRead * if &syntax == '' | setlocal spell | endif
 
@@ -788,8 +796,8 @@ nnoremap <Leader>r :call Replace(0, input('Replace '.expand('<cword>').' with: '
 let g:rainbow_active = 1
 
 "https://vi.stackexchange.com/a/2770/15805
-nnoremap <silent> n n:call HLNext(0.3)<cr>
-nnoremap <silent> N N:call HLNext(0.3)<cr>
+nnoremap <silent> n n:call HLNext(0.1)<cr>
+nnoremap <silent> N N:call HLNext(0.1)<cr>
 
 function! HLNext (blinktime)
   let target_pat = '\c\%#'.@/
@@ -820,3 +828,5 @@ map <leader>" :s/'/"/g<CR>
 
 set list
 set listchars=tab:>-
+" TODO map f to easymotion
+map f <Plug>(easymotion-f)
