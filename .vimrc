@@ -101,6 +101,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'Raimondi/delimitMate'
 Plug 'elzr/vim-json'
 Plug 'tpope/vim-projectionist'
+Plug 'dkarter/bullets.vim'
 "Plug 'google/vim-searchindex'
 "removed this because its not compatible with is.vim
 Plug 'osyo-manga/vim-anzu'
