@@ -367,3 +367,11 @@ alias k='kill %1'
 alias nginxlogs='tailf /var/log/nginx/access.log'
 alias viv='vim -u NONE'
 alias today='t add due:today'
+
+nchttpserver(){
+  #https://stackoverflow.com/a/19139134/2577465
+  while true ; do 
+    echo -e "HTTP/1.1 200 OK\nConnection: keep-alive;\n\n $(date)" |
+    nc -l 3322 
+  done
+}
