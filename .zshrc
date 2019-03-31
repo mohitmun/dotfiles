@@ -1,6 +1,25 @@
 # GistID:963f95aaf61d50e512511ac4eb097e50
 # vim: set ft=zsh:
+#TODO https://github.com/progrium/basht
 
+# https://github.com/mroth/dotfiles/blob/master/home/.zshrc
+# set up some very basic profiling of how long zshrc takes to load.
+# to test, use: ZSHRC_PROFILE=true zsh -ic "exit"
+
+declare -A ZSHRC_LOAD_START=()
+declare -A ZSHRC_LOAD_STOP=()
+declare -A ZSHRC_LOAD_TIME=()
+
+function profile_start () {
+  ZSHRC_LOAD_START[$1]=$(gdate "+%s%3N")
+}
+
+function profile_stop () {
+  ZSHRC_LOAD_STOP[$1]=$(gdate "+%s%3N")
+  ZSHRC_LOAD_TIME[$1]=$(echo "$ZSHRC_LOAD_STOP[$1] - $ZSHRC_LOAD_START[$1]" | bc)
+  printf "\033[1m%12s\033[0m loaded in:\t%4dms\n" $1 $ZSHRC_LOAD_TIME[$1]
+}
+profile_start "zshrc"
 if [[ "$(uname)" == "Darwin" ]]; then
   platform="osx"
 elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
@@ -31,13 +50,13 @@ plugins=(
   battery
   alias-tips
   zsh-prioritize-cwd-history
+  # TODO fix multiline commands
 )
 source $ALIASFILE
 source $ZSH/oh-my-zsh.sh
 [[ -f ~/.secret_common_sh_rc ]] && source ~/.secret_common_sh_rc
-source ~/.secret_keys
+source ~/secrets/.secret_keys
 source ~/scripts/colored_man_pages.zsh
-source ~/zsh/functions.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #autoload -Uz myspotify && myspotify
 #. ~/.zsh-async.zsh
@@ -114,6 +133,7 @@ bindkey "^l" forward-char
 bindkey "^v" forward-word
 #https://blog.sebastian-daschner.com/entries/zsh-aliases
 bindkey "^p" _expand_alias
+bindkey "^s" switch_tty
 bindkey "^z" fgvim
 
 fgvim(){
@@ -132,7 +152,7 @@ function repeat_string(){
 get_todo_status(){
   #a=$(FORCE_COLOR=0 tb -l notes | tail -n2)
   #echo $a
-  task_count=$( task status:pending count )
+  task_count=$( task status:pending due count )
   # TODO due: red, other: green
   [ $task_count -gt 0 ] && echo -ne "$DOT$FG[196]$task_count"
 }
@@ -257,12 +277,6 @@ function retry() {
   retry $@
 }
 
-# $ git log --no-merges --pretty=format:"%ae" | stats
-# # => 514 a@example.com
-# # => 200 b@example.com
-function stats() {
-  sort | uniq -c | sort -r
-}
 
 # Shortcut for searching commands history.
 # hist git
@@ -328,6 +342,27 @@ mosteditedfiles(){
   git log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -10
 }
 #TODO cli assistant
+
+switch_tty(){
+w |  awk '{print $2" - " $6" "$7}'| fzf | xargs -I{} ttyfilter.js "" {} | jq -r '.items | .[] | .arg' | read args && iterm2_action_tty.js $args
+}
+zle -N switch_tty
+
+tty_dir() {
+  PIDS="$(ps -t $1 -opid= | tr -d ' ' | tr '\n' ',')"
+  [[ -n "$PIDS" ]] || { echo "no pids found for $1"; return 1; }
+  lsof -a -d cwd -c '/^(k|c|ba|tc|z)?sh$/' -p "$PIDS" -Fn | grep "^n" | cut -c2- | awk -F$HOME/ '{print $2}'
+}
+
+start_interactive_alias_save(){
+  echo $BUFFER > /tmp/zlebuffer
+  BUFFER="add_alias_from_buffer "
+}
+zle -N start_interactive_alias_save
+add_alias_from_buffer(){
+  val=$(cat /tmp/zlebuffer)
+  add_alias $1 "$val"
+}
 
 #start_interactive(){
   #BUFFER="grep  ~/.zshrc"
@@ -491,12 +526,12 @@ notify_telegram(){
   jcurl -d "{\"value1\":\"$1\",\"value2\":\"$2\",\"value3\":\"$3\"}" https://maker.ifttt.com/trigger/telegram_alert/with/key/${IFTTT_TOKEN}
 }
 
-autoload -Uz async && async
 #autoload -U promptinit; promptinit
 #prompt pure
 add-zsh-hook chpwd run_local_rc
 
 run_local_rc(){
+  # TODO break when spaces in directory name
   if [ -f $(pwd)/.localrc ];then
     echo "executing localrc"
     . $(pwd)/.localrc
@@ -549,3 +584,5 @@ extract () {
     echo "'$1' is not a valid file"
   fi
 }
+#source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+profile_stop "zshrc"
