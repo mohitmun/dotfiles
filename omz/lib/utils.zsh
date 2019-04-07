@@ -75,19 +75,20 @@ google(){
 }
 
 log_top_5(){
-  result=$(ps -Ao pid,pcpu -r -C | head -n 6)
-  mylog "$result"
+  mylog $(ps -Ao pid,pcpu -r -C | awk 'NR > 1 && NR < 11 {print $1"="$2}' | jo)
 }
 
 my_crons(){
-  [ $(($RANDOM % 10)) = 1 ] && backup_chrome_db
+  [ $(($RANDOM % 20)) = 1 ] && backup_chrome_db
   log_top_5
+  
 }
 
 CHROME_HISTORY_PATH="$HOME/Library/Application Support/Google/Chrome/Profile 3"
 CHROME_HISTORY_FILE="$CHROME_HISTORY_PATH/History"
 BACKUP_DIR="$HOME/Desktop/backups"
 backup_chrome_db(){
+  mylog "backing up chrome db"
   latest=$(\ls -t $BACKUP_DIR | head -n1)
   echo "latest file $latest"
   md5latest=$(md5 -q $BACKUP_DIR/$latest)

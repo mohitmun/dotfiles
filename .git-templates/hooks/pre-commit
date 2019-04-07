@@ -3,10 +3,10 @@
 # Validates that you don't commit forbidden keywords to the repo
 # You can skip this checking with 'git commit --no-verify'
 
-if [ -e ./.git/hooks/pre-commit ]; then
+`if [ -e ./.git/hooks/pre-commit ]; then
     echo "Running local pre commit"
     ./.git/hooks/pre-commit "$@"
-fi
+fi`
 
 puts "Pre-commit running"
 exit 0 if ARGV.include?('--no-verify')

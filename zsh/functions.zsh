@@ -1,4 +1,0 @@
-hihello(){
-  echo "hi hello"
-}
-
