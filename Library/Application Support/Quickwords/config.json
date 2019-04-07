@@ -122,6 +122,70 @@
 			"regex": false,
 			"type": "js",
 			"active": true
+		},
+		{
+			"id": 7202269,
+			"key": ";;t",
+			"value": "function qw(trigger) {\n  const execSync = require('child_process').execSync;\n  execSync(\"open /Applications/Telegram.app\").toString();\n  return \"\";\n}",
+			"regex": false,
+			"type": "js",
+			"active": true
+		},
+		{
+			"id": 5219377,
+			"key": ";;w",
+			"value": "function qw(trigger) {\n  const execSync = require('child_process').execSync;\n  execSync(\"open http://web.whatsapp.com\").toString();\n  return \"\";\n}",
+			"regex": false,
+			"type": "js",
+			"active": true
+		},
+		{
+			"id": 5351635,
+			"key": ":c3",
+			"value": "😘😘😘😘😘😘",
+			"regex": false,
+			"type": "plain",
+			"active": true
+		},
+		{
+			"id": 9265742,
+			"key": "(Y)",
+			"value": "👍👍",
+			"regex": false,
+			"type": "plain",
+			"active": true
+		},
+		+		{
+			"id": 4932319,
+			"key": "xD",
+			"value": "😝😝",
+			"regex": false,
+			"type": "plain",
+			"active": true
+		},
+		{
+			"id": 9955961,
+			"key": ":th",
+			"value": "🤔🤔",
+			"regex": false,
+			"type": "plain",
+			"active": true
+		},
+		{
+			"id": 4018521,
+			"key": ":'D",
+			"value": "😅😅",
+			"regex": false,
+			"type": "plain",
+			"active": true
+		},
+		{
+			"id": 9596813,
+			"key": ":shame",
+			"value": "🤭🤭",
+			"regex": false,
+			"type": "plain",
+			"active": true
 		}
 	],
 	"bufferLength": 20,
