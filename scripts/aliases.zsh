@@ -120,7 +120,7 @@ alias -g G=" | grep "
 alias -g T=" | tee "
 alias -g L=" | less "
 alias -g H=" | head "
-alias -g TP=" | tee /dev/stderr | " # transperant pipe
+alias -g TP=" | tee /dev/tty | " # transperant pipe
 alias nvmact='export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
 alias psa='ps -o %cpu,%mem'
 alias psp='ps -p'
@@ -375,3 +375,6 @@ nchttpserver(){
     nc -l 3322 
   done
 }
+
+
+alias grep_ip='grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"'
