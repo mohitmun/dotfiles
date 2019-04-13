@@ -33,6 +33,7 @@ alias pumpitup="osascript -e 'set volume output volume 100'"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias tochromedata="cd ~/Library/Application\ Support/Google/Chrome/Default/"
+alias date="gdate"
 tstodate(){
   gdate -d "@$1" # timestamp to date
 }
