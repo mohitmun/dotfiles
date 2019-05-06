@@ -126,6 +126,7 @@ Plug 'reedes/vim-pencil'
 "Plug 'godlygeek/tabular'
 "Plug 'plasticboy/vim-markdown'
 Plug 'osyo-manga/vim-over'
+"Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 Plug 'haya14busa/vim-edgemotion'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'mbbill/undotree'
@@ -826,8 +827,9 @@ endfunction
 "https://github.com/smallhadroncollider/dotfiles/blob/e55adafeb472e90399a77e9b01dc0b9d19506393/vim/.vimrc#L228
 " replace single quotes in selection
 map <leader>" :s/'/"/g<CR>
-
+map U :Gread -<CR>
 set list
 set listchars=tab:>-
 " TODO map f to easymotion
 map f <Plug>(easymotion-f)
+
