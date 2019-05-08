@@ -156,6 +156,14 @@
 			"active": true
 		},
 		{
+			"id": 5782772,
+			"key": "g-(.* )",
+			"value": "function qw(trigger) {\n  const execSync = require('child_process').execSync;\n  execSync(\"open https://google.com/search?q=\" + trigger.split(\"-\")[1]).toString();\n  return \"\";\n}",
+			"regex": true,
+			"type": "js",
+			"active": true
+		},
+		{
 			"id": 4932319,
 			"key": "xD",
 			"value": "😝😝",

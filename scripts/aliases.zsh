@@ -18,7 +18,7 @@ alias tl='tmux list-sessions'
 alias tksv='tmux kill-server'
 alias tkss='tmux kill-session -t'
 
-alias brew="brew -v"
+alias brewv="brew -v"
 #alias zshrc="vi ~/.zshrc"
 #alias battrylogs="pmset -g log|grep -e ' Sleep  ' -e ' Wake  '"
 #alias gist_vimrc="gist -r 963f95aaf61d50e512511ac4eb097e50 .vimrc"

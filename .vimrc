@@ -153,7 +153,6 @@ call plug#end()
 
 "source ~/.vim/cscope.vim
 source ~/.vim/wikia_tips.vim
-
 "let g:deoplete#enable_at_startup = 1
 
 syntax on
@@ -824,12 +823,8 @@ endfunction
   "autocmd! bufwritepost .vimrc source $MYVIMRC
 "endif
 
-"https://github.com/smallhadroncollider/dotfiles/blob/e55adafeb472e90399a77e9b01dc0b9d19506393/vim/.vimrc#L228
-" replace single quotes in selection
-map <leader>" :s/'/"/g<CR>
-map U :Gread -<CR>
 set list
 set listchars=tab:>-
 " TODO map f to easymotion
-map f <Plug>(easymotion-f)
 
+source ~/.vim/mappings.vim
