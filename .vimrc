@@ -17,6 +17,7 @@
 "  https://github.com/learnbyexample/scripting_course/blob/master/Vim_curated_resources.md
 "Tips
 "  http://nvie.com/posts/how-i-boosted-my-vim
+"
 "Refactoring in vim
 "  https://stackoverflow.com/a/8783131/2577465
 "https://kev.town/2010/12/15/this-is-your-brain-on-vim/
@@ -29,6 +30,7 @@
 "  Read the fucking manual, :help is powerful
 "  Make life easier by vimrc
 "vimrcs
+"  https://twitter.com/dotvimrc
 "  https://github.com/amix/vimrc
 "  https://github.com/nvie/vimrc/blob/master/vimrc
 "  https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
@@ -178,12 +180,12 @@ set wrap "Wrap lines
 " If a file is changed outside of vim, automatically reload it without asking
 set autoread
 " Don't make backups at all
-set nobackup
-set nowritebackup
+set backup
+"set nowritebackup
 "https://medium.com/@Aenon/vim-swap-backup-undo-git-2bf353caa02f
 set backupdir=~/.vim/backupdir//
 set directory=~/.vim/directory//
-set undodir=~/.vim/undodir//
+"set undodir=~/.vim/undodir//
 set clipboard^=unnamed
 set undofile
 "set iskeyword-=_
@@ -823,8 +825,13 @@ endfunction
   "autocmd! bufwritepost .vimrc source $MYVIMRC
 "endif
 
-set list
-set listchars=tab:>-
 " TODO map f to easymotion
 
 source ~/.vim/mappings.vim
+source ~/.vim/setter.vim
+vnoremap <C-I> >
+
+"https://redd.it/kz84u
+au CursorHoldI * stopinsert
+au InsertEnter * let updaterestore=&updatetime | set updatetime=3000
+au InsertLeave * let &updatetime=updaterestore
