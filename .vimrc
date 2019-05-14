@@ -57,165 +57,13 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   "TODO check if fd and ag installed
 endif
 
-call plug#begin()
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-"Plug 'ctrlpvim/ctrlp.vim
-"Plug 'Valloric/YouCompleteMe'
-Plug 'terryma/vim-multiple-cursors' " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
-"Plug 'amix/vim-zenroom2'
-" fugitive.vim: a Git wrapper so awesome, it should be illegal
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-"Plug 'tpope/vim-repeat'
-Plug 'sidorares/node-vim-debugger'
-" Linters
-"Plug 'w0rp/ale'
-Plug 'z0mbix/vim-shfmt'
-", { 'for': 'sh' }
-Plug 'tweekmonster/startuptime.vim'
-Plug 'mohitmun/gist-vim'
-Plug 'mattn/webapi-vim' " dependancy for gist-vim
-Plug 'vim-airline/vim-airline'
-Plug 'Chiel92/vim-autoformat'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'scrooloose/nerdcommenter'
-Plug 'yuttie/comfortable-motion.vim'
-Plug 'sjl/gundo.vim'
-" https://vi.stackexchange.com/a/8224/15805
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'suan/vim-instant-markdown'
-"fucks up disable cut logic
-"Plug 'maxbrunsfeld/vim-yankstack'
-"Plug 'majutsushi/tagbar'
-Plug 'itchyny/calendar.vim'
-Plug 'airblade/vim-gitgutter'
-" slow downs cursor moment on large files
-Plug 'Yggdroot/indentLine'
-Plug '907th/vim-auto-save'
-Plug 'machakann/vim-highlightedyank'
-Plug 'Raimondi/delimitMate'
-Plug 'elzr/vim-json'
-Plug 'tpope/vim-projectionist'
-Plug 'dkarter/bullets.vim'
-"Plug 'google/vim-searchindex'
-"removed this because its not compatible with is.vim
-Plug 'osyo-manga/vim-anzu'
-Plug 'simnalamburt/vim-mundo'
-"Plug 'JamshedVesuna/vim-markdown-preview'
-Plug 'benmills/vimux'
-Plug 'haya14busa/is.vim'
-Plug 'crusoexia/vim-monokai'
-"Plug 'sickill/vim-monokai'
-Plug 'haya14busa/vim-asterisk'
-Plug 'pangloss/vim-javascript'
-Plug 'brooth/far.vim'
-Plug 'vim-ruby/vim-ruby'
-Plug 'MattesGroeger/vim-bookmarks'
-"Plug 'ervandew/supertab'
-Plug 'easymotion/vim-easymotion'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'reedes/vim-pencil'
-"Plug 'svermeulen/vim-easyclip'
-"Plug 'wellle/targets.vim'
-" dependancy for vim-markdown
-"Plug 'godlygeek/tabular'
-"Plug 'plasticboy/vim-markdown'
-Plug 'osyo-manga/vim-over'
-"Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-Plug 'haya14busa/vim-edgemotion'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'mbbill/undotree'
-Plug 'RRethy/vim-illuminate', { 'on':  'IlluminationEnable' }
-" TODO limit this for 3-4 chars
-"Plug 'vim-scripts/AutoComplPop'
-"Plug 'Shougo/deoplete.nvim'
-"Plug 'roxma/nvim-yarp'
-"Plug 'prabirshrestha/asyncomplete.vim'
-"Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'maralla/completor.vim'
-
-Plug 'ruanyl/vim-gh-line'
-Plug 'zivyangll/git-blame.vim'
-" discovered here https://github.com/dodie/dotfiles/blob/master/vim/vimrc.symlink#L32
-Plug 'luochen1990/rainbow'
-"Plug 'SidOfc/mkdx'
-"explore
-"Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'TaDaa/vimade'
-Plug 'itchyny/vim-qfedit'
-"Plug 'timakro/vim-searchant'
-call plug#end()
+source ~/.vim/plugins.vim
 
 "source ~/.vim/cscope.vim
 source ~/.vim/wikia_tips.vim
 "let g:deoplete#enable_at_startup = 1
 
 syntax on
-set number
-set tabstop=2 shiftwidth=2 expandtab
-set updatetime=100
-set showcmd
-set completeopt-=preview
-"Always show current position
-set ruler
-" Highlight search results
-set hlsearch
-set ignorecase
-" Show matching brackets when text indicator is over them
-set showmatch
-"" Makes search act like search in modern browser
-set incsearch
-set hidden
-set backspace=indent,eol,start
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
-" If a file is changed outside of vim, automatically reload it without asking
-set autoread
-" Don't make backups at all
-set backup
-"set nowritebackup
-"https://medium.com/@Aenon/vim-swap-backup-undo-git-2bf353caa02f
-set backupdir=~/.vim/backupdir//
-set directory=~/.vim/directory//
-"set undodir=~/.vim/undodir//
-set clipboard^=unnamed
-set undofile
-"set iskeyword-=_
-set ttimeoutlen=50
-set history=1000  " Keep a bigger history of commands
-set mouse=a
-set foldmethod=indent
-"set cursorline
-set nofoldenable    " disable folding
-set foldlevelstart=20
-"set timeoutlen=500
-set clipboard^=unnamed
-
-"https://github.com/sputtene/dotfiles/blob/79db8ab3b0586fb787fc59b42715dba786135c6d/.vimrc
-set viminfo+='1000
-"
-set viminfo=
-set viminfo+='1000  " max number of previous files for which the marks are remembered
-set viminfo+=!      " save and restore globals in all uppercase
-"set viminfo+=%      " save and restore buffer list
-set viminfo+=/1000  " max number of search and substitute patterns to save
-set viminfo+=:1000  " max number of command line items to save
-set viminfo+=<1000   " max number of lines for each register to save
-set viminfo+=@1000   " max number of input-line history to save
-set viminfo+=f1     " store file marks ('0 to '9, 'A to 'Z)
-set viminfo+=h      " disable effect of hlsearch when loading viminfo
-set viminfo+=s10    " max size of an item in Kb
-
-"https://stackoverflow.com/a/16920294/2577465
-set re=1
 
 
 
@@ -246,12 +94,6 @@ vnoremap <M-k> :m '<-2<CR>gv=gv
 
 
 
-" https://stackoverflow.com/a/5562707/2577465
-map gn :cn<cr>
-map gp :cp<cr>
-map <C-l> :bn<cr>
-map <C-h> :bp<cr>
-map gb :Buffers<cr>
 
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
@@ -270,7 +112,6 @@ vnoremap <space> zf
 let g:gist_get_multiplefile = 1
 let g:gist_list_vsplit = 1
 
-map <C-p> :FZF<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -503,8 +344,6 @@ let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 "autocmd InsertEnter * set cul
 "autocmd InsertLeave * set nocul
-" tmux knows the extended mouse mode
-set ttymouse=xterm2
 
 map <leader>h :History<CR>
 
@@ -515,8 +354,6 @@ inoremap <C-l> <Right>
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-g>k"))
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-g>j"))
 
-"https://github.com/mrzool/dotfiles/blob/master/vim/.vimrc#L112
-set dictionary=/usr/share/dict/words
 " make Y behave like D and C
 nnoremap Y y$
 
@@ -555,7 +392,6 @@ endfunction
 "autocmd VimLeave * call SaveSess()
 "autocmd VimEnter * nested call RestoreSess()
 
-set sessionoptions-=options
 
 map \ss :call SaveSess()<CR>
 map \rs :call RestoreSess()<CR>
@@ -565,26 +401,6 @@ map \rs :call RestoreSess()<CR>
 " If no arguments, use previous search.
 command! -bang -nargs=* -range LineBreakAt <line1>,<line2>call LineBreakAt('<bang>', <f-args>)
 
-"https://github.com/mitsuhiko/dotfiles/blob/master/vim/vimrc
-"tab for brackets
-nnoremap t %
-vnoremap t %
-
-"https://github.com/search?q=filename%3A.vimrc+matchpairs&type=Code
-" <3 github <3 your search is awesome
-set matchpairs+=<:>
-"set matchpairs+=':'
-"set matchpairs+=":"
-
-vnoremap <Tab> >
-vnoremap <S-tab> <gv
-
-"http://vim.wikia.com/wiki/Easy_indenting_in_insert_and_normal_mode_with_no_cursor_displacement
-"commented because C-i doesn work
-nnoremap <Tab> >>
-" opposite of <C-o>
-nnoremap <C-y> <C-I>
-nnoremap <S-Tab> <<
 
 " fucks up with <CR>
 let g:multi_cursor_use_default_mapping=0
@@ -613,7 +429,6 @@ nmap <leader><leader>c :pclose<CR>:cclose<CR>
 "imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 "imap <c-x><c-l> <plug>(fzf-complete-line)
 
-nnoremap <Leader>u :UndotreeToggle<CR>
 
 
 " remeber when i was debuging here doc and white space was fucking up
@@ -655,32 +470,6 @@ endfunction
 
 
 
-" Use tab to trigger auto completion.  Default suggests completions as you type.
-"let g:completor_auto_trigger = 1
-inoremap <expr> <Tab> Tab_Or_Complete()
-map <C-a> ggVG
-" delete blank lines
-map <leader>dbl :g/^$/d<CR>:noh<CR>
-" remove trailing space
-map <leader>rts :%s/\s\+$//e<CR>
-
-" unused keys
-" shift - K, M, Q
-" <C-m
-map K <Nop>
-map M <Nop>
-map Q <Nop>
-map <C-m> <Nop>
-
-"https://github.com/bag-man/dotfiles/blob/master/vimrc#L59
-map H ^
-map L $
-nnoremap M :Maps<CR>
-nnoremap <leader>gf :GFiles?<CR>
-
-nnoremap * *N
-map F *
-
 "Vimnotes
 "http://vim.wikia.com/wiki/Delete_all_lines_containing_a_pattern
 " :g!/http/d deletes lines not containing http
@@ -694,6 +483,7 @@ map F *
 " TODO explore
 "https://stackoverflow.com/questions/2575545/vim-pipe-selected-text-to-shell-cmd-and-receive-output-on-vim-info-command-line
 "https://stackoverflow.com/questions/6762531/execute-command-for-several-lines-in-vim
+"https://github.com/chrisbra/vim_dotfiles/blob/816a24ed81dccec04c82770834ca6c503665e3cd/plugin/LargeFile.vim
 "TODO how to replace timestamp with date in file
 "TODO explore https://github.com/bag-man/dotfiles/blob/master/vimrc#L285
 "TODO what is select mode
@@ -718,13 +508,6 @@ map <leader>espl :setlocal spell<CR>
 map <leader>dspl :setlocal nospell<CR>
 "https://castel.dev/post/lecture-notes-1/
 inoremap <c-c> <c-g>u<Esc>[s1z=`]a<c-g>u
-
-
-au BufNewFile,BufRead * if &syntax == '' | setlocal spell | endif
-
-autocmd FileType ruby map <C-b> :!ruby %<CR>
-autocmd FileType javascript map <C-b> :!node %<CR>
-autocmd FileType ruby map <C-t> :!rspec %<CR>
 
 
 map <leader>sgc :%s/<C-R><C-W>//gc<Left><Left><Left>
@@ -772,27 +555,11 @@ augroup auto_move_to_next
     autocmd! InsertLeave * :call MoveToNext()
 augroup END
 
-nmap <silent> <Plug>ReplaceOccurences :call ReplaceOccurence()<CR>
-nmap <silent> <Leader>r :let @/ = '\C\<'.expand('<cword>').'\>'<CR>
-    \:set hlsearch<CR>:let g:should_inject_replace_occurences=1<CR>cgn
-vmap <silent> <Leader>r :<C-U>
-    \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-    \gvy:let @/ = substitute(
-    \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR>:set hlsearch<CR>:let g:should_inject_replace_occurences=1<CR>
-    \gV:call setreg('"', old_reg, old_regtype)<CR>cgn
 
 let g:undotree_WindowLayout = 4
 
 
 
-if &diff
-    " diff mode
-    set diffopt+=iwhite
-endif
-
-"https://github.com/jackfranklin/dotfiles/blob/master/vim/vimrc#L224
-" new file in current directory
-map <Leader>ee :e <C-R>=expand("%:p:h") . "/" <CR>
 
 command! -nargs=1 -bang Replace :call Replace(<bang>0, <q-args>)
 nnoremap <Leader>r :call Replace(0, input('Replace '.expand('<cword>').' with: '))<CR>
@@ -829,9 +596,18 @@ endfunction
 
 source ~/.vim/mappings.vim
 source ~/.vim/setter.vim
-vnoremap <C-I> >
+source ~/.vim/autocmds.vim
+  "try
+    "catch
+      "echo "fuck"
+    "endtry
+let undo_filename = "." . expand('%:t') . ".un~"
+"echo undo_filename
+"execute 'rundo ' . undo_filename
 
-"https://redd.it/kz84u
-au CursorHoldI * stopinsert
-au InsertEnter * let updaterestore=&updatetime | set updatetime=3000
-au InsertLeave * let &updatetime=updaterestore
+  let g:auto_save_events = ["InsertLeave"]
+"=================== super persistant undo ===================
+"double write file so backup is same as current file
+"upon leader d, if "  execute 'rundo ' . undo_filename "  fails
+  "read backup file, %!cat backupfile
+  "do backup
