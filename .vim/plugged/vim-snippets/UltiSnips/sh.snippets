@@ -96,4 +96,9 @@ while ${2:[[ ${1:condition} ]]}; do
 done
 endsnippet
 
+snippet whilef "while read line ... (done)"
+while read line; do
+	${0:#statements}
+done < ${1:filename}
+endsnippet
 # vim:ft=snippets:

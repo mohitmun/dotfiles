@@ -601,13 +601,45 @@ source ~/.vim/autocmds.vim
     "catch
       "echo "fuck"
     "endtry
-let undo_filename = "." . expand('%:t') . ".un~"
+let g:undo_filename = "." . expand('%:t') . ".un~"
 "echo undo_filename
 "execute 'rundo ' . undo_filename
 
-  let g:auto_save_events = ["InsertLeave"]
+let g:auto_save_events = ["InsertLeave"]
 "=================== super persistant undo ===================
 "double write file so backup is same as current file
 "upon leader d, if "  execute 'rundo ' . undo_filename "  fails
   "read backup file, %!cat backupfile
   "do backup
+function!  SPU()
+ execute 'write! /tmp/spu'
+ execute '%!cat ' . expand('%:t') . "~"
+ execute 'rundo ' . g:undo_filename
+ execute 'write'
+ execute '%!cat /tmp/spu'
+ execute 'write'
+endfunction
+
+function! IS_UNDOFILE_SANE()
+  redir => listing
+  "let v:warningmsg = ""
+  silent execute 'rundo ' . g:undo_filename
+  redir END
+  "echo listing
+  "if v:warningmsg =~ "File contents" 
+    "return 0
+  "endif
+
+  if listing =~ "Finished reading undo file"
+    return 1
+  endif
+  return 0
+endfunction
+
+function! Prompt_for_SUP()
+  if IS_UNDOFILE_SANE()
+    "echo "all okay"
+  else
+    echo "fuck"
+  endif
+endfunction
