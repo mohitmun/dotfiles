@@ -31,7 +31,7 @@ set directory=~/.vim/directory//
 set undodir=~/.vim/undodir//
 "let undodir=~/.vim/undodir/
 set clipboard^=unnamed
-set undofile
+"set undofile
 "set iskeyword-=_
 set ttimeoutlen=50
 set history=1000  " Keep a bigger history of commands
@@ -80,3 +80,6 @@ if &diff
     " diff mode
     set diffopt+=iwhite
 endif
+
+"https://github.com/superjer/vimrc/blob/50660c3a2c50d2dacce64ea5f703a7ddd0237afd/.vimrc#L22
+set gdefault            " When substituting, the g flag is on by default
