@@ -26,9 +26,9 @@ set autoread
 set backup
 "set nowritebackup
 "https://medium.com/@Aenon/vim-swap-backup-undo-git-2bf353caa02f
-"set backupdir=~/.vim/backupdir//
+set backupdir=~/.vim/backupdir//
 set directory=~/.vim/directory//
-"set undodir=~/.vim/undodir//
+set undodir=~/.vim/undodir//
 "let undodir=~/.vim/undodir/
 set clipboard^=unnamed
 set undofile

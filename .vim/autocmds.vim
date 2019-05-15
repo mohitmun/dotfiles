@@ -9,4 +9,6 @@ autocmd FileType ruby map <C-b> :!ruby %<CR>
 autocmd FileType javascript map <C-b> :!node %<CR>
 autocmd FileType ruby map <C-t> :!rspec %<CR>
 
-au BufRead * call Prompt_for_SUP()
+augroup auto_move_to_next
+    autocmd! InsertLeave * :call MoveToNext()
+augroup END

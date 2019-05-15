@@ -551,23 +551,12 @@ inoreabbr rli Rails.logger.info
 
 let g:should_inject_replace_occurences = 0
 
-augroup auto_move_to_next
-    autocmd! InsertLeave * :call MoveToNext()
-augroup END
-
 
 let g:undotree_WindowLayout = 4
-
-
-
 
 command! -nargs=1 -bang Replace :call Replace(<bang>0, <q-args>)
 nnoremap <Leader>r :call Replace(0, input('Replace '.expand('<cword>').' with: '))<CR>
 let g:rainbow_active = 1
-
-"https://vi.stackexchange.com/a/2770/15805
-nnoremap <silent> n n:call HLNext(0.1)<cr>
-nnoremap <silent> N N:call HLNext(0.1)<cr>
 
 function! HLNext (blinktime)
   let target_pat = '\c\%#'.@/
@@ -597,49 +586,5 @@ endfunction
 source ~/.vim/mappings.vim
 source ~/.vim/setter.vim
 source ~/.vim/autocmds.vim
-  "try
-    "catch
-      "echo "fuck"
-    "endtry
-let g:undo_filename = "." . expand('%:t') . ".un~"
-"echo undo_filename
-"execute 'rundo ' . undo_filename
 
-let g:auto_save_events = ["InsertLeave"]
-"=================== super persistant undo ===================
-"double write file so backup is same as current file
-"upon leader d, if "  execute 'rundo ' . undo_filename "  fails
-  "read backup file, %!cat backupfile
-  "do backup
-function!  SPU()
- execute 'write! /tmp/spu'
- execute '%!cat ' . expand('%:t') . "~"
- execute 'rundo ' . g:undo_filename
- execute 'write'
- execute '%!cat /tmp/spu'
- execute 'write'
-endfunction
-
-function! IS_UNDOFILE_SANE()
-  redir => listing
-  "let v:warningmsg = ""
-  silent execute 'rundo ' . g:undo_filename
-  redir END
-  "echo listing
-  "if v:warningmsg =~ "File contents" 
-    "return 0
-  "endif
-
-  if listing =~ "Finished reading undo file"
-    return 1
-  endif
-  return 0
-endfunction
-
-function! Prompt_for_SUP()
-  if IS_UNDOFILE_SANE()
-    "echo "all okay"
-  else
-    echo "fuck"
-  endif
-endfunction
+"let g:auto_save_events = ["InsertLeave"]

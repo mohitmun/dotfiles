@@ -74,3 +74,7 @@ nnoremap * *N
 map F *
 
 "set verbose=1
+
+"https://vi.stackexchange.com/a/2770/15805
+nnoremap <silent> n n:call HLNext(0.1)<cr>
+nnoremap <silent> N N:call HLNext(0.1)<cr>
