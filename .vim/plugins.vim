@@ -94,5 +94,5 @@ Plug 'itchyny/vim-qfedit'
 "Plug 'timakro/vim-searchant'
 Plug 'markonm/traces.vim'
 Plug 'rhysd/git-messenger.vim'
-Plug 'mohitmun/spu.vim'
+"Plug 'mohitmun/spu.vim'
 call plug#end()
