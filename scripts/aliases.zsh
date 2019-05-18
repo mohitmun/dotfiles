@@ -37,10 +37,10 @@ alias tochromedata="cd ~/Library/Application\ Support/Google/Chrome/Default/"
 [ $PLATFORM = "osx" ] && alias date="gdate"
 
 tstodate(){
-  gdate -d "@$1" # timestamp to date
+  date -d "@$1" # timestamp to date
 }
 alias ts="date +'%s'" # date to timestamp
-alias tsms='echo $(($(gdate +%s%N)/1000000))' # date to timestamp ms
+alias tsms='echo $(($(date +%s%N)/1000000))' # date to timestamp ms
 #alias cat=bat
 alias vim=vi
 alias cpr="cp -r"
@@ -128,7 +128,7 @@ alias nvmact='export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NV
 alias psa='ps -o %cpu,%mem'
 alias psp='ps -p'
 alias datetime='date "+%Y-%m-%d %H:%M:%S"'
-alias shortdatetime='gdate +"%a %d %b %I:%M"'
+alias shortdatetime='date +"%a %d %b %I:%M"'
 alias killglobalthread='cat ~/.global_worker.pid | xargs kill -9'
 
 stop(){
