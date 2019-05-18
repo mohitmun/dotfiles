@@ -33,7 +33,9 @@ alias pumpitup="osascript -e 'set volume output volume 100'"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias tochromedata="cd ~/Library/Application\ Support/Google/Chrome/Default/"
-alias date="gdate"
+
+[ $PLATFORM = "osx" ] && alias date="gdate"
+
 tstodate(){
   gdate -d "@$1" # timestamp to date
 }
@@ -379,3 +381,4 @@ nchttpserver(){
 
 
 alias grep_ip='grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"'
+alias generate_todo='git grep "TODO" > todofiles'
