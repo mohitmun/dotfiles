@@ -580,7 +580,7 @@ get_battery(){
 }
 
 export_osascript_system_status(){
-  cat ~/.export_osascript_system_status | while read i; do
+  [ -f ~/.export_osascript_system_status ] && cat ~/.export_osascript_system_status | while read i; do
     if [ -z $i ];then
       continue
     fi
