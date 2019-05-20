@@ -83,14 +83,8 @@ syntax on
 execute "set <M-j>=\ej"
 execute "set <M-k>=\ek"
 
-nnoremap <M-j> :m .+1<CR>==
-nnoremap <M-k> :m .-2<CR>==
 
-inoremap <M-j> <Esc>:m .+1<CR>==gi
-inoremap <M-k> <Esc>:m .-2<CR>==gi
 
-vnoremap <M-j> :m '>+1<CR>gv=gv
-vnoremap <M-k> :m '<-2<CR>gv=gv
 
 
 
@@ -101,13 +95,7 @@ highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 
 " https://superuser.com/a/189198/630985
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <C-r><C-o>+
 " https://stackoverflow.com/a/360634/2577465
-nnoremap <space> za
-vnoremap <space> zf
 
 let g:gist_get_multiplefile = 1
 let g:gist_list_vsplit = 1
@@ -118,10 +106,6 @@ let g:gist_list_vsplit = 1
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 let g:NERDTreeWinSize=35
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark<Space>
-map <leader>nf :NERDTreeFind<cr>
-map <leader>nt :NERDTreeFocus<cr>
 
 " autocmd VimEnter * NERDTree
 " Go to previous (last accessed) window.
@@ -130,25 +114,17 @@ autocmd VimEnter * wincmd p
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "http://vim.wikia.com/wiki/Map_semicolon_to_colon
-map ; :
 "noremap ;; ;
 
 "https://stackoverflow.com/questions/9051837/how-to-map-c-to-toggle-comments-in-vim?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa#comment11360335_9051932
-nmap <C-_> <leader>c<Space>
-vmap <C-_> <leader>c<Space>
-imap <C-_> <Esc><leader>c<Space>li
 
 "Not needed because of plugin
 "map <silent> <Leader><Leader> :nohlsearch<cr>
 "map <C-e> :noh<cr>
 
 "http://vim.wikia.com/wiki/Avoid_the_escape_key
-imap <leader>i <Esc>
 
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/
-inoremap jj <ESC>
-cmap jj <ESC>
-vmap ii <ESC>
 
 
 command! -bang -nargs=* Rg
@@ -170,13 +146,7 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : 
 command! -bang -nargs=* Rag call fzf#vim#ag(<q-args>, {'options': '--delimiter : '}, <bang>0)
 command! -nargs=* -bang CAg call s:ag_with_opts(<q-args>, <bang>0)
 command! -bang -nargs=+ -complete=dir RRag call fzf#vim#ag_raw(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
-map <C-f> :Ag<CR>
 " TODO below with range
-map swe :Ag <C-R><C-W><CR>
-map swc :BLines <C-R><C-W><CR>
-map <leader>/ :BLines <CR>
-map <leader>f :BLines <CR>
-map <leader>ag :Rag<CR>
 colorscheme monokai
 " monokai with complete dark
 hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NONE
@@ -188,31 +158,13 @@ let g:gitgutter_map_keys = 0
 let g:gitgutter_max_signs = 3000
 let g:gitgutter_diff_base = 'HEAD'
 autocmd BufWritePost * GitGutter
-nmap ]h <Plug>GitGutterNextHunk
-nmap gh <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
-nnoremap <leader>ggs :GitGutterStageHunk<CR>
 "TODO git commit current line, range of lines
 "commit current hunk
-nnoremap <leader>gch :GitGutterStageHunk<CR>:!git commit -m ""<Left>
 "commit current file
-nnoremap <leader>gcf :!git commit -m "" %<Left><Left><Left>
-nnoremap gcf :!git commit -m "" %<Left><Left><Left>
-nnoremap T :!tig %<CR>
-nnoremap <leader>gd :!git diff %<CR>
-nnoremap <leader>gdca :!git diff --cached %<CR>
-nnoremap <leader>ggp :GitGutterPreviewHunk<CR>
-nnoremap <leader>ggu :GitGutterUndoHunk<CR>
-nnoremap <leader>gst :Gstatus<CR>
-nnoremap <leader>gco :!git checkout %<CR>
-nnoremap <leader>ga :!git add %<CR>
 "=========== GitGutter ==========
 
 "============ UltiSnips ===================
 let g:UltiSnipsSnippetsDir="~/.vim/plugged/vim-snippets/UltiSnips"
-map <leader>usl :Snippets<CR>
-map <leader>use :UltiSnipsEdit<CR>
-map <leader>es :UltiSnipsEdit<CR>
 "let g:UltiSnipsListSnippets="<C-m>"
 "let g:UltiSnipsExpandTrigger="<tab>"
 "let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -239,14 +191,8 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 "augroup END
 
 " Fast editing and sourcing of `.vimrc`
-nnoremap <leader>ev :e $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap <leader>ez :e ~/.zshrc<cr>
 ":au BufAdd,BufNewFile * nested tab sball
-nnoremap <leader>za zR
 " ctrl-j for scroll without moving cursor
-nnoremap <C-j> <C-e>
-nnoremap <C-k> <C-y>
 
 "=================== airline ===================
 let g:airline#extensions#tabline#enabled = 1
@@ -255,8 +201,6 @@ let g:airline#extensions#hunks#enabled = 0
 "=================== airline ===================
 
 " close buffer when quitting
-noremap q :bd<CR>
-noremap <leader>q q
 " understand below command
 "autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
@@ -273,44 +217,22 @@ let g:auto_save = 1
 " BS because ctrl-R inserts ^M character
 "vnoremap // y/\V<C-R>"<BS>
 "http://vim.wikia.com/wiki/Search_for_visually_selected_text
-vnoremap // y/\V<C-r>=escape(@",'/\')<CR>
 "http://howivim.com/2016/salvatore-sanfilippo/
 "vmap q <gv
 "vmap <TAB> >gv
 "https://github.com/bpierre/dotfiles/blob/master/vimrc
 "nnoremap <C-n> i<CR><ESC>
-cmap w!! w !sudo tee > /dev/null %
-cmap <C-J> <Down>
-cmap <C-K> <Up>
 "https://stackoverflow.com/a/597932/2577465
-nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
 "https://stackoverflow.com/a/8397808/2577465
-map , \
-map ,, <Leader><Leader>
 
 "https://stackoverflow.com/a/30423919/2577465
-nnoremap x "_x
-nnoremap X "_X
-nnoremap d "_d
-nnoremap D "_D
-vnoremap d "_d
 
-nnoremap c "_c
-nnoremap C "_C
-vnoremap c "_c
 
-map <leader>c :w !colordiff -u % -
-nnoremap <leader>d "*d
-nnoremap <leader>D "*D
-vnoremap <leader>d "*d
 
 let $FZF_DEFAULT_COMMAND = 'fd --type f'
 
-map j gj
-map k gk
 
 "https://stackoverflow.com/questions/2744010/update-cscope-db-from-vim
-map <leader>csr :!cscope -Rbq<CR>:cs reset<CR><CR>
 
 "set hlsearch
 "let g:incsearch#auto_nohlsearch = 1
@@ -345,21 +267,12 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 "autocmd InsertEnter * set cul
 "autocmd InsertLeave * set nocul
 
-map <leader>h :History<CR>
 
 "https://stackoverflow.com/a/4740069/2577465
 "http://vim.wikia.com/wiki/Use_Ctrl-O_instead_of_Esc_in_insert_mode_mappings
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
-inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-g>k"))
-inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-g>j"))
 
 " make Y behave like D and C
-nnoremap Y y$
 
-map <leader>jpp :%!jq '.'<CR>
-vnoremap > >gv
-vnoremap < <gv
 
 let g:fzf_history_dir = '~/.vim/fzf-history'
 
@@ -393,8 +306,6 @@ endfunction
 "autocmd VimEnter * nested call RestoreSess()
 
 
-map \ss :call SaveSess()<CR>
-map \rs :call RestoreSess()<CR>
 
 " http://vim.wikia.com/wiki/Add_a_newline_after_given_patterns
 " Insert a newline after each specified string (or before if use '!').
@@ -415,14 +326,9 @@ let g:multi_cursor_quit_key            = '<Esc>'
 "http://vim.wikia.com/wiki/Insert_newline_without_entering_insert_mode
 " <S-CR> doesn't work in cli vim :(
 execute "set <M-n>=\en"
-nmap <M-n> o<Esc>
 
-nmap <leader>id :IlluminationDisable<CR>
-nmap <leader>ie :IlluminationEnable<CR>
 
 "close preview and quickfix list
-nmap <leader>pc :pclose<CR>:cclose<CR>
-nmap <leader><leader>c :pclose<CR>:cclose<CR>
 
 "imap <c-x><c-k> <plug>(fzf-complete-word)
 "imap <c-x><c-f> <plug>(fzf-complete-path)
@@ -443,12 +349,9 @@ endfunction
 
 command! -nargs=+ -complete=dir AgIn call s:ag_in(<f-args>)
 
-nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
-nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
 let g:comfortable_motion_no_default_key_mappings = 1
 "https://stackoverflow.com/a/1722706/2577465
 "map <C-f> g;
-map <C-g> g;
 
 
 function! Tab_Or_Complete() abort
@@ -503,14 +406,9 @@ endfunction
 "TODO https://github.com/vimlab/neojs
 "TODO http://www.panozzaj.com/blog/2015/08/28/must-have-vim-javascript-setup/
 "TODO https://github.com/ericdouglas
-map <leader>aspl :!aspell -c % <CR>
-map <leader>espl :setlocal spell<CR>
-map <leader>dspl :setlocal nospell<CR>
 "https://castel.dev/post/lecture-notes-1/
-inoremap <c-c> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 
-map <leader>sgc :%s/<C-R><C-W>//gc<Left><Left><Left>
 
 " destroy-all-software 0060 - the vimrc
 " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
@@ -527,12 +425,8 @@ augroup resCur
 augroup END
 
 " das 0013 file navigation
-cnoremap %% <C-R>=expand('%:h').'/'<CR>
-cnoremap %' <C-R>=expand('%:p')<CR>
 " copy current file full path to clipboard
 " https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
-map <leader>cp :let @+ = expand("%:p")<CR>
-map <leader>df :call delete(expand("%"))<CR>:bdelete!<CR>
 
 "danro/rename.vim
 command! -nargs=* -complete=customlist,SiblingFiles -bang Rename :call Rename("<args>", "<bang>")
@@ -555,7 +449,6 @@ let g:should_inject_replace_occurences = 0
 let g:undotree_WindowLayout = 4
 
 command! -nargs=1 -bang Replace :call Replace(<bang>0, <q-args>)
-nnoremap <Leader>r :call Replace(0, input('Replace '.expand('<cword>').' with: '))<CR>
 let g:rainbow_active = 1
 
 function! HLNext (blinktime)
@@ -587,4 +480,6 @@ source ~/.vim/mappings.vim
 source ~/.vim/setter.vim
 source ~/.vim/autocmds.vim
 
+command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a
+command! -nargs=? FilterD let @a='' | execute 'g/<args>/d A' | new | setlocal bt=nofile | put! a
 "let g:auto_save_events = ["InsertLeave"]
