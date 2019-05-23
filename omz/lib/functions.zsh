@@ -324,15 +324,17 @@ BACKUP_DIR="$HOME/Desktop/backups"
 backup_chrome_db(){
   mylog "backing up chrome db"
   latest=$(\ls -t $BACKUP_DIR | head -n1)
-  echo "latest file $latest"
-  md5latest=$(md5 -q $BACKUP_DIR/$latest)
-  echo "md5 latest $md5latest"
-  md5tobkp=$(md5 -q $CHROME_HISTORY_FILE)
-  if [ $md5latest = $md5tobkp ];then
-    echo "no backing up, same md5"
+  latest_ts=$(echo $latest | awk -F '[_.]' '{print $2}')
+  echo "latest file $latest $latest_ts"
+  #md5latest=$(md5 -q $BACKUP_DIR/$latest)
+  #echo "md5 latest $md5latest"
+  #md5tobkp=$(md5 -q $CHROME_HISTORY_FILE)
+  today12=$(date -d 'today 12' +%s)
+  if [ $today12 = $latest_ts ];then
+    echo "no backing up, same date"
   else
-    echo "backing up"
-    cp $CHROME_HISTORY_FILE  ~/Desktop/backups/chrome_$(ts).db
+    echo "backing up same date"
+    cp $CHROME_HISTORY_FILE  ~/Desktop/backups/chrome_$today12.db
   fi
 }
 
