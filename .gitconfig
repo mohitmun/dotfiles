@@ -29,6 +29,7 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+  # ignore whilespace by -w when viewing moved file
   newMoved = green reverse
   oldMoved = red reverse
 [diff]
