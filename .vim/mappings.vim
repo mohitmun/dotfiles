@@ -111,6 +111,9 @@ map <leader>sgc :%s/<C-R><C-W>//gc<Left><Left><Left>
 map <leader>cp :let @+ = expand("%:p")<CR>
 map <leader>df :call delete(expand("%"))<CR>:bdelete!<CR>
 
+" Mappings for moving lines up and down in all modes.
+execute "set <M-j>=\ej"
+execute "set <M-k>=\ek"
 nnoremap <M-j> :m .+1<CR>==
 nnoremap <M-k> :m .-2<CR>==
 inoremap <M-j> <Esc>:m .+1<CR>==gi
@@ -158,6 +161,8 @@ cmap w!! w !sudo tee > /dev/null %
 cmap <C-J> <Down>
 cmap <C-K> <Up>
 nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
+
+"https://stackoverflow.com/a/30423919/2577465
 nnoremap x "_x
 nnoremap X "_X
 nnoremap d "_d

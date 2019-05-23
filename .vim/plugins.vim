@@ -172,3 +172,34 @@ function! s:ag_in(...)
   call fzf#vim#ag(join(a:000[1:], ' '), {'dir': a:1})
 endfunction
 " =================== FZF ===================
+"
+" =================== vim-auto-save ===================
+"let g:auto_save_events = ["InsertLeave"]
+let g:auto_save = 1
+" =================== vim-auto-save ===================
+"
+" =================== gist ===================
+"
+let g:gist_get_multiplefile = 1
+let g:gist_list_vsplit = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Nerd Tree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let NERDTreeShowHidden=0
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+let g:NERDTreeWinSize=35
+
+colorscheme monokai
+
+" =================== multi cursor ===================
+
+" fucks up with <CR>
+let g:multi_cursor_use_default_mapping=0
+
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'

@@ -78,10 +78,6 @@ syntax on
 " copied previous line word by word https://web.archive.org/web/20160429070600/http://vim.wikia.com/wiki/Duplicate_previous_line_word_by_word#
 "nmap ,c @<Esc>kyWjP<BS>
 
-" Mappings for moving lines up and down in all modes.
-
-execute "set <M-j>=\ej"
-execute "set <M-k>=\ek"
 
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
@@ -91,15 +87,6 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Re
 " https://superuser.com/a/189198/630985
 " https://stackoverflow.com/a/360634/2577465
 
-let g:gist_get_multiplefile = 1
-let g:gist_list_vsplit = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Nerd Tree
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let NERDTreeShowHidden=0
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-let g:NERDTreeWinSize=35
 
 " autocmd VimEnter * NERDTree
 " Go to previous (last accessed) window.
@@ -121,7 +108,6 @@ autocmd VimEnter * wincmd p
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/
 
 " TODO below with range
-colorscheme monokai
 " monokai with complete dark
 hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NONE
 hi LineNr ctermfg=102 ctermbg=NONE cterm=NONE guifg=#90908a guibg=#3c3d37 gui=NONE
@@ -148,8 +134,6 @@ hi Search guibg=peru guifg=wheat
 "autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 "map <leader>h :exe printf('match IncSearch /\V\</Users/mohit/.vimrcs\>/', escape(expand('1'), '/\'))<CR>
-autocmd CursorMoved * exe exists("HlUnderCursor")?HlUnderCursor?printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\')):'match none':""
-let g:auto_save = 1
 
 " BS because ctrl-R inserts ^M character
 "vnoremap // y/\V<C-R>"<BS>
@@ -162,7 +146,6 @@ let g:auto_save = 1
 "https://stackoverflow.com/a/597932/2577465
 "https://stackoverflow.com/a/8397808/2577465
 
-"https://stackoverflow.com/a/30423919/2577465
 
 
 
@@ -225,15 +208,6 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 command! -bang -nargs=* -range LineBreakAt <line1>,<line2>call LineBreakAt('<bang>', <f-args>)
 
 
-" fucks up with <CR>
-let g:multi_cursor_use_default_mapping=0
-
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
 
 "http://vim.wikia.com/wiki/Insert_newline_without_entering_insert_mode
 " <S-CR> doesn't work in cli vim :(
@@ -253,21 +227,6 @@ let g:comfortable_motion_no_default_key_mappings = 1
 "https://stackoverflow.com/a/1722706/2577465
 "map <C-f> g;
 
-
-function! Tab_Or_Complete() abort
-  " If completor is already open the `tab` cycles through suggested completions.
-  if pumvisible()
-    return "\<C-N>"
-  " If completor is not open and we are in the middle of typing a word then
-  " `tab` opens completor menu.
-  elseif col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-    return "\<C-R>=completor#do('complete')\<CR>"
-  else
-    " If we aren't typing a word and we press `tab` simply do the normal `tab`
-    " action.
-    return "\<Tab>"
-  endif
-endfunction
 
 " Use `tab` key to select completions.  Default is arrow keys.
 
@@ -311,18 +270,6 @@ endfunction
 
 
 " destroy-all-software 0060 - the vimrc
-" http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-function! ResCur()
-  if line("'\"") <= line("$")
-    normal! g`"
-    return 1
-  endif
-endfunction
-
-augroup resCur
-  autocmd!
-  autocmd BufWinEnter * call ResCur()
-augroup END
 
 " das 0013 file navigation
 " copy current file full path to clipboard
@@ -351,15 +298,6 @@ let g:undotree_WindowLayout = 4
 command! -nargs=1 -bang Replace :call Replace(<bang>0, <q-args>)
 let g:rainbow_active = 1
 
-function! HLNext (blinktime)
-  let target_pat = '\c\%#'.@/
-  let ring = matchadd('ErrorMsg', target_pat, 101)
-  redraw
-  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
-  call matchdelete(ring)
-  redraw
-endfunction
-
 
 "=================== quickfix ===================
 "https://www.reddit.com/r/vim/comments/7dv9as/how_to_edit_the_vim_quickfix_list/?st=jrm42fdg&sh=96a8333f
@@ -382,4 +320,3 @@ source ~/.vim/autocmds.vim
 
 command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a
 command! -nargs=? FilterD let @a='' | execute 'g/<args>/d A' | new | setlocal bt=nofile | put! a
-"let g:auto_save_events = ["InsertLeave"]
