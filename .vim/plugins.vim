@@ -96,3 +96,79 @@ Plug 'markonm/traces.vim'
 Plug 'rhysd/git-messenger.vim'
 Plug 'mohitmun/spu.vim'
 call plug#end()
+
+" =================== Plugin Conf ===================
+"============ UltiSnips ===================
+let g:UltiSnipsSnippetsDir="~/.vim/plugged/vim-snippets/UltiSnips"
+"let g:UltiSnipsListSnippets="<C-m>"
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
+
+"https://castel.dev/post/lecture-notes-1/
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+"============ UltiSnips ===================
+
+
+"=========== GitGutter ==========
+let g:gitgutter_map_keys = 0
+let g:gitgutter_max_signs = 3000
+let g:gitgutter_diff_base = 'HEAD'
+autocmd BufWritePost * GitGutter
+"TODO git commit current line, range of lines
+"commit current hunk
+"commit current file
+"=========== GitGutter ==========
+
+
+"=================== airline ===================
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#hunks#enabled = 0
+"=================== airline ===================
+
+
+"=================== ALE ===================
+let g:ale_fixers = {
+\   'java': ['google_java_format'],
+\}
+"=================== ALE ===================
+
+" =================== FZF ===================
+let g:fzf_history_dir = '~/.vim/fzf-history'
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \  {'options': '--delimiter : --nth 2..'},
+  \   <bang>0)
+
+function! s:ag_with_opts(arg, bang)
+  let tokens  = split(a:arg)
+  let ag_opts = join(filter(copy(tokens), 'v:val =~ "^-"'))
+  let query   = join(filter(copy(tokens), 'v:val !~ "^-"'))
+  echo ag_opts
+  echo query
+  call fzf#vim#ag(query, ag_opts, a:bang ? {} : {'down': '40%','options': '--delimiter : --nth 4..' })
+endfunction
+
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=* Rag call fzf#vim#ag(<q-args>, {'options': '--delimiter : '}, <bang>0)
+command! -nargs=* -bang CAg call s:ag_with_opts(<q-args>, <bang>0)
+command! -bang -nargs=+ -complete=dir RRag call fzf#vim#ag_raw(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+"imap <c-x><c-k> <plug>(fzf-complete-word)
+"imap <c-x><c-f> <plug>(fzf-complete-path)
+"imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+"imap <c-x><c-l> <plug>(fzf-complete-line)
+
+let $FZF_DEFAULT_COMMAND = 'fd --type f'
+
+function! s:ag_in(...)
+  call fzf#vim#ag(join(a:000[1:], ' '), {'dir': a:1})
+endfunction
+" =================== FZF ===================

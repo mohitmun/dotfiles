@@ -173,6 +173,8 @@ inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("\<C-g>k"))
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-g>j"))
+
+" make Y behave like D and C
 nnoremap Y y$
 vnoremap > >gv
 vnoremap < <gv

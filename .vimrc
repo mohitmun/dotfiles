@@ -83,12 +83,6 @@ syntax on
 execute "set <M-j>=\ej"
 execute "set <M-k>=\ek"
 
-
-
-
-
-
-
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
@@ -126,57 +120,12 @@ autocmd VimEnter * wincmd p
 
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/
 
-
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \  {'options': '--delimiter : --nth 2..'},
-  \   <bang>0)
-
-function! s:ag_with_opts(arg, bang)
-  let tokens  = split(a:arg)
-  let ag_opts = join(filter(copy(tokens), 'v:val =~ "^-"'))
-  let query   = join(filter(copy(tokens), 'v:val !~ "^-"'))
-  echo ag_opts
-  echo query
-  call fzf#vim#ag(query, ag_opts, a:bang ? {} : {'down': '40%','options': '--delimiter : --nth 4..' })
-endfunction
-
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
-command! -bang -nargs=* Rag call fzf#vim#ag(<q-args>, {'options': '--delimiter : '}, <bang>0)
-command! -nargs=* -bang CAg call s:ag_with_opts(<q-args>, <bang>0)
-command! -bang -nargs=+ -complete=dir RRag call fzf#vim#ag_raw(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 " TODO below with range
 colorscheme monokai
 " monokai with complete dark
 hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NONE
 hi LineNr ctermfg=102 ctermbg=NONE cterm=NONE guifg=#90908a guibg=#3c3d37 gui=NONE
 hi Search guibg=peru guifg=wheat
-
-"=========== GitGutter ==========
-let g:gitgutter_map_keys = 0
-let g:gitgutter_max_signs = 3000
-let g:gitgutter_diff_base = 'HEAD'
-autocmd BufWritePost * GitGutter
-"TODO git commit current line, range of lines
-"commit current hunk
-"commit current file
-"=========== GitGutter ==========
-
-"============ UltiSnips ===================
-let g:UltiSnipsSnippetsDir="~/.vim/plugged/vim-snippets/UltiSnips"
-"let g:UltiSnipsListSnippets="<C-m>"
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
-
-"https://castel.dev/post/lecture-notes-1/
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-"============ UltiSnips ===================
 
 
 "https://shapeshed.com/vim-netrw/
@@ -194,21 +143,9 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 ":au BufAdd,BufNewFile * nested tab sball
 " ctrl-j for scroll without moving cursor
 
-"=================== airline ===================
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#branch#enabled = 0
-let g:airline#extensions#hunks#enabled = 0
-"=================== airline ===================
-
 " close buffer when quitting
 " understand below command
 "autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
-
-"=================== ALE ===================
-let g:ale_fixers = {
-\   'java': ['google_java_format'],
-\}
-"=================== ALE ===================
 
 "map <leader>h :exe printf('match IncSearch /\V\</Users/mohit/.vimrcs\>/', escape(expand('1'), '/\'))<CR>
 autocmd CursorMoved * exe exists("HlUnderCursor")?HlUnderCursor?printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\')):'match none':""
@@ -229,7 +166,6 @@ let g:auto_save = 1
 
 
 
-let $FZF_DEFAULT_COMMAND = 'fd --type f'
 
 
 "https://stackoverflow.com/questions/2744010/update-cscope-db-from-vim
@@ -271,10 +207,8 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 "https://stackoverflow.com/a/4740069/2577465
 "http://vim.wikia.com/wiki/Use_Ctrl-O_instead_of_Esc_in_insert_mode_mappings
 
-" make Y behave like D and C
 
 
-let g:fzf_history_dir = '~/.vim/fzf-history'
 
 "https://github.com/ervandew/supertab/issues/53#issuecomment-9980930
 "let g:SuperTabCrMapping = 0
@@ -283,28 +217,6 @@ let g:fzf_history_dir = '~/.vim/fzf-history'
       "\ if &omnifunc != '' |
       "\     call SuperTabChain(&omnifunc, '<c-p>') |
       "\ endif
-
-"https://stackoverflow.com/a/10525050/2577465
-fu! SaveSess()
-  execute 'mksession! ' . getcwd() . '/.session.vim'
-endfunction
-
-fu! RestoreSess()
-  if filereadable(getcwd() . '/.session.vim')
-    execute 'so ' . getcwd() . '/.session.vim'
-    "if bufexists(1)
-      "for l in range(1, bufnr('$'))
-        "if bufwinnr(l) == -1
-          "exec 'sbuffer ' . l
-        "endif
-      "endfor
-    "endif
-  endif
-endfunction
-
-"autocmd VimLeave * call SaveSess()
-"autocmd VimEnter * nested call RestoreSess()
-
 
 
 " http://vim.wikia.com/wiki/Add_a_newline_after_given_patterns
@@ -330,22 +242,10 @@ execute "set <M-n>=\en"
 
 "close preview and quickfix list
 
-"imap <c-x><c-k> <plug>(fzf-complete-word)
-"imap <c-x><c-f> <plug>(fzf-complete-path)
-"imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-"imap <c-x><c-l> <plug>(fzf-complete-line)
-
-
 
 " remeber when i was debuging here doc and white space was fucking up
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
-
-
-function! s:ag_in(...)
-  call fzf#vim#ag(join(a:000[1:], ' '), {'dir': a:1})
-endfunction
-
 
 command! -nargs=+ -complete=dir AgIn call s:ag_in(<f-args>)
 
