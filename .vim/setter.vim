@@ -80,6 +80,6 @@ if &diff
     " diff mode
     set diffopt+=iwhite
 endif
-
+set encoding=utf-8
 "https://github.com/superjer/vimrc/blob/50660c3a2c50d2dacce64ea5f703a7ddd0237afd/.vimrc#L22
 set gdefault            " When substituting, the g flag is on by default
