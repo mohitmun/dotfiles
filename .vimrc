@@ -312,3 +312,4 @@ source ~/.vim/autocmds.vim
 
 command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a
 command! -nargs=? FilterD let @a='' | execute 'g/<args>/d A' | new | setlocal bt=nofile | put! a
+"https://w0rp.com/blog/post/vim-script-for-the-javascripter/
