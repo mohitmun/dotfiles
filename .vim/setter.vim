@@ -29,15 +29,11 @@ set backup
 set backupdir=~/.vim/backupdir//
 set directory=~/.vim/directory//
 set undodir=~/.vim/undodir//
-"let undodir=~/.vim/undodir/
 set clipboard^=unnamed
-set undofile
 "set iskeyword-=_
 set ttimeoutlen=50
 set history=1000  " Keep a bigger history of commands
 set mouse=a
-set foldmethod=indent
-"set cursorline
 set nofoldenable    " disable folding
 set foldlevelstart=20
 "set timeoutlen=500
@@ -83,3 +79,8 @@ endif
 set encoding=utf-8
 "https://github.com/superjer/vimrc/blob/50660c3a2c50d2dacce64ea5f703a7ddd0237afd/.vimrc#L22
 set gdefault            " When substituting, the g flag is on by default
+
+" slow 
+set undofile " is slow for bb"
+"set foldmethod=indent " is slow for bb/"
+"set cursorline

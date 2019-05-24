@@ -275,14 +275,6 @@ let g:comfortable_motion_no_default_key_mappings = 1
 " copy current file full path to clipboard
 " https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
 
-"danro/rename.vim
-command! -nargs=* -complete=customlist,SiblingFiles -bang Rename :call Rename("<args>", "<bang>")
-cabbrev rename <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "Rename" : "rename"<CR>
-
-function! SiblingFiles(A, L, P)
-	return map(split(globpath(expand("%:h") . "/", a:A . "*"), "\n"), 'fnamemodify(v:val, ":t")')
-endfunction
-
 
 "=============== abbr ================
 inoreabbr bp binding.pry

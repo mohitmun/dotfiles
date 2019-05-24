@@ -20,7 +20,7 @@ Plug 'z0mbix/vim-shfmt'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'mohitmun/gist-vim'
 Plug 'mattn/webapi-vim' " dependancy for gist-vim
-Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline' " this is slow for bb"
 Plug 'Chiel92/vim-autoformat'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -35,8 +35,8 @@ Plug 'suan/vim-instant-markdown'
 "fucks up disable cut logic
 "Plug 'maxbrunsfeld/vim-yankstack'
 "Plug 'majutsushi/tagbar'
-Plug 'itchyny/calendar.vim'
-Plug 'airblade/vim-gitgutter'
+"Plug 'itchyny/calendar.vim'
+Plug 'airblade/vim-gitgutter' "slow for bb"
 " slow downs cursor moment on large files
 Plug 'Yggdroot/indentLine'
 Plug '907th/vim-auto-save'
@@ -203,3 +203,13 @@ let g:multi_cursor_next_key            = '<C-n>'
 let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
+
+
+"danro/rename.vim
+command! -nargs=* -complete=customlist,SiblingFiles -bang Rename :call Rename("<args>", "<bang>")
+cabbrev rename <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "Rename" : "rename"<CR>
+
+function! SiblingFiles(A, L, P)
+	return map(split(globpath(expand("%:h") . "/", a:A . "*"), "\n"), 'fnamemodify(v:val, ":t")')
+endfunction
+
