@@ -1,0 +1,38 @@
+[curses]
+escdelay = 15
+window_timeout = 20
+
+[xterm-256color]
+author_bg = 233
+author_fg = 240
+background = 233
+correct_bg = 233
+correct_fg = 240
+incorrect_bg = 52
+incorrect_fg = 197
+prompt_bg = 233
+prompt_fg = 244
+quote_bg = 233
+quote_fg = 195
+score_highlight_bg = 197
+score_highlight_fg = 230
+status_bg = 24
+status_fg = 51
+
+[xterm-colors]
+author_bg = 0
+author_fg = 7
+background = 0
+correct_bg = 0
+correct_fg = 7
+incorrect_bg = 1
+incorrect_fg = 7
+prompt_bg = 0
+prompt_fg = 7
+quote_bg = 0
+quote_fg = 7
+score_highlight_bg = 1
+score_highlight_fg = 3
+status_bg = 4
+status_fg = 6
+

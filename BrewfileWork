@@ -54,6 +54,7 @@ brew "poppler"
 brew "gdal", args: ["HEAD", "with-complete"]
 brew "gist"
 brew "git"
+brew "git-lfs"
 brew "gnu-typist"
 brew "gnupg"
 brew "go"
@@ -73,6 +74,7 @@ brew "imagemagick", link: false
 brew "imagemagick@6", link: true
 brew "irssi"
 brew "jenv"
+brew "jid"
 brew "jo"
 brew "jq"
 brew "khal"
@@ -83,6 +85,7 @@ brew "maven"
 brew "media-info"
 brew "moreutils"
 brew "mysql@5.6", restart_service: true
+brew "ncdu"
 brew "neovim"
 brew "nethogs"
 brew "ngrep"
@@ -101,6 +104,7 @@ brew "pyenv"
 brew "ranger"
 brew "rbenv", link: false
 brew "reattach-to-user-namespace"
+brew "redir"
 brew "redis", restart_service: true
 brew "rename"
 brew "ripgrep"
