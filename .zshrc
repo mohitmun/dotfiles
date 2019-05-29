@@ -55,7 +55,7 @@ plugins=(
 source $ALIASFILE
 source $ZSH/oh-my-zsh.sh
 [[ -f ~/.secret_common_sh_rc ]] && source ~/.secret_common_sh_rc
-source ~/secrets/.secret_keys
+[ -f ~/secrets/.secret_keys ] && source ~/secrets/.secret_keys
 source ~/scripts/colored_man_pages.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #autoload -Uz myspotify && myspotify
@@ -612,3 +612,11 @@ extract () {
 }
 #source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 profile_stop "zshrc"
+
+#https://stackoverflow.com/a/49890019/2577465
+start_cb_listener(){
+  while true; do 
+    nc -l 2000 | pbcopy
+    echo "Received data"
+  done
+}

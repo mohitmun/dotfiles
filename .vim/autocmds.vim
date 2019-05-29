@@ -19,3 +19,7 @@ augroup resCur
 augroup END
 
 autocmd CursorMoved * exe exists("HlUnderCursor")?HlUnderCursor?printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\')):'match none':""
+
+if !empty($SSH_CONNECTION)
+  autocmd TextYankPost * call writefile(getreg('0', 1, 1), "/tmp/y") | call system("cat /tmp/y | nc localhost 2000")
+endif
