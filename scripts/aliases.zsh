@@ -304,7 +304,7 @@ alias la='ls -lAh'
 #========== convert/imagemagic =============
 alias mergesbs="convert +append" #convert +append step1.png step2.png out.png
 #========== convert/imagemagic =============
-if [ $PLATFORM = "osx" ] then
+if [ $PLATFORM = "osx" ]; then
   alias date="gdate"
   alias shuf="gshuf"
 fi
