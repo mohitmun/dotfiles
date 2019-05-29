@@ -80,9 +80,9 @@ SAVEHIST=500000             #Number of history entries to save to disk
 #fi
 #sed '/cowsay[.]png/d' $TAOCL_FILE | pandoc -f markdown -t html | xmlstarlet fo --html --dropdtd | xmlstarlet sel -t -v "(html/body/ul/li[count(p)>0])[$RANDOM mod last()+1]" | xmlstarlet unesc | fmt -80 | iconv -t US | cowsay
 export HOMEBREW_NO_AUTO_UPDATE=1
-export FZF_COMPLETION_TRIGGER=''
+#export FZF_COMPLETION_TRIGGER=''
 bindkey '^T' fzf-completion
-bindkey '^I' $fzf_default_completion
+#bindkey '^I' $fzf_default_completion
 # ==============================================
 # ==============================================
 # git@github.com:rupa/z.git
@@ -152,9 +152,11 @@ function repeat_string(){
 get_todo_status(){
   #a=$(FORCE_COLOR=0 tb -l notes | tail -n2)
   #echo $a
+  which task > /dev/null && {
   task_count=$( task status:pending due count )
   # TODO due: red, other: green
   [ $task_count -gt 0 ] && echo -ne "$DOT$FG[196]$task_count"
+}
 }
 explain(){
   response=$(w3m -dump "http://explainshell.com/explain?cmd="$(echo $@ | tr ' ' '+'))
@@ -218,6 +220,7 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 #TODO https://github.com/paulirish/git-recent
 #TDOD explore entr
 #TODO prompt - current directory size
+#TODO prompt view recently exported variable
 #https://github.com/MikeDacre/cdbk
 #
 #===========================
@@ -255,6 +258,29 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/bin"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+#export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
+#export PATH="$PATH:$HOME/Library/Android/sdk/tools"
+#export PATH="$PATH:$HOME/Library/Android/sdk/ndk-bundle"
+#export PATH="$PATH:$HOME/Library/Android/sdk/build-tools/25.0.0"
+#export PATH="$PATH:$HOME/Desktop/blockchain/go-ipfs"
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
+export PYTHONSTARTUP=~/.pythonrc
+#export ANDROID_HOME=/Users/mohitmunjani/Library/Android/sdk
+#export ANDROID_SDK_ROOT=/Users/mohitmunjani/Library/Android/sdk
+export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
+export ANDROID_HOME="/usr/local/share/android-sdk"
+
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export PATH="$JAVA_HOME/bin:$PATH"
+#alias curl="curl --socks5-hostname 127.0.0.1:9050"
+export NVM_DIR="/Users/mohitmunjani/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 cht(){
   curl cht.sh/$1
