@@ -34,7 +34,6 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias tochromedata="cd ~/Library/Application\ Support/Google/Chrome/Default/"
 
-[ $PLATFORM = "osx" ] && alias date="gdate"
 
 tstodate(){
   date -d "@$1" # timestamp to date
@@ -153,7 +152,7 @@ alias loadavguptime='uptime | cut -d: -f4- | sed s/,//g'
 #================= CURL aliases =====================
 alias jcurl="curl -H 'Content-Type: application/json'"
 alias curl_github="curl -u $GITHUB_USERNAME_SPAM:$GITHUB_PASSWORD_SPAM"
-
+alias curl_chrome="curl -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'"
 curlpaginatexample(){
   curl "{maps,mail,photos}.google.com/{u,v,y}/[1-3]" -o "googlefile#1__#2__#3"
 }
@@ -305,8 +304,11 @@ alias la='ls -lAh'
 #========== convert/imagemagic =============
 alias mergesbs="convert +append" #convert +append step1.png step2.png out.png
 #========== convert/imagemagic =============
+if [ $PLATFORM = "osx" ] then
+  alias date="gdate"
+  alias shuf="gshuf"
+fi
 
-alias shuf="gshuf"
 alias randomrange="shuf -n 1 -i" # example gshuf -i 2-65 -n 1
 
 create_zip(){
@@ -382,3 +384,16 @@ nchttpserver(){
 
 alias grep_ip='grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"'
 alias generate_todo='git grep "TODO" > todofiles'
+
+#working on my sony tv 
+alias fortv='ffmpeg -i /Volumes/Transcend/outputpart.mpg  -vcodec libx264 -acodec aac outputpart2workingtv.mp4'
+
+reverse_video(){
+  ffmpeg -vf reverse $2 -i $1
+}
+
+multitime(){
+  time (for i in {1..10}; do 
+    $@
+  done)
+}
