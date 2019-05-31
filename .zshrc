@@ -36,7 +36,7 @@ logtime(){
 export PLATFORM=$platform
 export ZSH=~/omz
 export REFRESH_RATE=60
-export OSASCRIPT_REFRESH_RATE=10
+export OSASCRIPT_REFRESH_RATE=60
 export ALIASFILE=~/scripts/aliases.zsh
 
 #start=$(gdate +%s%N)
@@ -267,7 +267,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 #export PATH="$PATH:$HOME/Desktop/blockchain/go-ipfs"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
+#export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
 export PYTHONSTARTUP=~/.pythonrc
 #export ANDROID_HOME=/Users/mohitmunjani/Library/Android/sdk
 #export ANDROID_SDK_ROOT=/Users/mohitmunjani/Library/Android/sdk

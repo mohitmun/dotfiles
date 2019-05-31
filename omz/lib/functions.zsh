@@ -318,7 +318,7 @@ my_crons(){
   
 }
 
-CHROME_HISTORY_PATH="$HOME/Library/Application Support/Google/Chrome/Profile 3"
+CHROME_HISTORY_PATH="$HOME/Library/Application Support/Google/Chrome/Default"
 CHROME_HISTORY_FILE="$CHROME_HISTORY_PATH/History"
 BACKUP_DIR="$HOME/Desktop/backups"
 backup_chrome_db(){
