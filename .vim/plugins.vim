@@ -109,8 +109,8 @@ let g:UltiSnipsSnippetsDir="~/.vim/plugged/vim-snippets/UltiSnips"
 
 "https://castel.dev/post/lecture-notes-1/
 let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsJumpForwardTrigger = '<c-b>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
 "============ UltiSnips ===================
 
 

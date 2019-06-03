@@ -20,8 +20,6 @@ nnoremap t %
 vnoremap t %
 
 
-vnoremap <Tab> >
-vnoremap <S-tab> <gv
 
 "http://vim.wikia.com/wiki/Easy_indenting_in_insert_and_normal_mode_with_no_cursor_displacement
 "commented because C-i doesn work
@@ -183,6 +181,8 @@ inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("\<C-g>j"))
 nnoremap Y y$
 vnoremap > >gv
 vnoremap < <gv
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
 nmap <M-n> o<Esc>
 nmap <leader>id :IlluminationDisable<CR>
 nmap <leader>ie :IlluminationEnable<CR>

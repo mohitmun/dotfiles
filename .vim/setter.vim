@@ -31,6 +31,7 @@ set directory=~/.vim/directory//
 set undodir=~/.vim/undodir//
 set clipboard^=unnamed
 "set iskeyword-=_
+set iskeyword+=-
 set ttimeoutlen=50
 set history=1000  " Keep a bigger history of commands
 set mouse=a
