@@ -620,3 +620,7 @@ start_cb_listener(){
     echo "Received data"
   done
 }
+
+sendtolocal(){
+cat $1 | nc localhost 2000
+}
