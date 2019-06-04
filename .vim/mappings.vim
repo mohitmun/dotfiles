@@ -69,7 +69,7 @@ nnoremap <leader>gf :GFiles?<CR>
 map <leader>w :w<CR>:w<CR>
 
 nnoremap * *N
-map F *
+map F *:%s///c<left><left>
 
 "set verbose=1
 
@@ -82,7 +82,9 @@ map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
 map <leader>nt :NERDTreeFocus<cr>
 map ; :
-map <C-f> :Ag<CR>
+nmap <C-f> :Ag<CR>
+"vnoremap <C-f> *
+"<CR>:<BS><BS><BS><BS><BS>%s///gc<left><left><left>
 map swe :Ag <C-R><C-W><CR>
 map swc :BLines <C-R><C-W><CR>
 map <leader>/ :BLines <CR>

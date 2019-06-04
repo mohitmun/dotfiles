@@ -89,11 +89,12 @@ Plug 'luochen1990/rainbow'
 "Plug 'SidOfc/mkdx'
 "explore
 "Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'TaDaa/vimade'
-Plug 'itchyny/vim-qfedit'
+"Plug 'TaDaa/vimade'
+"Plug 'itchyny/vim-qfedit'
+Plug 'stefandtw/quickfix-reflector.vim'
 "Plug 'timakro/vim-searchant'
 Plug 'markonm/traces.vim'
-Plug 'rhysd/git-messenger.vim'
+"Plug 'rhysd/git-messenger.vim'
 Plug 'mohitmun/spu.vim'
 call plug#end()
 
