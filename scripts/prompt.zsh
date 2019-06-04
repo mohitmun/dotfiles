@@ -11,21 +11,6 @@ STATUS_BAR='$FG[241]$(get_battery)$DOT$(get_volume_indicator)$(get_todo_status)%
 #autoload -Uz async && async
 source ~/.zsh-async/async.plugin.zsh
 autoload -Uz vcs_info
-#STATUS_BAR_ENABLED=1
-show_status_bar(){
-  if [[ -n $STATUS_BAR_ENABLED ]];then
-    tput sc
-    tput cup $(($ORIGINAL_ROWS)) 0
-    echo -ne $STATUS_BAR
-    tput cup $(($ORIGINAL_ROWS - 2)) 0
-    echo -ne "$FG[241]"
-    repeat_string $(($ORIGINAL_COLUMNS - 5)) "_"
-    echo -ne "$reset_color"
-    tput rc
-  else
-    echo -ne $STATUS_BAR
-  fi
-}
 
 jobs_prompt() {
   local jobs_amount=$((jobs) | wc -l | tr -d " ")
@@ -90,16 +75,15 @@ prompt_pure_preprompt_render() {
   gpi="$(git_prompt_info)"
   if [ -z $GIT_DIR ];then
   else
-    git_dotfile_mode="$FG[078](git_dir:$GIT_DIR )${reset_color}"
+    git_dotfile_mode="$FG[078](git_dir:$GIT_DIR )"
+    # below truncats line
+    #git_dotfile_mode="$FG[078](git_dir:$GIT_DIR )${reset_color}"
   fi
   [[ $NOTES -eq 1 ]] && notes='[N]'
   export GET_SECO="$FG[032]$current_dir_with_jobs${gpi}$git_dotfile_mode${notes}${prompt_pure_git_arrows}"
   export LEN_GET_SECO=$(print -P $GET_SECO | removeansii | wc -m )
 
   export RIGHT_SECOND_LINE="$(shortdatetime)"
-  PROMPT='$FG[242]%~ %{$reset_color%}accept-line
-  $GET_SECO$FG[241]${(l,COLUMNS-$LEN_GET_SECO,,,)${${:-$RIGHT_SECOND_LINE}//[%]/%%}}
-  $FG[240]$S_TYPE$FG[105]$(prompt_character)%{$reset_color%} '
 
   line_1='$FG[242]%~ %{$reset_color%}'
   line_2='$GET_SECO$FG[241]${(l,COLUMNS-$LEN_GET_SECO,,,)${${:-$RIGHT_SECOND_LINE}//[%]/%%}}'

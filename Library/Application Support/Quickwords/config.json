@@ -194,6 +194,14 @@
 			"regex": false,
 			"type": "plain",
 			"active": true
+		},
+		{
+			"id": 9872003,
+			"key": ":8)",
+			"value": "😎",
+			"regex": false,
+			"type": "plain",
+			"active": true
 		}
 	],
 	"bufferLength": 20,

@@ -83,5 +83,5 @@ set gdefault            " When substituting, the g flag is on by default
 
 " slow 
 set undofile " is slow for bb"
-"set foldmethod=indent " is slow for bb/"
+set foldmethod=indent " is slow for bb/"
 "set cursorline

@@ -87,3 +87,20 @@ get_twitter(){
   URL="https://twitter.com/i/profiles/show/climagic/timeline/tweets?include_available_features=1&include_entities=1&max_position=$max_position&reset_error_state=false"
   jq -r .items_html /Users/mohit/Downloads/json.json  | pup ".js-tweet-text-container text{}"
 }
+
+################
+#  pushbullet  #
+################
+#while true;do
+#sleep 2
+#curl --header 'Access-Token: '$pb_token https://api.pushbullet.com/v2/pushes\?cursor\=$cursor&limit\=500 > pushed$cursor.json
+#jq -r .cursor pushed$cursor.json | read cursor
+#done
+#
+
+#########
+#  aws  #
+#########
+get_spot_instace_pricing(){
+  curl_chrome 'https://spot-price.s3.amazonaws.com/spotblocks-windows.js'
+}
