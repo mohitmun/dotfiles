@@ -381,6 +381,7 @@ nchttpserver(){
   done
 }
 
+#https://stackoverflow.com/a/26455587/2577465
 shell2http(){
   outfile=/tmp/shell2http.out
   rm -f $outfile
