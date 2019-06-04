@@ -340,3 +340,19 @@ backup_chrome_db(){
 
 
 
+#STATUS_BAR_ENABLED=1
+show_status_bar(){
+  if [[ -n $STATUS_BAR_ENABLED ]];then
+    tput sc
+    tput cup $(($ORIGINAL_ROWS)) 0
+    echo -ne $STATUS_BAR
+    tput cup $(($ORIGINAL_ROWS - 2)) 0
+    echo -ne "$FG[241]"
+    repeat_string $(($ORIGINAL_COLUMNS - 5)) "_"
+    echo -ne "$reset_color"
+    tput rc
+  else
+    echo -ne $STATUS_BAR
+  fi
+}
+

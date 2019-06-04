@@ -258,6 +258,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:/usr/local/sbin"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 #export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"

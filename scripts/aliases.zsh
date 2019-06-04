@@ -47,7 +47,7 @@ alias kill9="kill -9"
 alias pkill="pkill -I"
 alias start_config_mode="export GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME"
 alias stop_config_mode="unset GIT_DIR GIT_WORK_TREE"
-alias config='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias sz='source ~/.zshrc'
 alias cgd='config diff'
 alias cgdca='cgd --cached'
@@ -381,6 +381,43 @@ nchttpserver(){
   done
 }
 
+#https://stackoverflow.com/a/26455587/2577465
+shell2http(){
+  outfile=/tmp/shell2http.out
+  rm -f $outfile
+  mkfifo $outfile
+  trap "rm -f $outfile" EXIT
+  while true
+  do cat $outfile | nc -l 1500 > >(export REQUEST=
+    while read line
+    do line=$(echo "$line" | tr -d '[\r\n]')
+      if echo "$line" | grep -qE '^GET /'
+
+      then REQUEST=$(echo "$line" | cut -d ' ' -f2)
+      elif [ "x$line" = x ]
+      then HTTP_200="HTTP/1.1 302"
+        HTTP_LOCATION="Location:"
+        #redirect
+        #echo $queryparams
+        #RDIR=$(./download.zsh $queryparams)
+        HTTP_404="HTTP/1.1 404 Not Found"
+        if echo $REQUEST | grep -qE '^/echo/'
+        then printf "%s\n%s %s" "$HTTP_200" "$HTTP_LOCATION" $RDIR > $outfile
+        elif echo $REQUEST | grep -qE '^/command' ;then
+          queryparams=${REQUEST#"/command/"}
+          eval "$queryparams" > $outfile
+        elif echo $REQUEST | grep -qE '^/date'
+        then date > $outfile
+        elif echo $REQUEST | grep -qE '^/stats'
+        then vmstat -S M > $outfile
+        elif echo $REQUEST | grep -qE '^/net'
+        then ifconfig > $outfile
+        else printf "%s\n%s %s\n\n%s\n" "$HTTP_404" "$HTTP_LOCATION" $REQUEST "Resource $REQUEST NOT FOUND!" > $outfile
+        fi
+      fi
+    done)
+  done
+}
 
 alias grep_ip='grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"'
 alias generate_todo='git grep "TODO" > todofiles'
@@ -392,8 +429,27 @@ reverse_video(){
   ffmpeg -vf reverse $2 -i $1
 }
 
+alias ffmpegvid2gif='vid2gif'
+alias splitfileffm="ffmpeg -i somefile.mp3 -f segment -segment_time 3 -c copy out%03d.mp3"
+
 multitime(){
   time (for i in {1..10}; do 
-    $@
+    eval "$@"
   done)
 }
+
+curlt(){
+  curl_format='{
+ "time_namelookup": %{time_namelookup},
+ "time_connect": %{time_connect},
+ "time_appconnect": %{time_appconnect},
+ "time_pretransfer": %{time_pretransfer},
+ "time_redirect": %{time_redirect},
+ "time_starttransfer": %{time_starttransfer},
+ "time_total": %{time_total}
+}'
+
+  curl -w "$curl_format" -o /dev/null -s "$@"
+}
+
+alias ping='sudo mtr'
