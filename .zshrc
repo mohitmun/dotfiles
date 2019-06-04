@@ -265,7 +265,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 #export PATH="$PATH:$HOME/Library/Android/sdk/tools"
 #export PATH="$PATH:$HOME/Library/Android/sdk/ndk-bundle"
 #export PATH="$PATH:$HOME/Library/Android/sdk/build-tools/25.0.0"
-#export PATH="$PATH:$HOME/Desktop/blockchain/go-ipfs"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 #export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
