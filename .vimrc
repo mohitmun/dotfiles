@@ -112,6 +112,7 @@ autocmd VimEnter * wincmd p
 hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NONE
 hi LineNr ctermfg=102 ctermbg=NONE cterm=NONE guifg=#90908a guibg=#3c3d37 gui=NONE
 hi Search guibg=peru guifg=wheat
+hi Search ctermbg=Green
 
 
 "https://shapeshed.com/vim-netrw/

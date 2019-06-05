@@ -69,7 +69,8 @@ nnoremap <leader>gf :GFiles?<CR>
 map <leader>w :w<CR>:w<CR>
 
 nnoremap * *N
-map F *:%s///c<left><left>
+map F *
+map <leader>F *:%s///c<left><left>
 
 "set verbose=1
 
