@@ -453,3 +453,4 @@ curlt(){
 }
 
 alias ping='sudo mtr'
+alias md5q="md5sum | awk '{print \$1}'"

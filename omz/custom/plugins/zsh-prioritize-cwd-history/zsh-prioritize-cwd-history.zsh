@@ -50,7 +50,7 @@ ZSH_PRIORITIZE_CWD_HISTORY_DIR="$HOME/.zsh_prioritize_cwd_history"
 # Prints to STDOUT the name of the histrefs file to use for current
 # working directory
 _zsh_prioritize_cwd_history_histrefs_for_cwd() {
-	local md5=$(echo "${PWD:A}" | md5 -q)
+	local md5=$(echo "${PWD:A}" | md5q)
 
 	echo "$ZSH_PRIORITIZE_CWD_HISTORY_DIR/.histrefs-$md5"
 }
