@@ -314,3 +314,18 @@ source ~/.vim/autocmds.vim
 command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a
 command! -nargs=? FilterD let @a='' | execute 'g/<args>/d A' | new | setlocal bt=nofile | put! a
 "https://w0rp.com/blog/post/vim-script-for-the-javascripter/
+
+"https://github.com/jezen/dotfiles/blob/master/.vimrc
+iabbrev ldis ಠ_ಠ
+iabbrev lsir ಠ_ರೃ
+iabbrev lhap ツ
+iabbrev fliptable （╯°□°）╯ ┻━┻
+iabbrev *shrug* ¯\_(ツ)_/¯
+iabbrev herewego ᕕ( ᐛ )ᕗ
+iabbrev dealwithit (⌐■_■)
+iabbrev lenny ( ͡° ͜ʖ ͡°)
+iabbrev yeahdawg 
+      \<cr>▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+      \<cr>░░░░░ ░░░░▀█▄▀▄▀██████░▀█▄▀▄▀████▀
+      \<cr>░░░░ ░░░░░░░▀█▄█▄███▀░░░▀██▄█▄█▀
+
