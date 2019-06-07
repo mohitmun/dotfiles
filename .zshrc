@@ -614,13 +614,14 @@ extract () {
 profile_stop "zshrc"
 
 #https://stackoverflow.com/a/49890019/2577465
-start_cb_listener(){
+cb_listener(){
   while true; do 
     nc -l 2000 | pbcopy
     echo "Received data"
   done
 }
-
+startifnot cb_listener
 sendtolocal(){
-cat $1 | nc localhost 2000
+  cat $1 | nc localhost 2000
 }
+

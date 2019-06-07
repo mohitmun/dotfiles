@@ -255,7 +255,7 @@ findEmptyDirsAndFiles(){
 
 #========== System info =============
 alias findd="find . -type d -name" # find directory
-alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+#alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias rgl="rg -l" # show only files names
 alias lssr="\du -ah . | grep -v "/$" | gsort -rh" # sort by size recursive
 alias ls="ls -hlGt"
@@ -323,13 +323,13 @@ alias localip='ipconfig getifaddr en0'
 alias pgrepx="pgrep -x"
 #https://askubuntu.com/a/157787/544611
 startifnot(){
-  res=$(pgrep -xf "$*")
+  res=$(grep "$*" ~/startifnot.map)
   if [ $? -eq 0 ]
   then
-    echo "Already Running with pid: $res"
+    echo "Already $res"
   else
-    $* &
-    echo "Running $* in bg with pid: $!"
+    $* &!
+    echo "Running $* in bg with pid: $!" | tee ~/startifnot.map
   fi
 }
 
