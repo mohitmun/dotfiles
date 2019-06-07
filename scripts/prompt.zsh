@@ -83,10 +83,10 @@ prompt_pure_preprompt_render() {
   export GET_SECO="$FG[032]$current_dir_with_jobs${gpi}$git_dotfile_mode${notes}${prompt_pure_git_arrows}"
   export LEN_GET_SECO=$(print -P $GET_SECO | removeansii | wc -m )
 
-  export RIGHT_SECOND_LINE="$(shortdatetime)"
+  #export RIGHT_SECOND_LINE="$(time12)"
 
   line_1='$FG[242]%~ %{$reset_color%}'
-  line_2='$GET_SECO$FG[241]${(l,COLUMNS-$LEN_GET_SECO,,,)${${:-$RIGHT_SECOND_LINE}//[%]/%%}}'
+  line_2='$GET_SECO$FG[241]${(l,COLUMNS-$LEN_GET_SECO,,,)${${:-$(time12)}//[%]/%%}}'
   line_3='$FG[240]$S_TYPE$FG[105]$(prompt_character)%{$reset_color%} '
 
 
