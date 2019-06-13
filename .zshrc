@@ -269,10 +269,8 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 #export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
 export PYTHONSTARTUP=~/.pythonrc
-#export ANDROID_HOME=/Users/mohitmunjani/Library/Android/sdk
-#export ANDROID_SDK_ROOT=/Users/mohitmunjani/Library/Android/sdk
-export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
-export ANDROID_HOME="/usr/local/share/android-sdk"
+export ANDROID_HOME=/Users/mohitmunjani/Library/Android/sdk
+export ANDROID_SDK_ROOT=/Users/mohitmunjani/Library/Android/sdk
 
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
@@ -617,7 +615,7 @@ profile_stop "zshrc"
 cb_listener(){
   while true; do 
     nc -l 2000 | pbcopy
-    echo "Received data"
+    mylog "Received data"
   done
 }
 startifnot cb_listener

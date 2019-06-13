@@ -323,13 +323,16 @@ alias localip='ipconfig getifaddr en0'
 alias pgrepx="pgrep -x"
 #https://askubuntu.com/a/157787/544611
 startifnot(){
-  res=$(grep "$*" ~/startifnot.map)
+  res=$(grep "$*" ~/startifnot.map | tail -1 )
+  pid=$(echo $res | awk '{print $NF}')
+  kill -0 $pid
   if [ $? -eq 0 ]
   then
     echo "Already $res"
   else
-    $* &!
-    echo "Running $* in bg with pid: $!" | tee ~/startifnot.map
+    $* &
+    disown
+    echo "Running $* in bg with pid: $!" | tee -a ~/startifnot.map
   fi
 }
 
@@ -452,5 +455,4 @@ curlt(){
   curl -w "$curl_format" -o /dev/null -s "$@"
 }
 
-alias ping='sudo mtr'
 alias md5q="md5sum | awk '{print \$1}'"

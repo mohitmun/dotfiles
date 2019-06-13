@@ -2,7 +2,8 @@ call plug#begin()
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "Plug 'ctrlpvim/ctrlp.vim
 "Plug 'Valloric/YouCompleteMe'
-Plug 'terryma/vim-multiple-cursors' " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
+" Plug 'terryma/vim-multiple-cursors' " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
+Plug 'mg979/vim-visual-multi'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -11,7 +12,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " fugitive.vim: a Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-"Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 Plug 'sidorares/node-vim-debugger'
 " Linters
 "Plug 'w0rp/ale'
