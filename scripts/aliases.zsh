@@ -118,11 +118,11 @@ portskill(){
   ports "$1" | awk '{ print $2; }' #| xargs kill -9
 }
 alias -g LOGTOFILE="> stdout.log 2> stderr.log"
-alias -g G=" | grep "
-alias -g T=" | tee "
-alias -g L=" | less "
-alias -g H=" | head "
-alias -g TP=" | tee /dev/tty | " # transperant pipe
+#alias -g G=" | grep "
+#alias -g T=" | tee "
+#alias -g L=" | less "
+#alias -g H=" | head "
+#alias -g TP=" | tee /dev/tty | " # transperant pipe
 alias nvmact='export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
 alias psa='ps -o %cpu,%mem'
 alias psp='ps -p'
@@ -339,6 +339,7 @@ startifnot(){
   else
     $* &
     disown
+    #TODO delete line
     echo "Running $* in bg with pid: $!" | tee -a ~/startifnot.map
   fi
 }

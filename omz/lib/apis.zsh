@@ -75,10 +75,27 @@ add_tags(){
 ##########
 #  UBER  #
 ##########
+UBERGO=83941b0d-4be1-4979-a9c0-f0af5ee2b89b
+UBERPOOL=b2554c60-876a-464d-90d1-f218de5d9dab
 current_ride(){
   curl -H "Authorization: Bearer $UBER_TOKEN" -H 'Accept-Language: en_US' -H 'Content-Type: application/json' 'https://api.uber.com/v1.2/requests/current'
 }
+estimate_to_home(){
+  echo '
+  ###############
+  #  UBER POOL  #
+  ###############
+  '
+  curl -H "Authorization: Bearer $UBER_TOKEN" -H 'Accept-Language: en_US' -H 'Content-Type: application/json' 'https://api.uber.com/v1.2/requests/estimate' -X POST -d $(jo end_place_id=home start_latitude=$1 start_longitude=$2 product_id=$UBERPOOL)
 
+  echo '
+
+  ###############
+  #  UBER GO  #
+  ###############
+  '
+  curl -H "Authorization: Bearer $UBER_TOKEN" -H 'Accept-Language: en_US' -H 'Content-Type: application/json' 'https://api.uber.com/v1.2/requests/estimate' -X POST -d $(jo end_place_id=home start_latitude=$1 start_longitude=$2 product_id=$UBERGO)
+}
 #############
 #  Twitter  #
 #############

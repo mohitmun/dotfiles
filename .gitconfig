@@ -36,3 +36,7 @@
   colorMoved = plain
 [receive]
   denyCurrentBranch = ignore
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
