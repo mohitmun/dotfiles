@@ -223,6 +223,13 @@ alias gsetorigin="git remote set-url origin "
 alias gset="git remote set-url "
 alias gitremoteremove="git remote remove"
 alias gitremoterename="git remote rename"
+#todo https://increment.com/open-source/more-productive-git/
+#git bisect start HEAD v2.0 
+#git bisect run lein test 
+# git log origin/master..HEAD
+#git log --after=01/01/2019 
+#git log --before=01/01/2019 
+#git log --author=James 
 
 alias gd='git diff'
 alias gdca='git diff --cached'
