@@ -89,12 +89,15 @@ prompt_pure_preprompt_render() {
   line_2='$GET_SECO$FG[241]${(l,COLUMNS-$LEN_GET_SECO,,,)${${:-$(time12)}//[%]/%%}}'
   line_3='$FG[240]$S_TYPE$FG[105]$(prompt_character)%{$reset_color%} '
 
+  [[ -f ~/myvars ]] && source ~/myvars && line_vars="$(cat ~/myvars)$prompt_newline"
+
 
 	ps1=(
 		$line_1  # Join parts, space separated.
 		$prompt_newline           # Separate preprompt and prompt.
     $line_2
 		$prompt_newline
+    $line_vars
     $line_3
 	)
   PROMPT="${(j..)ps1}"
