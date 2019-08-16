@@ -1,0 +1,9 @@
+{
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.autoSave": "afterDelay",
+    "python.jediEnabled": false,
+    "window.zoomLevel": -2,
+    "breadcrumbs.enabled": true
+
+}
