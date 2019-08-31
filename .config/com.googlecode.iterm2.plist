@@ -287,6 +287,8 @@ Resize Split Pane.Move Divider Right</string>
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
+	<key>NSWindow Frame SUAutomaticUpdateAlert</key>
+	<string>332 469 616 174 0 0 1280 800 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>440 503 400 129 0 0 1280 800 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
@@ -295,10 +297,12 @@ Resize Split Pane.Move Divider Right</string>
 	<string>269 149 606 469 0 0 1280 800 </string>
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>342 290 796 486 0 0 1280 777 </string>
+	<key>NSWindow Frame UKCrashReporter</key>
+	<string>80 193 592 584 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>10 33 570 451 0 0 1280 800 </string>
+	<string>10 9 570 496 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>3 38 1274 762 0 0 1280 800 </string>
+	<string>3 281 570 496 0 0 1280 777 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2635,6 +2639,7 @@ Resize Split Pane.Move Divider Right</string>
 	<array>
 		<string>3.2.9</string>
 		<string>3.3.0</string>
+		<string>3.3.2</string>
 	</array>
 	<key>NoSyncAutoBurialReveal</key>
 	<true/>
@@ -2656,7 +2661,7 @@ Resize Split Pane.Move Divider Right</string>
 	<key>NoSyncLastTipTime</key>
 	<real>514374040.44743401</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>3</integer>
+	<integer>5</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -3121,6 +3126,14 @@ Resize Split Pane.Move Divider Right</string>
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
+				<string>number</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
 				<string>currentTab.currentSession.hostname</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -3394,6 +3407,19 @@ Resize Split Pane.Move Divider Right</string>
 		<string>773892</string>
 		<string>210</string>
 	</array>
+	<key>NoSyncSearchHistory2</key>
+	<array>
+		<string>wpka5gd6SY4YbeZQuXY</string>
+		<string>7824641846</string>
+		<string>be4fcc89df4da965</string>
+		<string>5157324099f</string>
+		<string>sto</string>
+		<string>1126478</string>
+		<string>storeid</string>
+		<string>x22Some</string>
+		<string>bulk</string>
+		<string>name</string>
+	</array>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>499554313.93651301</real>
 	<key>NoSyncTipsDisabled</key>
@@ -3554,8 +3580,10 @@ Resize Split Pane.Move Divider Right</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-08-25T06:44:28Z</date>
+	<date>2019-08-30T14:35:20Z</date>
 	<key>SUSendProfileInfo</key>
+	<false/>
+	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
 	<false/>
@@ -3565,6 +3593,10 @@ Resize Split Pane.Move Divider Right</string>
 	<false/>
 	<key>SoundForEsc</key>
 	<false/>
+	<key>StatusBarPosition</key>
+	<integer>1</integer>
+	<key>TabStyleWithAutomaticOption</key>
+	<integer>5</integer>
 	<key>UseBorder</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
@@ -3574,6 +3606,6 @@ Resize Split Pane.Move Divider Right</string>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.3.0</string>
+	<string>3.3.2</string>
 </dict>
 </plist>
