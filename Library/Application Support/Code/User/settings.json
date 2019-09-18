@@ -1,9 +1,20 @@
 {
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "files.autoSave": "afterDelay",
     "python.jediEnabled": false,
     "window.zoomLevel": -2,
-    "breadcrumbs.enabled": true
-
+    "breadcrumbs.enabled": true,
+    "workbench.colorTheme": "Darcula Theme from IntelliJ",
+    "editor.wordWrap": "on",
+    "diffEditor.renderSideBySide": false,
+    "workbench.activityBar.visible": true,
+    "editor.renderWhitespace": "all",
+    "search.smartCase" : true,
+    "search.showLineNumbers": true,
+    "search.maintainFileSearchCache": true,
+    "java.debug.settings.console": "internalConsole",
+    "java.format.onType.enabled": true,
+    "terminal.integrated.rendererType": "dom",
+    "files.autoSave": "off",
+    "files.autoSaveDelay": 1000
 }
