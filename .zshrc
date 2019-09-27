@@ -134,13 +134,6 @@ bindkey "^v" forward-word
 #https://blog.sebastian-daschner.com/entries/zsh-aliases
 bindkey "^p" _expand_alias
 bindkey "^s" switch_tty
-bindkey "^z" fgvim
-
-fgvim(){
- fg %vi
- zle reset-prompt
-}
-zle -N fgvim
 #TODO what is difference when using function keyword or not
 
 function repeat_string(){
@@ -227,27 +220,6 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 # THEME END
 #===========================
 
-gencscopedb(){
-  CSCOPE_DIR="$PWD/cscope"
-  if [ ! -d "$CSCOPE_DIR" ]; then
-  mkdir "$CSCOPE_DIR"
-  fi
-  echo "Finding files ..."
-  find "$PWD" -name '*.[ch]' \
-  -o -name '*.java' \
-  -o -name '*properties' \
-  -o -name '*.cpp' \
-  -o -name '*.cc' \
-  -o -name '*.hpp' \
-  -o -name '*.py' \
-  -o -name '*.rb' \
-  -o -name '*.php' > "$CSCOPE_DIR/cscope.files"
-  echo "Adding files to cscope db: $PWD/cscope.db ..."
-  cscope -b -i "$CSCOPE_DIR/cscope.files" -f "$CSCOPE_DIR/cscope.out"
-
-  export CSCOPE_DB="$CSCOPE_DIR/cscope.out"
-  echo "Exported CSCOPE_DB to: '$CSCOPE_DB'"
-}
 
 # mkdir, and cd
 function mcd() {
@@ -278,11 +250,6 @@ export PATH="$JAVA_HOME/bin:$PATH"
 #alias curl="curl --socks5-hostname 127.0.0.1:9050"
 export NVM_DIR="/Users/mohitmunjani/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-cht(){
-  curl cht.sh/$1
-}
 
 #https://github.com/paulmillr/dotfiles/blob/master/home/.zshrc.sh
 #
@@ -301,12 +268,6 @@ function retry() {
   retry $@
 }
 
-
-# Shortcut for searching commands history.
-# hist git
-function hist() {
-  history | grep $@
-}
 
 # Monitor IO in real-time (open files etc).
 function openfiles() {
@@ -334,11 +295,6 @@ function each() {
 #TODO https://gist.github.com/phette23/5270658
 #TODO https://superuser.com/questions/292652/change-iterm2-window-and-tab-titles-in-zsh/292660#292660
 
-zrc(){
-	vim ~/.zshrc
-	source ~/.zshrc
-	echo "Done: update zsh configure file."
-}
 #TODO https://github.com/zsh-users/zsh-autosuggestions
 #TODO https://github.com/zsh-users/zsh-completions
 #TODO https://github.com/ericfreese/zsh-prioritize-cwd-history
@@ -566,21 +522,6 @@ run_local_rc(){
   export NOTES=$?
 }
 
-setbadge(){
-  printf "\e]1337;SetBadgeFormat=%s\a" $(echo -n "$1" | base64)
-}
-
-setprofile(){
-  printf "\e]1337;SetProfile=%s\a" "$1"
-}
-
-smallfont(){
-  setprofile smallfont
-}
-
-defaultProfile(){
-  setprofile Default
-}
 
 # extract archive
 extract () {
