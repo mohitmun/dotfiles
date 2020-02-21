@@ -102,6 +102,7 @@ map k gk
 map <leader>csr :!cscope -Rbq<CR>:cs reset<CR><CR>
 map <leader>h :History<CR>
 map <leader>jpp :%!jq '.'<CR>
+map <leader>sql :%!format-sql <CR>
 map \ss :call SaveSess()<CR>
 map \rs :call RestoreSess()<CR>
 map <C-g> g;
@@ -137,7 +138,7 @@ vmap ii <ESC>
 nmap ]h <Plug>GitGutterNextHunk
 nmap gh <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
-nnoremap <leader>ggs :GitGutterStageHunk<CR>
+nnoremap <leader>gah :GitGutterStageHunk<CR>
 nnoremap <leader>gch :GitGutterStageHunk<CR>:!git commit -m ""<Left>
 nnoremap <leader>gcf :!git commit -m "" %<Left><Left><Left>
 nnoremap gcf :!git commit -m "" %<Left><Left><Left>
@@ -166,7 +167,7 @@ nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
 "https://stackoverflow.com/a/30423919/2577465
 nnoremap x "_x
 nnoremap X "_X
-nnoremap d "_d
+"nnoremap d "_d
 nnoremap D "_D
 vnoremap d "_d
 nnoremap c "_c

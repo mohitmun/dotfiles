@@ -309,7 +309,7 @@ google(){
 }
 
 log_top_5(){
-  mylog $(ps -Ao pid,pcpu -r -C | awk 'NR > 1 && NR < 11 {print $1"="$2}' | jo)
+  mylog "cpuusage"$(ps -Ao pid,pcpu,comm -r -C | awk 'NR > 1 && NR < 11 {print $1$3"="$2}' | jo)
 }
 
 my_crons(){

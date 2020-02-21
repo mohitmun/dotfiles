@@ -4,6 +4,7 @@ au InsertEnter * let updaterestore=&updatetime | set updatetime=15000
 au InsertLeave * let &updatetime=updaterestore
 
 au BufNewFile,BufRead * if &syntax == '' | setlocal spell | endif
+"au BufNewFile,BufRead * if &syntax == 'markdown' | setlocal spell | endif
 
 autocmd FileType ruby map <C-b> :!ruby %<CR>
 autocmd FileType javascript map <C-b> :!node %<CR>

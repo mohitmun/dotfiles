@@ -83,7 +83,7 @@ highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
-
+autocmd FileType python setlocal shiftwidth=2 tabstop=2
 " https://superuser.com/a/189198/630985
 " https://stackoverflow.com/a/360634/2577465
 
@@ -328,4 +328,13 @@ iabbrev yeahdawg
       \<cr>▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
       \<cr>░░░░░ ░░░░▀█▄▀▄▀██████░▀█▄▀▄▀████▀
       \<cr>░░░░ ░░░░░░░▀█▄█▄███▀░░░▀██▄█▄█▀
+"if executable('pyls')
+    "au User lsp_setup call lsp#register_server({
+        "\ 'name': 'pyls',
+        "\ 'cmd': {server_info->['pyls']},
+        "\ 'whitelist': ['python'],
+        "\ })
+"endif
+"https://github.com/vim/vim/issues/989#issuecomment-264565888
+let g:python_recommended_style = 0
 

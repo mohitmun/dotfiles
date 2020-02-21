@@ -15,6 +15,7 @@
 	excludesfile = ~/.gitignore
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	hooksPath = ~/.git-templates/hooks
+  mergeoptions = --no-edit
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
@@ -34,9 +35,10 @@
   oldMoved = red reverse
 [diff]
   colorMoved = plain
+  tool = vscode
 [receive]
   denyCurrentBranch = ignore
 [pull]
-	rebase = true
-[rebase]
 	autoStash = true
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE

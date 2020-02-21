@@ -11,3 +11,10 @@ vendor/*
 .localrc
 .notes
 tmp/*.pid
+*.csv
+launch.json
+settings.json
+QuickTest.java
+.history/**/*
+gignore
+tmp/

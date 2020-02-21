@@ -15,7 +15,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'sidorares/node-vim-debugger'
 " Linters
-"Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 Plug 'z0mbix/vim-shfmt'
 ", { 'for': 'sh' }
 Plug 'tweekmonster/startuptime.vim'
@@ -96,7 +96,7 @@ Plug 'stefandtw/quickfix-reflector.vim'
 "Plug 'timakro/vim-searchant'
 Plug 'markonm/traces.vim'
 "Plug 'rhysd/git-messenger.vim'
-Plug 'mohitmun/spu.vim'
+"Plug 'mohitmun/spu.vim'
 call plug#end()
 
 " =================== Plugin Conf ===================
@@ -135,9 +135,8 @@ let g:airline#extensions#hunks#enabled = 0
 
 
 "=================== ALE ===================
-let g:ale_fixers = {
-\   'java': ['google_java_format'],
-\}
+let g:ale_linters = {'python': ['pylint']}
+let g:ale_enabled = 1
 "=================== ALE ===================
 
 " =================== FZF ===================
