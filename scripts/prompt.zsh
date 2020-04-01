@@ -9,7 +9,7 @@ NEWLINE=$'\n'
 PROMPT_CHAR='❯'
 STATUS_BAR='$FG[241]$(get_battery)$DOT$(get_volume_indicator)$(get_todo_status)%{$reset_color%}'
 #autoload -Uz async && async
-source ~/.zsh-async/async.plugin.zsh
+#source ~/.zsh-async/async.plugin.zsh
 autoload -Uz vcs_info
 
 jobs_prompt() {
